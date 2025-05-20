@@ -1,0 +1,35 @@
+name: Deploy
+on:
+  push:
+    branches: [main, master]
+    tags: [v*]
+  pull_request:
+
+jobs:
+  Deploy:
+    permissions:
+      contents: write
+      statuses: write
+    name: Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Set up Julia
+        id: cache-julia
+        uses: actions/cache@v4
+        with:
+          path: ./julia
+          key: ${{ runner.os }}-julia-${{ hashFiles('./julia/VERSION') }}
+          restore-keys: |
+            ${{ runner.os }}-julia-
+            ${{ runner.os }}-julia-${{ hashFiles('./julia/VERSION') }}
+
+      - name: Build Julia doc
+        run: bash run.sh
+      - name: Build and Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: julia/doc/_build/html/ja

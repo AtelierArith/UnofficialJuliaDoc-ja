@@ -1,0 +1,40 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+    tags: ['*']
+  pull_request:
+  workflow_dispatch:
+concurrency:
+  # Skip intermediate builds: always.
+  # Cancel intermediate builds: only if it is a pull request build.
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
+#env:
+#  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+jobs:
+  test:
+    name: CI
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions: # needed to allow julia-actions/cache to proactively delete old caches that it has created
+      actions: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Set up Julia
+        id: cache-julia
+        uses: actions/cache@v4
+        with:
+          path: ./julia
+          key: ${{ runner.os }}-julia-${{ hashFiles('./julia/VERSION') }}
+          restore-keys: |
+            ${{ runner.os }}-julia-
+            ${{ runner.os }}-julia-${{ hashFiles('./julia/VERSION') }}
+
+      - name: Build Julia doc
+        run: bash run.sh
