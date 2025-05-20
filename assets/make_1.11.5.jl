@@ -14,7 +14,6 @@ using Documenter
 
 using DocstringTranslation
 DocstringTranslation.switchtranslationcachedir!(joinpath(dirname(dirname(@__DIR__)), "translation"))
-DocstringTranslation.switchtargetpackage!("julia")
 
 lang = "ja"
 @switchlang! lang
