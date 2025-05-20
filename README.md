@@ -20,6 +20,6 @@ bash run.sh
 
 上記の手順を踏むことで下記が成果物として得られます：
 
-`julai/doc/_build/html/ja` に翻訳された日本語ドキュメントが生成されます．
+`julia/doc/_build/html/ja` に翻訳された日本語ドキュメントが生成されます．
 
 翻訳結果は使用した OpenAI API の品質に左右されます．翻訳結果に不備・不満がある場合は `translation` ディレクトリにある `ja.md` を修正してください．`original.md` は編集・修正しないでください．
