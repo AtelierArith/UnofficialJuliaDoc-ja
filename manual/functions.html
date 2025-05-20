@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Functions · The Julia Language</title><meta name="title" content="Functions · The Julia Language"/><meta property="og:title" content="Functions · The Julia Language"/><meta property="twitter:title" content="Functions · The Julia Language"/><meta name="description" content="Documentation for The Julia Language."/><meta property="og:description" content="Documentation for The Julia Language."/><meta property="twitter:description" content="Documentation for The Julia Language."/><script async src="https://www.googletagmanager.com/gtag/js?id=UA-28835595-6"></script><script>  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-28835595-6', {'page_path': location.pathname + location.search + location.hash});
+</script><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script><link href="../assets/julia-manual.css" rel="stylesheet" type="text/css"/><link href="../assets/julia.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../index.html"><img class="docs-light-only" src="../assets/logo.svg" alt="The Julia Language logo"/><img class="docs-dark-only" src="../assets/logo-dark.svg" alt="The Julia Language logo"/></a><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../index.html">Julia Documentation</a></li><li><input class="collapse-toggle" id="menuitem-3" type="checkbox" checked/><label class="tocitem" for="menuitem-3"><span class="docs-label">Manual</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="getting-started.html">Getting Started</a></li><li><a class="tocitem" href="installation.html">Installation</a></li><li><a class="tocitem" href="variables.html">Variables</a></li><li><a class="tocitem" href="integers-and-floating-point-numbers.html">Integers and Floating-Point Numbers</a></li><li><a class="tocitem" href="mathematical-operations.html">Mathematical Operations and Elementary Functions</a></li><li><a class="tocitem" href="complex-and-rational-numbers.html">Complex and Rational Numbers</a></li><li><a class="tocitem" href="strings.html">Strings</a></li><li class="is-active"><a class="tocitem" href="functions.html">Functions</a><ul class="internal"><li><a class="tocitem" href="#man-argument-passing"><span>Argument Passing Behavior</span></a></li><li><a class="tocitem" href="#Argument-type-declarations"><span>Argument-type declarations</span></a></li><li><a class="tocitem" href="#The-return-Keyword"><span>The <code>return</code> Keyword</span></a></li><li><a class="tocitem" href="#Operators-Are-Functions"><span>Operators Are Functions</span></a></li><li><a class="tocitem" href="#Operators-With-Special-Names"><span>Operators With Special Names</span></a></li><li><a class="tocitem" href="#man-anonymous-functions"><span>Anonymous Functions</span></a></li><li><a class="tocitem" href="#Tuples"><span>Tuples</span></a></li><li><a class="tocitem" href="#Named-Tuples"><span>Named Tuples</span></a></li><li><a class="tocitem" href="#destructuring-assignment"><span>Destructuring Assignment and Multiple Return Values</span></a></li><li><a class="tocitem" href="#Property-destructuring"><span>Property destructuring</span></a></li><li><a class="tocitem" href="#man-argument-destructuring"><span>Argument destructuring</span></a></li><li><a class="tocitem" href="#Varargs-Functions"><span>Varargs Functions</span></a></li><li><a class="tocitem" href="#Optional-Arguments"><span>Optional Arguments</span></a></li><li><a class="tocitem" href="#Keyword-Arguments"><span>Keyword Arguments</span></a></li><li><a class="tocitem" href="#Evaluation-Scope-of-Default-Values"><span>Evaluation Scope of Default Values</span></a></li><li><a class="tocitem" href="#Do-Block-Syntax-for-Function-Arguments"><span>Do-Block Syntax for Function Arguments</span></a></li><li><a class="tocitem" href="#Function-composition-and-piping"><span>Function composition and piping</span></a></li><li><a class="tocitem" href="#man-vectorized"><span>Dot Syntax for Vectorizing Functions</span></a></li><li><a class="tocitem" href="#Further-Reading"><span>Further Reading</span></a></li></ul></li><li><a class="tocitem" href="control-flow.html">Control Flow</a></li><li><a class="tocitem" href="variables-and-scoping.html">Scope of Variables</a></li><li><a class="tocitem" href="types.html">Types</a></li><li><a class="tocitem" href="methods.html">Methods</a></li><li><a class="tocitem" href="constructors.html">Constructors</a></li><li><a class="tocitem" href="conversion-and-promotion.html">Conversion and Promotion</a></li><li><a class="tocitem" href="interfaces.html">Interfaces</a></li><li><a class="tocitem" href="modules.html">Modules</a></li><li><a class="tocitem" href="documentation.html">Documentation</a></li><li><a class="tocitem" href="metaprogramming.html">Metaprogramming</a></li><li><a class="tocitem" href="arrays.html">Single- and multi-dimensional Arrays</a></li><li><a class="tocitem" href="missing.html">Missing Values</a></li><li><a class="tocitem" href="networking-and-streams.html">Networking and Streams</a></li><li><a class="tocitem" href="parallel-computing.html">Parallel Computing</a></li><li><a class="tocitem" href="asynchronous-programming.html">Asynchronous Programming</a></li><li><a class="tocitem" href="multi-threading.html">Multi-Threading</a></li><li><a class="tocitem" href="distributed-computing.html">Multi-processing and Distributed Computing</a></li><li><a class="tocitem" href="running-external-programs.html">Running External Programs</a></li><li><a class="tocitem" href="calling-c-and-fortran-code.html">Calling C and Fortran Code</a></li><li><a class="tocitem" href="handling-operating-system-variation.html">Handling Operating System Variation</a></li><li><a class="tocitem" href="environment-variables.html">Environment Variables</a></li><li><a class="tocitem" href="embedding.html">Embedding Julia</a></li><li><a class="tocitem" href="code-loading.html">Code Loading</a></li><li><a class="tocitem" href="profile.html">Profiling</a></li><li><a class="tocitem" href="stacktraces.html">Stack Traces</a></li><li><a class="tocitem" href="performance-tips.html">Performance Tips</a></li><li><a class="tocitem" href="workflow-tips.html">Workflow Tips</a></li><li><a class="tocitem" href="style-guide.html">Style Guide</a></li><li><a class="tocitem" href="faq.html">Frequently Asked Questions</a></li><li><a class="tocitem" href="noteworthy-differences.html">Noteworthy Differences from other Languages</a></li><li><a class="tocitem" href="unicode-input.html">Unicode Input</a></li><li><a class="tocitem" href="command-line-interface.html">Command-line Interface</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-4" type="checkbox"/><label class="tocitem" for="menuitem-4"><span class="docs-label">Base</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../base/base.html">Essentials</a></li><li><a class="tocitem" href="../base/collections.html">Collections and Data Structures</a></li><li><a class="tocitem" href="../base/math.html">Mathematics</a></li><li><a class="tocitem" href="../base/numbers.html">Numbers</a></li><li><a class="tocitem" href="../base/strings.html">Strings</a></li><li><a class="tocitem" href="../base/arrays.html">Arrays</a></li><li><a class="tocitem" href="../base/parallel.html">Tasks</a></li><li><a class="tocitem" href="../base/multi-threading.html">Multi-Threading</a></li><li><a class="tocitem" href="../base/scopedvalues.html">Scoped Values</a></li><li><a class="tocitem" href="../base/constants.html">Constants</a></li><li><a class="tocitem" href="../base/file.html">Filesystem</a></li><li><a class="tocitem" href="../base/io-network.html">I/O and Network</a></li><li><a class="tocitem" href="../base/punctuation.html">Punctuation</a></li><li><a class="tocitem" href="../base/sort.html">Sorting and Related Functions</a></li><li><a class="tocitem" href="../base/iterators.html">Iteration utilities</a></li><li><a class="tocitem" href="../base/reflection.html">Reflection and introspection</a></li><li><a class="tocitem" href="../base/c.html">C Interface</a></li><li><a class="tocitem" href="../base/libc.html">C Standard Library</a></li><li><a class="tocitem" href="../base/stacktraces.html">StackTraces</a></li><li><a class="tocitem" href="../base/simd-types.html">SIMD Support</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-5" type="checkbox"/><label class="tocitem" for="menuitem-5"><span class="docs-label">Standard Library</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../stdlib/ArgTools.html">ArgTools</a></li><li><a class="tocitem" href="../stdlib/Artifacts.html">Artifacts</a></li><li><a class="tocitem" href="../stdlib/Base64.html">Base64</a></li><li><a class="tocitem" href="../stdlib/CRC32c.html">CRC32c</a></li><li><a class="tocitem" href="../stdlib/Dates.html">Dates</a></li><li><a class="tocitem" href="../stdlib/DelimitedFiles.html">Delimited Files</a></li><li><a class="tocitem" href="../stdlib/Distributed.html">Distributed Computing</a></li><li><a class="tocitem" href="../stdlib/Downloads.html">Downloads</a></li><li><a class="tocitem" href="../stdlib/FileWatching.html">File Events</a></li><li><a class="tocitem" href="../stdlib/Future.html">Future</a></li><li><a class="tocitem" href="../stdlib/InteractiveUtils.html">Interactive Utilities</a></li><li><a class="tocitem" href="../stdlib/LazyArtifacts.html">Lazy Artifacts</a></li><li><a class="tocitem" href="../stdlib/LibCURL.html">LibCURL</a></li><li><a class="tocitem" href="../stdlib/LibGit2.html">LibGit2</a></li><li><a class="tocitem" href="../stdlib/Libdl.html">Dynamic Linker</a></li><li><a class="tocitem" href="../stdlib/LinearAlgebra.html">Linear Algebra</a></li><li><a class="tocitem" href="../stdlib/Logging.html">Logging</a></li><li><a class="tocitem" href="../stdlib/Markdown.html">Markdown</a></li><li><a class="tocitem" href="../stdlib/Mmap.html">Memory-mapped I/O</a></li><li><a class="tocitem" href="../stdlib/NetworkOptions.html">Network Options</a></li><li><a class="tocitem" href="../stdlib/Pkg.html">Pkg</a></li><li><a class="tocitem" href="../stdlib/Printf.html">Printf</a></li><li><a class="tocitem" href="../stdlib/Profile.html">Profiling</a></li><li><a class="tocitem" href="../stdlib/REPL.html">The Julia REPL</a></li><li><a class="tocitem" href="../stdlib/Random.html">Random Numbers</a></li><li><a class="tocitem" href="../stdlib/SHA.html">SHA</a></li><li><a class="tocitem" href="../stdlib/Serialization.html">Serialization</a></li><li><a class="tocitem" href="../stdlib/SharedArrays.html">Shared Arrays</a></li><li><a class="tocitem" href="../stdlib/Sockets.html">Sockets</a></li><li><a class="tocitem" href="../stdlib/SparseArrays.html">Sparse Arrays</a></li><li><a class="tocitem" href="../stdlib/Statistics.html">Statistics</a></li><li><a class="tocitem" href="../stdlib/StyledStrings.html">StyledStrings</a></li><li><a class="tocitem" href="../stdlib/TOML.html">TOML</a></li><li><a class="tocitem" href="../stdlib/Tar.html">Tar</a></li><li><a class="tocitem" href="../stdlib/Test.html">Unit Testing</a></li><li><a class="tocitem" href="../stdlib/UUIDs.html">UUIDs</a></li><li><a class="tocitem" href="../stdlib/Unicode.html">Unicode</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6" type="checkbox"/><label class="tocitem" for="menuitem-6"><span class="docs-label">Developer Documentation</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><input class="collapse-toggle" id="menuitem-6-1" type="checkbox"/><label class="tocitem" for="menuitem-6-1"><span class="docs-label">Documentation of Julia&#39;s Internals</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../devdocs/init.html">Initialization of the Julia runtime</a></li><li><a class="tocitem" href="../devdocs/ast.html">Julia ASTs</a></li><li><a class="tocitem" href="../devdocs/types.html">More about types</a></li><li><a class="tocitem" href="../devdocs/object.html">Memory layout of Julia Objects</a></li><li><a class="tocitem" href="../devdocs/eval.html">Eval of Julia code</a></li><li><a class="tocitem" href="../devdocs/callconv.html">Calling Conventions</a></li><li><a class="tocitem" href="../devdocs/compiler.html">High-level Overview of the Native-Code Generation Process</a></li><li><a class="tocitem" href="../devdocs/functions.html">Julia Functions</a></li><li><a class="tocitem" href="../devdocs/cartesian.html">Base.Cartesian</a></li><li><a class="tocitem" href="../devdocs/meta.html">Talking to the compiler (the <code>:meta</code> mechanism)</a></li><li><a class="tocitem" href="../devdocs/subarrays.html">SubArrays</a></li><li><a class="tocitem" href="../devdocs/isbitsunionarrays.html">isbits Union Optimizations</a></li><li><a class="tocitem" href="../devdocs/sysimg.html">System Image Building</a></li><li><a class="tocitem" href="../devdocs/pkgimg.html">Package Images</a></li><li><a class="tocitem" href="../devdocs/llvm-passes.html">Custom LLVM Passes</a></li><li><a class="tocitem" href="../devdocs/llvm.html">Working with LLVM</a></li><li><a class="tocitem" href="../devdocs/stdio.html">printf() and stdio in the Julia runtime</a></li><li><a class="tocitem" href="../devdocs/boundscheck.html">Bounds checking</a></li><li><a class="tocitem" href="../devdocs/locks.html">Proper maintenance and care of multi-threading locks</a></li><li><a class="tocitem" href="../devdocs/offset-arrays.html">Arrays with custom indices</a></li><li><a class="tocitem" href="../devdocs/require.html">Module loading</a></li><li><a class="tocitem" href="../devdocs/inference.html">Inference</a></li><li><a class="tocitem" href="../devdocs/ssair.html">Julia SSA-form IR</a></li><li><a class="tocitem" href="../devdocs/EscapeAnalysis.html"><code>EscapeAnalysis</code></a></li><li><a class="tocitem" href="../devdocs/aot.html">Ahead of Time Compilation</a></li><li><a class="tocitem" href="../devdocs/gc-sa.html">Static analyzer annotations for GC correctness in C code</a></li><li><a class="tocitem" href="../devdocs/gc.html">Garbage Collection in Julia</a></li><li><a class="tocitem" href="../devdocs/jit.html">JIT Design and Implementation</a></li><li><a class="tocitem" href="../devdocs/builtins.html">Core.Builtins</a></li><li><a class="tocitem" href="../devdocs/precompile_hang.html">Fixing precompilation hangs due to open tasks or IO</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-2" type="checkbox"/><label class="tocitem" for="menuitem-6-2"><span class="docs-label">Developing/debugging Julia&#39;s C code</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../devdocs/backtraces.html">Reporting and analyzing crashes (segfaults)</a></li><li><a class="tocitem" href="../devdocs/debuggingtips.html">gdb debugging tips</a></li><li><a class="tocitem" href="../devdocs/valgrind.html">Using Valgrind with Julia</a></li><li><a class="tocitem" href="../devdocs/external_profilers.html">External Profiler Support</a></li><li><a class="tocitem" href="../devdocs/sanitizers.html">Sanitizer support</a></li><li><a class="tocitem" href="../devdocs/probes.html">Instrumenting Julia with DTrace, and bpftrace</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-3" type="checkbox"/><label class="tocitem" for="menuitem-6-3"><span class="docs-label">Building Julia</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../devdocs/build/build.html">Building Julia (Detailed)</a></li><li><a class="tocitem" href="../devdocs/build/linux.html">Linux</a></li><li><a class="tocitem" href="../devdocs/build/macos.html">macOS</a></li><li><a class="tocitem" href="../devdocs/build/windows.html">Windows</a></li><li><a class="tocitem" href="../devdocs/build/freebsd.html">FreeBSD</a></li><li><a class="tocitem" href="../devdocs/build/arm.html">ARM (Linux)</a></li><li><a class="tocitem" href="../devdocs/build/distributing.html">Binary distributions</a></li></ul></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Manual</a></li><li class="is-active"><a href="functions.html">Functions</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href="functions.html">Functions</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/JuliaLang/julia" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/JuliaLang/julia/blob/master/doc/src/manual/functions.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="man-functions"><a class="docs-heading-anchor" href="#man-functions">Functions</a><a id="man-functions-1"></a><a class="docs-heading-anchor-permalink" href="#man-functions" title="Permalink"></a></h1><p>Juliaにおいて、関数は引数の値のタプルを戻り値にマッピングするオブジェクトです。Juliaの関数は純粋な数学的関数ではなく、プログラムのグローバルな状態を変更したり、影響を受けたりすることがあります。Juliaで関数を定義するための基本的な構文は次のとおりです：</p><pre><code class="language-julia-repl hljs">julia&gt; function f(x, y)
+           x + y
+       end
+f (generic function with 1 method)</code></pre><p>この関数は2つの引数 <code>x</code> と <code>y</code> を受け取り、評価された最後の式の値、つまり <code>x + y</code> を返します。</p><p>Julia には、関数を定義するための2番目の、より簡潔な構文があります。上で示した従来の関数宣言構文は、以下のコンパクトな「代入形式」と同等です：</p><pre><code class="language-julia-repl hljs">julia&gt; f(x, y) = x + y
+f (generic function with 1 method)</code></pre><p>割り当てフォームでは、関数の本体は単一の式でなければなりませんが、複合式であることは可能です（<a href="control-flow.html#man-compound-expressions">Compound Expressions</a>を参照）。短くシンプルな関数定義はJuliaでは一般的です。したがって、短い関数構文は非常に慣用的であり、タイピングと視覚的なノイズの両方を大幅に減少させます。</p><p>関数は従来の括弧構文を使用して呼び出されます：</p><pre><code class="language-julia-repl hljs">julia&gt; f(2, 3)
+5</code></pre><p>括弧なしで、式 <code>f</code> は関数オブジェクトを指し、他の値と同様に渡すことができます：</p><pre><code class="language-julia-repl hljs">julia&gt; g = f;
+
+julia&gt; g(2, 3)
+5</code></pre><p>変数と同様に、Unicodeは関数名にも使用できます：</p><pre><code class="language-julia-repl hljs">julia&gt; ∑(x, y) = x + y
+∑ (generic function with 1 method)
+
+julia&gt; ∑(2, 3)
+5</code></pre><h2 id="man-argument-passing"><a class="docs-heading-anchor" href="#man-argument-passing">Argument Passing Behavior</a><a id="man-argument-passing-1"></a><a class="docs-heading-anchor-permalink" href="#man-argument-passing" title="Permalink"></a></h2><p>Juliaの関数引数は「共有渡し」と呼ばれる慣習に従っており、関数に渡されるときに値がコピーされることはありません。関数引数自体は新しい変数の<em>バインディング</em>（値を参照する新しい「名前」）として機能し、<a href="variables.html#man-assignment-expressions">assignments</a> <code>argument_name = argument_value</code>のように、参照するオブジェクトは渡された値と同一です。関数内で行われた可変値（例えば<code>Array</code>）への変更は、呼び出し元に対しても見えるようになります。（これは、Scheme、ほとんどのLisp、Python、Ruby、Perlなどの他の動的言語でも見られる同様の動作です。）</p><p>例えば、関数内で</p><pre><code class="language-julia hljs">function f(x, y)
+    x[1] = 42    # mutates x
+    y = 7 + y    # new binding for y, no mutation
+    return y
+end</code></pre><p>ステートメント <code>x[1] = 42</code> はオブジェクト <code>x</code> を <em>変異</em> させるため、この変更はこの引数のために呼び出し元が渡した配列に <em>表示されます</em>。 一方、代入 <code>y = 7 + y</code> は <em>バインディング</em> (&quot;名前&quot;) <code>y</code> を新しい値 <code>7 + y</code> を参照するように変更し、<code>y</code> が参照する <em>元の</em> オブジェクトを変異させるのではないため、呼び出し元が渡した対応する引数を <em>変更しません</em>。 これは <code>f(x, y)</code> を呼び出すと確認できます：</p><pre><code class="language-julia-repl hljs">julia&gt; a = [4, 5, 6]
+3-element Vector{Int64}:
+ 4
+ 5
+ 6
+
+julia&gt; b = 3
+3
+
+julia&gt; f(a, b) # returns 7 + b == 10
+10
+
+julia&gt; a  # a[1] is changed to 42 by f
+3-element Vector{Int64}:
+ 42
+  5
+  6
+
+julia&gt; b  # not changed
+3</code></pre><p>ジュリアの一般的な慣習として（構文上の要件ではありません）、そのような関数は <a href="../base/punctuation.html#man-punctuation">typically be named <code>f!(x, y)</code></a> ではなく <code>f(x, y)</code> と記述され、呼び出し元で少なくとも1つの引数（しばしば最初の引数）が変更されることを視覚的に思い出させる役割を果たします。</p><div class="admonition is-warning" id="Shared-memory-between-arguments-288f330cad61c6d0"><header class="admonition-header">Shared memory between arguments<a class="admonition-anchor" href="#Shared-memory-between-arguments-288f330cad61c6d0" title="Permalink"></a></header><div class="admonition-body"><p>ミューテーション関数の動作は、ミューテートされた引数が別の引数とメモリを共有している場合、予期しないものになることがあります。この状況はエイリアシングとして知られています（例えば、一方が他方のビューである場合）。関数のドキュメント文字列がエイリアシングが期待される結果を生むことを明示的に示さない限り、そのような入力に対して適切な動作を保証するのは呼び出し元の責任です。</p></div></div><h2 id="Argument-type-declarations"><a class="docs-heading-anchor" href="#Argument-type-declarations">Argument-type declarations</a><a id="Argument-type-declarations-1"></a><a class="docs-heading-anchor-permalink" href="#Argument-type-declarations" title="Permalink"></a></h2><p>関数の引数の型を宣言するには、引数名に <code>::TypeName</code> を追加します。これは、Juliaの <a href="types.html#Type-Declarations">Type Declarations</a> に通常の方法です。例えば、以下の関数は <a href="https://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci numbers</a> を再帰的に計算します：</p><pre><code class="nohighlight hljs">fib(n::Integer) = n ≤ 2 ? one(n) : fib(n-1) + fib(n-2)</code></pre><p><code>::Integer</code> の仕様は、<code>n</code> が <a href="types.html#man-abstract-types">abstract</a> の <code>Integer</code> 型のサブタイプである場合にのみ呼び出し可能であることを意味します。</p><p>引数型の宣言は<strong>通常、パフォーマンスに影響を与えません</strong>：宣言された引数型が何であれ、Juliaは呼び出し元によって渡された実際の引数型に対して関数の特化版をコンパイルします。たとえば、<code>fib(1)</code>を呼び出すと、<code>Int</code>引数に特化して最適化された<code>fib</code>の特化版がコンパイルされ、その後<code>fib(7)</code>や<code>fib(15)</code>が呼び出された場合に再利用されます。（引数型の宣言が追加のコンパイラ特化を引き起こす稀な例外もあります。詳細は：<a href="performance-tips.html#Be-aware-of-when-Julia-avoids-specializing">Be aware of when Julia avoids specializing</a>を参照してください。）Juliaで引数型を宣言する最も一般的な理由は、むしろ次の通りです：</p><ul><li><strong>ディスパッチ:</strong> <a href="methods.html#Methods">Methods</a>で説明されているように、異なる引数タイプに対して関数の異なるバージョン（「メソッド」）を持つことができ、その場合、引数タイプがどの実装がどの引数に対して呼び出されるかを決定するために使用されます。 例えば、<code>fib(x::Number) = ...</code>のように、任意の<code>Number</code>タイプに対して機能するまったく異なるアルゴリズムを実装し、<a href="https://en.wikipedia.org/wiki/Fibonacci_number#Binet%27s_formula">Binet&#39;s formula</a>を使用して非整数値に拡張することができます。</li><li><strong>正確性:</strong> 型宣言は、関数が特定の引数の型に対してのみ正しい結果を返す場合に役立ちます。たとえば、引数の型を省略して <code>fib(n) = n ≤ 2 ? one(n) : fib(n-1) + fib(n-2)</code> と書いた場合、<code>fib(1.5)</code> は静かに意味のない答え <code>1.0</code> を返すことになります。</li><li><strong>明確さ:</strong> 型宣言は、期待される引数についてのドキュメントの一形態として機能することがあります。</li></ul><p>しかし、<strong>引数の型を過度に制限するのは一般的な間違いです</strong>。これにより、関数の適用可能性が不必要に制限され、予期しなかった状況で再利用できなくなる可能性があります。たとえば、上記の <code>fib(n::Integer)</code> 関数は、<code>Int</code> 引数（マシン整数）と <code>BigInt</code> 任意精度整数の両方に対して同様に機能します（<a href="../base/numbers.html#BigFloats-and-BigInts">BigFloats and BigInts</a> を参照）。これは特に便利です。なぜなら、フィボナッチ数は指数関数的に急速に増加し、<code>Int</code> のような固定精度型ではすぐにオーバーフローしてしまうからです（<a href="integers-and-floating-point-numbers.html#Overflow-behavior">Overflow behavior</a> を参照）。しかし、もし私たちが関数を <code>fib(n::Int)</code> と宣言していた場合、理由もなく <code>BigInt</code> への適用が妨げられてしまったでしょう。一般的に、引数には最も一般的な適用可能な抽象型を使用すべきであり、<strong>疑問がある場合は引数の型を省略するべきです</strong>。必要になった場合は、後で引数の型指定を追加することができ、型を省略することでパフォーマンスや機能を犠牲にすることはありません。</p><h2 id="The-return-Keyword"><a class="docs-heading-anchor" href="#The-return-Keyword">The <code>return</code> Keyword</a><a id="The-return-Keyword-1"></a><a class="docs-heading-anchor-permalink" href="#The-return-Keyword" title="Permalink"></a></h2><p>関数が返す値は、評価された最後の式の値であり、デフォルトでは関数定義の本体の最後の式です。前のセクションの例の関数 <code>f</code> では、これは式 <code>x + y</code> の値です。多くの他の言語と同様に、<code>return</code> キーワードを使用すると、関数は即座に戻り、返される値を持つ式を提供します：</p><pre><code class="language-julia hljs">function g(x, y)
+    return x * y
+    x + y
+end</code></pre><p>関数定義はインタラクティブセッションに入力できるため、これらの定義を比較するのは簡単です：</p><pre><code class="language-julia-repl hljs">julia&gt; f(x, y) = x + y
+f (generic function with 1 method)
+
+julia&gt; function g(x, y)
+           return x * y
+           x + y
+       end
+g (generic function with 1 method)
+
+julia&gt; f(2, 3)
+5
+
+julia&gt; g(2, 3)
+6</code></pre><p>もちろん、<code>g</code>のような純粋に線形の関数本体では、<code>return</code>の使用は無意味です。なぜなら、式<code>x + y</code>は決して評価されず、単に<code>x * y</code>を関数の最後の式にして<code>return</code>を省略することができるからです。しかし、他の制御フローと組み合わせると、<code>return</code>は実際に役立ちます。ここに、長さ<code>x</code>と<code>y</code>の辺を持つ直角三角形の斜辺の長さを計算し、オーバーフローを避ける関数の例があります：</p><pre><code class="language-julia-repl hljs">julia&gt; function hypot(x, y)
+           x = abs(x)
+           y = abs(y)
+           if x &gt; y
+               r = y/x
+               return x*sqrt(1 + r*r)
+           end
+           if y == 0
+               return zero(x)
+           end
+           r = x/y
+           return y*sqrt(1 + r*r)
+       end
+hypot (generic function with 1 method)
+
+julia&gt; hypot(3, 4)
+5.0</code></pre><p>この関数からは、<code>x</code> と <code>y</code> の値に応じて、3 つの異なる式の値を返す可能性のある 3 つの戻りポイントがあります。最後の行の <code>return</code> は、最後の式であるため、省略することができます。</p><h3 id="man-functions-return-type"><a class="docs-heading-anchor" href="#man-functions-return-type">Return type</a><a id="man-functions-return-type-1"></a><a class="docs-heading-anchor-permalink" href="#man-functions-return-type" title="Permalink"></a></h3><p>関数宣言では、<code>::</code> 演算子を使用して戻り値の型を指定できます。これにより、戻り値が指定された型に変換されます。</p><pre><code class="language-julia-repl hljs">julia&gt; function g(x, y)::Int8
+           return x * y
+       end;
+
+julia&gt; typeof(g(1, 2))
+Int8</code></pre><p>この関数は、<code>x</code> と <code>y</code> の型に関係なく、常に <code>Int8</code> を返します。戻り値の型については、<a href="types.html#Type-Declarations">Type Declarations</a> を参照してください。</p><p>戻り値の型宣言は<strong>ほとんど使用されません</strong>。一般的に、Juliaのコンパイラが自動的に戻り値の型を推論できる「型安定」な関数を書くべきです。詳細については、<a href="performance-tips.html#man-performance-tips">Performance Tips</a>章を参照してください。</p><h3 id="Returning-nothing"><a class="docs-heading-anchor" href="#Returning-nothing">Returning nothing</a><a id="Returning-nothing-1"></a><a class="docs-heading-anchor-permalink" href="#Returning-nothing" title="Permalink"></a></h3><p>値を返す必要のない関数（副作用のためだけに使用される関数）について、Juliaの慣習は値<a href="../base/constants.html#Core.nothing"><code>nothing</code></a>を返すことです：</p><pre><code class="language-julia hljs">function printx(x)
+    println(&quot;x = $x&quot;)
+    return nothing
+end</code></pre><p>これは、<code>nothing</code>がJuliaのキーワードではなく、単に<code>Nothing</code>型のシングルトンオブジェクトであるという意味での<em>慣習</em>です。また、上記の<code>printx</code>関数の例は不自然であることに気付くかもしれません。なぜなら、<code>println</code>はすでに<code>nothing</code>を返すため、<code>return</code>行は冗長だからです。</p><p><code>return nothing</code> 表現には2つの短縮形があります。一方では、<code>return</code> キーワードは暗黙的に <code>nothing</code> を返すため、単独で使用できます。もう一方では、関数は暗黙的に最後に評価された式を返すため、最後の式が <code>nothing</code> の場合は単独で使用できます。<code>return nothing</code> の表現を <code>return</code> や <code>nothing</code> 単独よりも好むかどうかは、コーディングスタイルの問題です。</p><h2 id="Operators-Are-Functions"><a class="docs-heading-anchor" href="#Operators-Are-Functions">Operators Are Functions</a><a id="Operators-Are-Functions-1"></a><a class="docs-heading-anchor-permalink" href="#Operators-Are-Functions" title="Permalink"></a></h2><p>In Julia, most operators are just functions with support for special syntax. (The exceptions are operators with special evaluation semantics like <code>&amp;&amp;</code> and <code>||</code>. These operators cannot be functions since <a href="control-flow.html#Short-Circuit-Evaluation">Short-Circuit Evaluation</a> requires that their operands are not evaluated before evaluation of the operator.) Accordingly, you can also apply them using parenthesized argument lists, just as you would any other function:</p><pre><code class="language-julia-repl hljs">julia&gt; 1 + 2 + 3
+6
+
+julia&gt; +(1, 2, 3)
+6</code></pre><p>中置形式は関数適用形式と正確に同等であり、実際には前者は内部で関数呼び出しを生成するために解析されます。これは、<a href="../base/math.html#Base.:+"><code>+</code></a> や <a href="../base/math.html#Base.:*-Tuple{Any, Vararg{Any}}"><code>*</code></a> のような演算子を、他の関数値と同様に割り当てたり渡したりできることも意味します。</p><pre><code class="language-julia-repl hljs">julia&gt; f = +;
+
+julia&gt; f(1, 2, 3)
+6</code></pre><p><code>f</code>という名前の下では、関数は中置記法をサポートしていません。</p><h2 id="Operators-With-Special-Names"><a class="docs-heading-anchor" href="#Operators-With-Special-Names">Operators With Special Names</a><a id="Operators-With-Special-Names-1"></a><a class="docs-heading-anchor-permalink" href="#Operators-With-Special-Names" title="Permalink"></a></h2><p>いくつかの特別な表現は、明白でない名前の関数への呼び出しに対応しています。これらは：</p><table><tr><th style="text-align: left">Expression</th><th style="text-align: left">Calls</th></tr><tr><td style="text-align: left"><code>[A B C ...]</code></td><td style="text-align: left"><a href="../base/arrays.html#Base.hcat"><code>hcat</code></a></td></tr><tr><td style="text-align: left"><code>[A; B; C; ...]</code></td><td style="text-align: left"><a href="../base/arrays.html#Base.vcat"><code>vcat</code></a></td></tr><tr><td style="text-align: left"><code>[A B; C D; ...]</code></td><td style="text-align: left"><a href="../base/arrays.html#Base.hvcat"><code>hvcat</code></a></td></tr><tr><td style="text-align: left"><code>[A; B;; C; D;; ...]</code></td><td style="text-align: left"><a href="../base/arrays.html#Base.hvncat"><code>hvncat</code></a></td></tr><tr><td style="text-align: left"><code>A&#39;</code></td><td style="text-align: left"><a href="../stdlib/LinearAlgebra.html#Base.adjoint"><code>adjoint</code></a></td></tr><tr><td style="text-align: left"><code>A[i]</code></td><td style="text-align: left"><a href="../base/collections.html#Base.getindex"><code>getindex</code></a></td></tr><tr><td style="text-align: left"><code>A[i] = x</code></td><td style="text-align: left"><a href="../base/collections.html#Base.setindex!"><code>setindex!</code></a></td></tr><tr><td style="text-align: left"><code>A.n</code></td><td style="text-align: left"><a href="../base/base.html#Base.getproperty"><code>getproperty</code></a></td></tr><tr><td style="text-align: left"><code>A.n = x</code></td><td style="text-align: left"><a href="../base/base.html#Base.setproperty!"><code>setproperty!</code></a></td></tr></table><p><code>[A; B;; C; D;; ...]</code>のような表現で、2つ以上の連続した<code>;</code>があるものも<code>hvncat</code>呼び出しに対応します。</p><h2 id="man-anonymous-functions"><a class="docs-heading-anchor" href="#man-anonymous-functions">Anonymous Functions</a><a id="man-anonymous-functions-1"></a><a class="docs-heading-anchor-permalink" href="#man-anonymous-functions" title="Permalink"></a></h2><p>Juliaの関数は<a href="https://en.wikipedia.org/wiki/First-class_citizen">first-class objects</a>です。変数に割り当てることができ、割り当てられた変数から標準の関数呼び出し構文を使用して呼び出すことができます。引数として使用することもでき、値として返すこともできます。また、名前を付けずに匿名で作成することもでき、次のいずれかの構文を使用します：</p><pre><code class="language-julia-repl hljs">julia&gt; x -&gt; x^2 + 2x - 1
+#1 (generic function with 1 method)
+
+julia&gt; function (x)
+           x^2 + 2x - 1
+       end
+#3 (generic function with 1 method)</code></pre><p>各ステートメントは、1つの引数 <code>x</code> を取り、その値における多項式 <code>x^2 + 2x - 1</code> の値を返す関数を作成します。結果は一般的な関数ですが、連続番号に基づいてコンパイラ生成の名前が付けられています。</p><p>匿名関数の主な用途は、他の関数を引数として受け取る関数に渡すことです。古典的な例は <a href="../base/collections.html#Base.map"><code>map</code></a> で、これは配列の各値に関数を適用し、結果の値を含む新しい配列を返します：</p><pre><code class="language-julia-repl hljs">julia&gt; map(round, [1.2, 3.5, 1.7])
+3-element Vector{Float64}:
+ 1.0
+ 4.0
+ 2.0</code></pre><p>これは、変換を行う名前付き関数が既に存在していて、<a href="../base/collections.html#Base.map"><code>map</code></a>の最初の引数として渡すことができる場合は問題ありません。しかし、しばしば、すぐに使える名前付き関数は存在しません。こうした状況では、無名関数構文を使用することで、名前を必要とせずに単一使用の関数オブジェクトを簡単に作成できます。</p><pre><code class="language-julia-repl hljs">julia&gt; map(x -&gt; x^2 + 2x - 1, [1, 3, -1])
+3-element Vector{Int64}:
+  2
+ 14
+ -2</code></pre><p>複数の引数を受け取る匿名関数は、構文 <code>(x,y,z)-&gt;2x+y-z</code> を使用して記述できます。</p><p>匿名関数の引数型宣言は、名前付き関数と同様に機能します。例えば、<code>x::Integer-&gt;2x</code>のように記述します。匿名関数の戻り値の型は指定できません。</p><p>ゼロ引数の匿名関数は <code>()-&gt;2+2</code> のように書くことができます。引数のない関数のアイデアは奇妙に思えるかもしれませんが、結果を事前に計算できない（またはすべきでない）場合に便利です。たとえば、Julia には現在の時間を秒単位で返すゼロ引数の <a href="../base/base.html#Base.Libc.time-Tuple{}"><code>time</code></a> 関数があります。したがって、<code>seconds = ()-&gt;round(Int, time())</code> はこの時間を最も近い整数に丸めて変数 <code>seconds</code> に割り当てる匿名関数です。この匿名関数が <code>seconds()</code> として呼び出されるたびに、現在の時間が計算されて返されます。</p><h2 id="Tuples"><a class="docs-heading-anchor" href="#Tuples">Tuples</a><a id="Tuples-1"></a><a class="docs-heading-anchor-permalink" href="#Tuples" title="Permalink"></a></h2><p>Juliaには、関数の引数や戻り値に密接に関連した<em>タプル</em>という組み込みデータ構造があります。タプルは固定長のコンテナで、任意の値を保持できますが、変更することはできません（<em>不変</em>です）。タプルはカンマと括弧を使って構築され、インデックスを介してアクセスできます：</p><pre><code class="language-julia-repl hljs">julia&gt; (1, 1+1)
+(1, 2)
+
+julia&gt; (1,)
+(1,)
+
+julia&gt; x = (0.0, &quot;hello&quot;, 6*7)
+(0.0, &quot;hello&quot;, 42)
+
+julia&gt; x[2]
+&quot;hello&quot;</code></pre><p>長さ1のタプルはカンマを付けて書かなければならないことに注意してください、<code>(1,)</code>、なぜなら<code>(1)</code>は単に括弧で囲まれた値に過ぎないからです。<code>()</code>は空の（長さ0の）タプルを表します。</p><h2 id="Named-Tuples"><a class="docs-heading-anchor" href="#Named-Tuples">Named Tuples</a><a id="Named-Tuples-1"></a><a class="docs-heading-anchor-permalink" href="#Named-Tuples" title="Permalink"></a></h2><p>タプルの要素にはオプションで名前を付けることができ、その場合は<em>名前付きタプル</em>が構築されます：</p><pre><code class="language-julia-repl hljs">julia&gt; x = (a=2, b=1+2)
+(a = 2, b = 3)
+
+julia&gt; x[1]
+2
+
+julia&gt; x.a
+2</code></pre><p>名前付きタプルのフィールドは、通常のインデックス構文（<code>x[1]</code> または <code>x[:a]</code>）に加えて、ドット構文（<code>x.a</code>）を使用して名前でアクセスできます。</p><h2 id="destructuring-assignment"><a class="docs-heading-anchor" href="#destructuring-assignment">Destructuring Assignment and Multiple Return Values</a><a id="destructuring-assignment-1"></a><a class="docs-heading-anchor-permalink" href="#destructuring-assignment" title="Permalink"></a></h2><p>変数のカンマ区切りリスト（オプションで括弧で囲むことができます）は、代入の左側に現れることができます：右側の値は、各変数に順番に割り当てることによって<em>分解</em>されます。</p><pre><code class="language-julia-repl hljs">julia&gt; (a, b, c) = 1:3
+1:3
+
+julia&gt; b
+2</code></pre><p>右側の値はイテレータであるべきです（<a href="interfaces.html#man-interface-iteration">Iteration interface</a>を参照）。左側の変数の数と同じかそれ以上の長さでなければなりません（イテレータの余分な要素は無視されます）。</p><p>これは、タプルや他のイテラブルな値を返すことによって、関数から複数の値を返すために使用できます。たとえば、次の関数は2つの値を返します：</p><pre><code class="language-julia-repl hljs">julia&gt; function foo(a, b)
+           a+b, a*b
+       end
+foo (generic function with 1 method)</code></pre><p>インタラクティブセッションで戻り値をどこにも割り当てずに呼び出すと、返されるタプルが表示されます：</p><pre><code class="language-julia-repl hljs">julia&gt; foo(2, 3)
+(5, 6)</code></pre><p>分割代入は、各値を変数に抽出します：</p><pre><code class="language-julia-repl hljs">julia&gt; x, y = foo(2, 3)
+(5, 6)
+
+julia&gt; x
+5
+
+julia&gt; y
+6</code></pre><p>別の一般的な使用法は、変数の入れ替えです：</p><pre><code class="language-julia-repl hljs">julia&gt; y, x = x, y
+(5, 6)
+
+julia&gt; x
+6
+
+julia&gt; y
+5</code></pre><p>If only a subset of the elements of the iterator are required, a common convention is to assign ignored elements to a variable consisting of only underscores <code>_</code> (which is an otherwise invalid variable name, see <a href="variables.html#man-allowed-variable-names">Allowed Variable Names</a>):</p><pre><code class="language-julia-repl hljs">julia&gt; _, _, _, d = 1:10
+1:10
+
+julia&gt; d
+4</code></pre><p>他の有効な左辺式は、代入リストの要素として使用でき、<a href="../base/collections.html#Base.setindex!"><code>setindex!</code></a> または <a href="../base/base.html#Base.setproperty!"><code>setproperty!</code></a> を呼び出すか、イテレータの個々の要素を再帰的に分解します：</p><pre><code class="language-julia-repl hljs">julia&gt; X = zeros(3);
+
+julia&gt; X[1], (a, b) = (1, (2, 3))
+(1, (2, 3))
+
+julia&gt; X
+3-element Vector{Float64}:
+ 1.0
+ 0.0
+ 0.0
+
+julia&gt; a
+2
+
+julia&gt; b
+3</code></pre><div class="admonition is-compat" id="Julia-1.6-68b181a461a77086"><header class="admonition-header">Julia 1.6<a class="admonition-anchor" href="#Julia-1.6-68b181a461a77086" title="Permalink"></a></header><div class="admonition-body"><p><code>...</code> の代入には Julia 1.6 が必要です。</p></div></div><p>もし代入リストの最後のシンボルが <code>...</code> でサフィックスされている場合（<em>スラーピング</em>として知られています）、右側のイテレータの残りの要素のコレクションまたは遅延イテレータが代入されます：</p><pre><code class="language-julia-repl hljs">julia&gt; a, b... = &quot;hello&quot;
+&quot;hello&quot;
+
+julia&gt; a
+&#39;h&#39;: ASCII/Unicode U+0068 (category Ll: Letter, lowercase)
+
+julia&gt; b
+&quot;ello&quot;
+
+julia&gt; a, b... = Iterators.map(abs2, 1:4)
+Base.Generator{UnitRange{Int64}, typeof(abs2)}(abs2, 1:4)
+
+julia&gt; a
+1
+
+julia&gt; b
+Base.Iterators.Rest{Base.Generator{UnitRange{Int64}, typeof(abs2)}, Int64}(Base.Generator{UnitRange{Int64}, typeof(abs2)}(abs2, 1:4), 1)</code></pre><p><a href="../base/collections.html#Base.rest"><code>Base.rest</code></a>の詳細については、特定のイテレータの正確な処理とカスタマイズを参照してください。</p><div class="admonition is-compat" id="Julia-1.9-9e056847c90c731d"><header class="admonition-header">Julia 1.9<a class="admonition-anchor" href="#Julia-1.9-9e056847c90c731d" title="Permalink"></a></header><div class="admonition-body"><p><code>...</code> の非最終位置での代入は、Julia 1.9 が必要です。</p></div></div><p>スラーピングは、他のどの位置でも発生する可能性があります。ただし、コレクションの最後をスラーピングするのとは異なり、これは常に熱心です。</p><pre><code class="language-julia-repl hljs">julia&gt; a, b..., c = 1:5
+1:5
+
+julia&gt; a
+1
+
+julia&gt; b
+3-element Vector{Int64}:
+ 2
+ 3
+ 4
+
+julia&gt; c
+5
+
+julia&gt; front..., tail = &quot;Hi!&quot;
+&quot;Hi!&quot;
+
+julia&gt; front
+&quot;Hi&quot;
+
+julia&gt; tail
+&#39;!&#39;: ASCII/Unicode U+0021 (category Po: Punctuation, other)</code></pre><p>これは関数 <a href="../base/collections.html#Base.split_rest"><code>Base.split_rest</code></a> に基づいて実装されています。</p><p>可変引数関数の定義において、スラーピングは依然として最終位置でのみ許可されていることに注意してください。ただし、<a href="functions.html#man-argument-destructuring">single argument destructuring</a> には適用されません。これはメソッドディスパッチに影響を与えないためです。</p><pre><code class="language-julia-repl hljs">julia&gt; f(x..., y) = x
+ERROR: syntax: invalid &quot;...&quot; on non-final argument
+Stacktrace:
+[...]
+
+julia&gt; f((x..., y)) = x
+f (generic function with 1 method)
+
+julia&gt; f((1, 2, 3))
+(1, 2)</code></pre><h2 id="Property-destructuring"><a class="docs-heading-anchor" href="#Property-destructuring">Property destructuring</a><a id="Property-destructuring-1"></a><a class="docs-heading-anchor-permalink" href="#Property-destructuring" title="Permalink"></a></h2><p>反復に基づく分割代入の代わりに、代入の右側はプロパティ名を使用しても分割代入できます。これはNamedTuplesの構文に従い、左側の各変数に対して、代入の右側の同じ名前のプロパティを<code>getproperty</code>を使用して割り当てることによって機能します。</p><pre><code class="language-julia-repl hljs">julia&gt; (; b, a) = (a=1, b=2, c=3)
+(a = 1, b = 2, c = 3)
+
+julia&gt; a
+1
+
+julia&gt; b
+2</code></pre><h2 id="man-argument-destructuring"><a class="docs-heading-anchor" href="#man-argument-destructuring">Argument destructuring</a><a id="man-argument-destructuring-1"></a><a class="docs-heading-anchor-permalink" href="#man-argument-destructuring" title="Permalink"></a></h2><p>関数の引数内でも分割代入機能を使用できます。引数名が単なるシンボルではなくタプル（例：<code>(x, y)</code>）として書かれている場合、<code>(x, y) = argument</code> という代入が自動的に挿入されます：</p><pre><code class="language-julia-repl hljs">julia&gt; minmax(x, y) = (y &lt; x) ? (y, x) : (x, y)
+
+julia&gt; gap((min, max)) = max - min
+
+julia&gt; gap(minmax(10, 2))
+8</code></pre><p><code>gap</code>の定義に余分な括弧があることに注意してください。これがなければ、<code>gap</code>は二引数の関数になり、この例は機能しません。</p><p>同様に、プロパティの分割代入は関数の引数にも使用できます：</p><pre><code class="language-julia-repl hljs">julia&gt; foo((; x, y)) = x + y
+foo (generic function with 1 method)
+
+julia&gt; foo((x=1, y=2))
+3
+
+julia&gt; struct A
+           x
+           y
+       end
+
+julia&gt; foo(A(3, 4))
+7</code></pre><p>匿名関数の場合、単一の引数を分解するには余分なカンマが必要です：</p><pre><code class="nohighlight hljs">julia&gt; map(((x, y),) -&gt; x + y, [(1, 2), (3, 4)])
+2-element Array{Int64,1}:
+ 3
+ 7</code></pre><h2 id="Varargs-Functions"><a class="docs-heading-anchor" href="#Varargs-Functions">Varargs Functions</a><a id="Varargs-Functions-1"></a><a class="docs-heading-anchor-permalink" href="#Varargs-Functions" title="Permalink"></a></h2><p>任意の数の引数を取る関数を書くことができると便利なことがよくあります。このような関数は伝統的に「varargs」関数として知られており、これは「可変数の引数」の略です。varargs関数は、最後の位置引数の後に省略記号を付けることで定義できます：</p><pre><code class="language-julia-repl hljs">julia&gt; bar(a, b, x...) = (a, b, x)
+bar (generic function with 1 method)</code></pre><p>変数 <code>a</code> と <code>b</code> は通常通り最初の2つの引数の値にバインドされ、変数 <code>x</code> は <code>bar</code> に最初の2つの引数の後に渡された0個以上の値のイテラブルコレクションにバインドされます：</p><pre><code class="language-julia-repl hljs">julia&gt; bar(1, 2)
+(1, 2, ())
+
+julia&gt; bar(1, 2, 3)
+(1, 2, (3,))
+
+julia&gt; bar(1, 2, 3, 4)
+(1, 2, (3, 4))
+
+julia&gt; bar(1, 2, 3, 4, 5, 6)
+(1, 2, (3, 4, 5, 6))</code></pre><p>これらすべての場合において、<code>x</code>は<code>bar</code>に渡された末尾の値のタプルにバインドされます。</p><p>変数引数として渡される値の数を制限することは可能です。これは後で <a href="methods.html#Parametrically-constrained-Varargs-methods">Parametrically-constrained Varargs methods</a> で議論されます。</p><p>逆に、イテラブルコレクションに含まれる値を個々の引数として関数呼び出しに「スプラット」するのは便利です。これを行うには、関数呼び出しの中でも <code>...</code> を使用します。</p><pre><code class="language-julia-repl hljs">julia&gt; x = (3, 4)
+(3, 4)
+
+julia&gt; bar(1, 2, x...)
+(1, 2, (3, 4))</code></pre><p>この場合、値のタプルが可変引数呼び出しの正確な位置にスライスされます。これは必ずしもそうである必要はありませんが：</p><pre><code class="language-julia-repl hljs">julia&gt; x = (2, 3, 4)
+(2, 3, 4)
+
+julia&gt; bar(1, x...)
+(1, 2, (3, 4))
+
+julia&gt; x = (1, 2, 3, 4)
+(1, 2, 3, 4)
+
+julia&gt; bar(x...)
+(1, 2, (3, 4))</code></pre><p>さらに、関数呼び出しにスプラットされたイテラブルオブジェクトはタプルである必要はありません:</p><pre><code class="language-julia-repl hljs">julia&gt; x = [3, 4]
+2-element Vector{Int64}:
+ 3
+ 4
+
+julia&gt; bar(1, 2, x...)
+(1, 2, (3, 4))
+
+julia&gt; x = [1, 2, 3, 4]
+4-element Vector{Int64}:
+ 1
+ 2
+ 3
+ 4
+
+julia&gt; bar(x...)
+(1, 2, (3, 4))</code></pre><p>また、引数がスプラットされる関数は、可変引数関数である必要はありません（ただし、しばしばそうであることが多いです）：</p><pre><code class="language-julia-repl hljs">julia&gt; baz(a, b) = a + b;
+
+julia&gt; args = [1, 2]
+2-element Vector{Int64}:
+ 1
+ 2
+
+julia&gt; baz(args...)
+3
+
+julia&gt; args = [1, 2, 3]
+3-element Vector{Int64}:
+ 1
+ 2
+ 3
+
+julia&gt; baz(args...)
+ERROR: MethodError: no method matching baz(::Int64, ::Int64, ::Int64)
+The function `baz` exists, but no method is defined for this combination of argument types.
+
+Closest candidates are:
+  baz(::Any, ::Any)
+   @ Main none:1
+
+Stacktrace:
+[...]</code></pre><p>ご覧のとおり、スプラットコンテナに要素の数が間違っている場合、関数呼び出しは失敗します。これは、引数が明示的に多すぎる場合と同様です。</p><h2 id="Optional-Arguments"><a class="docs-heading-anchor" href="#Optional-Arguments">Optional Arguments</a><a id="Optional-Arguments-1"></a><a class="docs-heading-anchor-permalink" href="#Optional-Arguments" title="Permalink"></a></h2><p>関数引数に対して合理的なデフォルト値を提供することがしばしば可能です。これにより、ユーザーは毎回すべての引数を渡す必要がなくなります。例えば、<code>Dates</code>モジュールの関数<a href="../stdlib/Dates.html#Dates.Date"><code>Date(y, [m, d])</code></a>は、指定された年<code>y</code>、月<code>m</code>、日<code>d</code>のための<code>Date</code>型を構築します。しかし、<code>m</code>と<code>d</code>の引数はオプションであり、そのデフォルト値は<code>1</code>です。この動作は簡潔に次のように表現できます：</p><pre><code class="language-julia-repl hljs">julia&gt; using Dates
+
+julia&gt; function date(y::Int64, m::Int64=1, d::Int64=1)
+           err = Dates.validargs(Date, y, m, d)
+           err === nothing || throw(err)
+           return Date(Dates.UTD(Dates.totaldays(y, m, d)))
+       end
+date (generic function with 3 methods)</code></pre><p>この定義は、<code>Date</code>関数の別のメソッドを呼び出しており、そのメソッドは<code>UTInstant{Day}</code>型の引数を1つ取ります。</p><p>この定義により、関数は1つ、2つ、または3つの引数で呼び出すことができ、引数が1つまたは2つだけ指定された場合は自動的に<code>1</code>が渡されます。</p><pre><code class="language-julia-repl hljs">julia&gt; date(2000, 12, 12)
+2000-12-12
+
+julia&gt; date(2000, 12)
+2000-12-01
+
+julia&gt; date(2000)
+2000-01-01</code></pre><p>オプション引数は、実際には異なる数の引数を持つ複数のメソッド定義を書くための便利な構文に過ぎません（<a href="methods.html#Note-on-Optional-and-keyword-Arguments">Note on Optional and keyword Arguments</a>を参照）。これは、<code>methods</code>関数を呼び出すことで、私たちの<code>date</code>関数の例で確認できます：</p><pre><code class="language-julia-repl hljs">julia&gt; methods(date)
+# 3 methods for generic function &quot;date&quot;:
+[1] date(y::Int64) in Main at REPL[1]:1
+[2] date(y::Int64, m::Int64) in Main at REPL[1]:1
+[3] date(y::Int64, m::Int64, d::Int64) in Main at REPL[1]:1</code></pre><h2 id="Keyword-Arguments"><a class="docs-heading-anchor" href="#Keyword-Arguments">Keyword Arguments</a><a id="Keyword-Arguments-1"></a><a class="docs-heading-anchor-permalink" href="#Keyword-Arguments" title="Permalink"></a></h2><p>いくつかの関数は多くの引数を必要としたり、多くの動作を持っていたりします。そのような関数を呼び出す方法を覚えるのは難しいことがあります。キーワード引数を使用すると、引数を位置だけでなく名前で特定できるため、これらの複雑なインターフェースをより使いやすく、拡張しやすくすることができます。</p><p>例えば、線をプロットする関数 <code>plot</code> を考えてみましょう。この関数には、線のスタイル、幅、色などを制御するための多くのオプションがあるかもしれません。キーワード引数を受け入れる場合、呼び出しの例は <code>plot(x, y, width=2)</code> のようになります。ここでは、線の幅だけを指定することにしました。この呼び出しには二つの目的があります。一つは、引数にその意味をラベル付けできるため、読みやすくなることです。もう一つは、大量の引数の任意の部分集合を、任意の順序で渡すことが可能になることです。</p><p>キーワード引数を持つ関数は、シグネチャでセミコロンを使用して定義されます：</p><pre><code class="language-julia hljs">function plot(x, y; style=&quot;solid&quot;, width=1, color=&quot;black&quot;)
+    ###
+end</code></pre><p>関数が呼び出されるとき、セミコロンはオプションです：<code>plot(x, y, width=2)</code> または <code>plot(x, y; width=2)</code> のいずれかを呼び出すことができますが、前者のスタイルがより一般的です。明示的なセミコロンは、以下に説明するように varargs または計算されたキーワードを渡す場合にのみ必要です。</p><p>キーワード引数のデフォルト値は、必要なとき（対応するキーワード引数が渡されていないとき）にのみ評価され、左から右の順序で評価されます。したがって、デフォルトの式は前のキーワード引数を参照することができます。</p><p>キーワード引数の種類は次のように明示できます：</p><pre><code class="language-julia hljs">function f(; x::Int=1)
+    ###
+end</code></pre><p>キーワード引数は、可変長引数関数でも使用できます：</p><pre><code class="language-julia hljs">function plot(x...; style=&quot;solid&quot;)
+    ###
+end</code></pre><p>追加のキーワード引数は、varargs関数のように <code>...</code> を使用して収集できます:</p><pre><code class="language-julia hljs">function f(x; y=0, kwargs...)
+    ###
+end</code></pre><p><code>f</code>の内部では、<code>kwargs</code>は名前付きタプルの不変のキー-バリューイテレータになります。名前付きタプル（および<code>Symbol</code>のキーを持つ辞書、最初の値がシンボルである2値コレクションを生成する他のイテレータ）は、呼び出し時にセミコロンを使用してキーワード引数として渡すことができます。例：<code>f(x, z=1; kwargs...)</code>。</p><p>キーワード引数がメソッド定義でデフォルト値を割り当てられていない場合、それは<em>必須</em>です：呼び出し元が値を割り当てないと、<a href="../base/base.html#Core.UndefKeywordError"><code>UndefKeywordError</code></a>例外がスローされます。</p><pre><code class="language-julia hljs">function f(x; y)
+    ###
+end
+f(3, y=5) # ok, y is assigned
+f(3)      # throws UndefKeywordError(:y)</code></pre><p>セミコロンの後に <code>key =&gt; value</code> の式を渡すこともできます。例えば、<code>plot(x, y; :width =&gt; 2)</code> は <code>plot(x, y, width=2)</code> と同等です。これは、キーワード名が実行時に計算される状況で便利です。</p><p>セミコロンの後に裸の識別子またはドット式が現れると、キーワード引数の名前は識別子またはフィールド名によって暗示されます。例えば、<code>plot(x, y; width)</code>は<code>plot(x, y; width=width)</code>と同等であり、<code>plot(x, y; options.width)</code>は<code>plot(x, y; width=options.width)</code>と同等です。</p><p>キーワード引数の性質により、同じ引数を複数回指定することが可能です。例えば、<code>plot(x, y; options..., width=2)</code>という呼び出しでは、<code>options</code>構造体にも<code>width</code>の値が含まれている可能性があります。この場合、右側の出現が優先されます。この例では、<code>width</code>は確実に値<code>2</code>を持ちます。しかし、同じキーワード引数を複数回明示的に指定すること、例えば<code>plot(x, y, width=2, width=3)</code>は許可されておらず、構文エラーが発生します。</p><h2 id="Evaluation-Scope-of-Default-Values"><a class="docs-heading-anchor" href="#Evaluation-Scope-of-Default-Values">Evaluation Scope of Default Values</a><a id="Evaluation-Scope-of-Default-Values-1"></a><a class="docs-heading-anchor-permalink" href="#Evaluation-Scope-of-Default-Values" title="Permalink"></a></h2><p>オプショナルおよびキーワード引数のデフォルト式が評価されるとき、スコープ内にあるのは<em>前の</em>引数のみです。たとえば、次の定義を考えてみましょう：</p><pre><code class="language-julia hljs">function f(x, a=b, b=1)
+    ###
+end</code></pre><p><code>a=b</code> の <code>b</code> は、後続の引数 <code>b</code> ではなく、外部スコープの <code>b</code> を指します。</p><h2 id="Do-Block-Syntax-for-Function-Arguments"><a class="docs-heading-anchor" href="#Do-Block-Syntax-for-Function-Arguments">Do-Block Syntax for Function Arguments</a><a id="Do-Block-Syntax-for-Function-Arguments-1"></a><a class="docs-heading-anchor-permalink" href="#Do-Block-Syntax-for-Function-Arguments" title="Permalink"></a></h2><p>他の関数に引数として関数を渡すことは強力なテクニックですが、その構文は常に便利とは限りません。このような呼び出しは、関数の引数が複数行を必要とする場合、特に書きにくくなります。例として、いくつかのケースを持つ関数に対して <a href="../base/collections.html#Base.map"><code>map</code></a> を呼び出すことを考えてみましょう：</p><pre><code class="language-julia hljs">map(x-&gt;begin
+           if x &lt; 0 &amp;&amp; iseven(x)
+               return 0
+           elseif x == 0
+               return 1
+           else
+               return x
+           end
+       end,
+    [A, B, C])</code></pre><p>Juliaは、このコードをより明確に書き直すための予約語<code>do</code>を提供しています：</p><pre><code class="language-julia hljs">map([A, B, C]) do x
+    if x &lt; 0 &amp;&amp; iseven(x)
+        return 0
+    elseif x == 0
+        return 1
+    else
+        return x
+    end
+end</code></pre><p><code>do x</code> 構文は、引数 <code>x</code> を持つ匿名関数を作成し、その匿名関数を「外側」関数 - この例では <a href="../base/collections.html#Base.map"><code>map</code></a> の最初の引数として渡します。同様に、<code>do a,b</code> は二つの引数を持つ匿名関数を作成します。<code>do (a,b)</code> は、引数がデコンストラクトされるタプルである一つの引数を持つ匿名関数を作成します。単純な <code>do</code> は、続くものが <code>() -&gt; ...</code> という形式の匿名関数であることを宣言します。</p><p>これらの引数がどのように初期化されるかは「外側」の関数に依存します。ここで、<a href="../base/collections.html#Base.map"><code>map</code></a> は、<code>x</code> を <code>A</code>、<code>B</code>、<code>C</code> に順次設定し、各々に対して無名関数を呼び出します。これは、<code>map(func, [A, B, C])</code> の構文で起こることと同じです。</p><p>この構文は、関数を使用して言語を効果的に拡張するのを容易にします。呼び出しは通常のコードブロックのように見えるからです。<a href="../base/collections.html#Base.map"><code>map</code></a>とは異なる多くの可能な用途があり、システム状態の管理などがあります。たとえば、開かれたファイルが最終的に閉じられることを保証するコードを実行する<a href="../base/io-network.html#Base.open"><code>open</code></a>のバージョンがあります：</p><pre><code class="language-julia hljs">open(&quot;outfile&quot;, &quot;w&quot;) do io
+    write(io, data)
+end</code></pre><p>これは次の定義によって達成されます：</p><pre><code class="language-julia hljs">function open(f::Function, args...)
+    io = open(args...)
+    try
+        f(io)
+    finally
+        close(io)
+    end
+end</code></pre><p>ここで、<a href="../base/io-network.html#Base.open"><code>open</code></a> はファイルをライティング用に開き、その後、<code>do ... end</code> ブロックで定義した無名関数に結果の出力ストリームを渡します。あなたの関数が終了すると、<code>4d61726b646f776e2e436f64652822222c20226f70656e2229_40726566</code> は、関数が正常に終了したか、例外をスローしたかに関わらず、ストリームが適切に閉じられることを確認します。（<code>try/finally</code> 構文については <a href="control-flow.html#Control-Flow">Control Flow</a> で説明されます。）</p><p><code>do</code>ブロック構文を使用すると、ユーザー関数の引数がどのように初期化されるかを知るために、ドキュメントや実装を確認するのが役立ちます。</p><p><code>do</code> ブロックは、他の内部関数と同様に、外部スコープから変数を「キャプチャ」することができます。たとえば、<code>open...do</code> の上記の例における変数 <code>data</code> は外部スコープからキャプチャされています。キャプチャされた変数は、<a href="performance-tips.html#man-performance-captured">performance tips</a> で議論されているように、パフォーマンス上の課題を引き起こす可能性があります。</p><h2 id="Function-composition-and-piping"><a class="docs-heading-anchor" href="#Function-composition-and-piping">Function composition and piping</a><a id="Function-composition-and-piping-1"></a><a class="docs-heading-anchor-permalink" href="#Function-composition-and-piping" title="Permalink"></a></h2><p>Juliaの関数は、合成やパイピング（チェイニング）によって組み合わせることができます。</p><p>関数合成とは、関数を組み合わせて、その結果の合成を引数に適用することです。関数合成演算子（<code>∘</code>）を使用して関数を合成しますので、<code>(f ∘ g)(args...; kw...)</code> は <code>f(g(args...; kw...))</code> と同じです。</p><p>REPLや適切に設定されたエディタで合成演算子を入力するには、<code>\circ&lt;tab&gt;</code>を使用できます。</p><p>例えば、<code>sqrt</code> と <code>+</code> 関数はこのように合成できます:</p><pre><code class="language-julia-repl hljs">julia&gt; (sqrt ∘ +)(3, 6)
+3.0</code></pre><p>これは最初に数字を加算し、その後結果の平方根を求めます。</p><p>次の例では、3つの関数を合成し、その結果を文字列の配列にマッピングします：</p><pre><code class="language-julia-repl hljs">julia&gt; map(first ∘ reverse ∘ uppercase, split(&quot;you can compose functions like this&quot;))
+6-element Vector{Char}:
+ &#39;U&#39;: ASCII/Unicode U+0055 (category Lu: Letter, uppercase)
+ &#39;N&#39;: ASCII/Unicode U+004E (category Lu: Letter, uppercase)
+ &#39;E&#39;: ASCII/Unicode U+0045 (category Lu: Letter, uppercase)
+ &#39;S&#39;: ASCII/Unicode U+0053 (category Lu: Letter, uppercase)
+ &#39;E&#39;: ASCII/Unicode U+0045 (category Lu: Letter, uppercase)
+ &#39;S&#39;: ASCII/Unicode U+0053 (category Lu: Letter, uppercase)</code></pre><p>関数チェイニング（時には「パイピング」または「パイプを使用する」と呼ばれる）は、前の関数の出力に関数を適用することです：</p><pre><code class="language-julia-repl hljs">julia&gt; 1:10 |&gt; sum |&gt; sqrt
+7.416198487095663</code></pre><p>ここでは、<code>sum</code>によって生成された合計が<code>sqrt</code>関数に渡されます。同等の合成は次のようになります：</p><pre><code class="language-julia-repl hljs">julia&gt; (sqrt ∘ sum)(1:10)
+7.416198487095663</code></pre><p>パイプ演算子は、ブロードキャスティングとともに <code>.|&gt;</code> を使用することもでき、チェイニング/パイピングとドットベクトル化構文（以下で説明）を組み合わせるのに便利です。</p><pre><code class="language-julia-repl hljs">julia&gt; [&quot;a&quot;, &quot;list&quot;, &quot;of&quot;, &quot;strings&quot;] .|&gt; [uppercase, reverse, titlecase, length]
+4-element Vector{Any}:
+  &quot;A&quot;
+  &quot;tsil&quot;
+  &quot;Of&quot;
+ 7</code></pre><p>パイプと匿名関数を組み合わせる場合、後続のパイプが匿名関数の本体の一部として解析されないようにするには、括弧を使用する必要があります。比較してください：</p><pre><code class="language-julia-repl hljs">julia&gt; 1:3 .|&gt; (x -&gt; x^2) |&gt; sum |&gt; sqrt
+3.7416573867739413
+
+julia&gt; 1:3 .|&gt; x -&gt; x^2 |&gt; sum |&gt; sqrt
+3-element Vector{Float64}:
+ 1.0
+ 2.0
+ 3.0</code></pre><h2 id="man-vectorized"><a class="docs-heading-anchor" href="#man-vectorized">Dot Syntax for Vectorizing Functions</a><a id="man-vectorized-1"></a><a class="docs-heading-anchor-permalink" href="#man-vectorized" title="Permalink"></a></h2><p>技術計算言語では、関数 <code>f(x)</code> を配列 <code>A</code> の各要素に適用して新しい配列を生成する「ベクトル化」されたバージョンの関数が一般的です。このような構文はデータ処理に便利ですが、他の言語ではパフォーマンスのためにベクトル化が必要とされることもよくあります。ループが遅い場合、関数の「ベクトル化」バージョンは低レベル言語で書かれた高速ライブラリコードを呼び出すことができます。Juliaでは、パフォーマンスのためにベクトル化された関数は<em>必要ではなく</em>、実際には自分自身のループを書くことがしばしば有益です（参照: <a href="performance-tips.html#man-performance-tips">Performance Tips</a>）。しかし、それでも便利です。したがって、<em>任意の</em> Julia関数 <code>f</code> は、構文 <code>f.(A)</code> を使用して任意の配列（または他のコレクション）に要素ごとに適用できます。たとえば、<code>sin</code> をベクトル <code>A</code> のすべての要素に次のように適用できます:</p><pre><code class="language-julia-repl hljs">julia&gt; A = [1.0, 2.0, 3.0]
+3-element Vector{Float64}:
+ 1.0
+ 2.0
+ 3.0
+
+julia&gt; sin.(A)
+3-element Vector{Float64}:
+ 0.8414709848078965
+ 0.9092974268256817
+ 0.1411200080598672</code></pre><p>もちろん、<code>f</code>の専門的な「ベクトル」メソッドを書く場合は、ドットを省略できます。例えば、<code>f(A::AbstractArray) = map(f, A)</code>のように書くと、<code>f.(A)</code>と同じくらい効率的です。<code>f.(A)</code>構文の利点は、どの関数がベクトル化可能かをライブラリ作成者が事前に決定する必要がないことです。</p><p>より一般的には、<code>f.(args...)</code>は実際には<code>broadcast(f, args...)</code>と同等であり、異なる形状の複数の配列や、配列とスカラーの混合に対して操作を行うことができます（<a href="arrays.html#Broadcasting">Broadcasting</a>を参照）。例えば、<code>f(x, y) = 3x + 4y</code>の場合、<code>f.(pi, A)</code>は<code>A</code>の各<code>a</code>に対して<code>f(pi, a)</code>を含む新しい配列を返し、<code>f.(vector1, vector2)</code>は各インデックス<code>i</code>に対して<code>f(vector1[i], vector2[i])</code>を含む新しいベクトルを返します（ベクトルの長さが異なる場合は例外がスローされます）。</p><pre><code class="language-julia-repl hljs">julia&gt; f(x, y) = 3x + 4y;
+
+julia&gt; A = [1.0, 2.0, 3.0];
+
+julia&gt; B = [4.0, 5.0, 6.0];
+
+julia&gt; f.(pi, A)
+3-element Vector{Float64}:
+ 13.42477796076938
+ 17.42477796076938
+ 21.42477796076938
+
+julia&gt; f.(A, B)
+3-element Vector{Float64}:
+ 19.0
+ 26.0
+ 33.0</code></pre><p>キーワード引数はブロードキャストされず、単に関数の各呼び出しに渡されます。例えば、<code>round.(x, digits=3)</code>は<code>broadcast(x -&gt; round(x, digits=3), x)</code>と同等です。</p><p>さらに、<em>ネストされた</em> <code>f.(args...)</code> 呼び出しは <em>融合</em> されて単一の <code>broadcast</code> ループにまとめられます。例えば、<code>sin.(cos.(X))</code> は <code>broadcast(x -&gt; sin(cos(x)), X)</code> と同等であり、<code>[sin(cos(x)) for x in X]</code> に似ています：<code>X</code> に対しては単一のループしかなく、結果のために単一の配列が割り当てられます。[対照的に、典型的な「ベクトル化」言語では、最初に <code>tmp=cos(X)</code> のために一時的な配列が割り当てられ、その後別のループで <code>sin(tmp)</code> が計算され、二つ目の配列が割り当てられます。] このループ融合は、発生するかもしれないコンパイラの最適化ではなく、ネストされた <code>f.(args...)</code> 呼び出しが遭遇するたびに <em>構文的保証</em> です。技術的には、融合は「ドットでない」関数呼び出しが遭遇するとすぐに停止します；例えば、<code>sin.(sort(cos.(X)))</code> では、介在する <code>sort</code> 関数のために <code>sin</code> と <code>cos</code> のループは統合できません。</p><p>最終的に、最大の効率は通常、ベクトル化された操作の出力配列が<em>事前に割り当てられている</em>ときに達成されます。これにより、繰り返し呼び出す際に結果のために新しい配列を何度も割り当てることがなくなります（<a href="performance-tips.html#Pre-allocating-outputs">Pre-allocating outputs</a>を参照）。これに便利な構文は<code>X .= ...</code>で、これは<code>broadcast!(identity, X, ...)</code>と同等ですが、上記のように<code>broadcast!</code>ループがネストされた「ドット」呼び出しと融合されます。例えば、<code>X .= sin.(Y)</code>は<code>broadcast!(sin, X, Y)</code>と同等で、<code>X</code>を<code>sin.(Y)</code>でその場で上書きします。左辺が配列インデックス式である場合、例えば<code>X[begin+1:end] .= sin.(Y)</code>は、<code>broadcast!</code>を<code>view</code>に対して行うことに変換されます。例えば、<code>broadcast!(sin, view(X, firstindex(X)+1:lastindex(X)), Y)</code>のように、左辺がその場で更新されます。</p><p>多くの操作や関数呼び出しにドットを追加することは面倒であり、読みづらいコードにつながる可能性があるため、式内の<em>すべての</em>関数呼び出し、操作、および代入を「ドット」バージョンに変換するために、マクロ <a href="../base/arrays.html#Base.Broadcast.@__dot__"><code>@.</code></a> が提供されています。</p><pre><code class="language-julia-repl hljs">julia&gt; Y = [1.0, 2.0, 3.0, 4.0];
+
+julia&gt; X = similar(Y); # pre-allocate output array
+
+julia&gt; @. X = sin(cos(Y)) # equivalent to X .= sin.(cos.(Y))
+4-element Vector{Float64}:
+  0.5143952585235492
+ -0.4042391538522658
+ -0.8360218615377305
+ -0.6080830096407656</code></pre><p>バイナリ（またはユニアリ）演算子のような <code>.+</code> は同じメカニズムで処理されます：それらは <code>broadcast</code> 呼び出しに相当し、他のネストされた「ドット」呼び出しと融合されます。 <code>X .+= Y</code> などは <code>X .= X .+ Y</code> に相当し、融合されたインプレース代入を結果として得ます；詳細は <a href="mathematical-operations.html#man-dot-operators">dot operators</a> を参照してください。</p><p>ドット演算を関数チェイニングと組み合わせることもできます。例えば、<a href="../base/base.html#Base.:|&gt;"><code>|&gt;</code></a>のように使用します。</p><pre><code class="language-julia-repl hljs">julia&gt; 1:5 .|&gt; [x-&gt;x^2, inv, x-&gt;2*x, -, isodd]
+5-element Vector{Real}:
+    1
+    0.5
+    6
+   -4
+ true</code></pre><p>すべての関数は、結果の各要素に対して常に呼び出されるため、<code>X .+ σ .* randn.()</code>は配列<code>X</code>の各要素に独立して同一にサンプリングされたランダム値のマスクを追加しますが、<code>X .+ σ .* randn()</code>は各要素に<em>同じ</em>ランダムサンプルを追加します。ブロードキャストの反復の1つ以上の軸に沿って融合計算が定数である場合、中間値を割り当てて計算回数を減らすためにスペース・タイムトレードオフを活用できる可能性があります。詳細は<a href="performance-tips.html#man-performance-unfuse">performance tips</a>を参照してください。</p><h2 id="Further-Reading"><a class="docs-heading-anchor" href="#Further-Reading">Further Reading</a><a id="Further-Reading-1"></a><a class="docs-heading-anchor-permalink" href="#Further-Reading" title="Permalink"></a></h2><p>ここで言及すべきは、これは関数を定義するための完全な図ではないということです。Juliaは洗練された型システムを持ち、引数の型に基づく多重ディスパッチを許可します。ここで示された例のいずれも引数に型注釈を提供していないため、すべての型の引数に適用可能です。型システムについては <a href="types.html#man-types">Types</a> で説明されており、実行時の引数の型に基づいて選択されたメソッドによる関数の定義については <a href="methods.html#Methods">Methods</a> で説明されています。</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="strings.html">« Strings</a><a class="docs-footer-nextpage" href="control-flow.html">Control Flow »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.11.4 on <span class="colophon-date" title="Tuesday 20 May 2025 04:59">Tuesday 20 May 2025</span>. Using Julia version 1.11.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

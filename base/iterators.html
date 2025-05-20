@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Iteration utilities · The Julia Language</title><meta name="title" content="Iteration utilities · The Julia Language"/><meta property="og:title" content="Iteration utilities · The Julia Language"/><meta property="twitter:title" content="Iteration utilities · The Julia Language"/><meta name="description" content="Documentation for The Julia Language."/><meta property="og:description" content="Documentation for The Julia Language."/><meta property="twitter:description" content="Documentation for The Julia Language."/><script async src="https://www.googletagmanager.com/gtag/js?id=UA-28835595-6"></script><script>  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-28835595-6', {'page_path': location.pathname + location.search + location.hash});
+</script><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script><link href="../assets/julia-manual.css" rel="stylesheet" type="text/css"/><link href="../assets/julia.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../index.html"><img class="docs-light-only" src="../assets/logo.svg" alt="The Julia Language logo"/><img class="docs-dark-only" src="../assets/logo-dark.svg" alt="The Julia Language logo"/></a><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../index.html">Julia Documentation</a></li><li><input class="collapse-toggle" id="menuitem-3" type="checkbox"/><label class="tocitem" for="menuitem-3"><span class="docs-label">Manual</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../manual/getting-started.html">Getting Started</a></li><li><a class="tocitem" href="../manual/installation.html">Installation</a></li><li><a class="tocitem" href="../manual/variables.html">Variables</a></li><li><a class="tocitem" href="../manual/integers-and-floating-point-numbers.html">Integers and Floating-Point Numbers</a></li><li><a class="tocitem" href="../manual/mathematical-operations.html">Mathematical Operations and Elementary Functions</a></li><li><a class="tocitem" href="../manual/complex-and-rational-numbers.html">Complex and Rational Numbers</a></li><li><a class="tocitem" href="../manual/strings.html">Strings</a></li><li><a class="tocitem" href="../manual/functions.html">Functions</a></li><li><a class="tocitem" href="../manual/control-flow.html">Control Flow</a></li><li><a class="tocitem" href="../manual/variables-and-scoping.html">Scope of Variables</a></li><li><a class="tocitem" href="../manual/types.html">Types</a></li><li><a class="tocitem" href="../manual/methods.html">Methods</a></li><li><a class="tocitem" href="../manual/constructors.html">Constructors</a></li><li><a class="tocitem" href="../manual/conversion-and-promotion.html">Conversion and Promotion</a></li><li><a class="tocitem" href="../manual/interfaces.html">Interfaces</a></li><li><a class="tocitem" href="../manual/modules.html">Modules</a></li><li><a class="tocitem" href="../manual/documentation.html">Documentation</a></li><li><a class="tocitem" href="../manual/metaprogramming.html">Metaprogramming</a></li><li><a class="tocitem" href="../manual/arrays.html">Single- and multi-dimensional Arrays</a></li><li><a class="tocitem" href="../manual/missing.html">Missing Values</a></li><li><a class="tocitem" href="../manual/networking-and-streams.html">Networking and Streams</a></li><li><a class="tocitem" href="../manual/parallel-computing.html">Parallel Computing</a></li><li><a class="tocitem" href="../manual/asynchronous-programming.html">Asynchronous Programming</a></li><li><a class="tocitem" href="../manual/multi-threading.html">Multi-Threading</a></li><li><a class="tocitem" href="../manual/distributed-computing.html">Multi-processing and Distributed Computing</a></li><li><a class="tocitem" href="../manual/running-external-programs.html">Running External Programs</a></li><li><a class="tocitem" href="../manual/calling-c-and-fortran-code.html">Calling C and Fortran Code</a></li><li><a class="tocitem" href="../manual/handling-operating-system-variation.html">Handling Operating System Variation</a></li><li><a class="tocitem" href="../manual/environment-variables.html">Environment Variables</a></li><li><a class="tocitem" href="../manual/embedding.html">Embedding Julia</a></li><li><a class="tocitem" href="../manual/code-loading.html">Code Loading</a></li><li><a class="tocitem" href="../manual/profile.html">Profiling</a></li><li><a class="tocitem" href="../manual/stacktraces.html">Stack Traces</a></li><li><a class="tocitem" href="../manual/performance-tips.html">Performance Tips</a></li><li><a class="tocitem" href="../manual/workflow-tips.html">Workflow Tips</a></li><li><a class="tocitem" href="../manual/style-guide.html">Style Guide</a></li><li><a class="tocitem" href="../manual/faq.html">Frequently Asked Questions</a></li><li><a class="tocitem" href="../manual/noteworthy-differences.html">Noteworthy Differences from other Languages</a></li><li><a class="tocitem" href="../manual/unicode-input.html">Unicode Input</a></li><li><a class="tocitem" href="../manual/command-line-interface.html">Command-line Interface</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-4" type="checkbox" checked/><label class="tocitem" for="menuitem-4"><span class="docs-label">Base</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="base.html">Essentials</a></li><li><a class="tocitem" href="collections.html">Collections and Data Structures</a></li><li><a class="tocitem" href="math.html">Mathematics</a></li><li><a class="tocitem" href="numbers.html">Numbers</a></li><li><a class="tocitem" href="strings.html">Strings</a></li><li><a class="tocitem" href="arrays.html">Arrays</a></li><li><a class="tocitem" href="parallel.html">Tasks</a></li><li><a class="tocitem" href="multi-threading.html">Multi-Threading</a></li><li><a class="tocitem" href="scopedvalues.html">Scoped Values</a></li><li><a class="tocitem" href="constants.html">Constants</a></li><li><a class="tocitem" href="file.html">Filesystem</a></li><li><a class="tocitem" href="io-network.html">I/O and Network</a></li><li><a class="tocitem" href="punctuation.html">Punctuation</a></li><li><a class="tocitem" href="sort.html">Sorting and Related Functions</a></li><li class="is-active"><a class="tocitem" href="iterators.html">Iteration utilities</a></li><li><a class="tocitem" href="reflection.html">Reflection and introspection</a></li><li><a class="tocitem" href="c.html">C Interface</a></li><li><a class="tocitem" href="libc.html">C Standard Library</a></li><li><a class="tocitem" href="stacktraces.html">StackTraces</a></li><li><a class="tocitem" href="simd-types.html">SIMD Support</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-5" type="checkbox"/><label class="tocitem" for="menuitem-5"><span class="docs-label">Standard Library</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../stdlib/ArgTools.html">ArgTools</a></li><li><a class="tocitem" href="../stdlib/Artifacts.html">Artifacts</a></li><li><a class="tocitem" href="../stdlib/Base64.html">Base64</a></li><li><a class="tocitem" href="../stdlib/CRC32c.html">CRC32c</a></li><li><a class="tocitem" href="../stdlib/Dates.html">Dates</a></li><li><a class="tocitem" href="../stdlib/DelimitedFiles.html">Delimited Files</a></li><li><a class="tocitem" href="../stdlib/Distributed.html">Distributed Computing</a></li><li><a class="tocitem" href="../stdlib/Downloads.html">Downloads</a></li><li><a class="tocitem" href="../stdlib/FileWatching.html">File Events</a></li><li><a class="tocitem" href="../stdlib/Future.html">Future</a></li><li><a class="tocitem" href="../stdlib/InteractiveUtils.html">Interactive Utilities</a></li><li><a class="tocitem" href="../stdlib/LazyArtifacts.html">Lazy Artifacts</a></li><li><a class="tocitem" href="../stdlib/LibCURL.html">LibCURL</a></li><li><a class="tocitem" href="../stdlib/LibGit2.html">LibGit2</a></li><li><a class="tocitem" href="../stdlib/Libdl.html">Dynamic Linker</a></li><li><a class="tocitem" href="../stdlib/LinearAlgebra.html">Linear Algebra</a></li><li><a class="tocitem" href="../stdlib/Logging.html">Logging</a></li><li><a class="tocitem" href="../stdlib/Markdown.html">Markdown</a></li><li><a class="tocitem" href="../stdlib/Mmap.html">Memory-mapped I/O</a></li><li><a class="tocitem" href="../stdlib/NetworkOptions.html">Network Options</a></li><li><a class="tocitem" href="../stdlib/Pkg.html">Pkg</a></li><li><a class="tocitem" href="../stdlib/Printf.html">Printf</a></li><li><a class="tocitem" href="../stdlib/Profile.html">Profiling</a></li><li><a class="tocitem" href="../stdlib/REPL.html">The Julia REPL</a></li><li><a class="tocitem" href="../stdlib/Random.html">Random Numbers</a></li><li><a class="tocitem" href="../stdlib/SHA.html">SHA</a></li><li><a class="tocitem" href="../stdlib/Serialization.html">Serialization</a></li><li><a class="tocitem" href="../stdlib/SharedArrays.html">Shared Arrays</a></li><li><a class="tocitem" href="../stdlib/Sockets.html">Sockets</a></li><li><a class="tocitem" href="../stdlib/SparseArrays.html">Sparse Arrays</a></li><li><a class="tocitem" href="../stdlib/Statistics.html">Statistics</a></li><li><a class="tocitem" href="../stdlib/StyledStrings.html">StyledStrings</a></li><li><a class="tocitem" href="../stdlib/TOML.html">TOML</a></li><li><a class="tocitem" href="../stdlib/Tar.html">Tar</a></li><li><a class="tocitem" href="../stdlib/Test.html">Unit Testing</a></li><li><a class="tocitem" href="../stdlib/UUIDs.html">UUIDs</a></li><li><a class="tocitem" href="../stdlib/Unicode.html">Unicode</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6" type="checkbox"/><label class="tocitem" for="menuitem-6"><span class="docs-label">Developer Documentation</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><input class="collapse-toggle" id="menuitem-6-1" type="checkbox"/><label class="tocitem" for="menuitem-6-1"><span class="docs-label">Documentation of Julia&#39;s Internals</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../devdocs/init.html">Initialization of the Julia runtime</a></li><li><a class="tocitem" href="../devdocs/ast.html">Julia ASTs</a></li><li><a class="tocitem" href="../devdocs/types.html">More about types</a></li><li><a class="tocitem" href="../devdocs/object.html">Memory layout of Julia Objects</a></li><li><a class="tocitem" href="../devdocs/eval.html">Eval of Julia code</a></li><li><a class="tocitem" href="../devdocs/callconv.html">Calling Conventions</a></li><li><a class="tocitem" href="../devdocs/compiler.html">High-level Overview of the Native-Code Generation Process</a></li><li><a class="tocitem" href="../devdocs/functions.html">Julia Functions</a></li><li><a class="tocitem" href="../devdocs/cartesian.html">Base.Cartesian</a></li><li><a class="tocitem" href="../devdocs/meta.html">Talking to the compiler (the <code>:meta</code> mechanism)</a></li><li><a class="tocitem" href="../devdocs/subarrays.html">SubArrays</a></li><li><a class="tocitem" href="../devdocs/isbitsunionarrays.html">isbits Union Optimizations</a></li><li><a class="tocitem" href="../devdocs/sysimg.html">System Image Building</a></li><li><a class="tocitem" href="../devdocs/pkgimg.html">Package Images</a></li><li><a class="tocitem" href="../devdocs/llvm-passes.html">Custom LLVM Passes</a></li><li><a class="tocitem" href="../devdocs/llvm.html">Working with LLVM</a></li><li><a class="tocitem" href="../devdocs/stdio.html">printf() and stdio in the Julia runtime</a></li><li><a class="tocitem" href="../devdocs/boundscheck.html">Bounds checking</a></li><li><a class="tocitem" href="../devdocs/locks.html">Proper maintenance and care of multi-threading locks</a></li><li><a class="tocitem" href="../devdocs/offset-arrays.html">Arrays with custom indices</a></li><li><a class="tocitem" href="../devdocs/require.html">Module loading</a></li><li><a class="tocitem" href="../devdocs/inference.html">Inference</a></li><li><a class="tocitem" href="../devdocs/ssair.html">Julia SSA-form IR</a></li><li><a class="tocitem" href="../devdocs/EscapeAnalysis.html"><code>EscapeAnalysis</code></a></li><li><a class="tocitem" href="../devdocs/aot.html">Ahead of Time Compilation</a></li><li><a class="tocitem" href="../devdocs/gc-sa.html">Static analyzer annotations for GC correctness in C code</a></li><li><a class="tocitem" href="../devdocs/gc.html">Garbage Collection in Julia</a></li><li><a class="tocitem" href="../devdocs/jit.html">JIT Design and Implementation</a></li><li><a class="tocitem" href="../devdocs/builtins.html">Core.Builtins</a></li><li><a class="tocitem" href="../devdocs/precompile_hang.html">Fixing precompilation hangs due to open tasks or IO</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-2" type="checkbox"/><label class="tocitem" for="menuitem-6-2"><span class="docs-label">Developing/debugging Julia&#39;s C code</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../devdocs/backtraces.html">Reporting and analyzing crashes (segfaults)</a></li><li><a class="tocitem" href="../devdocs/debuggingtips.html">gdb debugging tips</a></li><li><a class="tocitem" href="../devdocs/valgrind.html">Using Valgrind with Julia</a></li><li><a class="tocitem" href="../devdocs/external_profilers.html">External Profiler Support</a></li><li><a class="tocitem" href="../devdocs/sanitizers.html">Sanitizer support</a></li><li><a class="tocitem" href="../devdocs/probes.html">Instrumenting Julia with DTrace, and bpftrace</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-3" type="checkbox"/><label class="tocitem" for="menuitem-6-3"><span class="docs-label">Building Julia</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../devdocs/build/build.html">Building Julia (Detailed)</a></li><li><a class="tocitem" href="../devdocs/build/linux.html">Linux</a></li><li><a class="tocitem" href="../devdocs/build/macos.html">macOS</a></li><li><a class="tocitem" href="../devdocs/build/windows.html">Windows</a></li><li><a class="tocitem" href="../devdocs/build/freebsd.html">FreeBSD</a></li><li><a class="tocitem" href="../devdocs/build/arm.html">ARM (Linux)</a></li><li><a class="tocitem" href="../devdocs/build/distributing.html">Binary distributions</a></li></ul></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Base</a></li><li class="is-active"><a href="iterators.html">Iteration utilities</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href="iterators.html">Iteration utilities</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/JuliaLang/julia" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/JuliaLang/julia/blob/master/doc/src/base/iterators.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Iteration-utilities"><a class="docs-heading-anchor" href="#Iteration-utilities">Iteration utilities</a><a id="Iteration-utilities-1"></a><a class="docs-heading-anchor-permalink" href="#Iteration-utilities" title="Permalink"></a></h1><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.Stateful" href="#Base.Iterators.Stateful"><code>Base.Iterators.Stateful</code></a> — <span class="docstring-category">Type</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Stateful(itr)</code></pre><p>このイテレータラッパーについて考える方法はいくつかあります：</p><ol><li>イテレータとそのイテレーション状態を包む可変ラッパーを提供します。</li><li>イテレータのような抽象を <code>Channel</code> のような抽象に変えます。</li><li>アイテムが生成されるたびに、自分自身の残りのイテレータになるように変化するイテレータです。</li></ol><p><code>Stateful</code> は通常のイテレータインターフェースを提供します。他の可変イテレータ（例：<a href="parallel.html#Base.Channel"><code>Base.Channel</code></a>）と同様に、イテレーションが早期に停止された場合（例：<a href="base.html#for"><code>for</code></a> ループ内の <a href="base.html#break"><code>break</code></a> によって）、同じイテレータオブジェクトを使ってイテレーションを再開することができます（対照的に、不変イテレータは最初から再スタートします）。</p><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; a = Iterators.Stateful(&quot;abcdef&quot;);
+
+julia&gt; isempty(a)
+false
+
+julia&gt; popfirst!(a)
+&#39;a&#39;: ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
+
+julia&gt; collect(Iterators.take(a, 3))
+3-element Vector{Char}:
+ &#39;b&#39;: ASCII/Unicode U+0062 (category Ll: Letter, lowercase)
+ &#39;c&#39;: ASCII/Unicode U+0063 (category Ll: Letter, lowercase)
+ &#39;d&#39;: ASCII/Unicode U+0064 (category Ll: Letter, lowercase)
+
+julia&gt; collect(a)
+2-element Vector{Char}:
+ &#39;e&#39;: ASCII/Unicode U+0065 (category Ll: Letter, lowercase)
+ &#39;f&#39;: ASCII/Unicode U+0066 (category Ll: Letter, lowercase)
+
+julia&gt; Iterators.reset!(a); popfirst!(a)
+&#39;a&#39;: ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
+
+julia&gt; Iterators.reset!(a, &quot;hello&quot;); popfirst!(a)
+&#39;h&#39;: ASCII/Unicode U+0068 (category Ll: Letter, lowercase)</code></pre><pre><code class="language-julia-repl hljs">julia&gt; a = Iterators.Stateful([1,1,1,2,3,4]);
+
+julia&gt; for x in a; x == 1 || break; end
+
+julia&gt; peek(a)
+3
+
+julia&gt; sum(a) # 残りの要素の合計
+7</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L1388-L1445">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.zip" href="#Base.Iterators.zip"><code>Base.Iterators.zip</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">zip(iters...)</code></pre><p>複数のイテレータを同時に実行し、そのうちのいずれかが尽きるまで続けます。<code>zip</code>イテレータの値の型は、そのサブイテレータの値のタプルです。</p><div class="admonition is-info" id="Note-d45754c09d323ea0"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-d45754c09d323ea0" title="Permalink"></a></header><div class="admonition-body"><p><code>zip</code>は、状態を持つイテレータが現在のイテレーションで他のイテレータが終了したときに進まないように、サブイテレータへの呼び出しを順序付けます。</p></div></div><div class="admonition is-info" id="Note-4eda43da95ddf625"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-4eda43da95ddf625" title="Permalink"></a></header><div class="admonition-body"><p>引数なしの<code>zip()</code>は、空のタプルの無限イテレータを生成します。</p></div></div><p>参照: <a href="iterators.html#Base.Iterators.enumerate"><code>enumerate</code></a>, <a href="base.html#Base.splat"><code>Base.splat</code></a>.</p><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; a = 1:5
+1:5
+
+julia&gt; b = [&quot;e&quot;,&quot;d&quot;,&quot;b&quot;,&quot;c&quot;,&quot;a&quot;]
+5-element Vector{String}:
+ &quot;e&quot;
+ &quot;d&quot;
+ &quot;b&quot;
+ &quot;c&quot;
+ &quot;a&quot;
+
+julia&gt; c = zip(a,b)
+zip(1:5, [&quot;e&quot;, &quot;d&quot;, &quot;b&quot;, &quot;c&quot;, &quot;a&quot;])
+
+julia&gt; length(c)
+5
+
+julia&gt; first(c)
+(1, &quot;e&quot;)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L335-L373">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.enumerate" href="#Base.Iterators.enumerate"><code>Base.Iterators.enumerate</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">enumerate(iter)</code></pre><p>1から始まるカウンタ<code>i</code>と、与えられたイテレータからの<code>i</code>番目の値<code>x</code>を持つタプル<code>(i, x)</code>を生成するイテレータです。イテレートしている値<code>x</code>だけでなく、これまでのイテレーションの回数も必要な場合に便利です。</p><p><code>i</code>が<code>iter</code>のインデックスとして有効でない場合や、異なる要素をインデックスする場合があります。これは、<code>iter</code>のインデックスが1から始まらない場合に発生し、文字列や辞書などで起こる可能性があります。<code>i</code>がインデックスであることを保証したい場合は、<code>pairs(IndexLinear(), iter)</code>メソッドを参照してください。</p><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; a = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;];
+
+julia&gt; for (index, value) in enumerate(a)
+           println(&quot;$index $value&quot;)
+       end
+1 a
+2 b
+3 c
+
+julia&gt; str = &quot;naïve&quot;;
+
+julia&gt; for (i, val) in enumerate(str)
+           print(&quot;i = &quot;, i, &quot;, val = &quot;, val, &quot;, &quot;)
+           try @show(str[i]) catch e println(e) end
+       end
+i = 1, val = n, str[i] = &#39;n&#39;
+i = 2, val = a, str[i] = &#39;a&#39;
+i = 3, val = ï, str[i] = &#39;ï&#39;
+i = 4, val = v, StringIndexError(&quot;naïve&quot;, 4)
+i = 5, val = e, str[i] = &#39;v&#39;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L163-L199">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.rest" href="#Base.Iterators.rest"><code>Base.Iterators.rest</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">rest(iter, state)</code></pre><p>与えられた <code>state</code> から始まる <code>iter</code> と同じ要素を生成するイテレータです。</p><p>参照: <a href="iterators.html#Base.Iterators.drop"><code>Iterators.drop</code></a>, <a href="iterators.html#Base.Iterators.peel"><code>Iterators.peel</code></a>, <a href="collections.html#Base.rest"><code>Base.rest</code></a>.</p><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; collect(Iterators.rest([1,2,3,4], 2))
+3-element Vector{Int64}:
+ 2
+ 3
+ 4</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L636-L651">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.countfrom" href="#Base.Iterators.countfrom"><code>Base.Iterators.countfrom</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">countfrom(start=1, step=1)</code></pre><p><code>start</code>から始まり、<code>step</code>ずつ増加する無限にカウントするイテレータです。</p><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; for v in Iterators.countfrom(5, 2)
+           v &gt; 10 &amp;&amp; break
+           println(v)
+       end
+5
+7
+9</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L704-L719">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.take" href="#Base.Iterators.take"><code>Base.Iterators.take</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">take(iter, n)</code></pre><p><code>iter</code>の最初の<code>n</code>要素を最大で生成するイテレータです。</p><p>関連項目: <a href="iterators.html#Base.Iterators.drop"><code>drop</code></a>, <a href="iterators.html#Base.Iterators.peel"><code>peel</code></a>, <a href="collections.html#Base.first"><code>first</code></a>, <a href="io-network.html#Base.take!-Tuple{Base.GenericIOBuffer}"><code>Base.take!</code></a>.</p><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; a = 1:2:11
+1:2:11
+
+julia&gt; collect(a)
+6-element Vector{Int64}:
+  1
+  3
+  5
+  7
+  9
+ 11
+
+julia&gt; collect(Iterators.take(a,3))
+3-element Vector{Int64}:
+ 1
+ 3
+ 5</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L743-L770">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.takewhile" href="#Base.Iterators.takewhile"><code>Base.Iterators.takewhile</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">takewhile(pred, iter)</code></pre><p><code>iter</code>から要素を生成するイテレータで、述語<code>pred</code>が真である限り要素を生成し、その後はすべての要素をドロップします。</p><div class="admonition is-compat" id="Julia-1.4-1496022e6bf6a377"><header class="admonition-header">Julia 1.4<a class="admonition-anchor" href="#Julia-1.4-1496022e6bf6a377" title="Permalink"></a></header><div class="admonition-body"><p>この関数は少なくともJulia 1.4が必要です。</p></div></div><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; s = collect(1:5)
+5-element Vector{Int64}:
+ 1
+ 2
+ 3
+ 4
+ 5
+
+julia&gt; collect(Iterators.takewhile(&lt;(3),s))
+2-element Vector{Int64}:
+ 1
+ 2</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L858-L883">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.drop" href="#Base.Iterators.drop"><code>Base.Iterators.drop</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">drop(iter, n)</code></pre><p>最初の <code>n</code> 要素を除いたすべての要素を生成するイテレータです。</p><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; a = 1:2:11
+1:2:11
+
+julia&gt; collect(a)
+6-element Vector{Int64}:
+  1
+  3
+  5
+  7
+  9
+ 11
+
+julia&gt; collect(Iterators.drop(a,4))
+2-element Vector{Int64}:
+  9
+ 11</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L802-L826">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.dropwhile" href="#Base.Iterators.dropwhile"><code>Base.Iterators.dropwhile</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">dropwhile(pred, iter)</code></pre><p><code>iter</code>から<code>pred</code>が真である限り要素をドロップし、その後はすべての要素を返すイテレータです。</p><div class="admonition is-compat" id="Julia-1.4-1496022e6bf6a377"><header class="admonition-header">Julia 1.4<a class="admonition-anchor" href="#Julia-1.4-1496022e6bf6a377" title="Permalink"></a></header><div class="admonition-body"><p>この関数は少なくともJulia 1.4が必要です。</p></div></div><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; s = collect(1:5)
+5-element Vector{Int64}:
+ 1
+ 2
+ 3
+ 4
+ 5
+
+julia&gt; collect(Iterators.dropwhile(&lt;(3),s))
+3-element Vector{Int64}:
+ 3
+ 4
+ 5</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L905-L931">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.cycle" href="#Base.Iterators.cycle"><code>Base.Iterators.cycle</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">cycle(iter[, n::Int])</code></pre><p><code>iter</code>を永遠に循環するイテレータです。<code>n</code>が指定されている場合、<code>iter</code>をその回数だけ循環します。<code>iter</code>が空の場合、<code>cycle(iter)</code>および<code>cycle(iter, n)</code>も空になります。</p><p><code>Iterators.cycle(iter, n)</code>は<a href="arrays.html#Base.repeat"><code>Base.repeat</code></a><code>(vector, n)</code>の遅延等価であり、<a href="iterators.html#Base.Iterators.repeated"><code>Iterators.repeated</code></a><code>(iter, n)</code>は遅延<a href="arrays.html#Base.fill"><code>Base.fill</code></a><code>(item, n)</code>です。</p><div class="admonition is-compat" id="Julia-1.11-dbf2df64ad583a9d"><header class="admonition-header">Julia 1.11<a class="admonition-anchor" href="#Julia-1.11-dbf2df64ad583a9d" title="Permalink"></a></header><div class="admonition-body"><p>メソッド<code>cycle(iter, n)</code>はJulia 1.11で追加されました。</p></div></div><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; for (i, v) in enumerate(Iterators.cycle(&quot;hello&quot;))
+           print(v)
+           i &gt; 10 &amp;&amp; break
+       end
+hellohelloh
+
+julia&gt; foreach(print, Iterators.cycle([&#39;j&#39;, &#39;u&#39;, &#39;l&#39;, &#39;i&#39;, &#39;a&#39;], 3))
+juliajuliajulia
+
+julia&gt; repeat([1,2,3], 4) == collect(Iterators.cycle([1,2,3], 4))
+true
+
+julia&gt; fill([1,2,3], 4) == collect(Iterators.repeated([1,2,3], 4))
+true</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L955-L985">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.repeated" href="#Base.Iterators.repeated"><code>Base.Iterators.repeated</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">repeated(x[, n::Int])</code></pre><p>値 <code>x</code> を永遠に生成するイテレータです。<code>n</code> が指定されている場合、<code>x</code> をその回数だけ生成します（<code>take(repeated(x), n)</code> と同等です）。</p><p>他に <a href="arrays.html#Base.fill"><code>fill</code></a> を参照し、<a href="iterators.html#Base.Iterators.cycle"><code>Iterators.cycle</code></a> と比較してください。</p><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; a = Iterators.repeated([1 2], 4);
+
+julia&gt; collect(a)
+4-element Vector{Matrix{Int64}}:
+ [1 2]
+ [1 2]
+ [1 2]
+ [1 2]
+
+julia&gt; ans == fill([1 2], 4)
+true
+
+julia&gt; Iterators.cycle([1 2], 4) |&gt; collect |&gt; println
+[1, 2, 1, 2, 1, 2, 1, 2]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L1012-L1037">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.product" href="#Base.Iterators.product"><code>Base.Iterators.product</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">product(iters...)</code></pre><p>複数のイテレータの積に対するイテレータを返します。生成される各要素はタプルで、その <code>i</code> 番目の要素は <code>i</code> 番目の引数イテレータから来ます。最初のイテレータが最も速く変化します。</p><p>関連情報: <a href="iterators.html#Base.Iterators.zip"><code>zip</code></a>, <a href="iterators.html#Base.Iterators.flatten"><code>Iterators.flatten</code></a>.</p><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; collect(Iterators.product(1:2, 3:5))
+2×3 Matrix{Tuple{Int64, Int64}}:
+ (1, 3)  (1, 4)  (1, 5)
+ (2, 3)  (2, 4)  (2, 5)
+
+julia&gt; ans == [(x,y) for x in 1:2, y in 3:5]  # Iterators.productを含むジェネレータを収集
+true</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L1055-L1074">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.flatten" href="#Base.Iterators.flatten"><code>Base.Iterators.flatten</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">flatten(iter)</code></pre><p>イテレータを受け取り、そのイテレータがイテレータを生成する場合、これらのイテレータの要素を生成するイテレータを返します。言い換えれば、引数のイテレータの要素が連結されます。</p><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; collect(Iterators.flatten((1:2, 8:9)))
+4-element Vector{Int64}:
+ 1
+ 2
+ 8
+ 9
+
+julia&gt; [(x,y) for x in 0:1 for y in &#39;a&#39;:&#39;c&#39;]  # Iterators.flattenを含むジェネレータを収集
+6-element Vector{Tuple{Int64, Char}}:
+ (0, &#39;a&#39;)
+ (0, &#39;b&#39;)
+ (0, &#39;c&#39;)
+ (1, &#39;a&#39;)
+ (1, &#39;b&#39;)
+ (1, &#39;c&#39;)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L1189-L1214">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.flatmap" href="#Base.Iterators.flatmap"><code>Base.Iterators.flatmap</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Iterators.flatmap(f, iterators...)</code></pre><p><code>flatten(map(f, iterators...))</code> と同等です。</p><p><a href="iterators.html#Base.Iterators.flatten"><code>Iterators.flatten</code></a> や <a href="iterators.html#Base.Iterators.map"><code>Iterators.map</code></a> も参照してください。</p><div class="admonition is-compat" id="Julia-1.9-2e641aaeb0ba6980"><header class="admonition-header">Julia 1.9<a class="admonition-anchor" href="#Julia-1.9-2e641aaeb0ba6980" title="Permalink"></a></header><div class="admonition-body"><p>この関数は Julia 1.9 で追加されました。</p></div></div><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; Iterators.flatmap(n -&gt; -n:2:n, 1:3) |&gt; collect
+9-element Vector{Int64}:
+ -1
+  1
+ -2
+  0
+  2
+ -3
+ -1
+  1
+  3
+
+julia&gt; stack(n -&gt; -n:2:n, 1:3)
+ERROR: DimensionMismatch: stack expects uniform slices, got axes(x) == (1:3,) while first had (1:2,)
+[...]
+
+julia&gt; Iterators.flatmap(n -&gt; (-n, 10n), 1:2) |&gt; collect
+4-element Vector{Int64}:
+ -1
+ 10
+ -2
+ 20
+
+julia&gt; ans == vec(stack(n -&gt; (-n, 10n), 1:2))
+true</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L1265-L1303">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.partition" href="#Base.Iterators.partition"><code>Base.Iterators.partition</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">partition(collection, n)</code></pre><p>コレクションを <code>n</code> 要素ずつ反復処理します。</p><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; collect(Iterators.partition([1,2,3,4,5], 2))
+3-element Vector{SubArray{Int64, 1, Vector{Int64}, Tuple{UnitRange{Int64}}, true}}:
+ [1, 2]
+ [3, 4]
+ [5]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L1307-L1320">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.map" href="#Base.Iterators.map"><code>Base.Iterators.map</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Iterators.map(f, iterators...)</code></pre><p>遅延マッピングを作成します。これは、<code>(f(args...) for args in zip(iterators...))</code>を書くための別の構文です。</p><div class="admonition is-compat" id="Julia-1.6-48fc862433202841"><header class="admonition-header">Julia 1.6<a class="admonition-anchor" href="#Julia-1.6-48fc862433202841" title="Permalink"></a></header><div class="admonition-body"><p>この関数は少なくともJulia 1.6を必要とします。</p></div></div><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; collect(Iterators.map(x -&gt; x^2, 1:3))
+3-element Vector{Int64}:
+ 1
+ 4
+ 9</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L44-L61">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.filter" href="#Base.Iterators.filter"><code>Base.Iterators.filter</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Iterators.filter(flt, itr)</code></pre><p>与えられた述語関数 <code>flt</code> と反復可能なオブジェクト <code>itr</code> に対して、<code>flt(x)</code> を満たす <code>itr</code> の要素 <code>x</code> を反復する際に生成される反復可能なオブジェクトを返します。元のイテレータの順序は保持されます。</p><p>この関数は <em>遅延</em> です。すなわち、<span>$Θ(1)$</span> 時間で返され、<span>$Θ(1)$</span> の追加スペースを使用することが保証されており、<code>filter</code> の呼び出しによって <code>flt</code> は呼び出されません。返された反復可能なオブジェクトを反復する際に <code>flt</code> への呼び出しが行われます。これらの呼び出しはキャッシュされず、再反復時には再度呼び出されます。</p><div class="admonition is-warning" id="Warning-8315e51bdcdcf717"><header class="admonition-header">Warning<a class="admonition-anchor" href="#Warning-8315e51bdcdcf717" title="Permalink"></a></header><div class="admonition-body"><p><code>filter</code> から返されたイテレータに対するその後の <em>遅延</em> 変換、例えば <code>Iterators.reverse</code> や <code>cycle</code> によって行われるものは、返された反復可能なオブジェクトを収集または反復するまで <code>flt</code> への呼び出しを遅延させます。フィルタ述語が非決定的であるか、その戻り値が <code>itr</code> の要素に対する反復の順序に依存する場合、遅延変換との合成は驚くべき動作を引き起こす可能性があります。これが望ましくない場合は、<code>flt</code> が純粋な関数であることを確認するか、中間の <code>filter</code> イテレータを収集してからさらに変換を行ってください。</p></div></div><p>配列のフィルタリングのための即時実装については <a href="collections.html#Base.filter"><code>Base.filter</code></a> を参照してください。</p><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; f = Iterators.filter(isodd, [1, 2, 3, 4, 5])
+Base.Iterators.Filter{typeof(isodd), Vector{Int64}}(isodd, [1, 2, 3, 4, 5])
+
+julia&gt; foreach(println, f)
+1
+3
+5
+
+julia&gt; [x for x in [1, 2, 3, 4, 5] if isodd(x)]  # Iterators.filter 上のジェネレータを収集
+3-element Vector{Int64}:
+ 1
+ 3
+ 5</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L502-L542">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.accumulate" href="#Base.Iterators.accumulate"><code>Base.Iterators.accumulate</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Iterators.accumulate(f, itr; [init])</code></pre><p>2つの引数を持つ関数 <code>f</code> とイテレータ <code>itr</code> を与えると、前の値と <code>itr</code> の次の要素に <code>f</code> を順次適用する新しいイテレータを返します。</p><p>これは実質的に <a href="arrays.html#Base.accumulate"><code>Base.accumulate</code></a> の遅延バージョンです。</p><div class="admonition is-compat" id="Julia-1.5-481a70a0e7df761c"><header class="admonition-header">Julia 1.5<a class="admonition-anchor" href="#Julia-1.5-481a70a0e7df761c" title="Permalink"></a></header><div class="admonition-body"><p>キーワード引数 <code>init</code> は Julia 1.5 で追加されました。</p></div></div><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; a = Iterators.accumulate(+, [1,2,3,4]);
+
+julia&gt; foreach(println, a)
+1
+3
+6
+10
+
+julia&gt; b = Iterators.accumulate(/, (2, 5, 2, 5); init = 100);
+
+julia&gt; collect(b)
+4-element Vector{Float64}:
+ 50.0
+ 10.0
+  5.0
+  1.0</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L571-L602">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.reverse" href="#Base.Iterators.reverse"><code>Base.Iterators.reverse</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">Iterators.reverse(itr)</code></pre><p>イテレータ <code>itr</code> が与えられた場合、<code>reverse(itr)</code> は同じコレクションの逆順のイテレータです。このイテレータは「遅延」であり、逆順にするためにコレクションのコピーを作成しません。詳細は <a href="arrays.html#Base.reverse-Tuple{AbstractVector}"><code>Base.reverse</code></a> を参照してください。</p><p>（デフォルトでは、これは <code>itr</code> をラップする <code>Iterators.Reverse</code> オブジェクトを返します。これは、対応する <a href="collections.html#Base.iterate"><code>iterate</code></a> メソッドが定義されている場合にイテレート可能ですが、一部の <code>itr</code> タイプはより専門的な <code>Iterators.reverse</code> の動作を実装している場合があります。）</p><p>すべてのイテレータタイプ <code>T</code> が逆順のイテレーションをサポートしているわけではありません。もし <code>T</code> がサポートしていない場合、<code>Iterators.reverse(itr::T)</code> をイテレートすると、<code>Iterators.Reverse{T}</code> の <code>iterate</code> メソッドが欠けているため、<a href="base.html#Core.MethodError"><code>MethodError</code></a> がスローされます。（これらのメソッドを実装するには、元のイテレータ <code>itr::T</code> を <code>r::Iterators.Reverse{T}</code> オブジェクトから <code>r.itr</code> によって取得できます。より一般的には、<code>Iterators.reverse(r)</code> を使用できます。）</p><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; foreach(println, Iterators.reverse(1:5))
+5
+4
+3
+2
+1</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L90-L119">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.only" href="#Base.Iterators.only"><code>Base.Iterators.only</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">only(x)</code></pre><p>コレクション <code>x</code> の唯一の要素を返すか、コレクションに要素がゼロまたは複数ある場合は <a href="base.html#Core.ArgumentError"><code>ArgumentError</code></a> をスローします。</p><p>関連項目として <a href="collections.html#Base.first"><code>first</code></a>、<a href="collections.html#Base.last"><code>last</code></a> も参照してください。</p><div class="admonition is-compat" id="Julia-1.4-61e1abd9639d41c1"><header class="admonition-header">Julia 1.4<a class="admonition-anchor" href="#Julia-1.4-61e1abd9639d41c1" title="Permalink"></a></header><div class="admonition-body"><p>このメソッドは少なくとも Julia 1.4 を必要とします。</p></div></div><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; only([&quot;a&quot;])
+&quot;a&quot;
+
+julia&gt; only(&quot;a&quot;)
+&#39;a&#39;: ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
+
+julia&gt; only(())
+ERROR: ArgumentError: Tuple contains 0 elements, must contain exactly 1 element
+Stacktrace:
+[...]
+
+julia&gt; only((&#39;a&#39;, &#39;b&#39;))
+ERROR: ArgumentError: Tuple contains 2 elements, must contain exactly 1 element
+Stacktrace:
+[...]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L1515-L1544">source</a></section></article><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="Base.Iterators.peel" href="#Base.Iterators.peel"><code>Base.Iterators.peel</code></a> — <span class="docstring-category">Function</span><span class="is-flex-grow-1 docstring-article-toggle-button" title="Collapse docstring"></span></header><section><div><pre><code class="language-julia hljs">peel(iter)</code></pre><p>最初の要素と残りの要素に対するイテレータを返します。</p><p>イテレータが空の場合は <code>nothing</code> を返します（<code>iterate</code> のように）。</p><div class="admonition is-compat" id="Julia-1.7-48f747965cb0a724"><header class="admonition-header">Julia 1.7<a class="admonition-anchor" href="#Julia-1.7-48f747965cb0a724" title="Permalink"></a></header><div class="admonition-body"><p>以前のバージョンでは、イテレータが空の場合に BoundsError が発生します。</p></div></div><p>参照: <a href="iterators.html#Base.Iterators.drop"><code>Iterators.drop</code></a>, <a href="iterators.html#Base.Iterators.take"><code>Iterators.take</code></a>.</p><p><strong>例</strong></p><pre><code class="language-julia-repl hljs">julia&gt; (a, rest) = Iterators.peel(&quot;abc&quot;);
+
+julia&gt; a
+&#39;a&#39;: ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
+
+julia&gt; collect(rest)
+2-element Vector{Char}:
+ &#39;b&#39;: ASCII/Unicode U+0062 (category Ll: Letter, lowercase)
+ &#39;c&#39;: ASCII/Unicode U+0063 (category Ll: Letter, lowercase)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/JuliaLang/julia/blob/760b2e5b7396f9cc0da5efce0cadd5d1974c4069/base/iterators.jl#L656-L680">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="sort.html">« Sorting and Related Functions</a><a class="docs-footer-nextpage" href="reflection.html">Reflection and introspection »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.11.4 on <span class="colophon-date" title="Tuesday 20 May 2025 04:59">Tuesday 20 May 2025</span>. Using Julia version 1.11.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

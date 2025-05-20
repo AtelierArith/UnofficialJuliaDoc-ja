@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Metaprogramming · The Julia Language</title><meta name="title" content="Metaprogramming · The Julia Language"/><meta property="og:title" content="Metaprogramming · The Julia Language"/><meta property="twitter:title" content="Metaprogramming · The Julia Language"/><meta name="description" content="Documentation for The Julia Language."/><meta property="og:description" content="Documentation for The Julia Language."/><meta property="twitter:description" content="Documentation for The Julia Language."/><script async src="https://www.googletagmanager.com/gtag/js?id=UA-28835595-6"></script><script>  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-28835595-6', {'page_path': location.pathname + location.search + location.hash});
+</script><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script><link href="../assets/julia-manual.css" rel="stylesheet" type="text/css"/><link href="../assets/julia.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../index.html"><img class="docs-light-only" src="../assets/logo.svg" alt="The Julia Language logo"/><img class="docs-dark-only" src="../assets/logo-dark.svg" alt="The Julia Language logo"/></a><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../index.html">Julia Documentation</a></li><li><input class="collapse-toggle" id="menuitem-3" type="checkbox" checked/><label class="tocitem" for="menuitem-3"><span class="docs-label">Manual</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="getting-started.html">Getting Started</a></li><li><a class="tocitem" href="installation.html">Installation</a></li><li><a class="tocitem" href="variables.html">Variables</a></li><li><a class="tocitem" href="integers-and-floating-point-numbers.html">Integers and Floating-Point Numbers</a></li><li><a class="tocitem" href="mathematical-operations.html">Mathematical Operations and Elementary Functions</a></li><li><a class="tocitem" href="complex-and-rational-numbers.html">Complex and Rational Numbers</a></li><li><a class="tocitem" href="strings.html">Strings</a></li><li><a class="tocitem" href="functions.html">Functions</a></li><li><a class="tocitem" href="control-flow.html">Control Flow</a></li><li><a class="tocitem" href="variables-and-scoping.html">Scope of Variables</a></li><li><a class="tocitem" href="types.html">Types</a></li><li><a class="tocitem" href="methods.html">Methods</a></li><li><a class="tocitem" href="constructors.html">Constructors</a></li><li><a class="tocitem" href="conversion-and-promotion.html">Conversion and Promotion</a></li><li><a class="tocitem" href="interfaces.html">Interfaces</a></li><li><a class="tocitem" href="modules.html">Modules</a></li><li><a class="tocitem" href="documentation.html">Documentation</a></li><li class="is-active"><a class="tocitem" href="metaprogramming.html">Metaprogramming</a><ul class="internal"><li><a class="tocitem" href="#Program-representation"><span>Program representation</span></a></li><li><a class="tocitem" href="#Expressions-and-evaluation"><span>Expressions and evaluation</span></a></li><li><a class="tocitem" href="#man-macros"><span>Macros</span></a></li><li><a class="tocitem" href="#Code-Generation"><span>Code Generation</span></a></li><li><a class="tocitem" href="#meta-non-standard-string-literals"><span>Non-Standard String Literals</span></a></li><li><a class="tocitem" href="#Generated-functions"><span>Generated functions</span></a></li></ul></li><li><a class="tocitem" href="arrays.html">Single- and multi-dimensional Arrays</a></li><li><a class="tocitem" href="missing.html">Missing Values</a></li><li><a class="tocitem" href="networking-and-streams.html">Networking and Streams</a></li><li><a class="tocitem" href="parallel-computing.html">Parallel Computing</a></li><li><a class="tocitem" href="asynchronous-programming.html">Asynchronous Programming</a></li><li><a class="tocitem" href="multi-threading.html">Multi-Threading</a></li><li><a class="tocitem" href="distributed-computing.html">Multi-processing and Distributed Computing</a></li><li><a class="tocitem" href="running-external-programs.html">Running External Programs</a></li><li><a class="tocitem" href="calling-c-and-fortran-code.html">Calling C and Fortran Code</a></li><li><a class="tocitem" href="handling-operating-system-variation.html">Handling Operating System Variation</a></li><li><a class="tocitem" href="environment-variables.html">Environment Variables</a></li><li><a class="tocitem" href="embedding.html">Embedding Julia</a></li><li><a class="tocitem" href="code-loading.html">Code Loading</a></li><li><a class="tocitem" href="profile.html">Profiling</a></li><li><a class="tocitem" href="stacktraces.html">Stack Traces</a></li><li><a class="tocitem" href="performance-tips.html">Performance Tips</a></li><li><a class="tocitem" href="workflow-tips.html">Workflow Tips</a></li><li><a class="tocitem" href="style-guide.html">Style Guide</a></li><li><a class="tocitem" href="faq.html">Frequently Asked Questions</a></li><li><a class="tocitem" href="noteworthy-differences.html">Noteworthy Differences from other Languages</a></li><li><a class="tocitem" href="unicode-input.html">Unicode Input</a></li><li><a class="tocitem" href="command-line-interface.html">Command-line Interface</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-4" type="checkbox"/><label class="tocitem" for="menuitem-4"><span class="docs-label">Base</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../base/base.html">Essentials</a></li><li><a class="tocitem" href="../base/collections.html">Collections and Data Structures</a></li><li><a class="tocitem" href="../base/math.html">Mathematics</a></li><li><a class="tocitem" href="../base/numbers.html">Numbers</a></li><li><a class="tocitem" href="../base/strings.html">Strings</a></li><li><a class="tocitem" href="../base/arrays.html">Arrays</a></li><li><a class="tocitem" href="../base/parallel.html">Tasks</a></li><li><a class="tocitem" href="../base/multi-threading.html">Multi-Threading</a></li><li><a class="tocitem" href="../base/scopedvalues.html">Scoped Values</a></li><li><a class="tocitem" href="../base/constants.html">Constants</a></li><li><a class="tocitem" href="../base/file.html">Filesystem</a></li><li><a class="tocitem" href="../base/io-network.html">I/O and Network</a></li><li><a class="tocitem" href="../base/punctuation.html">Punctuation</a></li><li><a class="tocitem" href="../base/sort.html">Sorting and Related Functions</a></li><li><a class="tocitem" href="../base/iterators.html">Iteration utilities</a></li><li><a class="tocitem" href="../base/reflection.html">Reflection and introspection</a></li><li><a class="tocitem" href="../base/c.html">C Interface</a></li><li><a class="tocitem" href="../base/libc.html">C Standard Library</a></li><li><a class="tocitem" href="../base/stacktraces.html">StackTraces</a></li><li><a class="tocitem" href="../base/simd-types.html">SIMD Support</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-5" type="checkbox"/><label class="tocitem" for="menuitem-5"><span class="docs-label">Standard Library</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../stdlib/ArgTools.html">ArgTools</a></li><li><a class="tocitem" href="../stdlib/Artifacts.html">Artifacts</a></li><li><a class="tocitem" href="../stdlib/Base64.html">Base64</a></li><li><a class="tocitem" href="../stdlib/CRC32c.html">CRC32c</a></li><li><a class="tocitem" href="../stdlib/Dates.html">Dates</a></li><li><a class="tocitem" href="../stdlib/DelimitedFiles.html">Delimited Files</a></li><li><a class="tocitem" href="../stdlib/Distributed.html">Distributed Computing</a></li><li><a class="tocitem" href="../stdlib/Downloads.html">Downloads</a></li><li><a class="tocitem" href="../stdlib/FileWatching.html">File Events</a></li><li><a class="tocitem" href="../stdlib/Future.html">Future</a></li><li><a class="tocitem" href="../stdlib/InteractiveUtils.html">Interactive Utilities</a></li><li><a class="tocitem" href="../stdlib/LazyArtifacts.html">Lazy Artifacts</a></li><li><a class="tocitem" href="../stdlib/LibCURL.html">LibCURL</a></li><li><a class="tocitem" href="../stdlib/LibGit2.html">LibGit2</a></li><li><a class="tocitem" href="../stdlib/Libdl.html">Dynamic Linker</a></li><li><a class="tocitem" href="../stdlib/LinearAlgebra.html">Linear Algebra</a></li><li><a class="tocitem" href="../stdlib/Logging.html">Logging</a></li><li><a class="tocitem" href="../stdlib/Markdown.html">Markdown</a></li><li><a class="tocitem" href="../stdlib/Mmap.html">Memory-mapped I/O</a></li><li><a class="tocitem" href="../stdlib/NetworkOptions.html">Network Options</a></li><li><a class="tocitem" href="../stdlib/Pkg.html">Pkg</a></li><li><a class="tocitem" href="../stdlib/Printf.html">Printf</a></li><li><a class="tocitem" href="../stdlib/Profile.html">Profiling</a></li><li><a class="tocitem" href="../stdlib/REPL.html">The Julia REPL</a></li><li><a class="tocitem" href="../stdlib/Random.html">Random Numbers</a></li><li><a class="tocitem" href="../stdlib/SHA.html">SHA</a></li><li><a class="tocitem" href="../stdlib/Serialization.html">Serialization</a></li><li><a class="tocitem" href="../stdlib/SharedArrays.html">Shared Arrays</a></li><li><a class="tocitem" href="../stdlib/Sockets.html">Sockets</a></li><li><a class="tocitem" href="../stdlib/SparseArrays.html">Sparse Arrays</a></li><li><a class="tocitem" href="../stdlib/Statistics.html">Statistics</a></li><li><a class="tocitem" href="../stdlib/StyledStrings.html">StyledStrings</a></li><li><a class="tocitem" href="../stdlib/TOML.html">TOML</a></li><li><a class="tocitem" href="../stdlib/Tar.html">Tar</a></li><li><a class="tocitem" href="../stdlib/Test.html">Unit Testing</a></li><li><a class="tocitem" href="../stdlib/UUIDs.html">UUIDs</a></li><li><a class="tocitem" href="../stdlib/Unicode.html">Unicode</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6" type="checkbox"/><label class="tocitem" for="menuitem-6"><span class="docs-label">Developer Documentation</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><input class="collapse-toggle" id="menuitem-6-1" type="checkbox"/><label class="tocitem" for="menuitem-6-1"><span class="docs-label">Documentation of Julia&#39;s Internals</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../devdocs/init.html">Initialization of the Julia runtime</a></li><li><a class="tocitem" href="../devdocs/ast.html">Julia ASTs</a></li><li><a class="tocitem" href="../devdocs/types.html">More about types</a></li><li><a class="tocitem" href="../devdocs/object.html">Memory layout of Julia Objects</a></li><li><a class="tocitem" href="../devdocs/eval.html">Eval of Julia code</a></li><li><a class="tocitem" href="../devdocs/callconv.html">Calling Conventions</a></li><li><a class="tocitem" href="../devdocs/compiler.html">High-level Overview of the Native-Code Generation Process</a></li><li><a class="tocitem" href="../devdocs/functions.html">Julia Functions</a></li><li><a class="tocitem" href="../devdocs/cartesian.html">Base.Cartesian</a></li><li><a class="tocitem" href="../devdocs/meta.html">Talking to the compiler (the <code>:meta</code> mechanism)</a></li><li><a class="tocitem" href="../devdocs/subarrays.html">SubArrays</a></li><li><a class="tocitem" href="../devdocs/isbitsunionarrays.html">isbits Union Optimizations</a></li><li><a class="tocitem" href="../devdocs/sysimg.html">System Image Building</a></li><li><a class="tocitem" href="../devdocs/pkgimg.html">Package Images</a></li><li><a class="tocitem" href="../devdocs/llvm-passes.html">Custom LLVM Passes</a></li><li><a class="tocitem" href="../devdocs/llvm.html">Working with LLVM</a></li><li><a class="tocitem" href="../devdocs/stdio.html">printf() and stdio in the Julia runtime</a></li><li><a class="tocitem" href="../devdocs/boundscheck.html">Bounds checking</a></li><li><a class="tocitem" href="../devdocs/locks.html">Proper maintenance and care of multi-threading locks</a></li><li><a class="tocitem" href="../devdocs/offset-arrays.html">Arrays with custom indices</a></li><li><a class="tocitem" href="../devdocs/require.html">Module loading</a></li><li><a class="tocitem" href="../devdocs/inference.html">Inference</a></li><li><a class="tocitem" href="../devdocs/ssair.html">Julia SSA-form IR</a></li><li><a class="tocitem" href="../devdocs/EscapeAnalysis.html"><code>EscapeAnalysis</code></a></li><li><a class="tocitem" href="../devdocs/aot.html">Ahead of Time Compilation</a></li><li><a class="tocitem" href="../devdocs/gc-sa.html">Static analyzer annotations for GC correctness in C code</a></li><li><a class="tocitem" href="../devdocs/gc.html">Garbage Collection in Julia</a></li><li><a class="tocitem" href="../devdocs/jit.html">JIT Design and Implementation</a></li><li><a class="tocitem" href="../devdocs/builtins.html">Core.Builtins</a></li><li><a class="tocitem" href="../devdocs/precompile_hang.html">Fixing precompilation hangs due to open tasks or IO</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-2" type="checkbox"/><label class="tocitem" for="menuitem-6-2"><span class="docs-label">Developing/debugging Julia&#39;s C code</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../devdocs/backtraces.html">Reporting and analyzing crashes (segfaults)</a></li><li><a class="tocitem" href="../devdocs/debuggingtips.html">gdb debugging tips</a></li><li><a class="tocitem" href="../devdocs/valgrind.html">Using Valgrind with Julia</a></li><li><a class="tocitem" href="../devdocs/external_profilers.html">External Profiler Support</a></li><li><a class="tocitem" href="../devdocs/sanitizers.html">Sanitizer support</a></li><li><a class="tocitem" href="../devdocs/probes.html">Instrumenting Julia with DTrace, and bpftrace</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-3" type="checkbox"/><label class="tocitem" for="menuitem-6-3"><span class="docs-label">Building Julia</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../devdocs/build/build.html">Building Julia (Detailed)</a></li><li><a class="tocitem" href="../devdocs/build/linux.html">Linux</a></li><li><a class="tocitem" href="../devdocs/build/macos.html">macOS</a></li><li><a class="tocitem" href="../devdocs/build/windows.html">Windows</a></li><li><a class="tocitem" href="../devdocs/build/freebsd.html">FreeBSD</a></li><li><a class="tocitem" href="../devdocs/build/arm.html">ARM (Linux)</a></li><li><a class="tocitem" href="../devdocs/build/distributing.html">Binary distributions</a></li></ul></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Manual</a></li><li class="is-active"><a href="metaprogramming.html">Metaprogramming</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href="metaprogramming.html">Metaprogramming</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/JuliaLang/julia" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/JuliaLang/julia/blob/master/doc/src/manual/metaprogramming.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Metaprogramming"><a class="docs-heading-anchor" href="#Metaprogramming">Metaprogramming</a><a id="Metaprogramming-1"></a><a class="docs-heading-anchor-permalink" href="#Metaprogramming" title="Permalink"></a></h1><p>Lispの最も強力な遺産は、Julia言語におけるメタプログラミングのサポートです。Lispと同様に、Juliaは自分自身のコードを言語自体のデータ構造として表現します。コードは言語内から作成および操作できるオブジェクトによって表現されるため、プログラムが自分自身のコードを変換および生成することが可能です。これにより、追加のビルドステップなしで高度なコード生成が可能になり、また、<a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">abstract syntax trees</a>のレベルで動作する真のLispスタイルのマクロも可能になります。対照的に、CやC++のようなプリプロセッサの「マクロ」システムは、実際の解析や解釈が行われる前にテキストの操作や置換を行います。Juliaでは、すべてのデータ型とコードがJuliaのデータ構造によって表現されるため、プログラムとその型の内部を探るための強力な<a href="https://en.wikipedia.org/wiki/Reflection_%28computer_programming%29">reflection</a>機能が利用可能です。</p><div class="admonition is-warning" id="Warning-47b715a7625ed198"><header class="admonition-header">Warning<a class="admonition-anchor" href="#Warning-47b715a7625ed198" title="Permalink"></a></header><div class="admonition-body"><p>メタプログラミングは強力なツールですが、コードを理解しにくくする複雑さを導入します。たとえば、スコープルールを正しく取得するのは驚くほど難しい場合があります。メタプログラミングは、通常、<a href="functions.html#man-anonymous-functions">higher order functions</a>や<a href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">closures</a>のような他のアプローチが適用できない場合にのみ使用されるべきです。</p><p><code>eval</code> と新しいマクロの定義は、通常、最後の手段として使用すべきです。<code>Meta.parse</code> を使用したり、任意の文字列を Julia コードに変換するのは、ほとんど良いアイデアではありません。Julia コードを操作するには、Julia の構文がどのように解析されるかの複雑さを避けるために、<code>Expr</code> データ構造を直接使用してください。</p><p>メタプログラミングの最良の使用法は、しばしばランタイムヘルパー関数にほとんどの機能を実装し、生成するコードの量を最小限に抑えることを目指します。</p></div></div><h2 id="Program-representation"><a class="docs-heading-anchor" href="#Program-representation">Program representation</a><a id="Program-representation-1"></a><a class="docs-heading-anchor-permalink" href="#Program-representation" title="Permalink"></a></h2><p>すべてのJuliaプログラムは文字列として始まります：</p><pre><code class="language-julia-repl hljs">julia&gt; prog = &quot;1 + 1&quot;
+&quot;1 + 1&quot;</code></pre><p><strong>次に何が起こるのか？</strong></p><p>次のステップは、<a href="https://en.wikipedia.org/wiki/Parsing#Computer_languages">parse</a> 各文字列を、Julia型 <a href="../base/base.html#Core.Expr"><code>Expr</code></a> で表されるオブジェクト「expression」として表現することです。</p><pre><code class="language-julia-repl hljs">julia&gt; ex1 = Meta.parse(prog)
+:(1 + 1)
+
+julia&gt; typeof(ex1)
+Expr</code></pre><p><code>Expr</code> オブジェクトは二つの部分を含みます：</p><ul><li>a <a href="../base/base.html#Core.Symbol"><code>Symbol</code></a> は、表現の種類を特定します。シンボルは <a href="https://en.wikipedia.org/wiki/String_interning">interned string</a> 識別子です（以下でさらに議論します）。</li></ul><pre><code class="language-julia-repl hljs">julia&gt; ex1.head
+:call</code></pre><ul><li>式の引数は、シンボル、他の式、またはリテラル値である可能性があります：</li></ul><pre><code class="language-julia-repl hljs">julia&gt; ex1.args
+3-element Vector{Any}:
+  :+
+ 1
+ 1</code></pre><p>式は <a href="https://en.wikipedia.org/wiki/Polish_notation">prefix notation</a> で直接構築することもできます:</p><pre><code class="language-julia-repl hljs">julia&gt; ex2 = Expr(:call, :+, 1, 1)
+:(1 + 1)</code></pre><p>上記で構築された2つの表現 – パースによるものと直接構築によるもの – は同等です：</p><pre><code class="language-julia-repl hljs">julia&gt; ex1 == ex2
+true</code></pre><p><strong>ここでの重要な点は、Juliaコードが内部的にデータ構造として表現されており、そのデータ構造に言語自体からアクセスできるということです。</strong></p><p><a href="../base/io-network.html#Base.dump"><code>dump</code></a> 関数は、<code>Expr</code> オブジェクトのインデントされた注釈付き表示を提供します：</p><pre><code class="language-julia-repl hljs">julia&gt; dump(ex2)
+Expr
+  head: Symbol call
+  args: Array{Any}((3,))
+    1: Symbol +
+    2: Int64 1
+    3: Int64 1</code></pre><p><code>Expr</code> オブジェクトはネストすることもできます:</p><pre><code class="language-julia-repl hljs">julia&gt; ex3 = Meta.parse(&quot;(4 + 4) / 2&quot;)
+:((4 + 4) / 2)</code></pre><p>別の方法として、<code>Meta.show_sexpr</code>を使用して式を表示することができます。これは、与えられた<code>Expr</code>の<a href="https://en.wikipedia.org/wiki/S-expression">S-expression</a>形式を表示します。この形式はLispのユーザーには非常に馴染みがあるかもしれません。以下は、ネストされた<code>Expr</code>の表示を示す例です：</p><pre><code class="language-julia-repl hljs">julia&gt; Meta.show_sexpr(ex3)
+(:call, :/, (:call, :+, 4, 4), 2)</code></pre><h3 id="Symbols"><a class="docs-heading-anchor" href="#Symbols">Symbols</a><a id="Symbols-1"></a><a class="docs-heading-anchor-permalink" href="#Symbols" title="Permalink"></a></h3><p><code>:</code> 文字は、Julia において二つの構文的目的を持っています。最初の形式は、<a href="../base/base.html#Core.Symbol"><code>Symbol</code></a> を作成します。これは、式の構成要素の一つとして使用される <a href="https://en.wikipedia.org/wiki/String_interning">interned string</a> です。</p><pre><code class="language-julia-repl hljs">julia&gt; s = :foo
+:foo
+
+julia&gt; typeof(s)
+Symbol</code></pre><p><a href="../base/base.html#Core.Symbol"><code>Symbol</code></a> コンストラクタは、任意の数の引数を受け取り、それらの文字列表現を連結することによって新しいシンボルを作成します：</p><pre><code class="language-julia-repl hljs">julia&gt; :foo === Symbol(&quot;foo&quot;)
+true
+
+julia&gt; Symbol(&quot;1foo&quot;) # `:1foo` would not work, as `1foo` is not a valid identifier
+Symbol(&quot;1foo&quot;)
+
+julia&gt; Symbol(&quot;func&quot;,10)
+:func10
+
+julia&gt; Symbol(:var,&#39;_&#39;,&quot;sym&quot;)
+:var_sym</code></pre><p>式の文脈において、シンボルは変数へのアクセスを示すために使用されます。式が評価されると、シンボルは適切な <a href="variables-and-scoping.html#scope-of-variables">scope</a> においてそのシンボルに束縛された値に置き換えられます。</p><p>時々、解析の曖昧さを避けるために、<code>:</code> への引数の周りに余分な括弧が必要です:</p><pre><code class="language-julia-repl hljs">julia&gt; :(:)
+:(:)
+
+julia&gt; :(::)
+:(::)</code></pre><h2 id="Expressions-and-evaluation"><a class="docs-heading-anchor" href="#Expressions-and-evaluation">Expressions and evaluation</a><a id="Expressions-and-evaluation-1"></a><a class="docs-heading-anchor-permalink" href="#Expressions-and-evaluation" title="Permalink"></a></h2><h3 id="Quoting"><a class="docs-heading-anchor" href="#Quoting">Quoting</a><a id="Quoting-1"></a><a class="docs-heading-anchor-permalink" href="#Quoting" title="Permalink"></a></h3><p><code>:</code> 文字の第二の構文的目的は、明示的な <a href="../base/base.html#Core.Expr"><code>Expr</code></a> コンストラクタを使用せずに式オブジェクトを作成することです。これは <em>引用</em> と呼ばれます。 <code>:</code> 文字の後に、単一の Julia コードのステートメントを囲むペアの括弧を続けることで、囲まれたコードに基づいた <code>Expr</code> オブジェクトが生成されます。以下は、算術式を引用するために使用される短い形式の例です：</p><pre><code class="language-julia-repl hljs">julia&gt; ex = :(a+b*c+1)
+:(a + b * c + 1)
+
+julia&gt; typeof(ex)
+Expr</code></pre><p>（この式の構造を表示するには、<code>ex.head</code> と <code>ex.args</code> を試すか、上記のように <a href="../base/io-network.html#Base.dump"><code>dump</code></a> または <a href="../base/io-network.html#Base.Meta.@dump"><code>Meta.@dump</code></a> を使用してください）</p><p>同等の式は、<a href="../base/base.html#Base.Meta.parse-Tuple{AbstractString, Int64}"><code>Meta.parse</code></a>を使用するか、直接の<code>Expr</code>形式を使用して構築できます:</p><pre><code class="language-julia-repl hljs">julia&gt;      :(a + b*c + 1)       ==
+       Meta.parse(&quot;a + b*c + 1&quot;) ==
+       Expr(:call, :+, :a, Expr(:call, :*, :b, :c), 1)
+true</code></pre><p>パーサーによって提供される式は、一般的にシンボル、他の式、およびリテラル値のみを引数として持ちますが、Juliaコードによって構築された式は、リテラル形式なしで任意の実行時値を引数として持つことができます。この特定の例では、<code>+</code>と<code>a</code>はシンボルであり、<code>*(b,c)</code>はサブ式であり、<code>1</code>はリテラルの64ビット符号付き整数です。</p><p>複数の式を引用するための第二の構文形式があります：<code>quote ... end</code> で囲まれたコードのブロック。</p><pre><code class="language-julia-repl hljs">julia&gt; ex = quote
+           x = 1
+           y = 2
+           x + y
+       end
+quote
+    #= none:2 =#
+    x = 1
+    #= none:3 =#
+    y = 2
+    #= none:4 =#
+    x + y
+end
+
+julia&gt; typeof(ex)
+Expr</code></pre><h3 id="man-expression-interpolation"><a class="docs-heading-anchor" href="#man-expression-interpolation">Interpolation</a><a id="man-expression-interpolation-1"></a><a class="docs-heading-anchor-permalink" href="#man-expression-interpolation" title="Permalink"></a></h3><p><a href="../base/base.html#Core.Expr"><code>Expr</code></a> オブジェクトを値引数で直接構築することは強力ですが、<code>Expr</code> コンストラクタは「通常の」Julia構文と比べて面倒な場合があります。代わりに、Juliaはリテラルや式を引用された式に<em>補間</em>することを許可しています。補間はプレフィックス <code>$</code> で示されます。</p><p>この例では、変数 <code>a</code> の値が補間されています：</p><pre><code class="language-julia-repl hljs">julia&gt; a = 1;
+
+julia&gt; ex = :($a + b)
+:(1 + b)</code></pre><p>未引用の式への補間はサポートされておらず、コンパイル時エラーを引き起こします:</p><pre><code class="language-julia-repl hljs">julia&gt; $a + b
+ERROR: syntax: &quot;$&quot; expression outside quote</code></pre><p>この例では、タプル <code>(1,2,3)</code> が条件テストの式として補間されています：</p><pre><code class="language-julia-repl hljs">julia&gt; ex = :(a in $:((1,2,3)) )
+:(a in (1, 2, 3))</code></pre><p><code>$</code>を用いた式の補間は、意図的に<a href="strings.html#string-interpolation">string interpolation</a>および<a href="running-external-programs.html#command-interpolation">command interpolation</a>を思い起こさせるものです。式の補間は、複雑なJulia式をプログラム的に便利かつ読みやすく構築することを可能にします。</p><h3 id="Splatting-interpolation"><a class="docs-heading-anchor" href="#Splatting-interpolation">Splatting interpolation</a><a id="Splatting-interpolation-1"></a><a class="docs-heading-anchor-permalink" href="#Splatting-interpolation" title="Permalink"></a></h3><p><code>$</code> 補間構文は、囲まれた式に単一の式のみを挿入することを許可することに注意してください。時には、式の配列があり、それらすべてを周囲の式の引数にする必要があります。これは <code>$(xs...)</code> 構文を使用することで実現できます。たとえば、次のコードは、引数の数がプログラム的に決定される関数呼び出しを生成します：</p><pre><code class="language-julia-repl hljs">julia&gt; args = [:x, :y, :z];
+
+julia&gt; :(f(1, $(args...)))
+:(f(1, x, y, z))</code></pre><h3 id="Nested-quote"><a class="docs-heading-anchor" href="#Nested-quote">Nested quote</a><a id="Nested-quote-1"></a><a class="docs-heading-anchor-permalink" href="#Nested-quote" title="Permalink"></a></h3><p>当然、引用式が他の引用式を含むことは可能です。これらのケースでの補間の仕組みを理解するのは少し難しいかもしれません。この例を考えてみてください：</p><pre><code class="language-julia-repl hljs">julia&gt; x = :(1 + 2);
+
+julia&gt; e = quote quote $x end end
+quote
+    #= none:1 =#
+    $(Expr(:quote, quote
+    #= none:1 =#
+    $(Expr(:$, :x))
+end))
+end</code></pre><p>結果に <code>$x</code> が含まれていることに注意してください。これは、<code>x</code> がまだ評価されていないことを意味します。言い換えれば、<code>$</code> の式は内側の引用式に「属して」おり、その引数は内側の引用式が評価されるときにのみ評価されます。</p><pre><code class="language-julia-repl hljs">julia&gt; eval(e)
+quote
+    #= none:1 =#
+    1 + 2
+end</code></pre><p>しかし、外側の <code>quote</code> 式は、内側の引用の <code>$</code> 内に値を補間することができます。これは複数の <code>$</code> を使って行われます：</p><pre><code class="language-julia-repl hljs">julia&gt; e = quote quote $$x end end
+quote
+    #= none:1 =#
+    $(Expr(:quote, quote
+    #= none:1 =#
+    $(Expr(:$, :(1 + 2)))
+end))
+end</code></pre><p><code>(1 + 2)</code>が結果に表示され、シンボル<code>x</code>の代わりになっていることに注意してください。この式を評価すると、補間された<code>3</code>が得られます：</p><pre><code class="language-julia-repl hljs">julia&gt; eval(e)
+quote
+    #= none:1 =#
+    3
+end</code></pre><p>この動作の背後にある直感は、<code>x</code>が各<code>$</code>ごとに一度評価されるということです：1つの<code>$</code>は<code>eval(:x)</code>と同様に機能し、<code>x</code>の値を返しますが、2つの<code>$</code>は<code>eval(eval(:x))</code>と同等の動作をします。</p><h3 id="man-quote-node"><a class="docs-heading-anchor" href="#man-quote-node">QuoteNode</a><a id="man-quote-node-1"></a><a class="docs-heading-anchor-permalink" href="#man-quote-node" title="Permalink"></a></h3><p>ASTにおける<code>quote</code>形式の通常の表現は、<a href="../base/base.html#Core.Expr"><code>Expr</code></a>で、ヘッドは<code>:quote</code>です。</p><pre><code class="language-julia-repl hljs">julia&gt; dump(Meta.parse(&quot;:(1+2)&quot;))
+Expr
+  head: Symbol quote
+  args: Array{Any}((1,))
+    1: Expr
+      head: Symbol call
+      args: Array{Any}((3,))
+        1: Symbol +
+        2: Int64 1
+        3: Int64 2</code></pre><p>私たちが見たように、そのような表現は <code>$</code> を使った補間をサポートしています。しかし、いくつかの状況では、補間を行わずにコードを引用する必要があります。この種の引用にはまだ構文がありませんが、内部的には <code>QuoteNode</code> 型のオブジェクトとして表現されています。</p><pre><code class="language-julia-repl hljs">julia&gt; eval(Meta.quot(Expr(:$, :(1+2))))
+3
+
+julia&gt; eval(QuoteNode(Expr(:$, :(1+2))))
+:($(Expr(:$, :(1 + 2))))</code></pre><p>パーサーは、シンボルのような単純な引用アイテムに対して <code>QuoteNode</code> を生成します:</p><pre><code class="language-julia-repl hljs">julia&gt; dump(Meta.parse(&quot;:x&quot;))
+QuoteNode
+  value: Symbol x</code></pre><p><code>QuoteNode</code> は、特定の高度なメタプログラミングタスクにも使用できます。</p><h3 id="Evaluating-expressions"><a class="docs-heading-anchor" href="#Evaluating-expressions">Evaluating expressions</a><a id="Evaluating-expressions-1"></a><a class="docs-heading-anchor-permalink" href="#Evaluating-expressions" title="Permalink"></a></h3><p>与えられた式オブジェクトを使用すると、Juliaはグローバルスコープでそれを評価（実行）することができます <a href="../base/base.html#eval"><code>eval</code></a>：</p><pre><code class="language-julia-repl hljs">julia&gt; ex1 = :(1 + 2)
+:(1 + 2)
+
+julia&gt; eval(ex1)
+3
+
+julia&gt; ex = :(a + b)
+:(a + b)
+
+julia&gt; eval(ex)
+ERROR: UndefVarError: `b` not defined in `Main`
+[...]
+
+julia&gt; a = 1; b = 2;
+
+julia&gt; eval(ex)
+3</code></pre><p>すべての <a href="modules.html#modules">module</a> は、それぞれ独自の <a href="../base/base.html#eval"><code>eval</code></a> 関数を持ち、グローバルスコープ内で式を評価します。 <code>4d61726b646f776e2e436f64652822222c20226576616c2229_40726566</code> に渡される式は、値を返すことに限定されず、囲んでいるモジュールの環境の状態を変更する副作用を持つこともあります。</p><pre><code class="language-julia-repl hljs">julia&gt; ex = :(x = 1)
+:(x = 1)
+
+julia&gt; x
+ERROR: UndefVarError: `x` not defined in `Main`
+
+julia&gt; eval(ex)
+1
+
+julia&gt; x
+1</code></pre><p>ここでは、式オブジェクトの評価がグローバル変数 <code>x</code> に値を割り当てる原因となります。</p><p>式は単に <code>Expr</code> オブジェクトであり、プログラム的に構築して評価することができるため、任意のコードを動的に生成し、<a href="../base/base.html#eval"><code>eval</code></a> を使用して実行することが可能です。以下は簡単な例です：</p><pre><code class="language-julia-repl hljs">julia&gt; a = 1;
+
+julia&gt; ex = Expr(:call, :+, a, :b)
+:(1 + b)
+
+julia&gt; a = 0; b = 2;
+
+julia&gt; eval(ex)
+3</code></pre><p><code>a</code>の値は、値1と変数<code>b</code>に<code>+</code>関数を適用する式<code>ex</code>を構築するために使用されます。<code>a</code>と<code>b</code>の使われ方の重要な違いに注意してください：</p><ul><li>式の構築時における<em>変数</em> <code>a</code> の値は、式内の即時値として使用されます。したがって、式が評価されるときの <code>a</code> の値はもはや重要ではありません：式内の値はすでに <code>1</code> であり、<code>a</code> の値が何であれ独立しています。</li><li>一方で、<em>シンボル</em> <code>:b</code> は式の構築に使用されるため、その時点での変数 <code>b</code> の値は無関係です – <code>:b</code> は単なるシンボルであり、変数 <code>b</code> が定義されている必要すらありません。しかし、式の評価時には、シンボル <code>:b</code> の値は変数 <code>b</code> の値を調べることによって解決されます。</li></ul><h3 id="Functions-on-Expressions"><a class="docs-heading-anchor" href="#Functions-on-Expressions">Functions on <code>Expr</code>essions</a><a id="Functions-on-Expressions-1"></a><a class="docs-heading-anchor-permalink" href="#Functions-on-Expressions" title="Permalink"></a></h3><p>As hinted above, one extremely useful feature of Julia is the capability to generate and manipulate Julia code within Julia itself. We have already seen one example of a function returning <a href="../base/base.html#Core.Expr"><code>Expr</code></a> objects: the <a href="../base/base.html#Base.Meta.parse-Tuple{AbstractString, Int64}"><code>Meta.parse</code></a> function, which takes a string of Julia code and returns the corresponding <code>Expr</code>. A function can also take one or more <code>Expr</code> objects as arguments, and return another <code>Expr</code>. Here is a simple, motivating example:</p><pre><code class="language-julia-repl hljs">julia&gt; function math_expr(op, op1, op2)
+           expr = Expr(:call, op, op1, op2)
+           return expr
+       end
+math_expr (generic function with 1 method)
+
+julia&gt;  ex = math_expr(:+, 1, Expr(:call, :*, 4, 5))
+:(1 + 4 * 5)
+
+julia&gt; eval(ex)
+21</code></pre><p>別の例として、数値の引数を2倍にする関数を示しますが、式はそのままにします：</p><pre><code class="language-julia-repl hljs">julia&gt; function make_expr2(op, opr1, opr2)
+           opr1f, opr2f = map(x -&gt; isa(x, Number) ? 2*x : x, (opr1, opr2))
+           retexpr = Expr(:call, op, opr1f, opr2f)
+           return retexpr
+       end
+make_expr2 (generic function with 1 method)
+
+julia&gt; make_expr2(:+, 1, 2)
+:(2 + 4)
+
+julia&gt; ex = make_expr2(:+, 1, Expr(:call, :*, 5, 8))
+:(2 + 5 * 8)
+
+julia&gt; eval(ex)
+42</code></pre><h2 id="man-macros"><a class="docs-heading-anchor" href="#man-macros">Macros</a><a id="man-macros-1"></a><a class="docs-heading-anchor-permalink" href="#man-macros" title="Permalink"></a></h2><p>マクロは、生成されたコードをプログラムの最終的な本体に含めるためのメカニズムを提供します。マクロは、引数のタプルを返される<em>式</em>にマッピングし、結果の式はコンパイル時に直接コンパイルされ、ランタイムの <a href="../base/base.html#eval"><code>eval</code></a> 呼び出しを必要としません。マクロの引数には、式、リテラル値、およびシンボルが含まれる場合があります。</p><h3 id="Basics"><a class="docs-heading-anchor" href="#Basics">Basics</a><a id="Basics-1"></a><a class="docs-heading-anchor-permalink" href="#Basics" title="Permalink"></a></h3><p>ここに非常にシンプルなマクロがあります：</p><pre><code class="language-julia-repl hljs">julia&gt; macro sayhello()
+           return :( println(&quot;Hello, world!&quot;) )
+       end
+@sayhello (macro with 1 method)</code></pre><p>マクロは、Juliaの構文で専用の文字を持っています：<code>@</code>（アットサイン）の後に、<code>macro NAME ... end</code>ブロックで宣言されたユニークな名前が続きます。この例では、コンパイラはすべての<code>@sayhello</code>のインスタンスを次のように置き換えます：</p><pre><code class="language-julia hljs">:( println(&quot;Hello, world!&quot;) )</code></pre><p><code>@sayhello</code>がREPLに入力されると、式は即座に実行されるため、評価結果のみが表示されます:</p><pre><code class="language-julia-repl hljs">julia&gt; @sayhello()
+Hello, world!</code></pre><p>少し複雑なマクロを考えてみましょう：</p><pre><code class="language-julia-repl hljs">julia&gt; macro sayhello(name)
+           return :( println(&quot;Hello, &quot;, $name) )
+       end
+@sayhello (macro with 1 method)</code></pre><p>このマクロは1つの引数を取ります: <code>name</code>。<code>@sayhello</code> が出現すると、引用された式は引数の値を最終的な式に補間するために <em>展開</em> されます:</p><pre><code class="language-julia-repl hljs">julia&gt; @sayhello(&quot;human&quot;)
+Hello, human</code></pre><p>引用された戻り値の式は、関数 <a href="../base/base.html#Base.macroexpand"><code>macroexpand</code></a> を使用して表示できます（<strong>重要な注意:</strong> これはマクロのデバッグに非常に便利なツールです）：</p><pre><code class="language-julia-repl hljs">julia&gt; ex = macroexpand(Main, :(@sayhello(&quot;human&quot;)) )
+:(Main.println(&quot;Hello, &quot;, &quot;human&quot;))
+
+julia&gt; typeof(ex)
+Expr</code></pre><p><code>&quot;human&quot;</code>リテラルが式に補間されていることがわかります。</p><p><a href="../base/base.html#Base.@macroexpand"><code>@macroexpand</code></a>というマクロも存在し、<code>macroexpand</code>関数よりも少し便利かもしれません。</p><pre><code class="language-julia-repl hljs">julia&gt; @macroexpand @sayhello &quot;human&quot;
+:(println(&quot;Hello, &quot;, &quot;human&quot;))</code></pre><h3 id="Hold-up:-why-macros?"><a class="docs-heading-anchor" href="#Hold-up:-why-macros?">Hold up: why macros?</a><a id="Hold-up:-why-macros?-1"></a><a class="docs-heading-anchor-permalink" href="#Hold-up:-why-macros?" title="Permalink"></a></h3><p>私たちはすでに前のセクションで <code>f(::Expr...) -&gt; Expr</code> という関数を見ました。実際、 <a href="../base/base.html#Base.macroexpand"><code>macroexpand</code></a> もそのような関数です。では、なぜマクロが存在するのでしょうか？</p><p>マクロは、コードが解析されるときに実行されるため、プログラマーがプログラム全体が実行される前にカスタマイズされたコードの断片を生成して含めることを可能にします。この違いを示すために、次の例を考えてみましょう：</p><pre><code class="language-julia-repl hljs">julia&gt; macro twostep(arg)
+           println(&quot;I execute at parse time. The argument is: &quot;, arg)
+           return :(println(&quot;I execute at runtime. The argument is: &quot;, $arg))
+       end
+@twostep (macro with 1 method)
+
+julia&gt; ex = macroexpand(Main, :(@twostep :(1, 2, 3)) );
+I execute at parse time. The argument is: :((1, 2, 3))</code></pre><p>最初の呼び出し <a href="../base/io-network.html#Base.println"><code>println</code></a> は、<a href="../base/base.html#Base.macroexpand"><code>macroexpand</code></a> が呼び出されたときに実行されます。結果の式には<em>のみ</em>第二の <code>println</code> が含まれています:</p><pre><code class="language-julia-repl hljs">julia&gt; typeof(ex)
+Expr
+
+julia&gt; ex
+:(println(&quot;I execute at runtime. The argument is: &quot;, $(Expr(:copyast, :($(QuoteNode(:((1, 2, 3)))))))))
+
+julia&gt; eval(ex)
+I execute at runtime. The argument is: (1, 2, 3)</code></pre><h3 id="Macro-invocation"><a class="docs-heading-anchor" href="#Macro-invocation">Macro invocation</a><a id="Macro-invocation-1"></a><a class="docs-heading-anchor-permalink" href="#Macro-invocation" title="Permalink"></a></h3><p>マクロは以下の一般的な構文で呼び出されます：</p><pre><code class="language-julia hljs">@name expr1 expr2 ...
+@name(expr1, expr2, ...)</code></pre><p>マクロ名の前にある区別するための <code>@</code> と、最初の形式での引数式の間にカンマがないこと、そして2番目の形式での <code>@name</code> の後に空白がないことに注意してください。これらの2つのスタイルは混合してはいけません。例えば、以下の構文は上記の例とは異なります。これは、タプル <code>(expr1, expr2, ...)</code> をマクロへの1つの引数として渡します：</p><pre><code class="language-julia hljs">@name (expr1, expr2, ...)</code></pre><p>マクロを配列リテラル（または内包表記）に適用する別の方法は、括弧を使用せずに両者を並べることです。この場合、配列はマクロに供給される唯一の式になります。以下の構文は等価であり（<code>@name [a b] * v</code> とは異なります）：</p><pre><code class="language-julia hljs">@name[a b] * v
+@name([a b]) * v</code></pre><p>マクロは引数を式、リテラル、またはシンボルとして受け取ることを強調することが重要です。マクロ引数を探る一つの方法は、マクロ本体内で <a href="../base/io-network.html#Base.show-Tuple{IO, Any}"><code>show</code></a> 関数を呼び出すことです：</p><pre><code class="language-julia-repl hljs">julia&gt; macro showarg(x)
+           show(x)
+           # ... remainder of macro, returning an expression
+       end
+@showarg (macro with 1 method)
+
+julia&gt; @showarg(a)
+:a
+
+julia&gt; @showarg(1+1)
+:(1 + 1)
+
+julia&gt; @showarg(println(&quot;Yo!&quot;))
+:(println(&quot;Yo!&quot;))
+
+julia&gt; @showarg(1)        # Numeric literal
+1
+
+julia&gt; @showarg(&quot;Yo!&quot;)    # String literal
+&quot;Yo!&quot;
+
+julia&gt; @showarg(&quot;Yo! $(&quot;hello&quot;)&quot;)    # String with interpolation is an Expr rather than a String
+:(&quot;Yo! $(&quot;hello&quot;)&quot;)</code></pre><p>与えられた引数リストに加えて、すべてのマクロには <code>__source__</code> と <code>__module__</code> という名前の追加引数が渡されます。</p><p>引数 <code>__source__</code> は、マクロ呼び出しからの <code>@</code> 記号のパーサー位置に関する情報（<code>LineNumberNode</code> オブジェクトの形式で）を提供します。これにより、マクロはより良いエラー診断情報を含めることができ、ログ記録、文字列パーサーマクロ、ドキュメントなどで一般的に使用されます。また、<a href="../base/base.html#Base.@__LINE__"><code>@__LINE__</code></a>、<a href="../base/base.html#Base.@__FILE__"><code>@__FILE__</code></a>、および <a href="../base/base.html#Base.@__DIR__"><code>@__DIR__</code></a> マクロを実装するためにも使用されます。</p><p>位置情報は <code>__source__.line</code> と <code>__source__.file</code> を参照することでアクセスできます:</p><pre><code class="language-julia-repl hljs">julia&gt; macro __LOCATION__(); return QuoteNode(__source__); end
+@__LOCATION__ (macro with 1 method)
+
+julia&gt; dump(
+            @__LOCATION__(
+       ))
+LineNumberNode
+  line: Int64 2
+  file: Symbol none</code></pre><p>引数 <code>__module__</code> は、マクロ呼び出しの展開コンテキストに関する情報（<code>Module</code> オブジェクトの形式で）を提供します。これにより、マクロは既存のバインディングなどのコンテキスト情報を調べたり、現在のモジュール内で自己反射を行うランタイム関数呼び出しに値を追加の引数として挿入したりすることができます。</p><h3 id="Building-an-advanced-macro"><a class="docs-heading-anchor" href="#Building-an-advanced-macro">Building an advanced macro</a><a id="Building-an-advanced-macro-1"></a><a class="docs-heading-anchor-permalink" href="#Building-an-advanced-macro" title="Permalink"></a></h3><p>ここに、Juliaの<a href="../base/base.html#Base.@assert"><code>@assert</code></a>マクロの簡略化された定義があります：</p><pre><code class="language-julia-repl hljs">julia&gt; macro assert(ex)
+           return :( $ex ? nothing : throw(AssertionError($(string(ex)))) )
+       end
+@assert (macro with 1 method)</code></pre><p>このマクロは次のように使用できます：</p><pre><code class="language-julia-repl hljs">julia&gt; @assert 1 == 1.0
+
+julia&gt; @assert 1 == 0
+ERROR: AssertionError: 1 == 0</code></pre><p>マクロ呼び出しは、解析時にその返された結果に展開されます。これは、次のように書くことと同等です：</p><pre><code class="language-julia hljs">1 == 1.0 ? nothing : throw(AssertionError(&quot;1 == 1.0&quot;))
+1 == 0 ? nothing : throw(AssertionError(&quot;1 == 0&quot;))</code></pre><p>つまり、最初の呼び出しでは、式 <code>:(1 == 1.0)</code> がテスト条件スロットに挿入され、<code>string(:(1 == 1.0))</code> の値がアサーションメッセージスロットに挿入されます。このように構築された全体の式は、<code>@assert</code> マクロ呼び出しが行われる構文木に配置されます。実行時に、テスト式が真に評価されると、<a href="../base/constants.html#Core.nothing"><code>nothing</code></a> が返されますが、テストが偽の場合は、偽であったアサートされた式を示すエラーが発生します。このように、条件の<em>値</em>のみが利用可能であり、それを計算した式をエラーメッセージに表示することは不可能であるため、これを関数として書くことはできないことに注意してください。</p><p><code>@assert</code>の実際の定義はJulia Baseではより複雑です。ユーザーは失敗した式を単に印刷するのではなく、オプションで独自のエラーメッセージを指定することができます。可変数の引数を持つ関数と同様に（<a href="functions.html#Varargs-Functions">Varargs Functions</a>）、これは最後の引数の後にエリプシスを指定することで示されます：</p><pre><code class="language-julia-repl hljs">julia&gt; macro assert(ex, msgs...)
+           msg_body = isempty(msgs) ? ex : msgs[1]
+           msg = string(msg_body)
+           return :($ex ? nothing : throw(AssertionError($msg)))
+       end
+@assert (macro with 1 method)</code></pre><p>現在、<code>@assert</code> は受け取る引数の数に応じて2つの動作モードを持っています！ 引数が1つだけの場合、<code>msgs</code> にキャプチャされた式のタプルは空になり、上記の簡単な定義と同じように動作します。しかし、ユーザーが2番目の引数を指定すると、それは失敗した式の代わりにメッセージ本文に印刷されます。マクロ展開の結果を調べるには、適切に名付けられた <a href="../base/base.html#Base.@macroexpand"><code>@macroexpand</code></a> マクロを使用できます：</p><pre><code class="language-julia-repl hljs">julia&gt; @macroexpand @assert a == b
+:(if Main.a == Main.b
+        Main.nothing
+    else
+        Main.throw(Main.AssertionError(&quot;a == b&quot;))
+    end)
+
+julia&gt; @macroexpand @assert a==b &quot;a should equal b!&quot;
+:(if Main.a == Main.b
+        Main.nothing
+    else
+        Main.throw(Main.AssertionError(&quot;a should equal b!&quot;))
+    end)</code></pre><p>別のケースがあります。実際の <code>@assert</code> マクロが処理するのは、&quot;a should equal b&quot; を印刷するだけでなく、それらの値も印刷したい場合です。例えば、カスタムメッセージで文字列補間を使おうとするかもしれませんが、<code>@assert a==b &quot;a ($a) should equal b ($b)!&quot;</code> のように書くと、上記のマクロでは期待通りに動作しません。なぜか分かりますか？ <a href="strings.html#string-interpolation">string interpolation</a> から思い出してください。補間された文字列は、<a href="../base/strings.html#Base.string"><code>string</code></a> への呼び出しに書き換えられます。比較してみてください：</p><pre><code class="language-julia-repl hljs">julia&gt; typeof(:(&quot;a should equal b&quot;))
+String
+
+julia&gt; typeof(:(&quot;a ($a) should equal b ($b)!&quot;))
+Expr
+
+julia&gt; dump(:(&quot;a ($a) should equal b ($b)!&quot;))
+Expr
+  head: Symbol string
+  args: Array{Any}((5,))
+    1: String &quot;a (&quot;
+    2: Symbol a
+    3: String &quot;) should equal b (&quot;
+    4: Symbol b
+    5: String &quot;)!&quot;</code></pre><p>今や <code>msg_body</code> にプレーンな文字列を取得する代わりに、マクロは期待通りに表示するために評価する必要がある完全な式を受け取っています。これは、<a href="../base/strings.html#Base.string"><code>string</code></a> コールへの引数として返される式に直接スプライスできます。完全な実装については、<a href="https://github.com/JuliaLang/julia/blob/master/base/error.jl"><code>error.jl</code></a> を参照してください。</p><p><code>@assert</code>マクロは、マクロ本体内の式の操作を簡素化するために、引用された式へのスプライシングを大いに活用しています。</p><h3 id="Hygiene"><a class="docs-heading-anchor" href="#Hygiene">Hygiene</a><a id="Hygiene-1"></a><a class="docs-heading-anchor-permalink" href="#Hygiene" title="Permalink"></a></h3><p>より複雑なマクロで発生する問題の一つは、<a href="https://en.wikipedia.org/wiki/Hygienic_macro">hygiene</a>です。要するに、マクロは、返される式に導入する変数が、展開される周囲のコードに既存の変数と偶然に衝突しないようにする必要があります。逆に、マクロに引数として渡される式は、周囲のコードの文脈で評価されることが<em>期待される</em>ことが多く、既存の変数と相互作用し、変更を加えます。別の懸念は、マクロが定義された場所とは異なるモジュールで呼び出される可能性があるという事実から生じます。この場合、すべてのグローバル変数が正しいモジュールに解決されることを確認する必要があります。Juliaは、テキストマクロ展開（Cのような）を持つ言語に対して大きな利点を持っており、返される式だけを考慮すればよいのです。他のすべての変数（上記の<code>@assert</code>の<code>msg</code>など）は、<a href="variables-and-scoping.html#scope-of-variables">normal scoping block behavior</a>に従います。</p><p>これらの問題を示すために、式を引数として受け取り、時間を記録し、式を評価し、再度時間を記録し、前後の時間の差を出力し、最後に式の値を最終値として持つ<code>@time</code>マクロを書くことを考えてみましょう。このマクロは次のようになります：</p><pre><code class="language-julia hljs">macro time(ex)
+    return quote
+        local t0 = time_ns()
+        local val = $ex
+        local t1 = time_ns()
+        println(&quot;elapsed time: &quot;, (t1-t0)/1e9, &quot; seconds&quot;)
+        val
+    end
+end</code></pre><p>ここでは、<code>t0</code>、<code>t1</code>、および <code>val</code> をプライベートな一時変数にし、<code>time_ns</code> がユーザーが持っているかもしれない <code>time_ns</code> 変数ではなく、Julia Base の <a href="../base/base.html#Base.time_ns"><code>time_ns</code></a> 関数を参照するようにしたいと思います（<code>println</code> も同様です）。ユーザーの式 <code>ex</code> に <code>t0</code> という変数への代入が含まれていたり、独自の <code>time_ns</code> 変数が定義されていた場合に発生する可能性のある問題を想像してみてください。エラーが発生したり、神秘的に不正確な動作が起こるかもしれません。</p><p>Juliaのマクロエクスパンダーは、これらの問題を次のように解決します。まず、マクロの結果内の変数は、ローカルまたはグローバルのいずれかに分類されます。変数は、代入されていて（グローバルとして宣言されていない）、ローカルとして宣言されているか、関数の引数名として使用されている場合、ローカルと見なされます。それ以外の場合は、グローバルと見なされます。ローカル変数は、ユニークになるように名前が変更され（新しいシンボルを生成する<a href="../base/base.html#Base.gensym"><code>gensym</code></a>関数を使用）、グローバル変数はマクロ定義環境内で解決されます。したがって、上記の2つの懸念はどちらも対処されます。マクロのローカルはユーザー変数と衝突せず、<code>time_ns</code>と<code>println</code>はJulia Baseの定義を参照します。</p><p>ただし、1つの問題が残っています。このマクロの次の使用を考えてみてください：</p><pre><code class="language-julia hljs">module MyModule
+import Base.@time
+
+time_ns() = ... # compute something
+
+@time time_ns()
+end</code></pre><p>ここでユーザーの式 <code>ex</code> は <code>time_ns</code> への呼び出しですが、マクロが使用する同じ <code>time_ns</code> 関数ではありません。これは明らかに <code>MyModule.time_ns</code> を指しています。したがって、<code>ex</code> のコードがマクロ呼び出し環境で解決されるように手配する必要があります。これは、式を <a href="../base/base.html#Base.esc"><code>esc</code></a> で「エスケープ」することによって行われます。</p><pre><code class="language-julia hljs">macro time(ex)
+    ...
+    local val = $(esc(ex))
+    ...
+end</code></pre><p>このようにラップされた式は、マクロ展開器によってそのまま放置され、出力にそのまま貼り付けられます。したがって、マクロ呼び出し環境で解決されます。</p><p>このエスケープ機構は、必要に応じて「ハイジーンを侵害」するために使用でき、ユーザー変数を導入または操作することができます。たとえば、次のマクロは呼び出し環境で <code>x</code> をゼロに設定します：</p><pre><code class="language-julia-repl hljs">julia&gt; macro zerox()
+           return esc(:(x = 0))
+       end
+@zerox (macro with 1 method)
+
+julia&gt; function foo()
+           x = 1
+           @zerox
+           return x # is zero
+       end
+foo (generic function with 1 method)
+
+julia&gt; foo()
+0</code></pre><p>この種の変数の操作は慎重に使用すべきですが、時には非常に便利です。</p><p>ハイジーンルールを正しく理解することは、非常に困難な課題です。マクロを使用する前に、関数クロージャで十分かどうかを考慮することをお勧めします。もう一つの有用な戦略は、可能な限り多くの作業をランタイムに遅延させることです。例えば、多くのマクロは単にその引数を <code>QuoteNode</code> やその他の類似の <a href="../base/base.html#Core.Expr"><code>Expr</code></a> にラップします。これには、単に <code>schedule(Task(() -&gt; $body))</code> を返す <code>@task body</code> や、単に <code>eval(QuoteNode(expr))</code> を返す <code>@eval expr</code> などの例があります。</p><p>上記の <code>@time</code> の例を次のように書き換えることができます:</p><pre><code class="language-julia hljs">macro time(expr)
+    return :(timeit(() -&gt; $(esc(expr))))
+end
+function timeit(f)
+    t0 = time_ns()
+    val = f()
+    t1 = time_ns()
+    println(&quot;elapsed time: &quot;, (t1-t0)/1e9, &quot; seconds&quot;)
+    return val
+end</code></pre><p>しかし、私たちは良い理由があってこれを行いません。<code>expr</code>を新しいスコープブロック（無名関数）でラップすることは、式の意味（その中の変数のスコープ）をわずかに変更しますが、私たちは<code>@time</code>がラップされたコードに最小限の影響で使用できるようにしたいのです。</p><h3 id="Macros-and-dispatch"><a class="docs-heading-anchor" href="#Macros-and-dispatch">Macros and dispatch</a><a id="Macros-and-dispatch-1"></a><a class="docs-heading-anchor-permalink" href="#Macros-and-dispatch" title="Permalink"></a></h3><p>マクロは、ジュリアの関数と同様に、ジェネリックです。これは、複数のメソッド定義を持つことができることを意味し、これは多重ディスパッチのおかげです：</p><pre><code class="language-julia-repl hljs">julia&gt; macro m end
+@m (macro with 0 methods)
+
+julia&gt; macro m(args...)
+           println(&quot;$(length(args)) arguments&quot;)
+       end
+@m (macro with 1 method)
+
+julia&gt; macro m(x,y)
+           println(&quot;Two arguments&quot;)
+       end
+@m (macro with 2 methods)
+
+julia&gt; @m &quot;asd&quot;
+1 arguments
+
+julia&gt; @m 1 2
+Two arguments</code></pre><p>ただし、マクロディスパッチは、マクロに渡されるASTの型に基づいていることを念頭に置くべきです。実行時にASTが評価される型ではありません。</p><pre><code class="language-julia-repl hljs">julia&gt; macro m(::Int)
+           println(&quot;An Integer&quot;)
+       end
+@m (macro with 3 methods)
+
+julia&gt; @m 2
+An Integer
+
+julia&gt; x = 2
+2
+
+julia&gt; @m x
+1 arguments</code></pre><h2 id="Code-Generation"><a class="docs-heading-anchor" href="#Code-Generation">Code Generation</a><a id="Code-Generation-1"></a><a class="docs-heading-anchor-permalink" href="#Code-Generation" title="Permalink"></a></h2><p>大量の繰り返しのボイラープレートコードが必要な場合、冗長性を避けるためにプログラム的に生成することが一般的です。ほとんどの言語では、これには追加のビルドステップと、繰り返しのコードを生成するための別のプログラムが必要です。Juliaでは、式の補間と <a href="../base/base.html#eval"><code>eval</code></a> により、そのようなコード生成がプログラムの実行の通常の過程で行われることができます。たとえば、次のカスタムタイプを考えてみましょう。</p><pre><code class="language-julia hljs">struct MyNumber
+    x::Float64
+end
+# output
+</code></pre><p>追加したいメソッドの数に対して、以下のループでプログラム的に行うことができます：</p><pre><code class="language-julia hljs">for op = (:sin, :cos, :tan, :log, :exp)
+    eval(quote
+        Base.$op(a::MyNumber) = MyNumber($op(a.x))
+    end)
+end
+# output
+</code></pre><p>そして、私たちは今、カスタムタイプでそれらの関数を使用できます：</p><pre><code class="language-julia-repl hljs">julia&gt; x = MyNumber(π)
+MyNumber(3.141592653589793)
+
+julia&gt; sin(x)
+MyNumber(1.2246467991473532e-16)
+
+julia&gt; cos(x)
+MyNumber(-1.0)</code></pre><p>このように、Juliaは独自の <a href="https://en.wikipedia.org/wiki/Preprocessor">preprocessor</a> として機能し、言語内からのコード生成を可能にします。上記のコードは、<code>:</code> プレフィックスの引用形式を使用して、もう少し簡潔に書くことができます。</p><pre><code class="language-julia hljs">for op = (:sin, :cos, :tan, :log, :exp)
+    eval(:(Base.$op(a::MyNumber) = MyNumber($op(a.x))))
+end</code></pre><p>この種の言語内コード生成は、<code>eval(quote(...))</code>パターンを使用することで一般的であり、Juliaにはこのパターンを短縮するためのマクロが付属しています。</p><pre><code class="language-julia hljs">for op = (:sin, :cos, :tan, :log, :exp)
+    @eval Base.$op(a::MyNumber) = MyNumber($op(a.x))
+end</code></pre><p><a href="../base/base.html#Base.@eval"><code>@eval</code></a> マクロは、この呼び出しを上記の長いバージョンと正確に同等になるように書き換えます。生成されたコードの長いブロックの場合、<code>4d61726b646f776e2e436f64652822222c2022406576616c2229_40726566</code> に与えられる式引数はブロックであることができます：</p><pre><code class="language-julia hljs">@eval begin
+    # multiple lines
+end</code></pre><h2 id="meta-non-standard-string-literals"><a class="docs-heading-anchor" href="#meta-non-standard-string-literals">Non-Standard String Literals</a><a id="meta-non-standard-string-literals-1"></a><a class="docs-heading-anchor-permalink" href="#meta-non-standard-string-literals" title="Permalink"></a></h2><p><a href="strings.html#non-standard-string-literals">Strings</a>から思い出してください。識別子で接頭辞が付けられた文字列リテラルは非標準文字列リテラルと呼ばれ、接頭辞のない文字列リテラルとは異なる意味を持つことがあります。例えば：</p><ul><li><code>r&quot;^\s*(?:#|$)&quot;</code> は文字列ではなく、<a href="strings.html#man-regex-literals">regular expression object</a> を生成します。</li><li><code>b&quot;DATA\xff\u2200&quot;</code> は <code>[68,65,84,65,255,226,136,128]</code> の <a href="strings.html#man-byte-array-literals">byte array literal</a> です。</li></ul><p>おそらく驚くべきことに、これらの動作はJuliaのパーサーやコンパイラーにハードコーディングされているわけではありません。代わりに、誰でも使用できる一般的なメカニズムによって提供されるカスタム動作です：接頭辞付き文字列リテラルは、特別に名前付けされたマクロへの呼び出しとして解析されます。たとえば、正規表現マクロは次のようになります：</p><pre><code class="language-julia hljs">macro r_str(p)
+    Regex(p)
+end</code></pre><p>それだけです。このマクロは、文字列リテラル <code>r&quot;^\s*(?:#|$)&quot;</code> のリテラル内容が <code>@r_str</code> マクロに渡され、その展開結果が文字列リテラルが発生する構文木に配置されるべきであることを示しています。言い換えれば、式 <code>r&quot;^\s*(?:#|$)&quot;</code> は、次のオブジェクトを構文木に直接配置することと同等です：</p><pre><code class="language-julia hljs">Regex(&quot;^\\s*(?:#|\$)&quot;)</code></pre><p>文字列リテラル形式は短く、はるかに便利であるだけでなく、効率も良いです。正規表現はコンパイルされ、<code>Regex</code>オブジェクトは実際に<em>コードがコンパイルされるとき</em>に作成されるため、コンパイルはコードが実行されるたびに行われるのではなく、一度だけ行われます。正規表現がループ内で発生する場合を考えてみてください：</p><pre><code class="language-julia hljs">for line = lines
+    m = match(r&quot;^\s*(?:#|$)&quot;, line)
+    if m === nothing
+        # non-comment
+    else
+        # comment
+    end
+end</code></pre><p>正規表現 <code>r&quot;^\s*(?:#|$)&quot;</code> はコンパイルされ、コードが解析されるときに構文木に挿入されるため、この式はループが実行されるたびにコンパイルされるのではなく、一度だけコンパイルされます。これをマクロなしで実現するためには、このループを次のように書く必要があります：</p><pre><code class="language-julia hljs">re = Regex(&quot;^\\s*(?:#|\$)&quot;)
+for line = lines
+    m = match(re, line)
+    if m === nothing
+        # non-comment
+    else
+        # comment
+    end
+end</code></pre><p>さらに、コンパイラが正規表現オブジェクトがすべてのループで定数であることを判断できない場合、特定の最適化が不可能になる可能性があり、このバージョンは上記のより便利なリテラル形式よりも依然として効率が悪くなるかもしれません。もちろん、非リテラル形式がより便利な状況もあります。変数を正規表現に埋め込む必要がある場合、このより冗長なアプローチを取らなければなりません。また、正規表現パターン自体が動的で、各ループの反復ごとに変更される可能性がある場合、各反復で新しい正規表現オブジェクトを構築する必要があります。しかし、ほとんどの使用ケースでは、正規表現は実行時データに基づいて構築されることはありません。この大多数のケースでは、正規表現をコンパイル時の値として記述する能力は非常に貴重です。</p><p>ユーザー定義の文字列リテラルのメカニズムは、非常に強力です。ジュリアの非標準リテラルはこれを使用して実装されているだけでなく、コマンドリテラル構文（<code>`echo &quot;Hello, $person&quot;`</code>）も次の無害に見えるマクロを使用して実装されています：</p><pre><code class="language-julia hljs">macro cmd(str)
+    :(cmd_gen($(shell_parse(str)[1])))
+end</code></pre><p>もちろん、このマクロ定義で使用される関数には多くの複雑さが隠れていますが、それらは単なる関数であり、完全にJuliaで書かれています。ソースを読むことができ、彼らが正確に何をしているのかを見ることができます。そして、彼らが行うことはすべて、プログラムの構文木に挿入される式オブジェクトを構築することだけです。</p><p>文字列リテラルと同様に、コマンドリテラルも識別子でプレフィックスを付けて、非標準コマンドリテラルと呼ばれるものを形成することができます。これらのコマンドリテラルは、特別に名前付けされたマクロへの呼び出しとして解析されます。例えば、構文 <code>custom`literal`</code> は <code>@custom_cmd &quot;literal&quot;</code> として解析されます。Julia自体には非標準コマンドリテラルは含まれていませんが、パッケージはこの構文を利用することができます。異なる構文と <code>_str</code> サフィックスの代わりに <code>_cmd</code> サフィックスがあることを除いて、非標準コマンドリテラルは非標準文字列リテラルとまったく同じように動作します。</p><p>モジュールが同じ名前の非標準文字列またはコマンドリテラルを提供する場合、文字列またはコマンドリテラルをモジュール名で修飾することが可能です。たとえば、<code>Foo</code> と <code>Bar</code> の両方が非標準文字列リテラル <code>@x_str</code> を提供している場合、<code>Foo.x&quot;literal&quot;</code> または <code>Bar.x&quot;literal&quot;</code> と書くことで、両者を区別することができます。</p><p>マクロを定義する別の方法は次のようになります：</p><pre><code class="language-julia hljs">macro foo_str(str, flag)
+    # do stuff
+end</code></pre><p>このマクロは次の構文で呼び出すことができます：</p><pre><code class="language-julia hljs">foo&quot;str&quot;flag</code></pre><p>上記の構文でのフラグのタイプは、文字列リテラルの後に続く内容を持つ <code>String</code> になります。</p><h2 id="Generated-functions"><a class="docs-heading-anchor" href="#Generated-functions">Generated functions</a><a id="Generated-functions-1"></a><a class="docs-heading-anchor-permalink" href="#Generated-functions" title="Permalink"></a></h2><p>非常に特別なマクロは <a href="../base/base.html#Base.@generated"><code>@generated</code></a> であり、いわゆる <em>生成関数</em> を定義することを可能にします。これらは、引数の型に応じて特化したコードを生成する能力を持ち、複数のディスパッチで達成できるよりも柔軟性があり、または少ないコードで実現できます。マクロはパース時に式で動作し、入力の型にアクセスできませんが、生成関数は引数の型が知られている時点で展開されますが、関数はまだコンパイルされていません。</p><p>生成された関数宣言は、計算やアクションを実行する代わりに、引用された式を返し、その式が引数の型に対応するメソッドの本体を形成します。生成された関数が呼び出されると、返された式がコンパイルされて実行されます。これを効率的にするために、結果は通常キャッシュされます。また、これを推論可能にするために、使用できる言語のサブセットは限られています。したがって、生成された関数は、許可される構造に対する制限が大きくなる代わりに、実行時からコンパイル時に作業を移動する柔軟な方法を提供します。</p><p>生成関数を定義する際には、通常の関数との主な違いが5つあります：</p><ol><li>関数宣言に<code>@generated</code>マクロを注釈します。これにより、コンパイラがこの関数が生成されたものであることを知るための情報がASTに追加されます。</li><li>生成された関数の本体では、引数の<em>型</em>にのみアクセスでき、値にはアクセスできません。</li><li>何かを計算したり、アクションを実行する代わりに、あなたが望むことを行う<em>引用された式</em>を返します。</li><li>生成された関数は、生成された関数の定義の<em>前</em>に定義された関数のみを呼び出すことが許可されています。（これに従わないと、将来のワールドエイジの関数を参照する<code>MethodErrors</code>が発生する可能性があります。）</li><li>生成された関数は、非定数のグローバル状態（例えば、IO、ロック、非ローカル辞書、または <a href="../base/base.html#Base.hasmethod"><code>hasmethod</code></a> を使用することを含む）を<em>変更</em>したり<em>観察</em>したりしてはいけません。これは、グローバル定数を読み取ることしかできず、副作用を持つことができないことを意味します。言い換えれば、完全に純粋でなければなりません。実装の制限により、現在はクロージャやジェネレーターを定義することもできません。</li></ol><p>これは例を使って説明するのが最も簡単です。生成された関数 <code>foo</code> を次のように宣言できます。</p><pre><code class="language-julia-repl hljs">julia&gt; @generated function foo(x)
+           Core.println(x)
+           return :(x * x)
+       end
+foo (generic function with 1 method)</code></pre><p>注意すべきは、本文が単に <code>x * x</code> の値ではなく、引用された式 <code>:(x * x)</code> を返すということです。</p><p>呼び出し元の視点から見ると、これは通常の関数と同じです。実際、通常の関数を呼び出しているのか生成された関数を呼び出しているのかを知る必要はありません。<code>foo</code> がどのように動作するか見てみましょう：</p><pre><code class="language-julia-repl hljs">julia&gt; x = foo(2); # note: output is from println() statement in the body
+Int64
+
+julia&gt; x           # now we print x
+4
+
+julia&gt; y = foo(&quot;bar&quot;);
+String
+
+julia&gt; y
+&quot;barbar&quot;</code></pre><p>生成された関数の本体では、<code>x</code>は渡された引数の<em>型</em>であり、生成された関数が返す値は、定義から返された引用された式を、今度は<code>x</code>の<em>値</em>で評価した結果です。</p><p><code>foo</code>をすでに使用した型で再評価するとどうなりますか？</p><pre><code class="language-julia-repl hljs">julia&gt; foo(4)
+16</code></pre><p><a href="../base/numbers.html#Core.Int64"><code>Int64</code></a> の印刷は行われないことに注意してください。生成された関数の本体は、特定の引数の型のセットに対してここで一度だけ実行されたことがわかります。そして、その結果はキャッシュされました。その後、この例では、最初の呼び出しで生成された関数から返された式がメソッド本体として再利用されました。ただし、実際のキャッシュ動作は実装依存のパフォーマンス最適化であるため、この動作に過度に依存することは無効です。</p><p>生成された関数が生成される回数は<em>1回だけ</em>である可能性もありますが、<em>それ以上</em>の回数である可能性や、まったく発生しないように見える可能性もあります。その結果、<em>副作用</em>のある生成された関数を書くことは<em>決して</em>避けるべきです - 副作用が発生するタイミングや頻度は未定義です。（これはマクロにも当てはまります - そしてマクロと同様に、生成された関数内での <a href="../base/base.html#eval"><code>eval</code></a> の使用は、あなたが間違った方法で何かをしているサインです。）しかし、マクロとは異なり、ランタイムシステムは <code>4d61726b646f776e2e436f64652822222c20226576616c2229_40726566</code> への呼び出しを正しく処理できないため、それは許可されていません。</p><p><code>@generated</code> 関数がメソッドの再定義とどのように相互作用するかを見ることも重要です。正しい <code>@generated</code> 関数は、可変状態を観察したり、グローバル状態を変更したりしてはならないという原則に従うと、次のような動作が見られます。生成された関数は、生成された関数自体の <em>定義</em> の前に定義されていないメソッドを <em>呼び出すことができない</em> ことに注意してください。</p><p>最初に <code>f(x)</code> は一つの定義を持っています。</p><pre><code class="language-julia-repl hljs">julia&gt; f(x) = &quot;original definition&quot;;</code></pre><p>他の操作を定義する <code>f(x)</code>：</p><pre><code class="language-julia-repl hljs">julia&gt; g(x) = f(x);
+
+julia&gt; @generated gen1(x) = f(x);
+
+julia&gt; @generated gen2(x) = :(f(x));</code></pre><p><code>f(x)</code>の新しい定義をいくつか追加します:</p><pre><code class="language-julia-repl hljs">julia&gt; f(x::Int) = &quot;definition for Int&quot;;
+
+julia&gt; f(x::Type{Int}) = &quot;definition for Type{Int}&quot;;</code></pre><p>そして、これらの結果がどのように異なるかを比較します：</p><pre><code class="language-julia-repl hljs">julia&gt; f(1)
+&quot;definition for Int&quot;
+
+julia&gt; g(1)
+&quot;definition for Int&quot;
+
+julia&gt; gen1(1)
+&quot;original definition&quot;
+
+julia&gt; gen2(1)
+&quot;definition for Int&quot;</code></pre><p>生成された関数の各メソッドは、定義された関数の独自の見方を持っています：</p><pre><code class="language-julia-repl hljs">julia&gt; @generated gen1(x::Real) = f(x);
+
+julia&gt; gen1(1)
+&quot;definition for Type{Int}&quot;</code></pre><p>生成された関数 <code>foo</code> の例は、通常の関数 <code>foo(x) = x * x</code> ができること（最初の呼び出し時に型を印刷し、より高いオーバーヘッドがかかることを除いて）を何も行いませんでした。しかし、生成された関数の力は、渡された型に応じて異なる引用された式を計算できる能力にあります。</p><pre><code class="language-julia-repl hljs">julia&gt; @generated function bar(x)
+           if x &lt;: Integer
+               return :(x ^ 2)
+           else
+               return :(x)
+           end
+       end
+bar (generic function with 1 method)
+
+julia&gt; bar(4)
+16
+
+julia&gt; bar(&quot;baz&quot;)
+&quot;baz&quot;</code></pre><p>（もちろん、この作り話の例は、複数のディスパッチを使用することでより簡単に実装できますが…）</p><p>この使用法はランタイムシステムを破損させ、未定義の動作を引き起こします:</p><pre><code class="language-julia-repl hljs">julia&gt; @generated function baz(x)
+           if rand() &lt; .9
+               return :(x^2)
+           else
+               return :(&quot;boo!&quot;)
+           end
+       end
+baz (generic function with 1 method)</code></pre><p>生成された関数の本体は非決定的であるため、その動作、<em>およびその後のすべてのコードの動作</em>は未定義です。</p><p><em>これらの例をコピーしないでください！</em></p><p>これらの例は、生成された関数がどのように機能するかを、定義の側と呼び出しの側の両方で示すのに役立つことを願っています。ただし、<em>これらをコピーしないでください</em>。理由は以下の通りです：</p><ul><li><code>foo</code> 関数は副作用を持っています（<code>Core.println</code> の呼び出し）、これらの副作用がいつ、どのくらいの頻度で、または何回発生するかは未定義です。</li><li><code>bar</code> 関数は、複数のディスパッチで解決した方が良い問題を解決します - <code>bar(x) = x</code> と <code>bar(x::Integer) = x ^ 2</code> を定義することで同じことができますが、これはよりシンプルで速いです。</li><li><code>baz</code> 関数は病的です</li></ul><p>生成された関数で試みるべきでない操作のセットは無限であり、ランタイムシステムは現在、無効な操作のサブセットのみを検出できます。他にも、通知なしにランタイムシステムを単に破損させる操作が多数存在し、通常は悪い定義に明らかに関連していない微妙な方法で発生します。関数ジェネレーターは推論中に実行されるため、そのコードのすべての制限を尊重しなければなりません。</p><p>試みるべきではない操作には、以下が含まれます：</p><ol><li><p>ネイティブポインタのキャッシング。</p></li><li><p><code>Core.Compiler</code>の内容やメソッドにいかなる形でも関与すること。</p></li><li><p>可変状態を観察する。</p><ul><li>生成された関数に対する推論は、<em>任意の</em>タイミングで実行できます。これには、コードがこの状態を観察または変更しようとしている間も含まれます。</li></ul></li><li><p>ロックを取得すること: 呼び出すCコードは内部でロックを使用する場合があります（例えば、ほとんどの実装が内部でロックを必要とするため、<code>malloc</code>を呼び出すことは問題ありません）が、Juliaコードを実行中にロックを保持したり取得したりしないでください。</p></li><li><p>生成された関数の本体の後に定義された関数を呼び出すこと。これは、モジュール内の任意の関数を呼び出すことを許可するために、インクリメンタルにロードされたプリコンパイル済みモジュールに対して緩和されます。</p></li></ol><p>さて、生成関数の仕組みをよりよく理解したので、これを使ってもう少し高度な（かつ有効な）機能を構築してみましょう...</p><h3 id="An-advanced-example"><a class="docs-heading-anchor" href="#An-advanced-example">An advanced example</a><a id="An-advanced-example-1"></a><a class="docs-heading-anchor-permalink" href="#An-advanced-example" title="Permalink"></a></h3><p>Juliaの基本ライブラリには、n次元配列への線形インデックスを計算するための内部<code>sub2ind</code>関数があります。これは、n個の多次元インデックスのセットに基づいて、配列<code>A</code>に<code>A[i]</code>を使用してインデックスを付けるために使用できるインデックス<code>i</code>を計算するということです。1つの可能な実装は以下の通りです：</p><pre><code class="language-julia-repl hljs">julia&gt; function sub2ind_loop(dims::NTuple{N}, I::Integer...) where N
+           ind = I[N] - 1
+           for i = N-1:-1:1
+               ind = I[i]-1 + dims[i]*ind
+           end
+           return ind + 1
+       end;
+
+julia&gt; sub2ind_loop((3, 5), 1, 2)
+4</code></pre><p>再帰を使用して同じことができます：</p><pre><code class="language-julia-repl hljs">julia&gt; sub2ind_rec(dims::Tuple{}) = 1;
+
+julia&gt; sub2ind_rec(dims::Tuple{}, i1::Integer, I::Integer...) =
+           i1 == 1 ? sub2ind_rec(dims, I...) : throw(BoundsError());
+
+julia&gt; sub2ind_rec(dims::Tuple{Integer, Vararg{Integer}}, i1::Integer) = i1;
+
+julia&gt; sub2ind_rec(dims::Tuple{Integer, Vararg{Integer}}, i1::Integer, I::Integer...) =
+           i1 + dims[1] * (sub2ind_rec(Base.tail(dims), I...) - 1);
+
+julia&gt; sub2ind_rec((3, 5), 1, 2)
+4</code></pre><p>これらの実装は異なりますが、本質的には同じことを行っています。配列の次元に対するランタイムループを実行し、各次元のオフセットを最終インデックスに集めます。</p><p>しかし、ループに必要なすべての情報は引数の型情報に埋め込まれています。これにより、コンパイラは反復処理をコンパイル時に移動させ、ランタイムループを完全に排除することができます。生成された関数を利用して同様の効果を達成することができます。コンパイラの用語では、生成された関数を使用して手動でループを展開します。本文はほぼ同じになりますが、線形インデックスを計算する代わりに、インデックスを計算する<em>式</em>を構築します：</p><pre><code class="language-julia-repl hljs">julia&gt; @generated function sub2ind_gen(dims::NTuple{N}, I::Integer...) where N
+           ex = :(I[$N] - 1)
+           for i = (N - 1):-1:1
+               ex = :(I[$i] - 1 + dims[$i] * $ex)
+           end
+           return :($ex + 1)
+       end;
+
+julia&gt; sub2ind_gen((3, 5), 1, 2)
+4</code></pre><p><strong>このコードは何を生成しますか？</strong></p><p>簡単な方法は、本文を別の（通常の）関数に抽出することです：</p><pre><code class="language-julia-repl hljs">julia&gt; function sub2ind_gen_impl(dims::Type{T}, I...) where T &lt;: NTuple{N,Any} where N
+           length(I) == N || return :(error(&quot;partial indexing is unsupported&quot;))
+           ex = :(I[$N] - 1)
+           for i = (N - 1):-1:1
+               ex = :(I[$i] - 1 + dims[$i] * $ex)
+           end
+           return :($ex + 1)
+       end;
+
+julia&gt; @generated function sub2ind_gen(dims::NTuple{N}, I::Integer...) where N
+           return sub2ind_gen_impl(dims, I...)
+       end;
+
+julia&gt; sub2ind_gen((3, 5), 1, 2)
+4</code></pre><p><code>sub2ind_gen_impl</code>を実行し、それが返す式を調べることができます:</p><pre><code class="language-julia-repl hljs">julia&gt; sub2ind_gen_impl(Tuple{Int,Int}, Int, Int)
+:(((I[1] - 1) + dims[1] * (I[2] - 1)) + 1)</code></pre><p>ここで使用されるメソッド本体にはループは含まれておらず、2つのタプルへのインデックス付け、乗算、加算/減算のみが行われます。すべてのループ処理はコンパイル時に行われ、実行時にはループを回避します。したがって、ここでは<em>タイプごとに1回</em>、この場合は<code>N</code>ごとに1回ループします（関数が複数回生成されるエッジケースを除く - 上記の免責事項を参照）。</p><h3 id="Optionally-generated-functions"><a class="docs-heading-anchor" href="#Optionally-generated-functions">Optionally-generated functions</a><a id="Optionally-generated-functions-1"></a><a class="docs-heading-anchor-permalink" href="#Optionally-generated-functions" title="Permalink"></a></h3><p>生成された関数は実行時に高い効率を達成できますが、コンパイル時のコストが伴います：具体的な引数の型の組み合わせごとに新しい関数本体を生成する必要があります。通常、Juliaは任意の引数に対して機能する「汎用」バージョンの関数をコンパイルできますが、生成された関数ではこれは不可能です。これは、生成された関数を多用するプログラムが静的にコンパイルできない可能性があることを意味します。</p><p>この問題を解決するために、言語は生成された関数の通常の非生成代替実装を書くための構文を提供します。上記の <code>sub2ind</code> の例に適用すると、次のようになります：</p><pre><code class="language-julia-repl hljs">julia&gt; function sub2ind_gen_impl(dims::Type{T}, I...) where T &lt;: NTuple{N,Any} where N
+           ex = :(I[$N] - 1)
+           for i = (N - 1):-1:1
+               ex = :(I[$i] - 1 + dims[$i] * $ex)
+           end
+           return :($ex + 1)
+       end;
+
+julia&gt; function sub2ind_gen_fallback(dims::NTuple{N}, I) where N
+           ind = I[N] - 1
+           for i = (N - 1):-1:1
+               ind = I[i] - 1 + dims[i]*ind
+           end
+           return ind + 1
+       end;
+
+julia&gt; function sub2ind_gen(dims::NTuple{N}, I::Integer...) where N
+           length(I) == N || error(&quot;partial indexing is unsupported&quot;)
+           if @generated
+               return sub2ind_gen_impl(dims, I...)
+           else
+               return sub2ind_gen_fallback(dims, I)
+           end
+       end;
+
+julia&gt; sub2ind_gen((3, 5), 1, 2)
+4</code></pre><p>内部的に、このコードは関数の2つの実装を作成します。1つは、<code>if @generated</code>の最初のブロックが使用される生成されたもので、もう1つは<code>else</code>ブロックが使用される通常のものです。<code>if @generated</code>ブロックの<code>then</code>部分の中では、コードは他の生成された関数と同じ意味を持ちます：引数名は型を参照し、コードは式を返す必要があります。複数の<code>if @generated</code>ブロックが存在する場合、生成された実装はすべての<code>then</code>ブロックを使用し、代替実装はすべての<code>else</code>ブロックを使用します。</p><p>関数の先頭にエラーチェックを追加したことに注意してください。このコードは両方のバージョンで共通であり、両方のバージョンで実行時コードです（生成されたバージョンから式として引用され、返されます）。つまり、ローカル変数の値と型はコード生成時には利用できません。コード生成コードは引数の型のみを見ることができます。</p><p>この定義スタイルでは、コード生成機能は本質的にオプションの最適化です。コンパイラは便利な場合にそれを使用しますが、そうでない場合は通常の実装を選択することがあります。このスタイルは好まれます。なぜなら、コンパイラがより多くの決定を下し、プログラムをより多くの方法でコンパイルできるからです。また、通常のコードはコード生成コードよりも読みやすいためです。しかし、どの実装が使用されるかはコンパイラの実装の詳細に依存するため、2つの実装が同一に動作することが不可欠です。</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="documentation.html">« Documentation</a><a class="docs-footer-nextpage" href="arrays.html">Single- and multi-dimensional Arrays »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.11.4 on <span class="colophon-date" title="Tuesday 20 May 2025 04:59">Tuesday 20 May 2025</span>. Using Julia version 1.11.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

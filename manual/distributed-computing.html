@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Multi-processing and Distributed Computing · The Julia Language</title><meta name="title" content="Multi-processing and Distributed Computing · The Julia Language"/><meta property="og:title" content="Multi-processing and Distributed Computing · The Julia Language"/><meta property="twitter:title" content="Multi-processing and Distributed Computing · The Julia Language"/><meta name="description" content="Documentation for The Julia Language."/><meta property="og:description" content="Documentation for The Julia Language."/><meta property="twitter:description" content="Documentation for The Julia Language."/><script async src="https://www.googletagmanager.com/gtag/js?id=UA-28835595-6"></script><script>  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-28835595-6', {'page_path': location.pathname + location.search + location.hash});
+</script><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script><link href="../assets/julia-manual.css" rel="stylesheet" type="text/css"/><link href="../assets/julia.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../index.html"><img class="docs-light-only" src="../assets/logo.svg" alt="The Julia Language logo"/><img class="docs-dark-only" src="../assets/logo-dark.svg" alt="The Julia Language logo"/></a><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../index.html">Julia Documentation</a></li><li><input class="collapse-toggle" id="menuitem-3" type="checkbox" checked/><label class="tocitem" for="menuitem-3"><span class="docs-label">Manual</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="getting-started.html">Getting Started</a></li><li><a class="tocitem" href="installation.html">Installation</a></li><li><a class="tocitem" href="variables.html">Variables</a></li><li><a class="tocitem" href="integers-and-floating-point-numbers.html">Integers and Floating-Point Numbers</a></li><li><a class="tocitem" href="mathematical-operations.html">Mathematical Operations and Elementary Functions</a></li><li><a class="tocitem" href="complex-and-rational-numbers.html">Complex and Rational Numbers</a></li><li><a class="tocitem" href="strings.html">Strings</a></li><li><a class="tocitem" href="functions.html">Functions</a></li><li><a class="tocitem" href="control-flow.html">Control Flow</a></li><li><a class="tocitem" href="variables-and-scoping.html">Scope of Variables</a></li><li><a class="tocitem" href="types.html">Types</a></li><li><a class="tocitem" href="methods.html">Methods</a></li><li><a class="tocitem" href="constructors.html">Constructors</a></li><li><a class="tocitem" href="conversion-and-promotion.html">Conversion and Promotion</a></li><li><a class="tocitem" href="interfaces.html">Interfaces</a></li><li><a class="tocitem" href="modules.html">Modules</a></li><li><a class="tocitem" href="documentation.html">Documentation</a></li><li><a class="tocitem" href="metaprogramming.html">Metaprogramming</a></li><li><a class="tocitem" href="arrays.html">Single- and multi-dimensional Arrays</a></li><li><a class="tocitem" href="missing.html">Missing Values</a></li><li><a class="tocitem" href="networking-and-streams.html">Networking and Streams</a></li><li><a class="tocitem" href="parallel-computing.html">Parallel Computing</a></li><li><a class="tocitem" href="asynchronous-programming.html">Asynchronous Programming</a></li><li><a class="tocitem" href="multi-threading.html">Multi-Threading</a></li><li class="is-active"><a class="tocitem" href="distributed-computing.html">Multi-processing and Distributed Computing</a><ul class="internal"><li><a class="tocitem" href="#code-availability"><span>Code Availability and Loading Packages</span></a></li><li><a class="tocitem" href="#Starting-and-managing-worker-processes"><span>Starting and managing worker processes</span></a></li><li><a class="tocitem" href="#Data-Movement"><span>Data Movement</span></a></li><li><a class="tocitem" href="#Global-variables"><span>Global variables</span></a></li><li><a class="tocitem" href="#Parallel-Map-and-Loops"><span>Parallel Map and Loops</span></a></li><li><a class="tocitem" href="#Remote-References-and-AbstractChannels"><span>Remote References and AbstractChannels</span></a></li><li><a class="tocitem" href="#Channels-and-RemoteChannels"><span>Channels and RemoteChannels</span></a></li><li><a class="tocitem" href="#Local-invocations"><span>Local invocations</span></a></li><li><a class="tocitem" href="#man-shared-arrays"><span>Shared Arrays</span></a></li><li><a class="tocitem" href="#ClusterManagers"><span>ClusterManagers</span></a></li><li><a class="tocitem" href="#Specifying-Network-Topology-(Experimental)"><span>Specifying Network Topology (Experimental)</span></a></li><li><a class="tocitem" href="#Noteworthy-external-packages"><span>Noteworthy external packages</span></a></li></ul></li><li><a class="tocitem" href="running-external-programs.html">Running External Programs</a></li><li><a class="tocitem" href="calling-c-and-fortran-code.html">Calling C and Fortran Code</a></li><li><a class="tocitem" href="handling-operating-system-variation.html">Handling Operating System Variation</a></li><li><a class="tocitem" href="environment-variables.html">Environment Variables</a></li><li><a class="tocitem" href="embedding.html">Embedding Julia</a></li><li><a class="tocitem" href="code-loading.html">Code Loading</a></li><li><a class="tocitem" href="profile.html">Profiling</a></li><li><a class="tocitem" href="stacktraces.html">Stack Traces</a></li><li><a class="tocitem" href="performance-tips.html">Performance Tips</a></li><li><a class="tocitem" href="workflow-tips.html">Workflow Tips</a></li><li><a class="tocitem" href="style-guide.html">Style Guide</a></li><li><a class="tocitem" href="faq.html">Frequently Asked Questions</a></li><li><a class="tocitem" href="noteworthy-differences.html">Noteworthy Differences from other Languages</a></li><li><a class="tocitem" href="unicode-input.html">Unicode Input</a></li><li><a class="tocitem" href="command-line-interface.html">Command-line Interface</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-4" type="checkbox"/><label class="tocitem" for="menuitem-4"><span class="docs-label">Base</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../base/base.html">Essentials</a></li><li><a class="tocitem" href="../base/collections.html">Collections and Data Structures</a></li><li><a class="tocitem" href="../base/math.html">Mathematics</a></li><li><a class="tocitem" href="../base/numbers.html">Numbers</a></li><li><a class="tocitem" href="../base/strings.html">Strings</a></li><li><a class="tocitem" href="../base/arrays.html">Arrays</a></li><li><a class="tocitem" href="../base/parallel.html">Tasks</a></li><li><a class="tocitem" href="../base/multi-threading.html">Multi-Threading</a></li><li><a class="tocitem" href="../base/scopedvalues.html">Scoped Values</a></li><li><a class="tocitem" href="../base/constants.html">Constants</a></li><li><a class="tocitem" href="../base/file.html">Filesystem</a></li><li><a class="tocitem" href="../base/io-network.html">I/O and Network</a></li><li><a class="tocitem" href="../base/punctuation.html">Punctuation</a></li><li><a class="tocitem" href="../base/sort.html">Sorting and Related Functions</a></li><li><a class="tocitem" href="../base/iterators.html">Iteration utilities</a></li><li><a class="tocitem" href="../base/reflection.html">Reflection and introspection</a></li><li><a class="tocitem" href="../base/c.html">C Interface</a></li><li><a class="tocitem" href="../base/libc.html">C Standard Library</a></li><li><a class="tocitem" href="../base/stacktraces.html">StackTraces</a></li><li><a class="tocitem" href="../base/simd-types.html">SIMD Support</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-5" type="checkbox"/><label class="tocitem" for="menuitem-5"><span class="docs-label">Standard Library</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../stdlib/ArgTools.html">ArgTools</a></li><li><a class="tocitem" href="../stdlib/Artifacts.html">Artifacts</a></li><li><a class="tocitem" href="../stdlib/Base64.html">Base64</a></li><li><a class="tocitem" href="../stdlib/CRC32c.html">CRC32c</a></li><li><a class="tocitem" href="../stdlib/Dates.html">Dates</a></li><li><a class="tocitem" href="../stdlib/DelimitedFiles.html">Delimited Files</a></li><li><a class="tocitem" href="../stdlib/Distributed.html">Distributed Computing</a></li><li><a class="tocitem" href="../stdlib/Downloads.html">Downloads</a></li><li><a class="tocitem" href="../stdlib/FileWatching.html">File Events</a></li><li><a class="tocitem" href="../stdlib/Future.html">Future</a></li><li><a class="tocitem" href="../stdlib/InteractiveUtils.html">Interactive Utilities</a></li><li><a class="tocitem" href="../stdlib/LazyArtifacts.html">Lazy Artifacts</a></li><li><a class="tocitem" href="../stdlib/LibCURL.html">LibCURL</a></li><li><a class="tocitem" href="../stdlib/LibGit2.html">LibGit2</a></li><li><a class="tocitem" href="../stdlib/Libdl.html">Dynamic Linker</a></li><li><a class="tocitem" href="../stdlib/LinearAlgebra.html">Linear Algebra</a></li><li><a class="tocitem" href="../stdlib/Logging.html">Logging</a></li><li><a class="tocitem" href="../stdlib/Markdown.html">Markdown</a></li><li><a class="tocitem" href="../stdlib/Mmap.html">Memory-mapped I/O</a></li><li><a class="tocitem" href="../stdlib/NetworkOptions.html">Network Options</a></li><li><a class="tocitem" href="../stdlib/Pkg.html">Pkg</a></li><li><a class="tocitem" href="../stdlib/Printf.html">Printf</a></li><li><a class="tocitem" href="../stdlib/Profile.html">Profiling</a></li><li><a class="tocitem" href="../stdlib/REPL.html">The Julia REPL</a></li><li><a class="tocitem" href="../stdlib/Random.html">Random Numbers</a></li><li><a class="tocitem" href="../stdlib/SHA.html">SHA</a></li><li><a class="tocitem" href="../stdlib/Serialization.html">Serialization</a></li><li><a class="tocitem" href="../stdlib/SharedArrays.html">Shared Arrays</a></li><li><a class="tocitem" href="../stdlib/Sockets.html">Sockets</a></li><li><a class="tocitem" href="../stdlib/SparseArrays.html">Sparse Arrays</a></li><li><a class="tocitem" href="../stdlib/Statistics.html">Statistics</a></li><li><a class="tocitem" href="../stdlib/StyledStrings.html">StyledStrings</a></li><li><a class="tocitem" href="../stdlib/TOML.html">TOML</a></li><li><a class="tocitem" href="../stdlib/Tar.html">Tar</a></li><li><a class="tocitem" href="../stdlib/Test.html">Unit Testing</a></li><li><a class="tocitem" href="../stdlib/UUIDs.html">UUIDs</a></li><li><a class="tocitem" href="../stdlib/Unicode.html">Unicode</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6" type="checkbox"/><label class="tocitem" for="menuitem-6"><span class="docs-label">Developer Documentation</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><input class="collapse-toggle" id="menuitem-6-1" type="checkbox"/><label class="tocitem" for="menuitem-6-1"><span class="docs-label">Documentation of Julia&#39;s Internals</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../devdocs/init.html">Initialization of the Julia runtime</a></li><li><a class="tocitem" href="../devdocs/ast.html">Julia ASTs</a></li><li><a class="tocitem" href="../devdocs/types.html">More about types</a></li><li><a class="tocitem" href="../devdocs/object.html">Memory layout of Julia Objects</a></li><li><a class="tocitem" href="../devdocs/eval.html">Eval of Julia code</a></li><li><a class="tocitem" href="../devdocs/callconv.html">Calling Conventions</a></li><li><a class="tocitem" href="../devdocs/compiler.html">High-level Overview of the Native-Code Generation Process</a></li><li><a class="tocitem" href="../devdocs/functions.html">Julia Functions</a></li><li><a class="tocitem" href="../devdocs/cartesian.html">Base.Cartesian</a></li><li><a class="tocitem" href="../devdocs/meta.html">Talking to the compiler (the <code>:meta</code> mechanism)</a></li><li><a class="tocitem" href="../devdocs/subarrays.html">SubArrays</a></li><li><a class="tocitem" href="../devdocs/isbitsunionarrays.html">isbits Union Optimizations</a></li><li><a class="tocitem" href="../devdocs/sysimg.html">System Image Building</a></li><li><a class="tocitem" href="../devdocs/pkgimg.html">Package Images</a></li><li><a class="tocitem" href="../devdocs/llvm-passes.html">Custom LLVM Passes</a></li><li><a class="tocitem" href="../devdocs/llvm.html">Working with LLVM</a></li><li><a class="tocitem" href="../devdocs/stdio.html">printf() and stdio in the Julia runtime</a></li><li><a class="tocitem" href="../devdocs/boundscheck.html">Bounds checking</a></li><li><a class="tocitem" href="../devdocs/locks.html">Proper maintenance and care of multi-threading locks</a></li><li><a class="tocitem" href="../devdocs/offset-arrays.html">Arrays with custom indices</a></li><li><a class="tocitem" href="../devdocs/require.html">Module loading</a></li><li><a class="tocitem" href="../devdocs/inference.html">Inference</a></li><li><a class="tocitem" href="../devdocs/ssair.html">Julia SSA-form IR</a></li><li><a class="tocitem" href="../devdocs/EscapeAnalysis.html"><code>EscapeAnalysis</code></a></li><li><a class="tocitem" href="../devdocs/aot.html">Ahead of Time Compilation</a></li><li><a class="tocitem" href="../devdocs/gc-sa.html">Static analyzer annotations for GC correctness in C code</a></li><li><a class="tocitem" href="../devdocs/gc.html">Garbage Collection in Julia</a></li><li><a class="tocitem" href="../devdocs/jit.html">JIT Design and Implementation</a></li><li><a class="tocitem" href="../devdocs/builtins.html">Core.Builtins</a></li><li><a class="tocitem" href="../devdocs/precompile_hang.html">Fixing precompilation hangs due to open tasks or IO</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-2" type="checkbox"/><label class="tocitem" for="menuitem-6-2"><span class="docs-label">Developing/debugging Julia&#39;s C code</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../devdocs/backtraces.html">Reporting and analyzing crashes (segfaults)</a></li><li><a class="tocitem" href="../devdocs/debuggingtips.html">gdb debugging tips</a></li><li><a class="tocitem" href="../devdocs/valgrind.html">Using Valgrind with Julia</a></li><li><a class="tocitem" href="../devdocs/external_profilers.html">External Profiler Support</a></li><li><a class="tocitem" href="../devdocs/sanitizers.html">Sanitizer support</a></li><li><a class="tocitem" href="../devdocs/probes.html">Instrumenting Julia with DTrace, and bpftrace</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-3" type="checkbox"/><label class="tocitem" for="menuitem-6-3"><span class="docs-label">Building Julia</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../devdocs/build/build.html">Building Julia (Detailed)</a></li><li><a class="tocitem" href="../devdocs/build/linux.html">Linux</a></li><li><a class="tocitem" href="../devdocs/build/macos.html">macOS</a></li><li><a class="tocitem" href="../devdocs/build/windows.html">Windows</a></li><li><a class="tocitem" href="../devdocs/build/freebsd.html">FreeBSD</a></li><li><a class="tocitem" href="../devdocs/build/arm.html">ARM (Linux)</a></li><li><a class="tocitem" href="../devdocs/build/distributing.html">Binary distributions</a></li></ul></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Manual</a></li><li class="is-active"><a href="distributed-computing.html">Multi-processing and Distributed Computing</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href="distributed-computing.html">Multi-processing and Distributed Computing</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/JuliaLang/julia" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/JuliaLang/julia/blob/master/doc/src/manual/distributed-computing.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Multi-processing-and-Distributed-Computing"><a class="docs-heading-anchor" href="#Multi-processing-and-Distributed-Computing">Multi-processing and Distributed Computing</a><a id="Multi-processing-and-Distributed-Computing-1"></a><a class="docs-heading-anchor-permalink" href="#Multi-processing-and-Distributed-Computing" title="Permalink"></a></h1><p>モジュール <a href="../stdlib/Distributed.html#man-distributed"><code>Distributed</code></a> によって、分散メモリ並列計算の実装が提供されており、これはJuliaに付属する標準ライブラリの一部です。</p><p>ほとんどの現代のコンピュータは複数のCPUを持っており、いくつかのコンピュータをクラスターとして組み合わせることができます。これらの複数のCPUの力を活用することで、多くの計算をより迅速に完了させることができます。パフォーマンスに影響を与える主な要因は2つあります：CPU自体の速度と、メモリへのアクセス速度です。クラスターでは、特定のCPUが同じコンピュータ（ノード）内のRAMに最も速くアクセスできることは明らかです。おそらく驚くべきことに、一般的なマルチコアのラップトップでも、主メモリの速度と<a href="https://www.akkadia.org/drepper/cpumemory.pdf">cache</a>の違いにより、同様の問題が関連しています。したがって、良好なマルチプロセッシング環境は、特定のCPUによるメモリのチャンクの「所有権」を制御できる必要があります。Juliaは、メッセージパッシングに基づいたマルチプロセッシング環境を提供し、プログラムが別々のメモリドメインで同時に複数のプロセスで実行できるようにします。</p><p>Juliaのメッセージパッシングの実装は、MPI<sup class="footnote-reference"><a id="citeref-1" href="#footnote-1">[1]</a></sup>などの他の環境とは異なります。Juliaにおける通信は一般的に「一方向」であり、つまりプログラマーは2つのプロセスの操作において明示的に管理する必要があるのは1つのプロセスだけです。さらに、これらの操作は通常「メッセージ送信」や「メッセージ受信」のようには見えず、むしろユーザー関数への呼び出しのような高レベルの操作に似ています。</p><p>Juliaにおける分散プログラミングは、<em>リモート参照</em>と<em>リモート呼び出し</em>の2つのプリミティブに基づいています。リモート参照は、特定のプロセスに保存されているオブジェクトを参照するために任意のプロセスから使用できるオブジェクトです。リモート呼び出しは、1つのプロセスが別の（場合によっては同じ）プロセス上の特定の引数で特定の関数を呼び出すように要求することです。</p><p>リモートリファレンスには2つの種類があります： <a href="../stdlib/Distributed.html#Distributed.Future"><code>Future</code></a> と <a href="../stdlib/Distributed.html#Distributed.RemoteChannel"><code>RemoteChannel</code></a>。</p><p>リモートコールは、<a href="../stdlib/Distributed.html#Distributed.Future"><code>Future</code></a>を結果として返します。リモートコールは即座に返され、コールを行ったプロセスはリモートコールがどこかで行われている間に次の操作に進みます。リモートコールが終了するのを待つには、返された<code>4d61726b646f776e2e436f64652822222c20224675747572652229_407265662044697374726962757465642e467574757265</code>に対して<a href="../base/parallel.html#Base.wait"><code>wait</code></a>を呼び出すことができ、結果の完全な値を取得するには<a href="../base/parallel.html#Base.fetch-Tuple{Task}"><code>fetch</code></a>を使用します。</p><p>一方で、<a href="../stdlib/Distributed.html#Distributed.RemoteChannel"><code>RemoteChannel</code></a> は書き換え可能です。例えば、複数のプロセスは同じリモート <code>Channel</code> を参照することで、その処理を調整することができます。</p><p>各プロセスには関連付けられた識別子があります。インタラクティブなJuliaプロンプトを提供するプロセスは常に<code>id</code>が1に等しくなります。デフォルトで並列操作に使用されるプロセスは「ワーカー」と呼ばれます。プロセスが1つだけの場合、プロセス1はワーカーと見なされます。それ以外の場合、ワーカーはプロセス1以外のすべてのプロセスと見なされます。その結果、<a href="../stdlib/Distributed.html#Distributed.pmap"><code>pmap</code></a>のような並列処理メソッドの利点を得るには、2つ以上のプロセスを追加する必要があります。長い計算がワーカーで実行されている間にメインプロセスで他の作業を行いたいだけの場合は、単一のプロセスを追加することが有益です。</p><p><code>julia -p n</code> は、ローカルマシン上で <code>n</code> のワーカープロセスを提供します。一般的に、<code>n</code> はマシン上のCPUスレッド（論理コア）の数と等しくするのが理にかなっています。<code>-p</code> 引数は、モジュール <a href="../stdlib/Distributed.html#man-distributed"><code>Distributed</code></a> を暗黙的にロードすることに注意してください。</p><pre><code class="language-julia hljs">$ julia -p 2
+
+julia&gt; r = remotecall(rand, 2, 2, 2)
+Future(2, 1, 4, nothing)
+
+julia&gt; s = @spawnat 2 1 .+ fetch(r)
+Future(2, 1, 5, nothing)
+
+julia&gt; fetch(s)
+2×2 Array{Float64,2}:
+ 1.18526  1.50912
+ 1.16296  1.60607</code></pre><p><a href="../stdlib/Distributed.html#Distributed.remotecall-Tuple{Any, Integer, Vararg{Any}}"><code>remotecall</code></a>への最初の引数は呼び出す関数です。Juliaの並列プログラミングのほとんどは、特定のプロセスや利用可能なプロセスの数を参照しませんが、<code>4d61726b646f776e2e436f64652822222c202272656d6f746563616c6c2229_40726566</code>は、より細かい制御を提供する低レベルのインターフェースと見なされています。<code>4d61726b646f776e2e436f64652822222c202272656d6f746563616c6c2229_40726566</code>への2番目の引数は、作業を行うプロセスの<code>id</code>であり、残りの引数は呼び出される関数に渡されます。</p><p>最初の行でプロセス2に2x2のランダム行列を構築するように依頼し、2行目でそれに1を加えるように依頼したことがわかります。両方の計算の結果は、2つの未来、<code>r</code>と<code>s</code>で利用可能です。<a href="../stdlib/Distributed.html#Distributed.@spawnat"><code>@spawnat</code></a>マクロは、最初の引数で指定されたプロセスで2番目の引数の式を評価します。</p><p>時折、リモートで計算された値をすぐに取得したい場合があります。これは通常、次のローカル操作に必要なデータを取得するためにリモートオブジェクトから読み取るときに発生します。関数 <a href="../stdlib/Distributed.html#Distributed.remotecall_fetch-Tuple{Any, Integer, Vararg{Any}}"><code>remotecall_fetch</code></a> はこの目的のために存在します。これは <code>fetch(remotecall(...))</code> と同等ですが、より効率的です。</p><pre><code class="language-julia-repl hljs">julia&gt; remotecall_fetch(r-&gt; fetch(r)[1, 1], 2, r)
+0.18526337335308085</code></pre><p>このコードはワーカー2で配列を取得し、最初の値を返します。注意すべきは、<code>fetch</code>はこの場合データを移動しないことです。なぜなら、配列を所有しているワーカーで実行されるからです。また、次のように書くこともできます：</p><pre><code class="language-julia-repl hljs">julia&gt; remotecall_fetch(getindex, 2, r, 1, 1)
+0.10824216411304866</code></pre><p><a href="../base/arrays.html#Base.getindex-Tuple{Type, Vararg{Any}}"><code>getindex(r,1,1)</code></a>は<a href="arrays.html#man-array-indexing">equivalent</a>から<code>r[1,1]</code>に変換されるので、この呼び出しは将来の<code>r</code>の最初の要素を取得します。</p><p>物事を簡単にするために、シンボル <code>:any</code> を <a href="../stdlib/Distributed.html#Distributed.@spawnat"><code>@spawnat</code></a> に渡すことができ、どこで操作を行うかを選択します：</p><pre><code class="language-julia-repl hljs">julia&gt; r = @spawnat :any rand(2,2)
+Future(2, 1, 4, nothing)
+
+julia&gt; s = @spawnat :any 1 .+ fetch(r)
+Future(3, 1, 5, nothing)
+
+julia&gt; fetch(s)
+2×2 Array{Float64,2}:
+ 1.38854  1.9098
+ 1.20939  1.57158</code></pre><p>注意すべきは、<code>1 .+ fetch(r)</code>を<code>1 .+ r</code>の代わりに使用したことです。これは、コードがどこで実行されるかわからないため、一般的に<a href="../base/parallel.html#Base.fetch-Tuple{Task}"><code>fetch</code></a>が<code>r</code>を加算を行うプロセスに移動させるために必要になる可能性があるからです。この場合、<a href="../stdlib/Distributed.html#Distributed.@spawnat"><code>@spawnat</code></a>は<code>r</code>を所有するプロセスで計算を実行するのに十分賢いので、<code>4d61726b646f776e2e436f64652822222c202266657463682229_40726566</code>はノーオペレーション（何も作業が行われない）になります。</p><p>（<a href="../stdlib/Distributed.html#Distributed.@spawnat"><code>@spawnat</code></a> は組み込みではなく、Juliaで <a href="metaprogramming.html#man-macros">macro</a> として定義されています。このような構造を自分で定義することも可能です。）</p><p>重要なことは、一度取得されると、<a href="../stdlib/Distributed.html#Distributed.Future"><code>Future</code></a>がローカルにその値をキャッシュするということです。さらに<a href="../base/parallel.html#Base.fetch-Tuple{Task}"><code>fetch</code></a>の呼び出しはネットワークホップを伴いません。すべての参照している<code>4d61726b646f776e2e436f64652822222c20224675747572652229_407265662044697374726962757465642e467574757265</code>が取得されると、リモートに保存された値は削除されます。</p><p><a href="../base/parallel.html#Base.@async"><code>@async</code></a> は <a href="../stdlib/Distributed.html#Distributed.@spawnat"><code>@spawnat</code></a> に似ていますが、ローカルプロセスでのみタスクを実行します。これを使用して、各プロセスの「フィーダー」タスクを作成します。各タスクは計算が必要な次のインデックスを取得し、そのプロセスが終了するのを待ってから、インデックスがなくなるまで繰り返します。フィーダータスクは、メインタスクが <a href="../base/parallel.html#Base.@sync"><code>@sync</code></a> ブロックの終わりに達するまで実行を開始しないことに注意してください。この時点で制御を放棄し、すべてのローカルタスクが完了するのを待ってから関数から戻ります。v0.7以降については、フィーダータスクはすべて同じプロセスで実行されるため、<code>nextidx</code> を介して状態を共有できます。<code>Tasks</code> が協調的にスケジュールされていても、<a href="faq.html#faq-async-io">asynchronous I/O</a> のように、いくつかのコンテキストではロックが必要な場合があります。これは、コンテキストスイッチが明確に定義されたポイントでのみ発生することを意味します。この場合、<a href="../stdlib/Distributed.html#Distributed.remotecall_fetch-Tuple{Any, Integer, Vararg{Any}}"><code>remotecall_fetch</code></a> が呼び出されるときです。これは現在の実装の状態であり、将来のJuliaバージョンで変更される可能性があります。これは、Nの<code>Tasks</code>をMの<code>Process</code>で実行できるようにすることを目的としています。つまり、<a href="https://en.wikipedia.org/wiki/Thread_(computing)#Models">M:N Threading</a>。その後、<code>nextidx</code>のためのロック取得/解放モデルが必要になります。なぜなら、複数のプロセスが同時にリソースを読み書きすることは安全ではないからです。</p><h2 id="code-availability"><a class="docs-heading-anchor" href="#code-availability">Code Availability and Loading Packages</a><a id="code-availability-1"></a><a class="docs-heading-anchor-permalink" href="#code-availability" title="Permalink"></a></h2><p>あなたのコードは、それを実行する任意のプロセスで利用可能でなければなりません。たとえば、次のようにJuliaプロンプトに入力します:</p><pre><code class="language-julia-repl hljs">julia&gt; function rand2(dims...)
+           return 2*rand(dims...)
+       end
+
+julia&gt; rand2(2,2)
+2×2 Array{Float64,2}:
+ 0.153756  0.368514
+ 1.15119   0.918912
+
+julia&gt; fetch(@spawnat :any rand2(2,2))
+ERROR: RemoteException(2, CapturedException(UndefVarError(Symbol(&quot;#rand2&quot;))))
+Stacktrace:
+[...]</code></pre><p>プロセス1は関数<code>rand2</code>について知っていましたが、プロセス2は知りませんでした。</p><p>最も一般的には、ファイルやパッケージからコードを読み込むことになりますが、どのプロセスがコードを読み込むかを制御する際にかなりの柔軟性があります。次のコードを含むファイル <code>DummyModule.jl</code> を考えてみましょう：</p><pre><code class="language-julia hljs">module DummyModule
+
+export MyType, f
+
+mutable struct MyType
+    a::Int
+end
+
+f(x) = x^2+1
+
+println(&quot;loaded&quot;)
+
+end</code></pre><p><code>MyType</code>をすべてのプロセスで参照するためには、<code>DummyModule.jl</code>をすべてのプロセスでロードする必要があります。<code>include(&quot;DummyModule.jl&quot;)</code>を呼び出すと、単一のプロセスでのみロードされます。すべてのプロセスでロードするには、<a href="../stdlib/Distributed.html#Distributed.@everywhere"><code>@everywhere</code></a>マクロを使用します（<code>julia -p 2</code>でJuliaを起動します）：</p><pre><code class="language-julia-repl hljs">julia&gt; @everywhere include(&quot;DummyModule.jl&quot;)
+loaded
+      From worker 3:    loaded
+      From worker 2:    loaded</code></pre><p>通常通り、これにより <code>DummyModule</code> はどのプロセスにもスコープに取り込まれません。これは <a href="../base/base.html#using"><code>using</code></a> または <a href="../base/base.html#import"><code>import</code></a> を必要とします。さらに、<code>DummyModule</code> が1つのプロセスでスコープに取り込まれると、他のプロセスではそうではありません：</p><pre><code class="language-julia-repl hljs">julia&gt; using .DummyModule
+
+julia&gt; MyType(7)
+MyType(7)
+
+julia&gt; fetch(@spawnat 2 MyType(7))
+ERROR: On worker 2:
+UndefVarError: `MyType` not defined in `Main`
+⋮
+
+julia&gt; fetch(@spawnat 2 DummyModule.MyType(7))
+MyType(7)</code></pre><p>しかし、スコープにない場合でも、<code>DummyModule</code>をロードしたプロセスに<code>MyType</code>を送信することは依然として可能です。</p><pre><code class="language-julia-repl hljs">julia&gt; put!(RemoteChannel(2), MyType(7))
+RemoteChannel{Channel{Any}}(2, 1, 13)</code></pre><p>ファイルは、<code>-L</code> フラグを使用して、起動時に複数のプロセスでプリロードすることもでき、ドライバースクリプトを使用して計算を実行することができます：</p><pre><code class="nohighlight hljs">julia -p &lt;n&gt; -L file1.jl -L file2.jl driver.jl</code></pre><p>上記の例でドライバースクリプトを実行しているJuliaプロセスの<code>id</code>は1であり、インタラクティブプロンプトを提供するプロセスと同じです。</p><p>最後に、<code>DummyModule.jl</code> がスタンドアロンファイルではなくパッケージである場合、<code>using DummyModule</code> はすべてのプロセスで <code>DummyModule.jl</code> を<em>ロード</em>しますが、<a href="../base/base.html#using"><code>using</code></a> が呼び出されたプロセスでのみスコープに持ち込みます。</p><h2 id="Starting-and-managing-worker-processes"><a class="docs-heading-anchor" href="#Starting-and-managing-worker-processes">Starting and managing worker processes</a><a id="Starting-and-managing-worker-processes-1"></a><a class="docs-heading-anchor-permalink" href="#Starting-and-managing-worker-processes" title="Permalink"></a></h2><p>ベースのJuliaインストールには、2種類のクラスターに対する組み込みサポートがあります：</p><ul><li>上記のように <code>-p</code> オプションで指定されたローカルクラスター。</li><li><code>--machine-file</code>オプションを使用して、マシンにまたがるクラスターを構成します。これは、指定されたマシン上でJuliaワーカープロセスを開始するために、パスワードなしの<code>ssh</code>ログインを使用します（現在のホストと同じパスから）。各マシンの定義は、<code>[count*][user@]host[:port] [bind_addr[:port]]</code>の形式を取ります。<code>user</code>は現在のユーザーにデフォルト設定され、<code>port</code>は標準のsshポートに設定されます。<code>count</code>はノード上で生成するワーカーの数で、デフォルトは1です。オプションの<code>bind-to bind_addr[:port]</code>は、他のワーカーがこのワーカーに接続するために使用するIPアドレスとポートを指定します。</li></ul><div class="admonition is-info" id="Note-38d8047727c564c0"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-38d8047727c564c0" title="Permalink"></a></header><div class="admonition-body"><p>Juliaは一般的に後方互換性を重視していますが、ワーカープロセスへのコードの配布は<a href="../stdlib/Serialization.html#Serialization.serialize"><code>Serialization.serialize</code></a>に依存しています。該当するドキュメントで指摘されているように、これは異なるJuliaバージョン間で動作することが保証されていないため、すべてのマシンのすべてのワーカーが同じバージョンを使用することが推奨されています。</p></div></div><p>関数 <a href="../stdlib/Distributed.html#Distributed.addprocs"><code>addprocs</code></a>、<a href="../stdlib/Distributed.html#Distributed.rmprocs"><code>rmprocs</code></a>、<a href="../stdlib/Distributed.html#Distributed.workers"><code>workers</code></a> などは、クラスター内のプロセスを追加、削除、照会するためのプログラム的手段として利用可能です。</p><pre><code class="language-julia-repl hljs">julia&gt; using Distributed
+
+julia&gt; addprocs(2)
+2-element Array{Int64,1}:
+ 2
+ 3</code></pre><p>モジュール <a href="../stdlib/Distributed.html#man-distributed"><code>Distributed</code></a> は、<a href="../stdlib/Distributed.html#Distributed.addprocs"><code>addprocs</code></a> を呼び出す前にマスタープロセスで明示的にロードする必要があります。これはワーカープロセスで自動的に利用可能になります。</p><div class="admonition is-info" id="Note-b7fb20cfed24c31"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-b7fb20cfed24c31" title="Permalink"></a></header><div class="admonition-body"><p>ワーカーは <code>~/.julia/config/startup.jl</code> スタートアップスクリプトを実行せず、他の実行中のプロセスとグローバルステート（コマンドラインスイッチ、グローバル変数、新しいメソッド定義、読み込まれたモジュールなど）を同期しません。特定の環境でワーカーを初期化するには <code>addprocs(exeflags=&quot;--project&quot;)</code> を使用し、その後 <code>@everywhere using &lt;modulename&gt;</code> または <code>@everywhere include(&quot;file.jl&quot;)</code> を使用できます。</p></div></div><p>他のタイプのクラスターは、以下の <a href="distributed-computing.html#ClusterManagers">ClusterManagers</a> セクションで説明されているように、独自のカスタム <code>ClusterManager</code> を作成することでサポートできます。</p><h2 id="Data-Movement"><a class="docs-heading-anchor" href="#Data-Movement">Data Movement</a><a id="Data-Movement-1"></a><a class="docs-heading-anchor-permalink" href="#Data-Movement" title="Permalink"></a></h2><p>メッセージの送信とデータの移動は、分散プログラムにおけるオーバーヘッドの大部分を占めます。メッセージの数と送信されるデータの量を減らすことは、パフォーマンスとスケーラビリティを達成するために重要です。この目的のために、Juliaのさまざまな分散プログラミング構造によって行われるデータの移動を理解することが重要です。</p><p><a href="../base/parallel.html#Base.fetch-Tuple{Task}"><code>fetch</code></a> は、オブジェクトをローカルマシンに移動するよう直接要求しているため、明示的なデータ移動操作と見なすことができます。<a href="../stdlib/Distributed.html#Distributed.@spawnat"><code>@spawnat</code></a>（およびいくつかの関連する構造体）もデータを移動しますが、これはそれほど明白ではないため、暗黙的なデータ移動操作と呼ぶことができます。ランダム行列を構築し、二乗するためのこれら2つのアプローチを考えてみましょう：</p><p>方法1:</p><pre><code class="language-julia-repl hljs">julia&gt; A = rand(1000,1000);
+
+julia&gt; Bref = @spawnat :any A^2;
+
+[...]
+
+julia&gt; fetch(Bref);</code></pre><p>方法 2:</p><pre><code class="language-julia-repl hljs">julia&gt; Bref = @spawnat :any rand(1000,1000)^2;
+
+[...]
+
+julia&gt; fetch(Bref);</code></pre><p>違いは些細に見えますが、実際には <a href="../stdlib/Distributed.html#Distributed.@spawnat"><code>@spawnat</code></a> の動作により非常に重要です。最初の方法では、ランダム行列がローカルで構築され、その後別のプロセスに送信されて二乗されます。第二の方法では、ランダム行列が別のプロセスで構築され、二乗されます。したがって、第二の方法は最初の方法よりもはるかに少ないデータを送信します。</p><p>このおもちゃの例では、2つの方法は簡単に区別でき、選択することができます。しかし、実際のプログラムではデータの移動を設計するには、より多くの考慮が必要であり、測定が必要になることが多いです。たとえば、最初のプロセスが行列 <code>A</code> を必要とする場合、最初の方法がより良いかもしれません。また、<code>A</code> の計算が高価で、現在のプロセスだけがそれを持っている場合、別のプロセスに移動することは避けられないかもしれません。あるいは、現在のプロセスが <a href="../stdlib/Distributed.html#Distributed.@spawnat"><code>@spawnat</code></a> と <code>fetch(Bref)</code> の間に非常に少ししか作業がない場合、並列性を完全に排除する方が良いかもしれません。また、<code>rand(1000,1000)</code> がより高価な操作に置き換えられたと想像してみてください。この場合、このステップのために別の <code>4d61726b646f776e2e436f64652822222c202240737061776e61742229_40726566</code> ステートメントを追加することが理にかなっているかもしれません。</p><h2 id="Global-variables"><a class="docs-heading-anchor" href="#Global-variables">Global variables</a><a id="Global-variables-1"></a><a class="docs-heading-anchor-permalink" href="#Global-variables" title="Permalink"></a></h2><p>リモートで実行される式は <a href="../stdlib/Distributed.html#Distributed.@spawnat"><code>@spawnat</code></a> を介して、またはリモート実行のために指定されたクロージャは <a href="../stdlib/Distributed.html#Distributed.remotecall-Tuple{Any, Integer, Vararg{Any}}"><code>remotecall</code></a> を介して、グローバル変数を参照することがあります。モジュール <code>Main</code> の下のグローバルバインディングは、他のモジュールのグローバルバインディングとは少し異なる扱いを受けます。次のコードスニペットを考えてみてください：</p><pre><code class="language-julia-repl hljs">A = rand(10,10)
+remotecall_fetch(()-&gt;sum(A), 2)</code></pre><p>この場合 <a href="../base/collections.html#Base.sum"><code>sum</code></a> はリモートプロセスで定義されている必要があります。<code>A</code> はローカルワークスペースで定義されたグローバル変数であることに注意してください。ワーカー2には <code>Main</code> の下に <code>A</code> という変数はありません。クロージャ <code>()-&gt;sum(A)</code> をワーカー2に送信する行為は、<code>Main.A</code> が2で定義されることを意味します。<code>Main.A</code> は、呼び出し <a href="../stdlib/Distributed.html#Distributed.remotecall_fetch-Tuple{Any, Integer, Vararg{Any}}"><code>remotecall_fetch</code></a> が返された後もワーカー2に存在し続けます。埋め込まれたグローバル参照を持つリモート呼び出し（<code>Main</code> モジュールの下のみ）は、グローバルを次のように管理します：</p><ul><li><p>新しいグローバルバインディングは、リモートコールの一部として参照される場合、宛先ワーカー上に作成されます。</p></li><li><p>グローバル定数は、リモートノードでも定数として宣言されます。</p></li><li><p>グローバルは、リモートコールのコンテキスト内でのみ宛先ワーカーに再送信され、その値が変更された場合にのみ再送信されます。また、クラスターはノード間でグローバルバインディングを同期しません。例えば：</p><pre><code class="language-julia hljs">A = rand(10,10)
+remotecall_fetch(()-&gt;sum(A), 2) # worker 2
+A = rand(10,10)
+remotecall_fetch(()-&gt;sum(A), 3) # worker 3
+A = nothing</code></pre><p>上記のスニペットを実行すると、ワーカー2の<code>Main.A</code>の値がワーカー3の<code>Main.A</code>の値と異なり、ノード1の<code>Main.A</code>の値は<code>nothing</code>に設定されます。</p></li></ul><p>ご存知のように、グローバルに関連付けられたメモリは、マスターで再割り当てされると収集される場合がありますが、バインディングが有効であり続けるため、ワーカーではそのようなアクションは行われません。<a href="../stdlib/Distributed.html#Distributed.clear!"><code>clear!</code></a> を使用して、もはや必要ない場合にリモートノード上の特定のグローバルを <code>nothing</code> に手動で再割り当てすることができます。これにより、通常のガーベジコレクションサイクルの一部として、それに関連付けられたメモリが解放されます。</p><p>そのため、プログラムはリモート呼び出しでグローバル変数を参照する際に注意が必要です。実際、可能であればグローバル変数を完全に避けることが望ましいです。グローバル変数を参照する必要がある場合は、<code>let</code> ブロックを使用してグローバル変数をローカライズすることを検討してください。</p><p>例えば：</p><pre><code class="language-julia-repl hljs">julia&gt; A = rand(10,10);
+
+julia&gt; remotecall_fetch(()-&gt;A, 2);
+
+julia&gt; B = rand(10,10);
+
+julia&gt; let B = B
+           remotecall_fetch(()-&gt;B, 2)
+       end;
+
+julia&gt; @fetchfrom 2 InteractiveUtils.varinfo()
+name           size summary
+––––––––– ––––––––– ––––––––––––––––––––––
+A         800 bytes 10×10 Array{Float64,2}
+Base                Module
+Core                Module
+Main                Module</code></pre><p>ご覧のとおり、グローバル変数 <code>A</code> はワーカー2で定義されていますが、<code>B</code> はローカル変数としてキャプチャされているため、ワーカー2には <code>B</code> のバインディングは存在しません。</p><h2 id="Parallel-Map-and-Loops"><a class="docs-heading-anchor" href="#Parallel-Map-and-Loops">Parallel Map and Loops</a><a id="Parallel-Map-and-Loops-1"></a><a class="docs-heading-anchor-permalink" href="#Parallel-Map-and-Loops" title="Permalink"></a></h2><p>幸いなことに、多くの有用な並列計算はデータの移動を必要としません。一般的な例はモンテカルロシミュレーションであり、複数のプロセスが独立したシミュレーショントライアルを同時に処理できます。<a href="../stdlib/Distributed.html#Distributed.@spawnat"><code>@spawnat</code></a>を使用して、2つのプロセスでコインを投げることができます。まず、次の関数を<code>count_heads.jl</code>に書いてください：</p><pre><code class="language-julia hljs">function count_heads(n)
+    c::Int = 0
+    for i = 1:n
+        c += rand(Bool)
+    end
+    c
+end</code></pre><p>関数 <code>count_heads</code> は単に <code>n</code> のランダムビットを合計します。ここでは、2台のマシンでいくつかの試行を行い、結果を合計する方法を示します：</p><pre><code class="language-julia-repl hljs">julia&gt; @everywhere include_string(Main, $(read(&quot;count_heads.jl&quot;, String)), &quot;count_heads.jl&quot;)
+
+julia&gt; a = @spawnat :any count_heads(100000000)
+Future(2, 1, 6, nothing)
+
+julia&gt; b = @spawnat :any count_heads(100000000)
+Future(3, 1, 7, nothing)
+
+julia&gt; fetch(a)+fetch(b)
+100001564</code></pre><p>この例は、強力でよく使われる並列プログラミングパターンを示しています。多くの反復が複数のプロセスで独立して実行され、その結果がいくつかの関数を使用して結合されます。この結合プロセスは<em>リダクション</em>と呼ばれ、一般的にテンソルランクを減少させるためです：数のベクトルが単一の数に減少したり、行列が単一の行または列に減少したりします。コードでは、通常、<code>x = f(x,v[i])</code>というパターンのように見えます。ここで、<code>x</code>はアキュムレータ、<code>f</code>はリダクション関数、<code>v[i]</code>は減少される要素です。<code>f</code>が結合的であることが望ましいため、操作が実行される順序は重要ではありません。</p><p>このパターンを <code>count_heads</code> で使用することは一般化できます。私たちは明示的に <a href="../stdlib/Distributed.html#Distributed.@spawnat"><code>@spawnat</code></a> ステートメントを2つ使用しましたが、これにより並列性は2つのプロセスに制限されます。任意の数のプロセスで実行するには、分散メモリで実行される <em>並列 for ループ</em> を使用することができ、これはJuliaで <a href="../stdlib/Distributed.html#Distributed.@distributed"><code>@distributed</code></a> のように書くことができます。</p><pre><code class="language-julia hljs">nheads = @distributed (+) for i = 1:200000000
+    Int(rand(Bool))
+end</code></pre><p>この構造は、複数のプロセスに反復を割り当て、それらを指定された還元（この場合は <code>(+)</code>）で結合するパターンを実装しています。各反復の結果は、ループ内の最後の式の値として取られます。全体の並列ループ式自体は、最終的な答えを評価します。</p><p>並列forループは直列forループのように見えますが、その動作は大きく異なります。特に、イテレーションは指定された順序で行われず、変数や配列への書き込みは異なるプロセスで実行されるため、グローバルに可視化されません。並列ループ内で使用される変数は、各プロセスにコピーされてブロードキャストされます。</p><p>例えば、以下のコードは意図した通りには動作しません：</p><pre><code class="language-julia hljs">a = zeros(100000)
+@distributed for i = 1:100000
+    a[i] = i
+end</code></pre><p>このコードは <code>a</code> のすべてを初期化しません。なぜなら、各プロセスはそれぞれのコピーを持つからです。このような並列forループは避けるべきです。幸いなことに、 <a href="distributed-computing.html#man-shared-arrays">Shared Arrays</a> を使用することでこの制限を回避できます：</p><pre><code class="language-julia hljs">using SharedArrays
+
+a = SharedArray{Float64}(10)
+@distributed for i = 1:10
+    a[i] = i
+end</code></pre><p>外部変数を並列ループで使用することは、変数が読み取り専用である場合は完全に合理的です。</p><pre><code class="language-julia hljs">a = randn(1000)
+@distributed (+) for i = 1:100000
+    f(a[rand(1:end)])
+end</code></pre><p>ここでは、各イテレーションでプロセス全体で共有されるベクトル <code>a</code> からランダムに選ばれたサンプルに <code>f</code> を適用します。</p><p>ご覧のとおり、削減演算子は必要ない場合は省略できます。その場合、ループは非同期に実行され、すなわち、すべての利用可能なワーカーで独立したタスクを生成し、完了を待たずに <a href="../stdlib/Distributed.html#Distributed.Future"><code>Future</code></a> の配列を即座に返します。呼び出し元は、後で <code>4d61726b646f776e2e436f64652822222c20224675747572652229_407265662044697374726962757465642e467574757265</code> の完了を待つために <a href="../base/parallel.html#Base.fetch-Tuple{Task}"><code>fetch</code></a> を呼び出すか、ループの最後で <a href="../base/parallel.html#Base.@sync"><code>@sync</code></a> で接頭辞を付けて完了を待つことができます。例えば、<code>@sync @distributed for</code> のように。</p><p>場合によっては、削減演算子は必要なく、単に特定の範囲内のすべての整数（または、より一般的には、コレクション内のすべての要素）に関数を適用したいだけです。これは、<em>並列マップ</em>と呼ばれる別の便利な操作で、Juliaでは<a href="../stdlib/Distributed.html#Distributed.pmap"><code>pmap</code></a>関数として実装されています。たとえば、次のようにして、いくつかの大きなランダム行列の特異値を並列に計算することができます。</p><pre><code class="language-julia-repl hljs">julia&gt; M = Matrix{Float64}[rand(1000,1000) for i = 1:10];
+
+julia&gt; pmap(svdvals, M);</code></pre><p>Juliaの <a href="../stdlib/Distributed.html#Distributed.pmap"><code>pmap</code></a> は、各関数呼び出しが大量の作業を行う場合に設計されています。それに対して、<code>@distributed for</code> は、各イテレーションが非常に小さい場合、例えば単に2つの数を合計する場合に対応できます。並列計算には、<code>4d61726b646f776e2e436f64652822222c2022706d61702229_40726566</code> と <code>@distributed for</code> の両方でワーカープロセスのみが使用されます。<code>@distributed for</code> の場合、最終的な還元は呼び出しプロセスで行われます。</p><h2 id="Remote-References-and-AbstractChannels"><a class="docs-heading-anchor" href="#Remote-References-and-AbstractChannels">Remote References and AbstractChannels</a><a id="Remote-References-and-AbstractChannels-1"></a><a class="docs-heading-anchor-permalink" href="#Remote-References-and-AbstractChannels" title="Permalink"></a></h2><p>リモート参照は常に <code>AbstractChannel</code> の実装を指します。</p><p><code>AbstractChannel</code>（例えば<code>Channel</code>）の具体的な実装は、<a href="../base/parallel.html#Base.put!-Tuple{Channel, Any}"><code>put!</code></a>、<a href="../base/io-network.html#Base.take!-Tuple{Base.GenericIOBuffer}"><code>take!</code></a>、<a href="../base/parallel.html#Base.fetch-Tuple{Task}"><code>fetch</code></a>、<a href="../base/parallel.html#Base.isready-Tuple{Channel}"><code>isready</code></a>、および<a href="../base/parallel.html#Base.wait"><code>wait</code></a>を実装する必要があります。<a href="../stdlib/Distributed.html#Distributed.Future"><code>Future</code></a>によって参照されるリモートオブジェクトは、<code>Channel{Any}(1)</code>、すなわち<code>Any</code>型のオブジェクトを保持できるサイズ1の<code>Channel</code>に格納されています。</p><p><a href="../stdlib/Distributed.html#Distributed.RemoteChannel"><code>RemoteChannel</code></a>は、書き換え可能で、任意のタイプとサイズのチャネル、または他の<code>AbstractChannel</code>の実装を指すことができます。</p><p>コンストラクタ <code>RemoteChannel(f::Function, pid)()</code> は、特定の型の複数の値を保持するチャネルへの参照を構築することを可能にします。<code>f</code> は <code>pid</code> 上で実行される関数であり、<code>AbstractChannel</code> を返さなければなりません。</p><p>例えば、<code>RemoteChannel(()-&gt;Channel{Int}(10), pid)</code>は、型<code>Int</code>でサイズ10のチャネルへの参照を返します。このチャネルはワーカー<code>pid</code>に存在します。</p><p>メソッド <a href="../base/parallel.html#Base.put!-Tuple{Channel, Any}"><code>put!</code></a>、<a href="../base/io-network.html#Base.take!-Tuple{Base.GenericIOBuffer}"><code>take!</code></a>、<a href="../base/parallel.html#Base.fetch-Tuple{Task}"><code>fetch</code></a>、<a href="../base/parallel.html#Base.isready-Tuple{Channel}"><code>isready</code></a> および <a href="../base/parallel.html#Base.wait"><code>wait</code></a> は、<a href="../stdlib/Distributed.html#Distributed.RemoteChannel"><code>RemoteChannel</code></a> 上で、リモートプロセスのバックストアにプロキシされています。</p><p><a href="../stdlib/Distributed.html#Distributed.RemoteChannel"><code>RemoteChannel</code></a> は、ユーザーが実装した <code>AbstractChannel</code> オブジェクトを参照するために使用できます。これの簡単な例が、辞書をリモートストアとして使用する以下の <code>DictChannel</code> です：</p><pre><code class="language-julia-repl hljs">julia&gt; struct DictChannel{T} &lt;: AbstractChannel{T}
+           d::Dict
+           cond_take::Threads.Condition    # waiting for data to become available
+           DictChannel{T}() where {T} = new(Dict(), Threads.Condition())
+           DictChannel() = DictChannel{Any}()
+       end
+
+julia&gt; begin
+       function Base.put!(D::DictChannel, k, v)
+           @lock D.cond_take begin
+               D.d[k] = v
+               notify(D.cond_take)
+           end
+           return D
+       end
+       function Base.take!(D::DictChannel, k)
+           @lock D.cond_take begin
+               v = fetch(D, k)
+               delete!(D.d, k)
+               return v
+           end
+       end
+       Base.isready(D::DictChannel) = @lock D.cond_take !isempty(D.d)
+       Base.isready(D::DictChannel, k) = @lock D.cond_take haskey(D.d, k)
+       function Base.fetch(D::DictChannel, k)
+           @lock D.cond_take begin
+               wait(D, k)
+               return D.d[k]
+           end
+       end
+       function Base.wait(D::DictChannel, k)
+           @lock D.cond_take begin
+               while !isready(D, k)
+                   wait(D.cond_take)
+               end
+           end
+       end
+       end;
+
+julia&gt; d = DictChannel();
+
+julia&gt; isready(d)
+false
+
+julia&gt; put!(d, :k, :v);
+
+julia&gt; isready(d, :k)
+true
+
+julia&gt; fetch(d, :k)
+:v
+
+julia&gt; wait(d, :k)
+
+julia&gt; take!(d, :k)
+:v
+
+julia&gt; isready(d, :k)
+false</code></pre><h2 id="Channels-and-RemoteChannels"><a class="docs-heading-anchor" href="#Channels-and-RemoteChannels">Channels and RemoteChannels</a><a id="Channels-and-RemoteChannels-1"></a><a class="docs-heading-anchor-permalink" href="#Channels-and-RemoteChannels" title="Permalink"></a></h2><ul><li><a href="../base/parallel.html#Base.Channel"><code>Channel</code></a> はプロセスにローカルです。ワーカー2はワーカー3の <code>4d61726b646f776e2e436f64652822222c20224368616e6e656c2229_40726566</code> を直接参照することはできず、その逆も同様です。しかし、 <a href="../stdlib/Distributed.html#Distributed.RemoteChannel"><code>RemoteChannel</code></a> は、ワーカー間で値を置いたり取得したりすることができます。</li><li><a href="../stdlib/Distributed.html#Distributed.RemoteChannel"><code>RemoteChannel</code></a> は <a href="../base/parallel.html#Base.Channel"><code>Channel</code></a> への <em>ハンドル</em> と考えることができます。</li><li>The process id, <code>pid</code>, associated with a <a href="../stdlib/Distributed.html#Distributed.RemoteChannel"><code>RemoteChannel</code></a> identifies the process where the backing store, i.e., the backing <a href="../base/parallel.html#Base.Channel"><code>Channel</code></a> exists.</li><li><a href="../stdlib/Distributed.html#Distributed.RemoteChannel"><code>RemoteChannel</code></a> に参照されるプロセスは、チャンネルからアイテムを出し入れできます。データは、自動的に <code>4d61726b646f776e2e436f64652822222c202252656d6f74654368616e6e656c2229_40726566</code> に関連付けられたプロセスに送信されるか、またはそこから取得されます。</li><li><a href="../base/parallel.html#Base.Channel"><code>Channel</code></a>をシリアライズすると、チャネル内に存在するデータもシリアライズされます。したがって、デシリアライズすることは実質的に元のオブジェクトのコピーを作成することになります。</li><li>一方で、<a href="../stdlib/Distributed.html#Distributed.RemoteChannel"><code>RemoteChannel</code></a>をシリアライズすることは、ハンドルによって参照される<a href="../base/parallel.html#Base.Channel"><code>Channel</code></a>の位置とインスタンスを識別する識別子のシリアライズのみを含みます。したがって、デシリアライズされた<code>4d61726b646f776e2e436f64652822222c202252656d6f74654368616e6e656c2229_40726566</code>オブジェクト（任意のワーカー上）は、元のものと同じバックストアを指します。</li></ul><p>上記のチャネルの例は、以下のようにプロセス間通信のために修正できます。</p><p>私たちは、単一の <code>jobs</code> リモートチャネルを処理するために4人のワーカーを起動します。ジョブは、ID（<code>job_id</code>）によって識別され、チャネルに書き込まれます。このシミュレーション内の各リモート実行タスクは、<code>job_id</code> を読み取り、ランダムな時間待機し、<code>job_id</code>、かかった時間、および自分の <code>pid</code> のタプルを結果チャネルに書き戻します。最後に、すべての <code>results</code> がマスタープロセスで出力されます。</p><pre><code class="language-julia-repl hljs">julia&gt; addprocs(4); # add worker processes
+
+julia&gt; const jobs = RemoteChannel(()-&gt;Channel{Int}(32));
+
+julia&gt; const results = RemoteChannel(()-&gt;Channel{Tuple}(32));
+
+julia&gt; @everywhere function do_work(jobs, results) # define work function everywhere
+           while true
+               job_id = take!(jobs)
+               exec_time = rand()
+               sleep(exec_time) # simulates elapsed time doing actual work
+               put!(results, (job_id, exec_time, myid()))
+           end
+       end
+
+julia&gt; function make_jobs(n)
+           for i in 1:n
+               put!(jobs, i)
+           end
+       end;
+
+julia&gt; n = 12;
+
+julia&gt; errormonitor(@async make_jobs(n)); # feed the jobs channel with &quot;n&quot; jobs
+
+julia&gt; for p in workers() # start tasks on the workers to process requests in parallel
+           remote_do(do_work, p, jobs, results)
+       end
+
+julia&gt; @elapsed while n &gt; 0 # print out results
+           job_id, exec_time, where = take!(results)
+           println(&quot;$job_id finished in $(round(exec_time; digits=2)) seconds on worker $where&quot;)
+           global n = n - 1
+       end
+1 finished in 0.18 seconds on worker 4
+2 finished in 0.26 seconds on worker 5
+6 finished in 0.12 seconds on worker 4
+7 finished in 0.18 seconds on worker 4
+5 finished in 0.35 seconds on worker 5
+4 finished in 0.68 seconds on worker 2
+3 finished in 0.73 seconds on worker 3
+11 finished in 0.01 seconds on worker 3
+12 finished in 0.02 seconds on worker 3
+9 finished in 0.26 seconds on worker 5
+8 finished in 0.57 seconds on worker 4
+10 finished in 0.58 seconds on worker 2
+0.055971741</code></pre><h3 id="Remote-References-and-Distributed-Garbage-Collection"><a class="docs-heading-anchor" href="#Remote-References-and-Distributed-Garbage-Collection">Remote References and Distributed Garbage Collection</a><a id="Remote-References-and-Distributed-Garbage-Collection-1"></a><a class="docs-heading-anchor-permalink" href="#Remote-References-and-Distributed-Garbage-Collection" title="Permalink"></a></h3><p>リモート参照によって参照されるオブジェクトは、<em>すべての</em> クラスター内の保持されている参照が削除されたときにのみ解放されることができます。</p><p>値が保存されているノードは、それに対する参照を持つワーカーを追跡します。<a href="../stdlib/Distributed.html#Distributed.RemoteChannel"><code>RemoteChannel</code></a> または (未取得の) <a href="../stdlib/Distributed.html#Distributed.Future"><code>Future</code></a> がワーカーにシリアライズされるたびに、参照が指すノードが通知されます。また、<code>4d61726b646f776e2e436f64652822222c202252656d6f74654368616e6e656c2229_40726566</code> または (未取得の) <code>4d61726b646f776e2e436f64652822222c20224675747572652229_407265662044697374726962757465642e467574757265</code> がローカルでガーベジコレクトされるたびに、値を所有するノードが再び通知されます。これは、内部のクラスタ対応シリアライザーで実装されています。リモート参照は、実行中のクラスタのコンテキスト内でのみ有効です。通常の <code>IO</code> オブジェクトへの参照のシリアライズおよびデシリアライズはサポートされていません。</p><p>通知は「トラッキング」メッセージの送信を通じて行われます。参照が別のプロセスにシリアライズされるときに「参照を追加」メッセージが送信され、参照がローカルでガーベジコレクトされるときに「参照を削除」メッセージが送信されます。</p><p><a href="../stdlib/Distributed.html#Distributed.Future"><code>Future</code></a>は一度書き込み可能でローカルにキャッシュされるため、<a href="../base/parallel.html#Base.fetch-Tuple{Task}"><code>fetch</code></a>する行為は、値を所有するノードの参照追跡情報も更新します。</p><p>その値を所有するノードは、それに対するすべての参照がクリアされると、その値を解放します。</p><p><a href="../stdlib/Distributed.html#Distributed.Future"><code>Future</code></a>を使用して、すでに取得された<code>4d61726b646f776e2e436f64652822222c20224675747572652229_407265662044697374726962757465642e467574757265</code>を別のノードにシリアライズすると、元のリモートストアがこの時点で値を収集している可能性があるため、値も送信されます。</p><p>オブジェクトがローカルでガーベジコレクトされる<em>タイミング</em>は、オブジェクトのサイズとシステムの現在のメモリ圧力に依存することに注意することが重要です。</p><p>リモート参照の場合、ローカル参照オブジェクトのサイズは非常に小さいですが、リモートノードに保存されている値は非常に大きい場合があります。ローカルオブジェクトがすぐに収集されない可能性があるため、<a href="../base/base.html#Base.finalize"><code>finalize</code></a>をローカルインスタンスの<a href="../stdlib/Distributed.html#Distributed.RemoteChannel"><code>RemoteChannel</code></a>や、フェッチされていない<a href="../stdlib/Distributed.html#Distributed.Future"><code>Future</code></a>に対して明示的に呼び出すことは良い習慣です。<a href="../base/parallel.html#Base.fetch-Tuple{Task}"><code>fetch</code></a>を<code>4d61726b646f776e2e436f64652822222c20224675747572652229_407265662044697374726962757465642e467574757265</code>に対して呼び出すことは、リモートストアからその参照を削除することにもなるため、フェッチされた<code>4d61726b646f776e2e436f64652822222c20224675747572652229_407265662044697374726962757465642e467574757265</code>に対しては必要ありません。<code>4d61726b646f776e2e436f64652822222c202266696e616c697a652229_40726566</code>を明示的に呼び出すと、リモートノードに対してその値への参照を削除するように即座にメッセージが送信されます。</p><p>一旦確定されると、参照は無効になり、今後の呼び出しで使用することはできません。</p><h2 id="Local-invocations"><a class="docs-heading-anchor" href="#Local-invocations">Local invocations</a><a id="Local-invocations-1"></a><a class="docs-heading-anchor-permalink" href="#Local-invocations" title="Permalink"></a></h2><p>データは実行のためにリモートノードに必ずコピーされます。これは、リモートコールの場合と、データが異なるノードの <a href="../stdlib/Distributed.html#Distributed.RemoteChannel"><code>RemoteChannel</code></a> / <a href="../stdlib/Distributed.html#Distributed.Future"><code>Future</code></a> に保存される場合の両方に当てはまります。予想通り、これによりリモートノード上にシリアライズされたオブジェクトのコピーが生成されます。しかし、宛先ノードがローカルノード、すなわち呼び出しプロセスIDがリモートノードIDと同じである場合、これはローカルコールとして実行されます。通常（常にではありませんが）、異なるタスクで実行されますが、データのシリアライズ/デシリアライズは行われません。その結果、呼び出しは渡された同じオブジェクトインスタンスを参照します - コピーは作成されません。この動作は以下に示されています：</p><pre><code class="language-julia-repl hljs">julia&gt; using Distributed;
+
+julia&gt; rc = RemoteChannel(()-&gt;Channel(3));   # RemoteChannel created on local node
+
+julia&gt; v = [0];
+
+julia&gt; for i in 1:3
+           v[1] = i                          # Reusing `v`
+           put!(rc, v)
+       end;
+
+julia&gt; result = [take!(rc) for _ in 1:3];
+
+julia&gt; println(result);
+Array{Int64,1}[[3], [3], [3]]
+
+julia&gt; println(&quot;Num Unique objects : &quot;, length(unique(map(objectid, result))));
+Num Unique objects : 1
+
+julia&gt; addprocs(1);
+
+julia&gt; rc = RemoteChannel(()-&gt;Channel(3), workers()[1]);   # RemoteChannel created on remote node
+
+julia&gt; v = [0];
+
+julia&gt; for i in 1:3
+           v[1] = i
+           put!(rc, v)
+       end;
+
+julia&gt; result = [take!(rc) for _ in 1:3];
+
+julia&gt; println(result);
+Array{Int64,1}[[1], [2], [3]]
+
+julia&gt; println(&quot;Num Unique objects : &quot;, length(unique(map(objectid, result))));
+Num Unique objects : 3</code></pre><p>見ての通り、<a href="../base/parallel.html#Base.put!-Tuple{Channel, Any}"><code>put!</code></a> は、同じオブジェクト <code>v</code> が呼び出し間で変更されたローカル所有の <a href="../stdlib/Distributed.html#Distributed.RemoteChannel"><code>RemoteChannel</code></a> で、保存される単一のオブジェクトインスタンスを結果として得ます。これは、<code>rc</code> を所有するノードが異なるノードである場合に <code>v</code> のコピーが作成されるのとは対照的です。</p><p>一般的にこれは問題ではないことに注意する必要があります。これは、オブジェクトがローカルに保存され、呼び出し後に変更される場合にのみ考慮すべきものです。そのような場合には、オブジェクトの<code>deepcopy</code>を保存することが適切かもしれません。</p><p>これは、次の例に示すように、ローカルノードでのリモートコールにも当てはまります。</p><pre><code class="language-julia-repl hljs">julia&gt; using Distributed; addprocs(1);
+
+julia&gt; v = [0];
+
+julia&gt; v2 = remotecall_fetch(x-&gt;(x[1] = 1; x), myid(), v);     # Executed on local node
+
+julia&gt; println(&quot;v=$v, v2=$v2, &quot;, v === v2);
+v=[1], v2=[1], true
+
+julia&gt; v = [0];
+
+julia&gt; v2 = remotecall_fetch(x-&gt;(x[1] = 1; x), workers()[1], v); # Executed on remote node
+
+julia&gt; println(&quot;v=$v, v2=$v2, &quot;, v === v2);
+v=[0], v2=[1], false</code></pre><p>再び見られるように、ローカルノードへのリモート呼び出しは、直接の呼び出しとまったく同じように動作します。この呼び出しは、引数として渡されたローカルオブジェクトを変更します。リモート呼び出しでは、引数のコピーに対して操作を行います。</p><p>一般的に、これは問題ではありません。ローカルノードが計算ノードとしても使用されている場合、呼び出し後に使用される引数を考慮する必要があり、必要に応じて引数のディープコピーをローカルノードで呼び出される関数に渡さなければなりません。リモートノードでの呼び出しは常に引数のコピーで操作されます。</p><h2 id="man-shared-arrays"><a class="docs-heading-anchor" href="#man-shared-arrays">Shared Arrays</a><a id="man-shared-arrays-1"></a><a class="docs-heading-anchor-permalink" href="#man-shared-arrays" title="Permalink"></a></h2><p>共有配列は、システムの共有メモリを使用して、複数のプロセス間で同じ配列をマッピングします。<a href="../stdlib/SharedArrays.html#SharedArrays.SharedArray"><code>SharedArray</code></a> は、同じマシン上で2つ以上のプロセスが共同でアクセスできる大量のデータを持ちたい場合に適した選択肢です。共有配列のサポートは、モジュール <code>SharedArrays</code> を介して利用可能であり、すべての参加ワーカーで明示的にロードする必要があります。</p><p>補完的なデータ構造は、外部パッケージ <a href="https://github.com/JuliaParallel/DistributedArrays.jl"><code>DistributedArrays.jl</code></a> によって <code>DArray</code> の形で提供されています。 <a href="../stdlib/SharedArrays.html#SharedArrays.SharedArray"><code>SharedArray</code></a> との類似点はあるものの、 <a href="https://github.com/JuliaParallel/DistributedArrays.jl"><code>DArray</code></a> の動作はかなり異なります。 <code>4d61726b646f776e2e436f64652822222c202253686172656441727261792229_40726566</code> では、各「参加」プロセスが全体の配列にアクセスできますが、対照的に <code>4d61726b646f776e2e436f64652822222c20224441727261792229_68747470733a2f2f6769746875622e636f6d2f4a756c6961506172616c6c656c2f44697374726962757465644172726179732e6a6c</code> では、各プロセスがデータの一部にのみローカルアクセスを持ち、2つのプロセスが同じチャンクを共有することはありません。</p><p><a href="../stdlib/SharedArrays.html#SharedArrays.SharedArray"><code>SharedArray</code></a> のインデクシング（値の割り当てとアクセス）は、通常の配列と同様に機能し、基盤となるメモリがローカルプロセスに利用可能であるため効率的です。したがって、ほとんどのアルゴリズムは <code>4d61726b646f776e2e436f64652822222c202253686172656441727261792229_40726566</code> で自然に動作しますが、単一プロセスモードで動作します。アルゴリズムが <a href="../base/arrays.html#Core.Array"><code>Array</code></a> 入力を要求する場合、基盤となる配列は <code>4d61726b646f776e2e436f64652822222c202253686172656441727261792229_40726566</code> から <a href="../stdlib/SharedArrays.html#SharedArrays.sdata"><code>sdata</code></a> を呼び出すことで取得できます。他の <code>AbstractArray</code> タイプの場合、<code>4d61726b646f776e2e436f64652822222c202273646174612229_40726566</code> はオブジェクト自体を返すだけなので、任意の <code>Array</code> タイプのオブジェクトに対して <code>4d61726b646f776e2e436f64652822222c202273646174612229_40726566</code> を使用するのは安全です。</p><p>共有配列のコンストラクタは次の形式です：</p><pre><code class="language-julia hljs">SharedArray{T,N}(dims::NTuple; init=false, pids=Int[])</code></pre><p><code>N</code>次元のビット型 <code>T</code> の共有配列を、指定されたプロセス <code>pids</code> にわたって作成します。分散配列とは異なり、共有配列は <code>pids</code> 引数で指定された参加ワーカーからのみアクセス可能です（作成プロセスも同じホスト上にある場合）。共有配列では、<a href="../base/base.html#Base.isbits"><code>isbits</code></a> の要素のみがサポートされていることに注意してください。</p><p><code>init</code>関数が<code>initfn(S::SharedArray)</code>というシグネチャで指定されている場合、それはすべての参加ワーカーで呼び出されます。各ワーカーが配列の異なる部分で<code>init</code>関数を実行するように指定することで、初期化を並列化することができます。</p><p>ここに簡単な例があります：</p><pre><code class="language-julia-repl hljs">julia&gt; using Distributed
+
+julia&gt; addprocs(3)
+3-element Array{Int64,1}:
+ 2
+ 3
+ 4
+
+julia&gt; @everywhere using SharedArrays
+
+julia&gt; S = SharedArray{Int,2}((3,4), init = S -&gt; S[localindices(S)] = repeat([myid()], length(localindices(S))))
+3×4 SharedArray{Int64,2}:
+ 2  2  3  4
+ 2  3  3  4
+ 2  3  4  4
+
+julia&gt; S[3,2] = 7
+7
+
+julia&gt; S
+3×4 SharedArray{Int64,2}:
+ 2  2  3  4
+ 2  3  3  4
+ 2  7  4  4</code></pre><p><a href="../stdlib/SharedArrays.html#SharedArrays.localindices"><code>SharedArrays.localindices</code></a> は、インデックスの離散的な一次元範囲を提供し、プロセス間でタスクを分割するのに便利なことがあります。もちろん、作業を分割する方法は自由です:</p><pre><code class="language-julia-repl hljs">julia&gt; S = SharedArray{Int,2}((3,4), init = S -&gt; S[indexpids(S):length(procs(S)):length(S)] = repeat([myid()], length( indexpids(S):length(procs(S)):length(S))))
+3×4 SharedArray{Int64,2}:
+ 2  2  2  2
+ 3  3  3  3
+ 4  4  4  4</code></pre><p>すべてのプロセスが基盤となるデータにアクセスできるため、競合が発生しないように注意する必要があります。例えば：</p><pre><code class="language-julia hljs">@sync begin
+    for p in procs(S)
+        @async begin
+            remotecall_wait(fill!, p, S, p)
+        end
+    end
+end</code></pre><p>未定義の動作が発生します。各プロセスは自分の <code>pid</code> で <em>全体</em> の配列を埋めるため、<code>S</code> の特定の要素に対して最後に実行されるプロセスがその <code>pid</code> を保持します。</p><p>より長く複雑な例として、次の「カーネル」を並行して実行することを考えてみてください：</p><pre><code class="language-julia hljs">q[i,j,t+1] = q[i,j,t] + u[i,j,t]</code></pre><p>この場合、1次元インデックスを使用して作業を分割しようとすると、問題が発生する可能性があります。もし <code>q[i,j,t]</code> が1人の作業者に割り当てられたブロックの終わり近くにあり、<code>q[i,j,t+1]</code> が別の作業者に割り当てられたブロックの始まり近くにある場合、<code>q[i,j,t]</code> が <code>q[i,j,t+1]</code> の計算に必要な時点で準備が整っていない可能性が非常に高いです。このような場合、配列を手動でチャンク化する方が良いでしょう。2次元目に沿って分割しましょう。この作業者に割り当てられた <code>(irange, jrange)</code> インデックスを返す関数を定義します：</p><pre><code class="language-julia-repl hljs">julia&gt; @everywhere function myrange(q::SharedArray)
+           idx = indexpids(q)
+           if idx == 0 # This worker is not assigned a piece
+               return 1:0, 1:0
+           end
+           nchunks = length(procs(q))
+           splits = [round(Int, s) for s in range(0, stop=size(q,2), length=nchunks+1)]
+           1:size(q,1), splits[idx]+1:splits[idx+1]
+       end</code></pre><p>次に、カーネルを定義します：</p><pre><code class="language-julia-repl hljs">julia&gt; @everywhere function advection_chunk!(q, u, irange, jrange, trange)
+           @show (irange, jrange, trange)  # display so we can see what&#39;s happening
+           for t in trange, j in jrange, i in irange
+               q[i,j,t+1] = q[i,j,t] + u[i,j,t]
+           end
+           q
+       end</code></pre><p><code>SharedArray</code> 実装のための便利なラッパーも定義します。</p><pre><code class="language-julia-repl hljs">julia&gt; @everywhere advection_shared_chunk!(q, u) =
+           advection_chunk!(q, u, myrange(q)..., 1:size(q,3)-1)</code></pre><p>では、単一プロセスで実行される3つの異なるバージョンを比較してみましょう。</p><pre><code class="language-julia-repl hljs">julia&gt; advection_serial!(q, u) = advection_chunk!(q, u, 1:size(q,1), 1:size(q,2), 1:size(q,3)-1);</code></pre><p><a href="../stdlib/Distributed.html#Distributed.@distributed"><code>@distributed</code></a>を使用するもの:</p><pre><code class="language-julia-repl hljs">julia&gt; function advection_parallel!(q, u)
+           for t = 1:size(q,3)-1
+               @sync @distributed for j = 1:size(q,2)
+                   for i = 1:size(q,1)
+                       q[i,j,t+1]= q[i,j,t] + u[i,j,t]
+                   end
+               end
+           end
+           q
+       end;</code></pre><p>そして、チャンクで委任するもの：</p><pre><code class="language-julia-repl hljs">julia&gt; function advection_shared!(q, u)
+           @sync begin
+               for p in procs(q)
+                   @async remotecall_wait(advection_shared_chunk!, p, q, u)
+               end
+           end
+           q
+       end;</code></pre><p><code>SharedArray</code>を作成し、これらの関数の時間を計測すると、次の結果が得られます（<code>julia -p 4</code>を使用）：</p><pre><code class="language-julia-repl hljs">julia&gt; q = SharedArray{Float64,3}((500,500,500));
+
+julia&gt; u = SharedArray{Float64,3}((500,500,500));</code></pre><p>関数を一度実行してJITコンパイルし、<a href="profile.html#@time"><code>@time</code></a>を二回目の実行で行います:</p><pre><code class="language-julia-repl hljs">julia&gt; @time advection_serial!(q, u);
+(irange,jrange,trange) = (1:500,1:500,1:499)
+ 830.220 milliseconds (216 allocations: 13820 bytes)
+
+julia&gt; @time advection_parallel!(q, u);
+   2.495 seconds      (3999 k allocations: 289 MB, 2.09% gc time)
+
+julia&gt; @time advection_shared!(q,u);
+        From worker 2:       (irange,jrange,trange) = (1:500,1:125,1:499)
+        From worker 4:       (irange,jrange,trange) = (1:500,251:375,1:499)
+        From worker 3:       (irange,jrange,trange) = (1:500,126:250,1:499)
+        From worker 5:       (irange,jrange,trange) = (1:500,376:500,1:499)
+ 238.119 milliseconds (2264 allocations: 169 KB)</code></pre><p><code>advection_shared!</code> の最大の利点は、ワーカー間のトラフィックを最小限に抑え、各ワーカーが割り当てられた部分で長時間計算を行えるようにすることです。</p><h3 id="Shared-Arrays-and-Distributed-Garbage-Collection"><a class="docs-heading-anchor" href="#Shared-Arrays-and-Distributed-Garbage-Collection">Shared Arrays and Distributed Garbage Collection</a><a id="Shared-Arrays-and-Distributed-Garbage-Collection-1"></a><a class="docs-heading-anchor-permalink" href="#Shared-Arrays-and-Distributed-Garbage-Collection" title="Permalink"></a></h3><p>リモート参照と同様に、共有配列も、すべての参加ワーカーからの参照を解放するために作成ノードのガーベジコレクションに依存しています。多くの短命の共有配列オブジェクトを作成するコードは、これらのオブジェクトをできるだけ早く明示的に最終化することで利益を得るでしょう。これにより、共有セグメントをマッピングするメモリとファイルハンドルが早く解放されます。</p><h2 id="ClusterManagers"><a class="docs-heading-anchor" href="#ClusterManagers">ClusterManagers</a><a id="ClusterManagers-1"></a><a class="docs-heading-anchor-permalink" href="#ClusterManagers" title="Permalink"></a></h2><p>Juliaプロセスの起動、管理、およびネットワーキングを論理クラスターに統合するのは、クラスター管理者によって行われます。<code>ClusterManager</code>は以下の責任を持っています。</p><ul><li>クラスタ環境でのワーカープロセスの起動</li><li>各ワーカーのライフサイクル中のイベント管理</li><li>オプションでデータ転送を提供する</li></ul><p>ジュリアクラスタには以下の特徴があります：</p><ul><li>初期のJuliaプロセスは、<code>master</code>とも呼ばれ、特別であり、<code>id</code>は1です。</li><li><code>master</code> プロセスのみがワーカープロセスを追加または削除できます。</li><li>すべてのプロセスは互いに直接通信できます。</li></ul><p>ワーカー間の接続（組み込みのTCP/IPトランスポートを使用）は、以下の方法で確立されます：</p><ul><li><a href="../stdlib/Distributed.html#Distributed.addprocs"><code>addprocs</code></a> は、<code>ClusterManager</code> オブジェクトを使用してマスタープロセスで呼び出されます。</li><li><a href="../stdlib/Distributed.html#Distributed.addprocs"><code>addprocs</code></a> は、適切な <a href="../stdlib/Distributed.html#Distributed.launch"><code>launch</code></a> メソッドを呼び出し、適切なマシン上で必要な数のワーカープロセスを生成します。</li><li>各ワーカーは空いているポートでリスニングを開始し、そのホストとポート情報を <a href="../base/io-network.html#Base.stdout"><code>stdout</code></a> に書き出します。</li><li>クラスター管理者は、各ワーカーの <a href="../base/io-network.html#Base.stdout"><code>stdout</code></a> をキャプチャし、それをマスタープロセスに利用可能にします。</li><li>マスタープロセスはこの情報を解析し、各ワーカーへのTCP/IP接続を設定します。</li><li>すべてのワーカーは、クラスター内の他のワーカーについても通知されます。</li><li>各ワーカーは、自分の<code>id</code>よりも小さい<code>id</code>を持つすべてのワーカーに接続します。</li><li>このようにしてメッシュネットワークが確立され、すべての作業者が他のすべての作業者と直接接続されます。</li></ul><p>デフォルトのトランスポート層はプレーンな <a href="../stdlib/Sockets.html#Sockets.TCPSocket"><code>TCPSocket</code></a> を使用しますが、Julia クラスターが独自のトランスポートを提供することも可能です。</p><p>Juliaは2つの組み込みクラスターマネージャーを提供しています：</p><ul><li><code>LocalManager</code>は、<a href="../stdlib/Distributed.html#Distributed.addprocs"><code>addprocs()</code></a>または<a href="../stdlib/Distributed.html#Distributed.addprocs"><code>addprocs(np::Integer)</code></a>が呼び出されたときに使用されます。</li><li><code>SSHManager</code>は、<a href="../stdlib/Distributed.html#Distributed.addprocs"><code>addprocs(hostnames::Array)</code></a>がホスト名のリストで呼び出されたときに使用されます。</li></ul><p><code>LocalManager</code>は、同じホスト上で追加のワーカーを起動するために使用され、マルチコアおよびマルチプロセッサハードウェアを活用します。</p><p>したがって、最小限のクラスター管理者は次のことが必要です：</p><ul><li>抽象 <code>ClusterManager</code> のサブタイプである</li><li><a href="../stdlib/Distributed.html#Distributed.launch"><code>launch</code></a>を実装し、新しいワーカーを起動する責任を持つメソッドを作成します。</li><li><a href="../stdlib/Distributed.html#Distributed.manage"><code>manage</code></a>を実装します。これは、ワーカーのライフタイム中のさまざまなイベント（例えば、割り込み信号の送信）で呼び出されます。</li></ul><p><a href="../stdlib/Distributed.html#Distributed.addprocs"><code>addprocs(manager::FooManager)</code></a> は <code>FooManager</code> が実装する必要があります:</p><pre><code class="language-julia hljs">function launch(manager::FooManager, params::Dict, launched::Array, c::Condition)
+    [...]
+end
+
+function manage(manager::FooManager, id::Integer, config::WorkerConfig, op::Symbol)
+    [...]
+end</code></pre><p>例として、同じホスト上でワーカーを起動する責任を持つ <code>LocalManager</code> がどのように実装されているかを見てみましょう：</p><pre><code class="language-julia hljs">struct LocalManager &lt;: ClusterManager
+    np::Integer
+end
+
+function launch(manager::LocalManager, params::Dict, launched::Array, c::Condition)
+    [...]
+end
+
+function manage(manager::LocalManager, id::Integer, config::WorkerConfig, op::Symbol)
+    [...]
+end</code></pre><p><a href="../stdlib/Distributed.html#Distributed.launch"><code>launch</code></a> メソッドは、以下の引数を取ります：</p><ul><li><code>manager::ClusterManager</code>: <a href="../stdlib/Distributed.html#Distributed.addprocs"><code>addprocs</code></a> が呼び出されるクラスター マネージャーです。</li><li><code>params::Dict</code>: <a href="../stdlib/Distributed.html#Distributed.addprocs"><code>addprocs</code></a> に渡されたすべてのキーワード引数</li><li><code>launched::Array</code>: 1つ以上の <code>WorkerConfig</code> オブジェクトを追加する配列</li><li><code>c::Condition</code>: ワーカーが起動されるときに通知される条件変数</li></ul><p><a href="../stdlib/Distributed.html#Distributed.launch"><code>launch</code></a> メソッドは、別のタスクで非同期に呼び出されます。このタスクの終了は、すべての要求されたワーカーが起動されたことを示します。したがって、<code>4d61726b646f776e2e436f64652822222c20226c61756e63682229_40726566</code> 関数は、すべての要求されたワーカーが起動されたら、すぐに終了しなければなりません。</p><p>新しく起動されたワーカーは、全てのワーカーとマスタープロセスに相互接続されます。コマンドライン引数 <code>--worker[=&lt;cookie&gt;]</code> を指定すると、起動されたプロセスはワーカーとして初期化され、TCP/IPソケットを介して接続が設定されます。</p><p>クラスター内のすべてのワーカーは、マスターと同じ <a href="distributed-computing.html#man-cluster-cookie">cookie</a> を共有します。クッキーが指定されていない場合、つまり <code>--worker</code> オプションを使用している場合、ワーカーは標準入力からそれを読み取ろうとします。 <code>LocalManager</code> と <code>SSHManager</code> はどちらも、標準入力を介して新しく起動されたワーカーにクッキーを渡します。</p><p>デフォルトでは、ワーカーは <a href="../stdlib/Sockets.html#Sockets.getipaddr"><code>getipaddr()</code></a> への呼び出しで返されるアドレスの空いているポートでリッスンします。リッスンする特定のアドレスは、オプション引数 <code>--bind-to bind_addr[:port]</code> で指定できます。これはマルチホーミングホストに便利です。</p><p>非TCP/IPトランスポートの例として、実装はMPIを使用することを選択する場合があり、その場合は<code>--worker</code>を指定してはいけません。代わりに、新しく起動されたワーカーは、並列構造を使用する前に<code>init_worker(cookie)</code>を呼び出す必要があります。</p><p>すべてのワーカーが起動されるたびに、<a href="../stdlib/Distributed.html#Distributed.launch"><code>launch</code></a> メソッドは、<code>launched</code> に適切なフィールドが初期化された <code>WorkerConfig</code> オブジェクトを追加しなければなりません。</p><pre><code class="language-julia hljs">mutable struct WorkerConfig
+    # Common fields relevant to all cluster managers
+    io::Union{IO, Nothing}
+    host::Union{AbstractString, Nothing}
+    port::Union{Integer, Nothing}
+
+    # Used when launching additional workers at a host
+    count::Union{Int, Symbol, Nothing}
+    exename::Union{AbstractString, Cmd, Nothing}
+    exeflags::Union{Cmd, Nothing}
+
+    # External cluster managers can use this to store information at a per-worker level
+    # Can be a dict if multiple fields need to be stored.
+    userdata::Any
+
+    # SSHManager / SSH tunnel connections to workers
+    tunnel::Union{Bool, Nothing}
+    bind_addr::Union{AbstractString, Nothing}
+    sshflags::Union{Cmd, Nothing}
+    max_parallel::Union{Integer, Nothing}
+
+    # Used by Local/SSH managers
+    connect_at::Any
+
+    [...]
+end</code></pre><p><code>WorkerConfig</code>のほとんどのフィールドは、組み込みのマネージャーによって使用されます。カスタムクラスター マネージャーは通常、<code>io</code>または<code>host</code> / <code>port</code>のみを指定します:</p><ul><li><p><code>io</code>が指定されている場合、ホスト/ポート情報を読み取るために使用されます。Juliaワーカーは、起動時にそのバインドアドレスとポートを出力します。これにより、Juliaワーカーは手動でワーカーポートを設定する必要なく、利用可能な任意の空いているポートでリッスンできるようになります。</p></li><li><p><code>io</code>が指定されていない場合、<code>host</code>と<code>port</code>が接続に使用されます。</p></li><li><p><code>count</code>、<code>exename</code>、および <code>exeflags</code> は、ワーカーから追加のワーカーを起動する際に関連します。たとえば、クラスター管理者はノードごとに単一のワーカーを起動し、それを使用して追加のワーカーを起動することがあります。</p><ul><li><code>count</code> の整数値 <code>n</code> は、合計 <code>n</code> のワーカーを起動します。</li><li><code>count</code> の値が <code>:auto</code> の場合、そのマシンの CPU スレッド（論理コア）の数と同じだけのワーカーが起動します。</li><li><code>exename</code> は、フルパスを含む <code>julia</code> 実行可能ファイルの名前です。</li><li><code>exeflags</code> は新しいワーカーのために必要なコマンドライン引数に設定する必要があります。</li></ul></li><li><p><code>tunnel</code>、<code>bind_addr</code>、<code>sshflags</code> および <code>max_parallel</code> は、マスタープロセスからワーカーに接続するために SSH トンネルが必要な場合に使用されます。</p></li><li><p><code>userdata</code> は、カスタムクラスター マネージャーが独自のワーカー固有の情報を保存するために提供されています。</p></li></ul><p><code>manage(manager::FooManager, id::Integer, config::WorkerConfig, op::Symbol)</code> は、ワーカーのライフタイム中に適切な <code>op</code> 値で異なるタイミングで呼び出されます：</p><ul><li><code>:register</code> / <code>:deregister</code> を使用して、ワーカーがJuliaワーカープールに追加または削除されるとき。</li><li><code>interrupt(workers)</code>が呼び出されるときに<code>:interrupt</code>を使用します。<code>ClusterManager</code>は、適切なワーカーに中断信号を送信する必要があります。</li><li><code>:finalize</code>をクリーンアップ目的で使用します。</li></ul><h3 id="Cluster-Managers-with-Custom-Transports"><a class="docs-heading-anchor" href="#Cluster-Managers-with-Custom-Transports">Cluster Managers with Custom Transports</a><a id="Cluster-Managers-with-Custom-Transports-1"></a><a class="docs-heading-anchor-permalink" href="#Cluster-Managers-with-Custom-Transports" title="Permalink"></a></h3><p>デフォルトのTCP/IPの全対全ソケット接続をカスタムトランスポート層に置き換えるのは、少し手間がかかります。各Juliaプロセスは、接続されているワーカーの数だけ通信タスクを持っています。たとえば、全対全メッシュネットワークの32プロセスからなるJuliaクラスターを考えてみましょう：</p><ul><li>各Juliaプロセスには、したがって31の通信タスクがあります。</li><li>各タスクは、メッセージ処理ループ内で単一のリモートワーカーからのすべての受信メッセージを処理します。</li><li>メッセージ処理ループは、<code>IO</code>オブジェクト（例えば、デフォルト実装の<a href="../stdlib/Sockets.html#Sockets.TCPSocket"><code>TCPSocket</code></a>）で待機し、メッセージ全体を読み取り、それを処理し、次のメッセージを待ちます。</li><li>プロセスへのメッセージの送信は、適切な <code>IO</code> オブジェクトを介して、通信タスクだけでなく、任意のJuliaタスクから直接行われます。</li></ul><p>デフォルトのトランスポートを置き換えるには、新しい実装がリモートワーカーへの接続を設定し、メッセージ処理ループが待機できる適切な <code>IO</code> オブジェクトを提供する必要があります。実装すべきマネージャー固有のコールバックは次のとおりです：</p><pre><code class="language-julia hljs">connect(manager::FooManager, pid::Integer, config::WorkerConfig)
+kill(manager::FooManager, pid::Int, config::WorkerConfig)</code></pre><p>デフォルトの実装（TCP/IPソケットを使用）は、<code>connect(manager::ClusterManager, pid::Integer, config::WorkerConfig)</code>として実装されています。</p><p><code>connect</code> は、ワーカー <code>pid</code> から送信されたデータを読み取るための <code>IO</code> オブジェクトと、ワーカー <code>pid</code> に送信する必要があるデータを書き込むための <code>IO</code> オブジェクトのペアを返す必要があります。カスタムクラスターマネージャは、カスタムの、場合によっては非 <code>IO</code> トランスポートとJuliaの組み込み並列インフラストラクチャの間でデータをプロキシするために、メモリ内の <code>BufferStream</code> を使用できます。</p><p><code>BufferStream</code>は、メモリ内の<a href="../base/io-network.html#Base.IOBuffer"><code>IOBuffer</code></a>であり、<code>IO</code>のように振る舞います。これは、非同期に処理できるストリームです。</p><p>フォルダー <code>clustermanager/0mq</code> は、<a href="https://github.com/JuliaAttic/Examples">Examples repository</a> にあり、ZeroMQを使用してジュリアワーカーを星型トポロジーで接続し、中央に0MQブローカーを配置する例が含まれています。注意: ジュリアプロセスはすべて<em>論理的に</em>互いに接続されており、任意のワーカーは他のワーカーに直接メッセージを送信でき、0MQがトランスポート層として使用されていることを意識する必要はありません。</p><p>カスタムトランスポートを使用する場合：</p><ul><li>Julia ワーカーは <code>--worker</code> で起動してはいけません。<code>--worker</code> で起動すると、新しく起動したワーカーはデフォルトで TCP/IP ソケットトランスポート実装になります。</li><li>すべてのワーカーとの論理接続が行われるたびに、<code>Base.process_messages(rd::IO, wr::IO)()</code>を呼び出さなければなりません。これにより、<code>IO</code>オブジェクトで表されるワーカーからのメッセージの読み取りと書き込みを処理する新しいタスクが開始されます。</li><li><code>init_worker(cookie, manager::FooManager)</code> <em>は</em> ワーカープロセスの初期化の一部として呼び出される <em>必要があります</em>。</li><li>フィールド <code>connect_at::Any</code> は、<code>WorkerConfig</code> 内で、<a href="../stdlib/Distributed.html#Distributed.launch"><code>launch</code></a> が呼び出されるときにクラスターマネージャーによって設定されることがあります。このフィールドの値は、すべての <a href="../stdlib/Distributed.html#Sockets.connect-Tuple{ClusterManager, Int64, WorkerConfig}"><code>connect</code></a> コールバックに渡されます。通常、このフィールドは <em>ワーカーへの接続方法</em> に関する情報を持っています。例えば、TCP/IP ソケットトランスポートは、このフィールドを使用してワーカーに接続するための <code>(host, port)</code> タプルを指定します。</li></ul><p><code>kill(manager, pid, config)</code> は、クラスターからワーカーを削除するために呼び出されます。マスタープロセスでは、適切なクリーンアップを確保するために、対応する <code>IO</code> オブジェクトが実装によって閉じられなければなりません。デフォルトの実装は、指定されたリモートワーカーに対して単に <code>exit()</code> コールを実行します。</p><p>Examplesフォルダの<code>clustermanager/simple</code>は、クラスタ設定のためにUNIXドメインソケットを使用したシンプルな実装を示す例です。</p><h3 id="Network-Requirements-for-LocalManager-and-SSHManager"><a class="docs-heading-anchor" href="#Network-Requirements-for-LocalManager-and-SSHManager">Network Requirements for LocalManager and SSHManager</a><a id="Network-Requirements-for-LocalManager-and-SSHManager-1"></a><a class="docs-heading-anchor-permalink" href="#Network-Requirements-for-LocalManager-and-SSHManager" title="Permalink"></a></h3><p>Juliaクラスタは、ローカルのラップトップ、部門のクラスター、またはクラウドなどの既にセキュリティが確保された環境で実行されるように設計されています。このセクションでは、組み込みの<code>LocalManager</code>および<code>SSHManager</code>のネットワークセキュリティ要件について説明します。</p><ul><li><p>マスタープロセスはポートをリッスンしません。ワーカーに接続するだけです。</p></li><li><p>各ワーカーはローカルインターフェースの1つにのみバインドし、OSによって割り当てられたエフェメラルポート番号でリッスンします。</p></li><li><p><code>LocalManager</code>は、デフォルトで<code>addprocs(N)</code>によってループバックインターフェースにのみバインドされます。これは、後でリモートホスト上で開始されたワーカー（または悪意のある意図を持つ誰か）がクラスターに接続できないことを意味します。<code>addprocs(4)</code>の後に<code>addprocs([&quot;remote_host&quot;])</code>を実行すると失敗します。一部のユーザーは、ローカルシステムといくつかのリモートシステムからなるクラスターを作成する必要があるかもしれません。これは、<code>restrict</code>キーワード引数を介して<code>LocalManager</code>に外部ネットワークインターフェースにバインドするよう明示的に要求することで実行できます：<code>addprocs(4; restrict=false)</code>。</p></li><li><p><code>SSHManager</code>は、<code>addprocs(list_of_remote_hosts)</code>によってリモートホスト上でワーカーをSSH経由で起動します。デフォルトでは、SSHはJuliaワーカーを起動するためにのみ使用されます。その後のマスター-ワーカーおよびワーカー-ワーカーの接続は、平文の暗号化されていないTCP/IPソケットを使用します。リモートホストにはパスワードなしのログインが有効である必要があります。追加のSSHフラグや資格情報は、キーワード引数<code>sshflags</code>を介して指定できます。</p></li><li><p><code>addprocs(list_of_remote_hosts; tunnel=true, sshflags=&lt;ssh keys and other flags&gt;)</code> は、マスター-ワーカーのためにSSH接続を使用したい場合に便利です。典型的なシナリオは、ローカルのラップトップでJulia REPL（つまり、マスター）を実行し、クラスタの残りがクラウド上、例えばAmazon EC2にある場合です。この場合、リモートクラスタではポート22のみを開く必要があり、SSHクライアントは公開鍵基盤（PKI）を介して認証されます。認証情報は <code>sshflags</code> を介して提供できます。例えば <code>sshflags=`-i &lt;keyfile&gt;`</code>.</p><p>全対全トポロジー（デフォルト）では、すべてのワーカーがプレーンTCPソケットを介して互いに接続します。したがって、クラスターのノード上のセキュリティポリシーは、一時ポート範囲（OSによって異なる）に対してワーカー間の自由な接続を確保する必要があります。</p><p>すべてのワーカー間のトラフィックを保護し暗号化する（SSHを介して）か、個々のメッセージを暗号化することは、カスタム <code>ClusterManager</code> を介して行うことができます。</p></li><li><p><code>multiplex=true</code>をオプションとして指定すると、<a href="../stdlib/Distributed.html#Distributed.addprocs"><code>addprocs</code></a>ではSSHマルチプレクシングが使用され、マスターとワーカー間にトンネルが作成されます。自分でSSHマルチプレクシングを設定しており、接続がすでに確立されている場合は、<code>multiplex</code>オプションに関係なくSSHマルチプレクシングが使用されます。マルチプレクシングが有効になっている場合、転送は既存の接続を使用して設定されます（sshの<code>-O forward</code>オプション）。これは、サーバーがパスワード認証を必要とする場合に有益です。<code>4d61726b646f776e2e436f64652822222c202261646470726f63732229_40726566</code>の前にサーバーにログインすることで、Juliaでの認証を回避できます。制御ソケットは、既存のマルチプレクシング接続が使用されない限り、セッション中に<code>~/.ssh/julia-%r@%h:%p</code>に配置されます。ノード上で複数のプロセスを作成し、マルチプレクシングを有効にすると、プロセスが単一のマルチプレクシングTCP接続を共有するため、帯域幅が制限される可能性があることに注意してください。</p></li></ul><h3 id="man-cluster-cookie"><a class="docs-heading-anchor" href="#man-cluster-cookie">Cluster Cookie</a><a id="man-cluster-cookie-1"></a><a class="docs-heading-anchor-permalink" href="#man-cluster-cookie" title="Permalink"></a></h3><p>クラスター内のすべてのプロセスは、同じクッキーを共有します。デフォルトでは、これはマスタープロセスでランダムに生成された文字列です。</p><ul><li><a href="../stdlib/Distributed.html#Distributed.cluster_cookie-Tuple{}"><code>cluster_cookie()</code></a> はクッキーを返し、<code>cluster_cookie(cookie)()</code> はそれを設定し、新しいクッキーを返します。</li><li>すべての接続は両側で認証されており、マスターによって開始されたワーカーのみが互いに接続できることを保証します。</li><li>クッキーは、起動時に引数 <code>--worker=&lt;cookie&gt;</code> を介してワーカーに渡される場合があります。引数 <code>--worker</code> がクッキーなしで指定された場合、ワーカーは標準入力からクッキーを読み取ろうとします (<a href="../base/io-network.html#Base.stdin"><code>stdin</code></a>)。クッキーが取得された後、<code>stdin</code> はすぐに閉じられます。</li><li><code>ClusterManager</code>は、<a href="../stdlib/Distributed.html#Distributed.cluster_cookie-Tuple{}"><code>cluster_cookie()</code></a>を呼び出すことでマスター上のクッキーを取得できます。デフォルトのTCP/IPトランスポートを使用していないクラスター マネージャー（したがって<code>--worker</code>を指定していない場合）は、マスターと同じクッキーを使用して<code>init_worker(cookie, manager)</code>を呼び出す必要があります。</li></ul><p>セキュリティの高いレベルを必要とする環境では、カスタム <code>ClusterManager</code> を介してこれを実装できます。たとえば、クッキーは事前に共有されるため、スタートアップ引数として指定する必要はありません。</p><h2 id="Specifying-Network-Topology-(Experimental)"><a class="docs-heading-anchor" href="#Specifying-Network-Topology-(Experimental)">Specifying Network Topology (Experimental)</a><a id="Specifying-Network-Topology-(Experimental)-1"></a><a class="docs-heading-anchor-permalink" href="#Specifying-Network-Topology-(Experimental)" title="Permalink"></a></h2><p>キーワード引数 <code>topology</code> は <a href="../stdlib/Distributed.html#Distributed.addprocs"><code>addprocs</code></a> に渡され、ワーカー同士がどのように接続されるべきかを指定するために使用されます：</p><ul><li><code>:all_to_all</code>、デフォルト：すべてのワーカーが互いに接続されています。</li><li><code>:master_worker</code>: ドライバープロセスのみ、すなわち <code>pid</code> 1 がワーカーへの接続を持っています。</li><li><code>:custom</code>: クラスターマネージャの <code>launch</code> メソッドは、<code>WorkerConfig</code> の <code>ident</code> および <code>connect_idents</code> フィールドを介して接続トポロジーを指定します。クラスターマネージャが提供するアイデンティティ <code>ident</code> を持つワーカーは、<code>connect_idents</code> に指定されたすべてのワーカーに接続します。</li></ul><p>キーワード引数 <code>lazy=true|false</code> は、<code>topology</code> オプション <code>:all_to_all</code> にのみ影響します。<code>true</code> の場合、クラスターはマスターがすべてのワーカーに接続された状態で開始されます。特定のワーカー間の接続は、2つのワーカー間で最初のリモート呼び出しが行われたときに確立されます。これにより、クラスター内通信のために初期に割り当てられるリソースが削減されます。接続は、並列プログラムの実行時の要件に応じて設定されます。<code>lazy</code> のデフォルト値は <code>true</code> です。</p><p>現在、接続されていないワーカー間でメッセージを送信するとエラーが発生します。この動作は、機能やインターフェースと同様に、実験的な性質と見なされており、将来のリリースで変更される可能性があります。</p><h2 id="Noteworthy-external-packages"><a class="docs-heading-anchor" href="#Noteworthy-external-packages">Noteworthy external packages</a><a id="Noteworthy-external-packages-1"></a><a class="docs-heading-anchor-permalink" href="#Noteworthy-external-packages" title="Permalink"></a></h2><p>Juliaの並列処理の外には、言及すべき多くの外部パッケージがあります。例えば、<a href="https://github.com/JuliaParallel/MPI.jl"><code>MPI.jl</code></a>は<code>MPI</code>プロトコルのためのJuliaラッパーであり、<a href="https://github.com/JuliaParallel/Dagger.jl"><code>Dagger.jl</code></a>はPythonの<a href="https://dask.org/">Dask</a>に似た機能を提供し、<a href="https://github.com/JuliaParallel/Distributedarrays.jl"><code>DistributedArrays.jl</code></a>は、<a href="distributed-computing.html#man-shared-arrays">outlined above</a>として、ワーカー間で分散された配列操作を提供します。</p><p>ジュリアのGPUプログラミングエコシステムについて言及する必要があります。これには以下が含まれます：</p><ol><li><a href="https://github.com/JuliaGPU/CUDA.jl">CUDA.jl</a> は、さまざまなCUDAライブラリをラップし、Nvidia GPU用のJuliaカーネルのコンパイルをサポートします。</li><li><a href="https://github.com/JuliaGPU/oneAPI.jl">oneAPI.jl</a> は oneAPI 統一プログラミングモデルをラップしており、サポートされているアクセラレータ上で Julia カーネルを実行することをサポートしています。現在、サポートされているのは Linux のみです。</li><li><a href="https://github.com/JuliaGPU/AMDGPU.jl">AMDGPU.jl</a> は AMD ROCm ライブラリをラップし、AMD GPU 用の Julia カーネルのコンパイルをサポートします。現在、Linux のみがサポートされています。</li><li>高レベルのライブラリは、<a href="https://github.com/JuliaGPU/KernelAbstractions.jl">KernelAbstractions.jl</a>、<a href="https://github.com/mcabbott/Tullio.jl">Tullio.jl</a>、および<a href="https://github.com/JuliaComputing/ArrayFire.jl">ArrayFire.jl</a>です。</li></ol><p>次の例では、<code>DistributedArrays.jl</code> と <code>CUDA.jl</code> の両方を使用して、配列を <code>distribute()</code> と <code>CuArray()</code> を通じて最初にキャストすることによって、複数のプロセスに分散させます。</p><p><code>DistributedArrays.jl</code>をインポートする際は、<a href="../stdlib/Distributed.html#Distributed.@everywhere"><code>@everywhere</code></a>を使用してすべてのプロセスでインポートすることを忘れないでください。</p><pre><code class="language-julia-repl hljs">$ ./julia -p 4
+
+julia&gt; addprocs()
+
+julia&gt; @everywhere using DistributedArrays
+
+julia&gt; using CUDA
+
+julia&gt; B = ones(10_000) ./ 2;
+
+julia&gt; A = ones(10_000) .* π;
+
+julia&gt; C = 2 .* A ./ B;
+
+julia&gt; all(C .≈ 4*π)
+true
+
+julia&gt; typeof(C)
+Array{Float64,1}
+
+julia&gt; dB = distribute(B);
+
+julia&gt; dA = distribute(A);
+
+julia&gt; dC = 2 .* dA ./ dB;
+
+julia&gt; all(dC .≈ 4*π)
+true
+
+julia&gt; typeof(dC)
+DistributedArrays.DArray{Float64,1,Array{Float64,1}}
+
+julia&gt; cuB = CuArray(B);
+
+julia&gt; cuA = CuArray(A);
+
+julia&gt; cuC = 2 .* cuA ./ cuB;
+
+julia&gt; all(cuC .≈ 4*π);
+true
+
+julia&gt; typeof(cuC)
+CuArray{Float64,1}</code></pre><p>次の例では、<code>DistributedArrays.jl</code> と <code>CUDA.jl</code> の両方を使用して、配列を複数のプロセスに分散させ、その上で汎用関数を呼び出します。</p><pre><code class="language-julia hljs">function power_method(M, v)
+    for i in 1:100
+        v = M*v
+        v /= norm(v)
+    end
+
+    return v, norm(M*v) / norm(v)  # or  (M*v) ./ v
+end</code></pre><p><code>power_method</code> は新しいベクトルを繰り返し作成し、正規化します。関数宣言で型シグネチャを指定していませんが、前述のデータ型で動作するか見てみましょう:</p><pre><code class="language-julia-repl hljs">julia&gt; M = [2. 1; 1 1];
+
+julia&gt; v = rand(2)
+2-element Array{Float64,1}:
+0.40395
+0.445877
+
+julia&gt; power_method(M,v)
+([0.850651, 0.525731], 2.618033988749895)
+
+julia&gt; cuM = CuArray(M);
+
+julia&gt; cuv = CuArray(v);
+
+julia&gt; curesult = power_method(cuM, cuv);
+
+julia&gt; typeof(curesult)
+CuArray{Float64,1}
+
+julia&gt; dM = distribute(M);
+
+julia&gt; dv = distribute(v);
+
+julia&gt; dC = power_method(dM, dv);
+
+julia&gt; typeof(dC)
+Tuple{DistributedArrays.DArray{Float64,1,Array{Float64,1}},Float64}</code></pre><p>この外部パッケージの短い紹介を終えるために、<code>MPI.jl</code>、つまりMPIプロトコルのJuliaラッパーを考えてみましょう。すべての内部関数を考慮するには時間がかかりすぎるため、プロトコルを実装するために使用されるアプローチを単に評価する方が良いでしょう。</p><p>このおもちゃのスクリプトは、各サブプロセスを呼び出し、そのランクをインスタンス化し、マスタープロセスに到達したときにランクの合計を計算します。</p><pre><code class="language-julia hljs">import MPI
+
+MPI.Init()
+
+comm = MPI.COMM_WORLD
+MPI.Barrier(comm)
+
+root = 0
+r = MPI.Comm_rank(comm)
+
+sr = MPI.Reduce(r, MPI.SUM, root, comm)
+
+if(MPI.Comm_rank(comm) == root)
+   @printf(&quot;sum of ranks: %s\n&quot;, sr)
+end
+
+MPI.Finalize()</code></pre><pre><code class="nohighlight hljs">mpirun -np 4 ./julia example.jl</code></pre><section class="footnotes is-size-7"><ul><li class="footnote" id="footnote-1"><a class="tag is-link" href="#citeref-1">1</a>In this context, MPI refers to the MPI-1 standard. Beginning with MPI-2, the MPI standards committee introduced a new set of communication mechanisms, collectively referred to as Remote Memory Access (RMA). The motivation for adding rma to the MPI standard was to facilitate one-sided communication patterns. For additional information on the latest MPI standard, see <a href="https://mpi-forum.org/docs">https://mpi-forum.org/docs</a>.</li></ul></section></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="multi-threading.html">« Multi-Threading</a><a class="docs-footer-nextpage" href="running-external-programs.html">Running External Programs »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.11.4 on <span class="colophon-date" title="Tuesday 20 May 2025 04:59">Tuesday 20 May 2025</span>. Using Julia version 1.11.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

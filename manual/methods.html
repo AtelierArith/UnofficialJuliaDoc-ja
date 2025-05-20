@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Methods · The Julia Language</title><meta name="title" content="Methods · The Julia Language"/><meta property="og:title" content="Methods · The Julia Language"/><meta property="twitter:title" content="Methods · The Julia Language"/><meta name="description" content="Documentation for The Julia Language."/><meta property="og:description" content="Documentation for The Julia Language."/><meta property="twitter:description" content="Documentation for The Julia Language."/><script async src="https://www.googletagmanager.com/gtag/js?id=UA-28835595-6"></script><script>  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-28835595-6', {'page_path': location.pathname + location.search + location.hash});
+</script><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script><link href="../assets/julia-manual.css" rel="stylesheet" type="text/css"/><link href="../assets/julia.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../index.html"><img class="docs-light-only" src="../assets/logo.svg" alt="The Julia Language logo"/><img class="docs-dark-only" src="../assets/logo-dark.svg" alt="The Julia Language logo"/></a><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../index.html">Julia Documentation</a></li><li><input class="collapse-toggle" id="menuitem-3" type="checkbox" checked/><label class="tocitem" for="menuitem-3"><span class="docs-label">Manual</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="getting-started.html">Getting Started</a></li><li><a class="tocitem" href="installation.html">Installation</a></li><li><a class="tocitem" href="variables.html">Variables</a></li><li><a class="tocitem" href="integers-and-floating-point-numbers.html">Integers and Floating-Point Numbers</a></li><li><a class="tocitem" href="mathematical-operations.html">Mathematical Operations and Elementary Functions</a></li><li><a class="tocitem" href="complex-and-rational-numbers.html">Complex and Rational Numbers</a></li><li><a class="tocitem" href="strings.html">Strings</a></li><li><a class="tocitem" href="functions.html">Functions</a></li><li><a class="tocitem" href="control-flow.html">Control Flow</a></li><li><a class="tocitem" href="variables-and-scoping.html">Scope of Variables</a></li><li><a class="tocitem" href="types.html">Types</a></li><li class="is-active"><a class="tocitem" href="methods.html">Methods</a><ul class="internal"><li><a class="tocitem" href="#Defining-Methods"><span>Defining Methods</span></a></li><li><a class="tocitem" href="#man-method-specializations"><span>Method specializations</span></a></li><li><a class="tocitem" href="#man-ambiguities"><span>Method Ambiguities</span></a></li><li><a class="tocitem" href="#Parametric-Methods"><span>Parametric Methods</span></a></li><li><a class="tocitem" href="#Redefining-Methods"><span>Redefining Methods</span></a></li><li><a class="tocitem" href="#Design-Patterns-with-Parametric-Methods"><span>Design Patterns with Parametric Methods</span></a></li><li><a class="tocitem" href="#Parametrically-constrained-Varargs-methods"><span>Parametrically-constrained Varargs methods</span></a></li><li><a class="tocitem" href="#Note-on-Optional-and-keyword-Arguments"><span>Note on Optional and keyword Arguments</span></a></li><li><a class="tocitem" href="#Function-like-objects"><span>Function-like objects</span></a></li><li><a class="tocitem" href="#Empty-generic-functions"><span>Empty generic functions</span></a></li><li><a class="tocitem" href="#man-method-design-ambiguities"><span>Method design and the avoidance of ambiguities</span></a></li><li><a class="tocitem" href="#Defining-methods-in-local-scope"><span>Defining methods in local scope</span></a></li></ul></li><li><a class="tocitem" href="constructors.html">Constructors</a></li><li><a class="tocitem" href="conversion-and-promotion.html">Conversion and Promotion</a></li><li><a class="tocitem" href="interfaces.html">Interfaces</a></li><li><a class="tocitem" href="modules.html">Modules</a></li><li><a class="tocitem" href="documentation.html">Documentation</a></li><li><a class="tocitem" href="metaprogramming.html">Metaprogramming</a></li><li><a class="tocitem" href="arrays.html">Single- and multi-dimensional Arrays</a></li><li><a class="tocitem" href="missing.html">Missing Values</a></li><li><a class="tocitem" href="networking-and-streams.html">Networking and Streams</a></li><li><a class="tocitem" href="parallel-computing.html">Parallel Computing</a></li><li><a class="tocitem" href="asynchronous-programming.html">Asynchronous Programming</a></li><li><a class="tocitem" href="multi-threading.html">Multi-Threading</a></li><li><a class="tocitem" href="distributed-computing.html">Multi-processing and Distributed Computing</a></li><li><a class="tocitem" href="running-external-programs.html">Running External Programs</a></li><li><a class="tocitem" href="calling-c-and-fortran-code.html">Calling C and Fortran Code</a></li><li><a class="tocitem" href="handling-operating-system-variation.html">Handling Operating System Variation</a></li><li><a class="tocitem" href="environment-variables.html">Environment Variables</a></li><li><a class="tocitem" href="embedding.html">Embedding Julia</a></li><li><a class="tocitem" href="code-loading.html">Code Loading</a></li><li><a class="tocitem" href="profile.html">Profiling</a></li><li><a class="tocitem" href="stacktraces.html">Stack Traces</a></li><li><a class="tocitem" href="performance-tips.html">Performance Tips</a></li><li><a class="tocitem" href="workflow-tips.html">Workflow Tips</a></li><li><a class="tocitem" href="style-guide.html">Style Guide</a></li><li><a class="tocitem" href="faq.html">Frequently Asked Questions</a></li><li><a class="tocitem" href="noteworthy-differences.html">Noteworthy Differences from other Languages</a></li><li><a class="tocitem" href="unicode-input.html">Unicode Input</a></li><li><a class="tocitem" href="command-line-interface.html">Command-line Interface</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-4" type="checkbox"/><label class="tocitem" for="menuitem-4"><span class="docs-label">Base</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../base/base.html">Essentials</a></li><li><a class="tocitem" href="../base/collections.html">Collections and Data Structures</a></li><li><a class="tocitem" href="../base/math.html">Mathematics</a></li><li><a class="tocitem" href="../base/numbers.html">Numbers</a></li><li><a class="tocitem" href="../base/strings.html">Strings</a></li><li><a class="tocitem" href="../base/arrays.html">Arrays</a></li><li><a class="tocitem" href="../base/parallel.html">Tasks</a></li><li><a class="tocitem" href="../base/multi-threading.html">Multi-Threading</a></li><li><a class="tocitem" href="../base/scopedvalues.html">Scoped Values</a></li><li><a class="tocitem" href="../base/constants.html">Constants</a></li><li><a class="tocitem" href="../base/file.html">Filesystem</a></li><li><a class="tocitem" href="../base/io-network.html">I/O and Network</a></li><li><a class="tocitem" href="../base/punctuation.html">Punctuation</a></li><li><a class="tocitem" href="../base/sort.html">Sorting and Related Functions</a></li><li><a class="tocitem" href="../base/iterators.html">Iteration utilities</a></li><li><a class="tocitem" href="../base/reflection.html">Reflection and introspection</a></li><li><a class="tocitem" href="../base/c.html">C Interface</a></li><li><a class="tocitem" href="../base/libc.html">C Standard Library</a></li><li><a class="tocitem" href="../base/stacktraces.html">StackTraces</a></li><li><a class="tocitem" href="../base/simd-types.html">SIMD Support</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-5" type="checkbox"/><label class="tocitem" for="menuitem-5"><span class="docs-label">Standard Library</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../stdlib/ArgTools.html">ArgTools</a></li><li><a class="tocitem" href="../stdlib/Artifacts.html">Artifacts</a></li><li><a class="tocitem" href="../stdlib/Base64.html">Base64</a></li><li><a class="tocitem" href="../stdlib/CRC32c.html">CRC32c</a></li><li><a class="tocitem" href="../stdlib/Dates.html">Dates</a></li><li><a class="tocitem" href="../stdlib/DelimitedFiles.html">Delimited Files</a></li><li><a class="tocitem" href="../stdlib/Distributed.html">Distributed Computing</a></li><li><a class="tocitem" href="../stdlib/Downloads.html">Downloads</a></li><li><a class="tocitem" href="../stdlib/FileWatching.html">File Events</a></li><li><a class="tocitem" href="../stdlib/Future.html">Future</a></li><li><a class="tocitem" href="../stdlib/InteractiveUtils.html">Interactive Utilities</a></li><li><a class="tocitem" href="../stdlib/LazyArtifacts.html">Lazy Artifacts</a></li><li><a class="tocitem" href="../stdlib/LibCURL.html">LibCURL</a></li><li><a class="tocitem" href="../stdlib/LibGit2.html">LibGit2</a></li><li><a class="tocitem" href="../stdlib/Libdl.html">Dynamic Linker</a></li><li><a class="tocitem" href="../stdlib/LinearAlgebra.html">Linear Algebra</a></li><li><a class="tocitem" href="../stdlib/Logging.html">Logging</a></li><li><a class="tocitem" href="../stdlib/Markdown.html">Markdown</a></li><li><a class="tocitem" href="../stdlib/Mmap.html">Memory-mapped I/O</a></li><li><a class="tocitem" href="../stdlib/NetworkOptions.html">Network Options</a></li><li><a class="tocitem" href="../stdlib/Pkg.html">Pkg</a></li><li><a class="tocitem" href="../stdlib/Printf.html">Printf</a></li><li><a class="tocitem" href="../stdlib/Profile.html">Profiling</a></li><li><a class="tocitem" href="../stdlib/REPL.html">The Julia REPL</a></li><li><a class="tocitem" href="../stdlib/Random.html">Random Numbers</a></li><li><a class="tocitem" href="../stdlib/SHA.html">SHA</a></li><li><a class="tocitem" href="../stdlib/Serialization.html">Serialization</a></li><li><a class="tocitem" href="../stdlib/SharedArrays.html">Shared Arrays</a></li><li><a class="tocitem" href="../stdlib/Sockets.html">Sockets</a></li><li><a class="tocitem" href="../stdlib/SparseArrays.html">Sparse Arrays</a></li><li><a class="tocitem" href="../stdlib/Statistics.html">Statistics</a></li><li><a class="tocitem" href="../stdlib/StyledStrings.html">StyledStrings</a></li><li><a class="tocitem" href="../stdlib/TOML.html">TOML</a></li><li><a class="tocitem" href="../stdlib/Tar.html">Tar</a></li><li><a class="tocitem" href="../stdlib/Test.html">Unit Testing</a></li><li><a class="tocitem" href="../stdlib/UUIDs.html">UUIDs</a></li><li><a class="tocitem" href="../stdlib/Unicode.html">Unicode</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6" type="checkbox"/><label class="tocitem" for="menuitem-6"><span class="docs-label">Developer Documentation</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><input class="collapse-toggle" id="menuitem-6-1" type="checkbox"/><label class="tocitem" for="menuitem-6-1"><span class="docs-label">Documentation of Julia&#39;s Internals</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../devdocs/init.html">Initialization of the Julia runtime</a></li><li><a class="tocitem" href="../devdocs/ast.html">Julia ASTs</a></li><li><a class="tocitem" href="../devdocs/types.html">More about types</a></li><li><a class="tocitem" href="../devdocs/object.html">Memory layout of Julia Objects</a></li><li><a class="tocitem" href="../devdocs/eval.html">Eval of Julia code</a></li><li><a class="tocitem" href="../devdocs/callconv.html">Calling Conventions</a></li><li><a class="tocitem" href="../devdocs/compiler.html">High-level Overview of the Native-Code Generation Process</a></li><li><a class="tocitem" href="../devdocs/functions.html">Julia Functions</a></li><li><a class="tocitem" href="../devdocs/cartesian.html">Base.Cartesian</a></li><li><a class="tocitem" href="../devdocs/meta.html">Talking to the compiler (the <code>:meta</code> mechanism)</a></li><li><a class="tocitem" href="../devdocs/subarrays.html">SubArrays</a></li><li><a class="tocitem" href="../devdocs/isbitsunionarrays.html">isbits Union Optimizations</a></li><li><a class="tocitem" href="../devdocs/sysimg.html">System Image Building</a></li><li><a class="tocitem" href="../devdocs/pkgimg.html">Package Images</a></li><li><a class="tocitem" href="../devdocs/llvm-passes.html">Custom LLVM Passes</a></li><li><a class="tocitem" href="../devdocs/llvm.html">Working with LLVM</a></li><li><a class="tocitem" href="../devdocs/stdio.html">printf() and stdio in the Julia runtime</a></li><li><a class="tocitem" href="../devdocs/boundscheck.html">Bounds checking</a></li><li><a class="tocitem" href="../devdocs/locks.html">Proper maintenance and care of multi-threading locks</a></li><li><a class="tocitem" href="../devdocs/offset-arrays.html">Arrays with custom indices</a></li><li><a class="tocitem" href="../devdocs/require.html">Module loading</a></li><li><a class="tocitem" href="../devdocs/inference.html">Inference</a></li><li><a class="tocitem" href="../devdocs/ssair.html">Julia SSA-form IR</a></li><li><a class="tocitem" href="../devdocs/EscapeAnalysis.html"><code>EscapeAnalysis</code></a></li><li><a class="tocitem" href="../devdocs/aot.html">Ahead of Time Compilation</a></li><li><a class="tocitem" href="../devdocs/gc-sa.html">Static analyzer annotations for GC correctness in C code</a></li><li><a class="tocitem" href="../devdocs/gc.html">Garbage Collection in Julia</a></li><li><a class="tocitem" href="../devdocs/jit.html">JIT Design and Implementation</a></li><li><a class="tocitem" href="../devdocs/builtins.html">Core.Builtins</a></li><li><a class="tocitem" href="../devdocs/precompile_hang.html">Fixing precompilation hangs due to open tasks or IO</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-2" type="checkbox"/><label class="tocitem" for="menuitem-6-2"><span class="docs-label">Developing/debugging Julia&#39;s C code</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../devdocs/backtraces.html">Reporting and analyzing crashes (segfaults)</a></li><li><a class="tocitem" href="../devdocs/debuggingtips.html">gdb debugging tips</a></li><li><a class="tocitem" href="../devdocs/valgrind.html">Using Valgrind with Julia</a></li><li><a class="tocitem" href="../devdocs/external_profilers.html">External Profiler Support</a></li><li><a class="tocitem" href="../devdocs/sanitizers.html">Sanitizer support</a></li><li><a class="tocitem" href="../devdocs/probes.html">Instrumenting Julia with DTrace, and bpftrace</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6-3" type="checkbox"/><label class="tocitem" for="menuitem-6-3"><span class="docs-label">Building Julia</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../devdocs/build/build.html">Building Julia (Detailed)</a></li><li><a class="tocitem" href="../devdocs/build/linux.html">Linux</a></li><li><a class="tocitem" href="../devdocs/build/macos.html">macOS</a></li><li><a class="tocitem" href="../devdocs/build/windows.html">Windows</a></li><li><a class="tocitem" href="../devdocs/build/freebsd.html">FreeBSD</a></li><li><a class="tocitem" href="../devdocs/build/arm.html">ARM (Linux)</a></li><li><a class="tocitem" href="../devdocs/build/distributing.html">Binary distributions</a></li></ul></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Manual</a></li><li class="is-active"><a href="methods.html">Methods</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href="methods.html">Methods</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/JuliaLang/julia" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/JuliaLang/julia/blob/master/doc/src/manual/methods.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Methods"><a class="docs-heading-anchor" href="#Methods">Methods</a><a id="Methods-1"></a><a class="docs-heading-anchor-permalink" href="#Methods" title="Permalink"></a></h1><p><a href="functions.html#man-functions">Functions</a>から思い出してください。関数は、引数のタプルを戻り値にマッピングするオブジェクトであり、適切な値を返せない場合は例外をスローします。同じ概念的な関数や操作が、異なるタイプの引数に対して非常に異なる方法で実装されることは一般的です。2つの整数を加算することは、2つの浮動小数点数を加算することとは非常に異なり、どちらも整数と浮動小数点数を加算することとは異なります。これらの実装の違いにもかかわらず、これらの操作はすべて「加算」という一般的な概念に属します。それに応じて、Juliaでは、これらの動作はすべて単一のオブジェクトに属します：<code>+</code>関数です。</p><p>異なる実装をスムーズに使用するためには、関数は一度にすべて定義する必要はなく、特定の引数の型や数の組み合わせに対して特定の動作を提供することで、部分的に定義することができます。関数の可能な動作の定義は<em>メソッド</em>と呼ばれます。これまでのところ、すべての引数の型に適用可能な単一のメソッドで定義された関数の例のみを示してきました。しかし、メソッド定義のシグネチャには、引数の数に加えてその型を示す注釈を付けることができ、単一のメソッド定義だけでなく複数のメソッド定義を提供することもできます。関数が特定の引数のタプルに適用されると、その引数に最も特化したメソッドが適用されます。したがって、関数の全体的な動作は、そのさまざまなメソッド定義の動作のパッチワークとなります。このパッチワークがうまく設計されていれば、メソッドの実装がかなり異なっていても、関数の外部的な動作はシームレスで一貫しているように見えるでしょう。</p><p>関数が適用されるときにどのメソッドを実行するかの選択を<em>ディスパッチ</em>と呼びます。Juliaは、ディスパッチプロセスが与えられた引数の数や、関数のすべての引数の型に基づいて、どの関数のメソッドを呼び出すかを選択できるようにします。これは、ディスパッチが最初の引数のみに基づいて行われる従来のオブジェクト指向言語とは異なります。従来の言語では、最初の引数には特別な引数構文があることが多く、時には明示的に引数として書かれるのではなく、暗黙的に示されることがあります。<sup class="footnote-reference"><a id="citeref-1" href="#footnote-1">[1]</a></sup> 関数のすべての引数を使用して、どのメソッドを呼び出すべきかを選択することは、<a href="https://en.wikipedia.org/wiki/Multiple_dispatch">multiple dispatch</a>として知られています。複数のディスパッチは、数学的なコードに特に便利であり、操作が「どの引数に属する」と人工的に決定することはあまり意味がありません。<code>x + y</code>の加算操作は、<code>x</code>に属するのか、<code>y</code>に属するのか、どちらでしょうか？数学的演算子の実装は、一般的にそのすべての引数の型に依存します。しかし、数学的な操作を超えて、複数のディスパッチはプログラムを構造化し、整理するための強力で便利なパラダイムとなります。</p><div class="admonition is-info" id="Note-fa68de837f040c67"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-fa68de837f040c67" title="Permalink"></a></header><div class="admonition-body"><p>この章のすべての例は、<em>同じ</em> モジュール内の関数にメソッドを定義していると仮定しています。<em>別の</em> モジュールの関数にメソッドを追加したい場合は、それを <code>import</code> するか、モジュール名で修飾された名前を使用する必要があります。<a href="modules.html#namespace-management">namespace management</a> のセクションを参照してください。</p></div></div><h2 id="Defining-Methods"><a class="docs-heading-anchor" href="#Defining-Methods">Defining Methods</a><a id="Defining-Methods-1"></a><a class="docs-heading-anchor-permalink" href="#Defining-Methods" title="Permalink"></a></h2><p>これまでの例では、制約のない引数型を持つ単一のメソッドを持つ関数のみを定義してきました。このような関数は、従来の動的型付け言語と同様に動作します。それにもかかわらず、私たちはほとんど意識せずに複数のディスパッチとメソッドを継続的に使用してきました。Juliaの標準関数や演算子、例えば前述の<code>+</code>関数は、引数の型と数のさまざまな組み合わせに対する動作を定義する多くのメソッドを持っています。</p><p>関数を定義する際、<code>::</code> 型アサーション演算子を使用して、適用可能なパラメータの型を任意に制約することができます。この演算子は、<a href="types.html#Composite-Types">Composite Types</a> のセクションで導入されました。</p><pre><code class="language-julia-repl hljs">julia&gt; f(x::Float64, y::Float64) = 2x + y
+f (generic function with 1 method)</code></pre><p>この関数定義は、<code>x</code> と <code>y</code> の両方が型 <a href="../base/numbers.html#Core.Float64"><code>Float64</code></a> の値である呼び出しにのみ適用されます:</p><pre><code class="language-julia-repl hljs">julia&gt; f(2.0, 3.0)
+7.0</code></pre><p>他のタイプの引数に適用すると、<a href="../base/base.html#Core.MethodError"><code>MethodError</code></a> になります:</p><pre><code class="language-julia-repl hljs">julia&gt; f(2.0, 3)
+ERROR: MethodError: no method matching f(::Float64, ::Int64)
+The function `f` exists, but no method is defined for this combination of argument types.
+
+Closest candidates are:
+  f(::Float64, !Matched::Float64)
+   @ Main none:1
+
+Stacktrace:
+[...]
+
+julia&gt; f(Float32(2.0), 3.0)
+ERROR: MethodError: no method matching f(::Float32, ::Float64)
+The function `f` exists, but no method is defined for this combination of argument types.
+
+Closest candidates are:
+  f(!Matched::Float64, ::Float64)
+   @ Main none:1
+
+Stacktrace:
+[...]
+
+julia&gt; f(2.0, &quot;3.0&quot;)
+ERROR: MethodError: no method matching f(::Float64, ::String)
+The function `f` exists, but no method is defined for this combination of argument types.
+
+Closest candidates are:
+  f(::Float64, !Matched::Float64)
+   @ Main none:1
+
+Stacktrace:
+[...]
+
+julia&gt; f(&quot;2.0&quot;, &quot;3.0&quot;)
+ERROR: MethodError: no method matching f(::String, ::String)
+The function `f` exists, but no method is defined for this combination of argument types.</code></pre><p>ご覧のとおり、引数は正確に型 <a href="../base/numbers.html#Core.Float64"><code>Float64</code></a> でなければなりません。他の数値型、例えば整数や32ビット浮動小数点値は自動的に64ビット浮動小数点に変換されることはなく、文字列が数値として解析されることもありません。<code>Float64</code> は具体的な型であり、具体的な型はJuliaでサブクラス化できないため、そのような定義は型が正確に <code>Float64</code> である引数にのみ適用できます。しかし、宣言されたパラメータ型が抽象であるより一般的なメソッドを書くことはしばしば有用です。</p><pre><code class="language-julia-repl hljs">julia&gt; f(x::Number, y::Number) = 2x - y
+f (generic function with 2 methods)
+
+julia&gt; f(2.0, 3)
+1.0</code></pre><p>このメソッド定義は、<a href="../base/numbers.html#Core.Number"><code>Number</code></a> のインスタンスである任意の引数のペアに適用されます。これらは同じ型である必要はなく、それぞれが数値であれば問題ありません。異なる数値型を扱う問題は、式 <code>2x - y</code> の算術演算に委ねられています。</p><p>複数のメソッドを持つ関数を定義するには、異なる数とタイプの引数を持つ関数を複数回定義するだけです。関数の最初のメソッド定義は関数オブジェクトを作成し、その後のメソッド定義は既存の関数オブジェクトに新しいメソッドを追加します。引数の数とタイプに最も特化したメソッド定義が、関数が適用されるときに実行されます。したがって、上記の2つのメソッド定義は、抽象型<code>Number</code>のすべてのインスタンスのペアに対する<code>f</code>の動作を定義しますが、<a href="../base/numbers.html#Core.Float64"><code>Float64</code></a>値のペアに特有の異なる動作を持っています。引数の1つが64ビット浮動小数点数であり、もう1つがそうでない場合、<code>f(Float64,Float64)</code>メソッドは呼び出すことができず、より一般的な<code>f(Number,Number)</code>メソッドを使用しなければなりません。</p><pre><code class="language-julia-repl hljs">julia&gt; f(2.0, 3.0)
+7.0
+
+julia&gt; f(2, 3.0)
+1.0
+
+julia&gt; f(2.0, 3)
+1.0
+
+julia&gt; f(2, 3)
+1</code></pre><p>The <code>2x + y</code> definition is only used in the first case, while the <code>2x - y</code> definition is used in the others. No automatic casting or conversion of function arguments is ever performed: all conversion in Julia is non-magical and completely explicit. <a href="conversion-and-promotion.html#conversion-and-promotion">Conversion and Promotion</a>, however, shows how clever application of sufficiently advanced technology can be indistinguishable from magic. <sup class="footnote-reference"><a id="citeref-Clarke61" href="#footnote-Clarke61">[Clarke61]</a></sup></p><p>非数値の値や、引数が2つ未満または2つ以上の場合、関数 <code>f</code> は未定義のままであり、それを適用すると依然として <a href="../base/base.html#Core.MethodError"><code>MethodError</code></a> になります:</p><pre><code class="language-julia-repl hljs">julia&gt; f(&quot;foo&quot;, 3)
+ERROR: MethodError: no method matching f(::String, ::Int64)
+The function `f` exists, but no method is defined for this combination of argument types.
+
+Closest candidates are:
+  f(!Matched::Number, ::Number)
+   @ Main none:1
+  f(!Matched::Float64, !Matched::Float64)
+   @ Main none:1
+
+Stacktrace:
+[...]
+
+julia&gt; f()
+ERROR: MethodError: no method matching f()
+The function `f` exists, but no method is defined for this combination of argument types.
+
+Closest candidates are:
+  f(!Matched::Float64, !Matched::Float64)
+   @ Main none:1
+  f(!Matched::Number, !Matched::Number)
+   @ Main none:1
+
+Stacktrace:
+[...]</code></pre><p>関数オブジェクト自体をインタラクティブセッションに入力することで、その関数に存在するメソッドを簡単に確認できます：</p><pre><code class="language-julia-repl hljs">julia&gt; f
+f (generic function with 2 methods)</code></pre><p>この出力は、<code>f</code> が2つのメソッドを持つ関数オブジェクトであることを示しています。それらのメソッドのシグネチャを見つけるには、<a href="../base/base.html#Base.methods"><code>methods</code></a> 関数を使用してください：</p><pre><code class="language-julia-repl hljs">julia&gt; methods(f)
+# 2 methods for generic function &quot;f&quot; from Main:
+ [1] f(x::Float64, y::Float64)
+     @ none:1
+ [2] f(x::Number, y::Number)
+     @ none:1</code></pre><p><code>f</code>には2つのメソッドがあり、1つは2つの<code>Float64</code>引数を取り、もう1つは<code>Number</code>型の引数を取ることを示しています。また、これらのメソッドが定義されたファイルと行番号も示しています。これらのメソッドはREPLで定義されたため、見かけ上の行番号は<code>none:1</code>となります。</p><p><code>::</code>がない場合、メソッドパラメータの型はデフォルトで<code>Any</code>となり、これはすべての値がJuliaの抽象型<code>Any</code>のインスタンスであるため、制約がないことを意味します。したがって、次のように<code>f</code>のキャッチオールメソッドを定義できます：</p><pre><code class="language-julia-repl hljs">julia&gt; f(x,y) = println(&quot;Whoa there, Nelly.&quot;)
+f (generic function with 3 methods)
+
+julia&gt; methods(f)
+# 3 methods for generic function &quot;f&quot; from Main:
+ [1] f(x::Float64, y::Float64)
+     @ none:1
+ [2] f(x::Number, y::Number)
+     @ none:1
+ [3] f(x, y)
+     @ none:1
+
+julia&gt; f(&quot;foo&quot;, 1)
+Whoa there, Nelly.</code></pre><p>このキャッチオールは、パラメータ値のペアに対する他の可能なメソッド定義よりも具体性が低いため、他のメソッド定義が適用されない引数のペアに対してのみ呼び出されます。</p><p>第三のメソッドのシグネチャには、引数 <code>x</code> と <code>y</code> の型が指定されていないことに注意してください。これは <code>f(x::Any, y::Any)</code> を表現する短縮形です。</p><p>値の型に基づく複数ディスパッチは、一見単純な概念のように思えますが、Julia言語の最も強力で中心的な機能の一つです。コア操作は通常、数十のメソッドを持っています：</p><pre><code class="language-julia-repl hljs">julia&gt; methods(+)
+# 180 methods for generic function &quot;+&quot;:
+[1] +(x::Bool, z::Complex{Bool}) in Base at complex.jl:227
+[2] +(x::Bool, y::Bool) in Base at bool.jl:89
+[3] +(x::Bool) in Base at bool.jl:86
+[4] +(x::Bool, y::T) where T&lt;:AbstractFloat in Base at bool.jl:96
+[5] +(x::Bool, z::Complex) in Base at complex.jl:234
+[6] +(a::Float16, b::Float16) in Base at float.jl:373
+[7] +(x::Float32, y::Float32) in Base at float.jl:375
+[8] +(x::Float64, y::Float64) in Base at float.jl:376
+[9] +(z::Complex{Bool}, x::Bool) in Base at complex.jl:228
+[10] +(z::Complex{Bool}, x::Real) in Base at complex.jl:242
+[11] +(x::Char, y::Integer) in Base at char.jl:40
+[12] +(c::BigInt, x::BigFloat) in Base.MPFR at mpfr.jl:307
+[13] +(a::BigInt, b::BigInt, c::BigInt, d::BigInt, e::BigInt) in Base.GMP at gmp.jl:392
+[14] +(a::BigInt, b::BigInt, c::BigInt, d::BigInt) in Base.GMP at gmp.jl:391
+[15] +(a::BigInt, b::BigInt, c::BigInt) in Base.GMP at gmp.jl:390
+[16] +(x::BigInt, y::BigInt) in Base.GMP at gmp.jl:361
+[17] +(x::BigInt, c::Union{UInt16, UInt32, UInt64, UInt8}) in Base.GMP at gmp.jl:398
+...
+[180] +(a, b, c, xs...) in Base at operators.jl:424</code></pre><p>複数のディスパッチと柔軟なパラメトリック型システムが組み合わさることで、Juliaは実装の詳細から切り離された高レベルのアルゴリズムを抽象的に表現する能力を持っています。</p><h2 id="man-method-specializations"><a class="docs-heading-anchor" href="#man-method-specializations">Method specializations</a><a id="man-method-specializations-1"></a><a class="docs-heading-anchor-permalink" href="#man-method-specializations" title="Permalink"></a></h2><p>複数の同じ関数のメソッドを作成することは、時々「特化」と呼ばれます。この場合、追加のメソッドを追加することで<em>関数</em>を特化させています：各新しいメソッドは関数の新しい特化です。上記のように、これらの特化は<code>methods</code>によって返されます。</p><p>プログラマーの介入なしに発生する別の種類の特化があります：Juliaのコンパイラは、使用される特定の引数型に対して<em>メソッド</em>を自動的に特化させることができます。このような特化は<code>methods</code>によってリストされることはなく、これは新しい<code>Method</code>を作成しないためですが、<a href="../stdlib/InteractiveUtils.html#InteractiveUtils.@code_typed"><code>@code_typed</code></a>のようなツールを使用すると、そのような特化を検査することができます。</p><p>例えば、メソッドを作成する場合</p><pre><code class="nohighlight hljs">mysum(x::Real, y::Real) = x + y</code></pre><p>あなたは関数 <code>mysum</code> に新しいメソッド（おそらく唯一のメソッド）を与え、そのメソッドは任意のペアの <code>Real</code> 数値入力を受け取ります。しかし、次に実行すると</p><pre><code class="language-julia-repl hljs">julia&gt; mysum(1, 2)
+3
+
+julia&gt; mysum(1.0, 2.0)
+3.0</code></pre><p>Juliaは<code>mysum</code>を2回コンパイルします。1回目は<code>x::Int, y::Int</code>用、2回目は<code>x::Float64, y::Float64</code>用です。2回コンパイルする目的はパフォーマンスです。<code>mysum</code>が使用する<code>+</code>の呼び出されるメソッドは、<code>x</code>と<code>y</code>の具体的な型によって異なり、異なる特殊化をコンパイルすることで、Juliaは事前にすべてのメソッド検索を行うことができます。これにより、プログラムは実行中にメソッド検索を行う必要がなくなり、はるかに迅速に実行されます。Juliaの自動特殊化により、汎用アルゴリズムを書くことができ、コンパイラが必要な各ケースを処理するための効率的で特殊化されたコードを生成することを期待できます。</p><p>潜在的な専門分野の数が事実上無限である場合、Juliaはこのデフォルトの専門化を回避することがあります。詳細については <a href="performance-tips.html#Be-aware-of-when-Julia-avoids-specializing">Be aware of when Julia avoids specializing</a> を参照してください。</p><h2 id="man-ambiguities"><a class="docs-heading-anchor" href="#man-ambiguities">Method Ambiguities</a><a id="man-ambiguities-1"></a><a class="docs-heading-anchor-permalink" href="#man-ambiguities" title="Permalink"></a></h2><p>特定の引数の組み合わせに対して、適用可能な最も特定的なメソッドが一意に存在しないような関数メソッドのセットを定義することは可能です：</p><pre><code class="language-julia-repl hljs">julia&gt; g(x::Float64, y) = 2x + y
+g (generic function with 1 method)
+
+julia&gt; g(x, y::Float64) = x + 2y
+g (generic function with 2 methods)
+
+julia&gt; g(2.0, 3)
+7.0
+
+julia&gt; g(2, 3.0)
+8.0
+
+julia&gt; g(2.0, 3.0)
+ERROR: MethodError: g(::Float64, ::Float64) is ambiguous.
+
+Candidates:
+  g(x, y::Float64)
+    @ Main none:1
+  g(x::Float64, y)
+    @ Main none:1
+
+Possible fix, define
+  g(::Float64, ::Float64)
+
+Stacktrace:
+[...]</code></pre><p>ここで、呼び出し <code>g(2.0, 3.0)</code> は、<code>g(::Float64, ::Any)</code> または <code>g(::Any, ::Float64)</code> メソッドのいずれかによって処理される可能性があります。メソッドが定義される順序は重要ではなく、どちらも他のメソッドよりも特異的ではありません。このような場合、Juliaは任意のメソッドを選択するのではなく、<a href="../base/base.html#Core.MethodError"><code>MethodError</code></a> を発生させます。交差ケースに対して適切なメソッドを指定することで、メソッドの曖昧さを回避できます：</p><pre><code class="language-julia-repl hljs">julia&gt; g(x::Float64, y::Float64) = 2x + 2y
+g (generic function with 3 methods)
+
+julia&gt; g(2.0, 3)
+7.0
+
+julia&gt; g(2, 3.0)
+8.0
+
+julia&gt; g(2.0, 3.0)
+10.0</code></pre><p>まず、曖昧さを解消する方法を定義することが推奨されます。そうしないと、より具体的な方法が定義されるまで、曖昧さが一時的に存在するからです。</p><p>より複雑なケースでは、メソッドの曖昧さを解決することには一定のデザイン要素が関与します。このトピックはさらに探求されています <a href="methods.html#man-method-design-ambiguities">below</a>。</p><h2 id="Parametric-Methods"><a class="docs-heading-anchor" href="#Parametric-Methods">Parametric Methods</a><a id="Parametric-Methods-1"></a><a class="docs-heading-anchor-permalink" href="#Parametric-Methods" title="Permalink"></a></h2><p>メソッド定義は、署名を修飾する型パラメータをオプションで持つことができます：</p><pre><code class="language-julia-repl hljs">julia&gt; same_type(x::T, y::T) where {T} = true
+same_type (generic function with 1 method)
+
+julia&gt; same_type(x,y) = false
+same_type (generic function with 2 methods)</code></pre><p>最初のメソッドは、両方の引数が同じ具体的な型である場合に適用され、型が何であれ関係ありません。一方、2番目のメソッドは、すべての他のケースをカバーするキャッチオールとして機能します。したがって、全体として、これは2つの引数が同じ型であるかどうかをチェックするブール関数を定義します：</p><pre><code class="language-julia-repl hljs">julia&gt; same_type(1, 2)
+true
+
+julia&gt; same_type(1, 2.0)
+false
+
+julia&gt; same_type(1.0, 2.0)
+true
+
+julia&gt; same_type(&quot;foo&quot;, 2.0)
+false
+
+julia&gt; same_type(&quot;foo&quot;, &quot;bar&quot;)
+true
+
+julia&gt; same_type(Int32(1), Int64(2))
+false</code></pre><p>そのような定義は、<code>UnionAll</code> 型の型シグネチャを持つメソッドに対応しています（<a href="types.html#UnionAll-Types">UnionAll Types</a> を参照）。</p><p>このようなディスパッチによる関数の振る舞いの定義は、Juliaでは非常に一般的で、慣用的です。メソッドの型パラメータは、引数の型として使用されることに制限されず、関数のシグネチャや関数の本体で値が必要な場所であればどこでも使用できます。以下は、メソッドの型パラメータ <code>T</code> がメソッドシグネチャのパラメトリック型 <code>Vector{T}</code> の型パラメータとして使用されている例です：</p><pre><code class="language-julia-repl hljs">julia&gt; function myappend(v::Vector{T}, x::T) where {T}
+           return [v..., x]
+       end
+myappend (generic function with 1 method)</code></pre><p>この例の型パラメータ <code>T</code> は、追加される要素 <code>x</code> がベクター <code>v</code> の既存の eltype のサブタイプであることを保証します。<code>where</code> キーワードは、メソッドシグネチャの定義の後にこれらの制約のリストを導入します。これは、上記のようにワンライ定義でも同様に機能し、もし存在する場合は、以下に示すように <a href="functions.html#man-functions-return-type">return type declaration</a> の <em>前</em> に現れなければなりません。</p><pre><code class="language-julia-repl hljs">julia&gt; (myappend(v::Vector{T}, x::T)::Vector) where {T} = [v..., x]
+myappend (generic function with 1 method)
+
+julia&gt; myappend([1,2,3],4)
+4-element Vector{Int64}:
+ 1
+ 2
+ 3
+ 4
+
+julia&gt; myappend([1,2,3],2.5)
+ERROR: MethodError: no method matching myappend(::Vector{Int64}, ::Float64)
+The function `myappend` exists, but no method is defined for this combination of argument types.
+
+Closest candidates are:
+  myappend(::Vector{T}, !Matched::T) where T
+   @ Main none:1
+
+Stacktrace:
+[...]
+
+julia&gt; myappend([1.0,2.0,3.0],4.0)
+4-element Vector{Float64}:
+ 1.0
+ 2.0
+ 3.0
+ 4.0
+
+julia&gt; myappend([1.0,2.0,3.0],4)
+ERROR: MethodError: no method matching myappend(::Vector{Float64}, ::Int64)
+The function `myappend` exists, but no method is defined for this combination of argument types.
+
+Closest candidates are:
+  myappend(::Vector{T}, !Matched::T) where T
+   @ Main none:1
+
+Stacktrace:
+[...]</code></pre><p>もし追加される要素の型が追加されるベクターの要素型と一致しない場合、<a href="../base/base.html#Core.MethodError"><code>MethodError</code></a> が発生します。以下の例では、メソッドの型パラメータ <code>T</code> が戻り値として使用されています：</p><pre><code class="language-julia-repl hljs">julia&gt; mytypeof(x::T) where {T} = T
+mytypeof (generic function with 1 method)
+
+julia&gt; mytypeof(1)
+Int64
+
+julia&gt; mytypeof(1.0)
+Float64</code></pre><p>型宣言において型パラメータにサブタイプ制約を付けることができるのと同様に（<a href="types.html#Parametric-Types">Parametric Types</a>を参照）、メソッドの型パラメータにも制約を付けることができます：</p><pre><code class="language-julia-repl hljs">julia&gt; same_type_numeric(x::T, y::T) where {T&lt;:Number} = true
+same_type_numeric (generic function with 1 method)
+
+julia&gt; same_type_numeric(x::Number, y::Number) = false
+same_type_numeric (generic function with 2 methods)
+
+julia&gt; same_type_numeric(1, 2)
+true
+
+julia&gt; same_type_numeric(1, 2.0)
+false
+
+julia&gt; same_type_numeric(1.0, 2.0)
+true
+
+julia&gt; same_type_numeric(&quot;foo&quot;, 2.0)
+ERROR: MethodError: no method matching same_type_numeric(::String, ::Float64)
+The function `same_type_numeric` exists, but no method is defined for this combination of argument types.
+
+Closest candidates are:
+  same_type_numeric(!Matched::T, ::T) where T&lt;:Number
+   @ Main none:1
+  same_type_numeric(!Matched::Number, ::Number)
+   @ Main none:1
+
+Stacktrace:
+[...]
+
+julia&gt; same_type_numeric(&quot;foo&quot;, &quot;bar&quot;)
+ERROR: MethodError: no method matching same_type_numeric(::String, ::String)
+The function `same_type_numeric` exists, but no method is defined for this combination of argument types.
+
+julia&gt; same_type_numeric(Int32(1), Int64(2))
+false</code></pre><p><code>same_type_numeric</code> 関数は、上で定義された <code>same_type</code> 関数と非常に似た動作をしますが、数値のペアにのみ定義されています。</p><p>パラメトリックメソッドは、型を書くために使用される <code>where</code> 式と同じ構文を許可します（参照: <a href="types.html#UnionAll-Types">UnionAll Types</a>）。パラメータが1つだけの場合、囲む波括弧（<code>where {T}</code>）は省略できますが、明確さのために好まれることが多いです。複数のパラメータはカンマで区切ることができ、例えば <code>where {T, S&lt;:Real}</code> のように書くことができます。また、ネストされた <code>where</code> を使用して書くこともでき、例えば <code>where S&lt;:Real where T</code> のように表現できます。</p><h2 id="Redefining-Methods"><a class="docs-heading-anchor" href="#Redefining-Methods">Redefining Methods</a><a id="Redefining-Methods-1"></a><a class="docs-heading-anchor-permalink" href="#Redefining-Methods" title="Permalink"></a></h2><p>メソッドを再定義したり新しいメソッドを追加したりする際には、これらの変更がすぐには反映されないことを理解することが重要です。これは、Juliaがコードを静的に推論し、迅速に実行するためにコンパイルする能力の鍵です。実際、新しいメソッド定義は、現在のランタイム環境（タスクやスレッド、そして以前に定義された<code>@generated</code>関数を含む）には表示されません。これが何を意味するのかを理解するために、例を見てみましょう。</p><pre><code class="language-julia-repl hljs">julia&gt; function tryeval()
+           @eval newfun() = 1
+           newfun()
+       end
+tryeval (generic function with 1 method)
+
+julia&gt; tryeval()
+ERROR: MethodError: no method matching newfun()
+The applicable method may be too new: running in world age xxxx1, while current world is xxxx2.
+Closest candidates are:
+  newfun() at none:1 (method too new to be called from this world context.)
+ in tryeval() at none:1
+ ...
+
+julia&gt; newfun()
+1</code></pre><p>この例では、<code>newfun</code>の新しい定義が作成されたことに注意してくださいが、すぐには呼び出せません。新しいグローバルは<code>tryeval</code>関数にすぐに見えるため、<code>return newfun</code>（括弧なし）と書くことができます。しかし、あなたも、あなたの呼び出し元も、また彼らが呼び出す関数も、この新しいメソッド定義を呼び出すことはできません！</p><p>ただし例外があります：<code>newfun</code>への将来の呼び出しは<em>REPLから</em>期待通りに動作し、新しい定義の<code>newfun</code>を見たり呼び出したりすることができます。</p><p>しかし、将来の<code>tryeval</code>への呼び出しは、<code>newfun</code>の定義を<em>REPLの前のステートメントでの状態</em>として見るため、その<code>tryeval</code>への呼び出しの前の状態になります。</p><p>自分で試してみて、どのように機能するかを確認したいかもしれません。</p><p>この動作の実装は「ワールドエイジカウンター」です。この単調増加する値は、各メソッド定義操作を追跡します。これにより、「特定のランタイム環境に対して可視なメソッド定義のセット」を単一の数、つまり「ワールドエイジ」として記述することができます。また、2つのワールドで利用可能なメソッドをその順序値を比較するだけで比較することも可能です。上記の例では、「現在のワールド」（メソッド<code>newfun</code>が存在するワールド）が、<code>tryeval</code>の実行が開始されたときに固定されたタスクローカルの「ランタイムワールド」よりも1つ大きいことがわかります。</p><p>時にはこれを回避する必要があります（例えば、上記のREPLを実装している場合）。幸いなことに、簡単な解決策があります：次のように関数を呼び出します <a href="../base/base.html#Base.invokelatest"><code>Base.invokelatest</code></a>：</p><pre><code class="language-julia-repl hljs">julia&gt; function tryeval2()
+           @eval newfun2() = 2
+           Base.invokelatest(newfun2)
+       end
+tryeval2 (generic function with 1 method)
+
+julia&gt; tryeval2()
+2</code></pre><p>最後に、このルールが適用されるもう少し複雑な例を見てみましょう。関数 <code>f(x)</code> を定義します。これは最初に1つのメソッドを持っています：</p><pre><code class="language-julia-repl hljs">julia&gt; f(x) = &quot;original definition&quot;
+f (generic function with 1 method)</code></pre><p>他の操作をいくつか開始します <code>f(x)</code>：</p><pre><code class="language-julia-repl hljs">julia&gt; g(x) = f(x)
+g (generic function with 1 method)
+
+julia&gt; t = @async f(wait()); yield();</code></pre><p>今、<code>f(x)</code>にいくつかの新しいメソッドを追加します:</p><pre><code class="language-julia-repl hljs">julia&gt; f(x::Int) = &quot;definition for Int&quot;
+f (generic function with 2 methods)
+
+julia&gt; f(x::Type{Int}) = &quot;definition for Type{Int}&quot;
+f (generic function with 3 methods)</code></pre><p>これらの結果がどのように異なるかを比較してください：</p><pre><code class="language-julia-repl hljs">julia&gt; f(1)
+&quot;definition for Int&quot;
+
+julia&gt; g(1)
+&quot;definition for Int&quot;
+
+julia&gt; fetch(schedule(t, 1))
+&quot;original definition&quot;
+
+julia&gt; t = @async f(wait()); yield();
+
+julia&gt; fetch(schedule(t, 1))
+&quot;definition for Int&quot;</code></pre><h2 id="Design-Patterns-with-Parametric-Methods"><a class="docs-heading-anchor" href="#Design-Patterns-with-Parametric-Methods">Design Patterns with Parametric Methods</a><a id="Design-Patterns-with-Parametric-Methods-1"></a><a class="docs-heading-anchor-permalink" href="#Design-Patterns-with-Parametric-Methods" title="Permalink"></a></h2><p>複雑なディスパッチロジックは、パフォーマンスや使いやすさのために必須ではありませんが、時には特定のアルゴリズムを表現する最良の方法となることがあります。以下は、このようにディスパッチを使用する際に時折見られる一般的なデザインパターンのいくつかです。</p><h3 id="Extracting-the-type-parameter-from-a-super-type"><a class="docs-heading-anchor" href="#Extracting-the-type-parameter-from-a-super-type">Extracting the type parameter from a super-type</a><a id="Extracting-the-type-parameter-from-a-super-type-1"></a><a class="docs-heading-anchor-permalink" href="#Extracting-the-type-parameter-from-a-super-type" title="Permalink"></a></h3><p>ここに、要素型 <code>T</code> を返すための正しいコードテンプレートがあります。これは、明確に定義された要素型を持つ任意の <code>AbstractArray</code> のサブタイプに適用できます。</p><pre><code class="language-julia hljs">abstract type AbstractArray{T, N} end
+eltype(::Type{&lt;:AbstractArray{T}}) where {T} = T</code></pre><p>いわゆる三角ディスパッチを使用しています。例えば、<code>eltype(AbstractArray{T} where T &lt;: Integer)</code>のような<code>UnionAll</code>型は、上記のメソッドには一致しません。<code>Base</code>における<code>eltype</code>の実装は、そのような場合に<code>Any</code>へのフォールバックメソッドを追加します。</p><p>一般的な間違いの一つは、イントロスペクションを使用して要素の型を取得しようとすることです：</p><pre><code class="language-julia hljs">eltype_wrong(::Type{A}) where {A&lt;:AbstractArray} = A.parameters[1]</code></pre><p>しかし、これが失敗するケースを構築するのは難しくありません：</p><pre><code class="language-julia hljs">struct BitVector &lt;: AbstractArray{Bool, 1}; end</code></pre><p>ここでは、パラメータがない型 <code>BitVector</code> を作成しましたが、要素型は完全に指定されており、<code>T</code> は <code>Bool</code> に等しいです！</p><p>別の間違いは、<code>supertype</code>を使って型階層を上に歩こうとすることです:</p><pre><code class="language-julia hljs">eltype_wrong(::Type{AbstractArray{T}}) where {T} = T
+eltype_wrong(::Type{AbstractArray{T, N}}) where {T, N} = T
+eltype_wrong(::Type{A}) where {A&lt;:AbstractArray} = eltype_wrong(supertype(A))</code></pre><p>宣言された型にはこれが機能しますが、スーパタイプを持たない型には失敗します:</p><pre><code class="language-julia-repl hljs">julia&gt; eltype_wrong(Union{AbstractArray{Int}, AbstractArray{Float64}})
+ERROR: MethodError: no method matching supertype(::Type{Union{AbstractArray{Float64,N} where N, AbstractArray{Int64,N} where N}})
+Closest candidates are:
+  supertype(::DataType) at operators.jl:43
+  supertype(::UnionAll) at operators.jl:48</code></pre><h3 id="Building-a-similar-type-with-a-different-type-parameter"><a class="docs-heading-anchor" href="#Building-a-similar-type-with-a-different-type-parameter">Building a similar type with a different type parameter</a><a id="Building-a-similar-type-with-a-different-type-parameter-1"></a><a class="docs-heading-anchor-permalink" href="#Building-a-similar-type-with-a-different-type-parameter" title="Permalink"></a></h3><p>汎用コードを構築する際には、型のレイアウトに変更を加えた類似のオブジェクトを構築する必要があることがよくあります。これにより、型パラメータの変更も必要になります。たとえば、任意の要素型を持つ抽象配列があり、特定の要素型でその計算を行いたい場合があります。この型変換をどのように計算するかを説明するメソッドを各 <code>AbstractArray{T}</code> サブタイプに実装する必要があります。異なるパラメータを持つ別のサブタイプへの一般的な変換は存在しません。</p><p><code>AbstractArray</code>のサブタイプは、通常、これを達成するために2つのメソッドを実装します。1つは、入力配列を特定の<code>AbstractArray{T, N}</code>抽象型のサブタイプに変換するメソッドであり、もう1つは、特定の要素型を持つ新しい未初期化の配列を作成するメソッドです。これらのサンプル実装は、Julia Baseに見つけることができます。以下は、<code>input</code>と<code>output</code>が同じ型であることを保証する基本的な使用例です：</p><pre><code class="language-julia hljs">input = convert(AbstractArray{Eltype}, input)
+output = similar(input, Eltype)</code></pre><p>この延長として、アルゴリズムが入力配列のコピーを必要とする場合、<a href="../base/base.html#Base.convert"><code>convert</code></a> は不十分です。なぜなら、戻り値が元の入力とエイリアスする可能性があるからです。出力配列を作成するための <a href="../base/arrays.html#Base.similar"><code>similar</code></a> と、入力データでそれを埋めるための <a href="../base/c.html#Base.copyto!"><code>copyto!</code></a> を組み合わせることは、入力引数の可変コピーの要件を表現する一般的な方法です。</p><pre><code class="language-julia hljs">copy_with_eltype(input, Eltype) = copyto!(similar(input, Eltype), input)</code></pre><h3 id="Iterated-dispatch"><a class="docs-heading-anchor" href="#Iterated-dispatch">Iterated dispatch</a><a id="Iterated-dispatch-1"></a><a class="docs-heading-anchor-permalink" href="#Iterated-dispatch" title="Permalink"></a></h3><p>マルチレベルのパラメトリック引数リストをディスパッチするためには、各ディスパッチレベルを異なる関数に分けるのが最適な場合が多いです。これはシングルディスパッチのアプローチに似ているように聞こえるかもしれませんが、以下で見ていくように、依然としてより柔軟です。</p><p>例えば、配列の要素タイプに基づいてディスパッチしようとすると、しばしば曖昧な状況に直面します。その代わりに、一般的にはコンテナタイプに基づいて最初にディスパッチし、次にeltypeに基づいてより具体的なメソッドに再帰します。ほとんどの場合、アルゴリズムはこの階層的アプローチに便利に適合しますが、他の場合にはこの厳密さを手動で解決する必要があります。このディスパッチの分岐は、例えば2つの行列を合計するロジックにおいて観察できます：</p><pre><code class="language-julia hljs"># First dispatch selects the map algorithm for element-wise summation.
++(a::Matrix, b::Matrix) = map(+, a, b)
+# Then dispatch handles each element and selects the appropriate
+# common element type for the computation.
++(a, b) = +(promote(a, b)...)
+# Once the elements have the same type, they can be added.
+# For example, via primitive operations exposed by the processor.
++(a::Float64, b::Float64) = Core.add(a, b)</code></pre><h3 id="Trait-based-dispatch"><a class="docs-heading-anchor" href="#Trait-based-dispatch">Trait-based dispatch</a><a id="Trait-based-dispatch-1"></a><a class="docs-heading-anchor-permalink" href="#Trait-based-dispatch" title="Permalink"></a></h3><p>反復ディスパッチの自然な拡張は、タイプ階層によって定義されたセットとは独立したタイプのセットに基づいてメソッド選択を行うレイヤーを追加することです。このようなセットは、問題のタイプの <code>Union</code> を書き出すことで構築できますが、その場合、このセットは拡張可能ではなく、<code>Union</code> タイプは作成後に変更できないためです。しかし、そのような拡張可能なセットは、しばしば <a href="https://github.com/JuliaLang/julia/issues/2345#issuecomment-54537633">&quot;Holy-trait&quot;</a> と呼ばれるデザインパターンを使用してプログラムすることができます。</p><p>このパターンは、関数引数が属する可能性のある各トレイトセットに対して異なるシングルトン値（または型）を計算する汎用関数を定義することによって実装されます。この関数が純粋であれば、通常のディスパッチと比較してパフォーマンスに影響はありません。</p><p>前のセクションの例では、<a href="../base/collections.html#Base.map"><code>map</code></a> と <a href="../base/base.html#Base.promote"><code>promote</code></a> の実装の詳細を省略しましたが、これらはどちらもこれらのトレイトに基づいて動作します。行列を反復処理する際、例えば <code>map</code> の実装において、データをトラバースするためにどの順序を使用するかは重要な質問です。<code>AbstractArray</code> のサブタイプが <a href="../base/arrays.html#Base.IndexStyle"><code>Base.IndexStyle</code></a> トレイトを実装すると、<code>map</code> のような他の関数はこの情報に基づいて最適なアルゴリズムを選択することができます（<a href="interfaces.html#man-interface-array">Abstract Array Interface</a> を参照）。これにより、各サブタイプはカスタムバージョンの <code>map</code> を実装する必要がなく、一般的な定義とトレイトクラスにより、システムが最も速いバージョンを選択できるようになります。以下は、トレイトベースのディスパッチを示す <code>map</code> のおもちゃの実装です：</p><pre><code class="language-julia hljs">map(f, a::AbstractArray, b::AbstractArray) = map(Base.IndexStyle(a, b), f, a, b)
+# generic implementation:
+map(::Base.IndexCartesian, f, a::AbstractArray, b::AbstractArray) = ...
+# linear-indexing implementation (faster)
+map(::Base.IndexLinear, f, a::AbstractArray, b::AbstractArray) = ...</code></pre><p>この特性ベースのアプローチは、スカラー <code>+</code> に使用される <a href="../base/base.html#Base.promote"><code>promote</code></a> メカニズムにも存在します。これは <a href="../base/base.html#Base.promote_type"><code>promote_type</code></a> を使用しており、オペランドの2つの型に基づいて演算を計算するための最適な共通型を返します。これにより、すべての可能な型引数のペアに対してすべての関数を実装するという問題を、各型から共通型への変換操作を実装するというはるかに小さな問題と、好ましいペアワイズ昇格ルールのテーブルに還元することが可能になります。</p><h3 id="Output-type-computation"><a class="docs-heading-anchor" href="#Output-type-computation">Output-type computation</a><a id="Output-type-computation-1"></a><a class="docs-heading-anchor-permalink" href="#Output-type-computation" title="Permalink"></a></h3><p>特性ベースの昇進に関する議論は、次のデザインパターンへの移行を提供します：行列演算の出力要素タイプを計算すること。</p><p>原始操作を実装するために、加算などの操作には、<a href="../base/base.html#Base.promote_type"><code>promote_type</code></a> 関数を使用して、望ましい出力タイプを計算します。（以前と同様に、<code>+</code> への呼び出しの中で <code>promote</code> 呼び出しでこれを見ました）。</p><p>より複雑な行列の関数に対しては、より複雑な操作のシーケンスに対する期待される戻り値の型を計算する必要がある場合があります。これは通常、以下のステップによって実行されます：</p><ol><li>Write a small function <code>op</code> that expresses the set of operations performed by the kernel of the algorithm.</li><li>結果行列の要素型 <code>R</code> を <code>promote_op(op, argument_types...)</code> として計算します。ここで、<code>argument_types</code> は各入力配列に対して <code>eltype</code> を適用して計算されます。</li><li><code>similar(R, dims)</code>を使用して出力行列を構築します。ここで、<code>dims</code>は出力配列の希望する次元です。</li></ol><p>より具体的な例として、一般的な正方行列の乗算の擬似コードは次のようになります：</p><pre><code class="language-julia hljs">function matmul(a::AbstractMatrix, b::AbstractMatrix)
+    op = (ai, bi) -&gt; ai * bi + ai * bi
+
+    ## this is insufficient because it assumes `one(eltype(a))` is constructable:
+    # R = typeof(op(one(eltype(a)), one(eltype(b))))
+
+    ## this fails because it assumes `a[1]` exists and is representative of all elements of the array
+    # R = typeof(op(a[1], b[1]))
+
+    ## this is incorrect because it assumes that `+` calls `promote_type`
+    ## but this is not true for some types, such as Bool:
+    # R = promote_type(ai, bi)
+
+    # this is wrong, since depending on the return value
+    # of type-inference is very brittle (as well as not being optimizable):
+    # R = Base.return_types(op, (eltype(a), eltype(b)))
+
+    ## but, finally, this works:
+    R = promote_op(op, eltype(a), eltype(b))
+    ## although sometimes it may give a larger type than desired
+    ## it will always give a correct type
+
+    output = similar(b, R, (size(a, 1), size(b, 2)))
+    if size(a, 2) &gt; 0
+        for j in 1:size(b, 2)
+            for i in 1:size(a, 1)
+                ## here we don&#39;t use `ab = zero(R)`,
+                ## since `R` might be `Any` and `zero(Any)` is not defined
+                ## we also must declare `ab::R` to make the type of `ab` constant in the loop,
+                ## since it is possible that typeof(a * b) != typeof(a * b + a * b) == R
+                ab::R = a[i, 1] * b[1, j]
+                for k in 2:size(a, 2)
+                    ab += a[i, k] * b[k, j]
+                end
+                output[i, j] = ab
+            end
+        end
+    end
+    return output
+end</code></pre><h3 id="Separate-convert-and-kernel-logic"><a class="docs-heading-anchor" href="#Separate-convert-and-kernel-logic">Separate convert and kernel logic</a><a id="Separate-convert-and-kernel-logic-1"></a><a class="docs-heading-anchor-permalink" href="#Separate-convert-and-kernel-logic" title="Permalink"></a></h3><p>コンパイル時間とテストの複雑さを大幅に削減する方法の一つは、希望する型への変換と計算のロジックを分離することです。これにより、コンパイラは大きなカーネルの本体から独立して変換ロジックを特化させ、インライン化することができます。</p><p>これは、アルゴリズムによって実際にサポートされている特定の引数型に、より大きな型のクラスから変換する際に見られる一般的なパターンです。</p><pre><code class="language-julia hljs">complexfunction(arg::Int) = ...
+complexfunction(arg::Any) = complexfunction(convert(Int, arg))
+
+matmul(a::T, b::T) = ...
+matmul(a, b) = matmul(promote(a, b)...)</code></pre><h2 id="Parametrically-constrained-Varargs-methods"><a class="docs-heading-anchor" href="#Parametrically-constrained-Varargs-methods">Parametrically-constrained Varargs methods</a><a id="Parametrically-constrained-Varargs-methods-1"></a><a class="docs-heading-anchor-permalink" href="#Parametrically-constrained-Varargs-methods" title="Permalink"></a></h2><p>関数のパラメータは、「varargs」関数（<a href="functions.html#Varargs-Functions">Varargs Functions</a>）に供給される引数の数を制約するためにも使用できます。このような制約を示すために、<code>Vararg{T,N}</code>という表記が使用されます。例えば：</p><pre><code class="language-julia-repl hljs">julia&gt; bar(a,b,x::Vararg{Any,2}) = (a,b,x)
+bar (generic function with 1 method)
+
+julia&gt; bar(1,2,3)
+ERROR: MethodError: no method matching bar(::Int64, ::Int64, ::Int64)
+The function `bar` exists, but no method is defined for this combination of argument types.
+
+Closest candidates are:
+  bar(::Any, ::Any, ::Any, !Matched::Any)
+   @ Main none:1
+
+Stacktrace:
+[...]
+
+julia&gt; bar(1,2,3,4)
+(1, 2, (3, 4))
+
+julia&gt; bar(1,2,3,4,5)
+ERROR: MethodError: no method matching bar(::Int64, ::Int64, ::Int64, ::Int64, ::Int64)
+The function `bar` exists, but no method is defined for this combination of argument types.
+
+Closest candidates are:
+  bar(::Any, ::Any, ::Any, ::Any)
+   @ Main none:1
+
+Stacktrace:
+[...]</code></pre><p>より有用なことに、パラメータによって varargs メソッドを制約することが可能です。例えば：</p><pre><code class="language-julia hljs">function getindex(A::AbstractArray{T,N}, indices::Vararg{Number,N}) where {T,N}</code></pre><p><code>indices</code>の数が配列の次元数と一致する場合にのみ呼び出されます。</p><p>引数の型を制約する必要がある場合、<code>Vararg{T}</code>は<code>T...</code>として同等に書くことができます。例えば、<code>f(x::Int...) = x</code>は<code>f(x::Vararg{Int}) = x</code>の短縮形です。</p><h2 id="Note-on-Optional-and-keyword-Arguments"><a class="docs-heading-anchor" href="#Note-on-Optional-and-keyword-Arguments">Note on Optional and keyword Arguments</a><a id="Note-on-Optional-and-keyword-Arguments-1"></a><a class="docs-heading-anchor-permalink" href="#Note-on-Optional-and-keyword-Arguments" title="Permalink"></a></h2><p><a href="functions.html#man-functions">Functions</a>で簡単に触れたように、オプション引数は複数のメソッド定義の構文として実装されています。例えば、この定義：</p><pre><code class="language-julia hljs">f(a=1,b=2) = a+2b</code></pre><p>次の3つの方法に翻訳します：</p><pre><code class="language-julia hljs">f(a,b) = a+2b
+f(a) = f(a,2)
+f() = f(1,2)</code></pre><p>これは、<code>f()</code>を呼び出すことが<code>f(1,2)</code>を呼び出すことと同じであることを意味します。この場合、結果は<code>5</code>です。なぜなら、<code>f(1,2)</code>は上記の<code>f</code>の最初のメソッドを呼び出すからです。しかし、これは常にそうである必要はありません。整数に特化した4番目のメソッドを定義した場合：</p><pre><code class="language-julia hljs">f(a::Int,b::Int) = a-2b</code></pre><p>そのため、<code>f()</code> と <code>f(1,2)</code> の両方の結果は <code>-3</code> です。言い換えれば、オプション引数は関数に結び付けられており、その関数の特定のメソッドには結び付けられていません。どのメソッドが呼び出されるかは、オプション引数の型によって決まります。オプション引数がグローバル変数に基づいて定義されている場合、オプション引数の型は実行時に変更されることさえあります。</p><p>キーワード引数は、通常の位置引数とはかなり異なる動作をします。特に、メソッドのディスパッチには参加しません。メソッドは位置引数のみに基づいてディスパッチされ、キーワード引数は一致するメソッドが特定された後に処理されます。</p><h2 id="Function-like-objects"><a class="docs-heading-anchor" href="#Function-like-objects">Function-like objects</a><a id="Function-like-objects-1"></a><a class="docs-heading-anchor-permalink" href="#Function-like-objects" title="Permalink"></a></h2><p>メソッドは型に関連付けられているため、型にメソッドを追加することで任意のJuliaオブジェクトを「呼び出し可能」にすることができます。（このような「呼び出し可能」なオブジェクトは時々「ファンクタ」と呼ばれます。）</p><p>例えば、多項式の係数を格納する型を定義できますが、多項式を評価する関数のように振る舞います：</p><pre><code class="language-julia-repl hljs">julia&gt; struct Polynomial{R}
+           coeffs::Vector{R}
+       end
+
+julia&gt; function (p::Polynomial)(x)
+           v = p.coeffs[end]
+           for i = (length(p.coeffs)-1):-1:1
+               v = v*x + p.coeffs[i]
+           end
+           return v
+       end
+
+julia&gt; (p::Polynomial)() = p(5)</code></pre><p>関数は名前ではなく型によって指定されていることに注意してください。通常の関数と同様に、簡潔な構文形式があります。関数の本体では、<code>p</code>は呼び出されたオブジェクトを参照します。<code>Polynomial</code>は次のように使用できます：</p><pre><code class="language-julia-repl hljs">julia&gt; p = Polynomial([1,10,100])
+Polynomial{Int64}([1, 10, 100])
+
+julia&gt; p(3)
+931
+
+julia&gt; p()
+2551</code></pre><p>このメカニズムは、Juliaにおける型コンストラクタとクロージャ（周囲の環境を参照する内部関数）がどのように機能するかの鍵でもあります。</p><h2 id="Empty-generic-functions"><a class="docs-heading-anchor" href="#Empty-generic-functions">Empty generic functions</a><a id="Empty-generic-functions-1"></a><a class="docs-heading-anchor-permalink" href="#Empty-generic-functions" title="Permalink"></a></h2><p>時折、メソッドを追加せずに汎用関数を導入することが有用です。これは、インターフェース定義と実装を分離するために使用できます。また、ドキュメントやコードの可読性のために行うこともあります。これに対する構文は、引数のタプルなしの空の <code>function</code> ブロックです：</p><pre><code class="language-julia hljs">function emptyfunc end</code></pre><h2 id="man-method-design-ambiguities"><a class="docs-heading-anchor" href="#man-method-design-ambiguities">Method design and the avoidance of ambiguities</a><a id="man-method-design-ambiguities-1"></a><a class="docs-heading-anchor-permalink" href="#man-method-design-ambiguities" title="Permalink"></a></h2><p>ジュリアのメソッドの多態性は、その最も強力な機能の一つですが、この力を活用することは設計上の課題を引き起こすことがあります。特に、より複雑なメソッド階層では、<a href="methods.html#man-ambiguities">ambiguities</a> が発生することは珍しくありません。</p><p>上記では、曖昧さを解消する方法について指摘されました。</p><pre><code class="language-julia hljs">f(x, y::Int) = 1
+f(x::Int, y) = 2</code></pre><p>メソッドを定義することによって</p><pre><code class="language-julia hljs">f(x::Int, y::Int) = 3</code></pre><p>これはしばしば正しい戦略ですが、このアドバイスを無思考で従うことが逆効果になる場合もあります。特に、一般的な関数が持つメソッドが多ければ多いほど、あいまいさの可能性が増えます。この単純な例よりもメソッド階層が複雑になると、代替戦略について慎重に考える価値があるかもしれません。</p><p>以下では、特定の課題とそれらの問題を解決するためのいくつかの代替方法について議論します。</p><h3 id="Tuple-and-NTuple-arguments"><a class="docs-heading-anchor" href="#Tuple-and-NTuple-arguments">Tuple and NTuple arguments</a><a id="Tuple-and-NTuple-arguments-1"></a><a class="docs-heading-anchor-permalink" href="#Tuple-and-NTuple-arguments" title="Permalink"></a></h3><p><code>Tuple</code>（および <code>NTuple</code>）引数は特別な課題を提示します。例えば、</p><pre><code class="language-julia hljs">f(x::NTuple{N,Int}) where {N} = 1
+f(x::NTuple{N,Float64}) where {N} = 2</code></pre><p><code>N == 0</code> の可能性があるため、あいまいです：<code>Int</code> または <code>Float64</code> バリアントのどちらを呼び出すべきかを判断する要素がありません。このあいまいさを解決するための一つのアプローチは、空のタプルに対してメソッドを定義することです：</p><pre><code class="language-julia hljs">f(x::Tuple{}) = 3</code></pre><p>代わりに、1つの方法を除いて、タプルに少なくとも1つの要素があることを主張できます：</p><pre><code class="language-julia hljs">f(x::NTuple{N,Int}) where {N} = 1           # this is the fallback
+f(x::Tuple{Float64, Vararg{Float64}}) = 2   # this requires at least one Float64</code></pre><h3 id="man-methods-orthogonalize"><a class="docs-heading-anchor" href="#man-methods-orthogonalize">Orthogonalize your design</a><a id="man-methods-orthogonalize-1"></a><a class="docs-heading-anchor-permalink" href="#man-methods-orthogonalize" title="Permalink"></a></h3><p>2つ以上の引数でディスパッチすることに誘惑される場合は、「ラッパー」関数がよりシンプルなデザインになるかどうかを考えてみてください。たとえば、複数のバリアントを書く代わりに:</p><pre><code class="language-julia hljs">f(x::A, y::A) = ...
+f(x::A, y::B) = ...
+f(x::B, y::A) = ...
+f(x::B, y::B) = ...</code></pre><p>あなたは定義を考慮するかもしれません</p><pre><code class="language-julia hljs">f(x::A, y::A) = ...
+f(x, y) = f(g(x), g(y))</code></pre><p>ここで <code>g</code> は引数を型 <code>A</code> に変換します。これは、より一般的な原則 <a href="https://en.wikipedia.org/wiki/Orthogonality_(programming)">orthogonal design</a> の非常に特定の例であり、別々の概念が別々のメソッドに割り当てられます。ここで、<code>g</code> はおそらくフォールバック定義が必要になります。</p><pre><code class="language-julia hljs">g(x::A) = x</code></pre><p>関連する戦略は、<code>promote</code>を利用して<code>x</code>と<code>y</code>を共通の型に持ってくることです：</p><pre><code class="language-julia hljs">f(x::T, y::T) where {T} = ...
+f(x, y) = f(promote(x, y)...)</code></pre><p>このデザインのリスクの一つは、<code>x</code> と <code>y</code> を同じ型に変換する適切なプロモーション方法がない場合、2 番目のメソッドが自分自身を無限に再帰し、スタックオーバーフローを引き起こす可能性があることです。</p><h3 id="Dispatch-on-one-argument-at-a-time"><a class="docs-heading-anchor" href="#Dispatch-on-one-argument-at-a-time">Dispatch on one argument at a time</a><a id="Dispatch-on-one-argument-at-a-time-1"></a><a class="docs-heading-anchor-permalink" href="#Dispatch-on-one-argument-at-a-time" title="Permalink"></a></h3><p>複数の引数でディスパッチする必要があり、あまりにも多くの組み合わせがあるため、すべての可能なバリアントを定義するのが実用的でない場合は、「名前カスケード」を導入することを検討してください。たとえば、最初の引数でディスパッチし、その後内部メソッドを呼び出すという方法です。</p><pre><code class="language-julia hljs">f(x::A, y) = _fA(x, y)
+f(x::B, y) = _fB(x, y)</code></pre><p>その後、内部メソッド <code>_fA</code> と <code>_fB</code> は、<code>x</code> に関して互いに曖昧さを気にすることなく <code>y</code> に基づいてディスパッチできます。</p><p>この戦略には少なくとも1つの大きな欠点があることに注意してください。多くの場合、ユーザーはエクスポートされた関数 <code>f</code> の動作をさらにカスタマイズするために、追加の特化を定義することができません。代わりに、ユーザーは内部メソッド <code>_fA</code> と <code>_fB</code> の特化を定義しなければならず、これによりエクスポートされたメソッドと内部メソッドの境界が曖昧になります。</p><h3 id="Abstract-containers-and-element-types"><a class="docs-heading-anchor" href="#Abstract-containers-and-element-types">Abstract containers and element types</a><a id="Abstract-containers-and-element-types-1"></a><a class="docs-heading-anchor-permalink" href="#Abstract-containers-and-element-types" title="Permalink"></a></h3><p>可能な限り、抽象コンテナの特定の要素タイプに基づいてディスパッチするメソッドの定義を避けるようにしてください。例えば、</p><pre><code class="language-julia hljs">-(A::AbstractArray{T}, b::Date) where {T&lt;:Date}</code></pre><p>メソッドを定義する人にとってあいまいさを生み出します。</p><pre><code class="language-julia hljs">-(A::MyArrayType{T}, b::T) where {T}</code></pre><p>最良いアプローチは、これらのメソッドの<em>いずれ</em>も定義しないことです。代わりに、一般的なメソッド <code>-(A::AbstractArray, b)</code> に依存し、このメソッドが各コンテナタイプと要素タイプに対して<em>別々に</em>正しい動作をするように、一般的な呼び出し（<code>similar</code> や <code>-</code> など）で実装されていることを確認してください。これは、あなたのメソッドを <a href="methods.html#man-methods-orthogonalize">orthogonalize</a> するというアドバイスのより複雑なバリアントに過ぎません。</p><p>このアプローチが不可能な場合、他の開発者と曖昧さを解決するための議論を始める価値があるかもしれません。最初に定義されたメソッドがあるからといって、それを修正したり排除したりできないわけではありません。最後の手段として、1人の開発者が「バンドエイド」メソッドを定義することができます。</p><pre><code class="language-julia hljs">-(A::MyArrayType{T}, b::Date) where {T&lt;:Date} = ...</code></pre><p>それは力任せで曖昧さを解消します。</p><h3 id="Complex-method-&quot;cascades&quot;-with-default-arguments"><a class="docs-heading-anchor" href="#Complex-method-&quot;cascades&quot;-with-default-arguments">Complex method &quot;cascades&quot; with default arguments</a><a id="Complex-method-&quot;cascades&quot;-with-default-arguments-1"></a><a class="docs-heading-anchor-permalink" href="#Complex-method-&quot;cascades&quot;-with-default-arguments" title="Permalink"></a></h3><p>デフォルトを提供するメソッド「cascade」を定義する場合、潜在的なデフォルトに対応する引数を省略しないように注意してください。たとえば、デジタルフィルタリングアルゴリズムを作成していて、信号のエッジを処理するためにパディングを適用するメソッドがあるとします：</p><pre><code class="language-julia hljs">function myfilter(A, kernel, ::Replicate)
+    Apadded = replicate_edges(A, size(kernel))
+    myfilter(Apadded, kernel)  # now perform the &quot;real&quot; computation
+end</code></pre><p>これはデフォルトのパディングを提供するメソッドに反することになります：</p><pre><code class="language-julia hljs">myfilter(A, kernel) = myfilter(A, kernel, Replicate()) # replicate the edge by default</code></pre><p>これら二つの方法は、<code>A</code>が常に大きくなり続ける無限再帰を生成します。</p><p>より良いデザインは、コール階層を次のように定義することです：</p><pre><code class="language-julia hljs">struct NoPad end  # indicate that no padding is desired, or that it&#39;s already applied
+
+myfilter(A, kernel) = myfilter(A, kernel, Replicate())  # default boundary conditions
+
+function myfilter(A, kernel, ::Replicate)
+    Apadded = replicate_edges(A, size(kernel))
+    myfilter(Apadded, kernel, NoPad())  # indicate the new boundary conditions
+end
+
+# other padding methods go here
+
+function myfilter(A, kernel, ::NoPad)
+    # Here&#39;s the &quot;real&quot; implementation of the core computation
+end</code></pre><p><code>NoPad</code>は、他の種類のパディングと同じ引数の位置に供給されるため、ディスパッチ階層を適切に整理し、あいまいさの可能性を減らします。さらに、&quot;public&quot; <code>myfilter</code>インターフェースを拡張します。パディングを明示的に制御したいユーザーは、<code>NoPad</code>バリアントを直接呼び出すことができます。</p><h2 id="Defining-methods-in-local-scope"><a class="docs-heading-anchor" href="#Defining-methods-in-local-scope">Defining methods in local scope</a><a id="Defining-methods-in-local-scope-1"></a><a class="docs-heading-anchor-permalink" href="#Defining-methods-in-local-scope" title="Permalink"></a></h2><p><a href="variables-and-scoping.html#scope-of-variables">local scope</a> 内でメソッドを定義できます。例えば、</p><pre><code class="language-julia-repl hljs">julia&gt; function f(x)
+           g(y::Int) = y + x
+           g(y) = y - x
+           g
+       end
+f (generic function with 1 method)
+
+julia&gt; h = f(3);
+
+julia&gt; h(4)
+7
+
+julia&gt; h(4.0)
+1.0</code></pre><p>ただし、ローカルメソッドを条件付きで定義したり、制御フローに従ったりしてはいけません。</p><pre><code class="language-julia hljs">function f2(inc)
+    if inc
+        g(x) = x + 1
+    else
+        g(x) = x - 1
+    end
+end
+
+function f3()
+    function g end
+    return g
+    g() = 0
+end</code></pre><p>それがどの関数が最終的に定義されるかが明確でないため、将来的にはこの方法でローカルメソッドを定義することがエラーになる可能性があります。</p><p>このような場合は、代わりに無名関数を使用してください:</p><pre><code class="language-julia hljs">function f2(inc)
+    g = if inc
+        x -&gt; x + 1
+    else
+        x -&gt; x - 1
+    end
+end</code></pre><section class="footnotes is-size-7"><ul><li class="footnote" id="footnote-1"><a class="tag is-link" href="#citeref-1">1</a>In C++ or Java, for example, in a method call like <code>obj.meth(arg1,arg2)</code>, the object obj &quot;receives&quot; the method call and is implicitly passed to the method via the <code>this</code> keyword, rather than as an explicit method argument. When the current <code>this</code> object is the receiver of a method call, it can be omitted altogether, writing just <code>meth(arg1,arg2)</code>, with <code>this</code> implied as the receiving object.</li><li class="footnote" id="footnote-Clarke61"><a class="tag is-link" href="#citeref-Clarke61">Clarke61</a>Arthur C. Clarke, <em>Profiles of the Future</em> (1961): Clarke&#39;s Third Law.</li></ul></section></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="types.html">« Types</a><a class="docs-footer-nextpage" href="constructors.html">Constructors »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.11.4 on <span class="colophon-date" title="Tuesday 20 May 2025 04:59">Tuesday 20 May 2025</span>. Using Julia version 1.11.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
