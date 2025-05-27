@@ -13,6 +13,7 @@ git clone https://github.com/AtelierArith/UnofficialJuliaDoc-ja.git
 cd UnofficialJuliaDoc-ja
 git submodule update --init --recursive
 bash run.sh
+julia -e 'using LiveServer; serve(dir="julia/doc/_build/html/ja")'
 ```
 
 上記のコマンドによって下記が実行されます．
@@ -50,6 +51,7 @@ git clone https://github.com/AtelierArith/UnofficialJuliaDoc-ja.git
 cd UnofficialJuliaDoc-ja
 git submodule update --init --recursive
 bash run.sh
+julia -e 'using LiveServer; serve(dir="julia/doc/_build/html/ja")'
 ```
 
 The above commands will execute the following:
