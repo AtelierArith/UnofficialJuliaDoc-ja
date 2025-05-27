@@ -18,7 +18,7 @@ julia -e 'using LiveServer; serve(dir="julia/doc/_build/html/ja")'
 
 上記のコマンドによって下記が実行されます．
 
-1. UnofficialJuliaDocJP のクローン
+1. UnofficialJuliaDoc-ja のクローン
 1. `julia` リポジトリ v1.11.5 をクローン
 1. `assets` 以下にあるファイルを `julia/doc` に適用. `julia/doc/Project.toml`, `julia/doc/Manifest.toml`, `julia/doc/make.jl` が更新されます．
 1. `make -C julia && make -C julia/doc` が実行されます．
@@ -56,7 +56,7 @@ julia -e 'using LiveServer; serve(dir="julia/doc/_build/html/ja")'
 
 The above commands will execute the following:
 
-1. Clone UnofficialJuliaDocJP
+1. Clone UnofficialJuliaDoc-ja
 1. Clone `julia` repository v1.11.5
 1. Apply files under `assets` to `julia/doc`. This will update `julia/doc/Project.toml`, `julia/doc/Manifest.toml`, and `julia/doc/make.jl`.
 1. Execute `make -C julia && make -C julia/doc`
