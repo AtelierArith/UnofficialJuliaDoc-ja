@@ -18,7 +18,7 @@ DocstringTranslation.switchtranslationcachedir!(joinpath(dirname(dirname(@__DIR_
 lang = "ja"
 @switchlang! lang
 
-for (i, _stdlib) in enumerate(readdir(Sys.STDLIB))
+for (i, _stdlib) in enumerate(vcat(["Base", "Core"], readdir(Sys.STDLIB)))
     stdlib = Symbol(_stdlib)
     @info "Translating docstrings in $(stdlib)"
     @eval begin
