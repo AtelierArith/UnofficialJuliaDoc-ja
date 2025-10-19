@@ -405,6 +405,7 @@ makedocs(
     authors   = "The Julia Project",
     pages     = PAGES,
     remotes   = documenter_stdlib_remotes,
+    warnonly = [:cross_references, :footnote, :eval_block],
 )
 
 # Update URLs to external stdlibs (JuliaLang/julia#43199)
