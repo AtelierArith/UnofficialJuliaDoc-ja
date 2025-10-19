@@ -1,6 +1,6 @@
-Run Evaluate Print Loop (REPL)
+REPL（実行評価印刷ループ）を実行する
 
-Example minimal code
+最小限のコードの例
 
 ```julia
 import REPL

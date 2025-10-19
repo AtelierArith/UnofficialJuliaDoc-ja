@@ -1,0 +1,26 @@
+```julia
+digest!(context)
+```
+
+SHAコンテキストを最終化し、ハッシュをバイトの配列（Vector{Uint8}）として返します。`digest!`を呼び出した後にコンテキストを更新するとエラーになります。
+
+# 例
+
+```julia-repl
+julia> ctx = SHA1_CTX()
+SHA1ハッシュ状態
+
+julia> update!(ctx, b"ハッシュされるデータ")
+
+julia> digest!(ctx)
+20要素のVector{UInt8}:
+ 0x83
+ 0xe4
+ ⋮
+ 0x89
+ 0xf5
+
+julia> update!(ctx, b"追加のデータ")
+ERROR: `digest!`が呼び出された後にCTXを更新できません
+[...]
+```
