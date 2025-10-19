@@ -1,1 +1,0 @@
-A logger controls how log records are filtered and dispatched.  When a log record is generated, the logger is the first piece of user configurable code which gets to inspect the record and decide what to do with it.

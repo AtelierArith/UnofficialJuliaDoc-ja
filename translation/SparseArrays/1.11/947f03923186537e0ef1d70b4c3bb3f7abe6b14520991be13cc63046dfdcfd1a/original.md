@@ -1,1 +1,0 @@
-Helper method for `unchecked_noalias_permute!` and `unchecked_aliasing_permute!`. Computes `PAQ`'s column pointers, storing them shifted one position forward in `getcolptr(X)`; `_distributevals_halfperm!` fixes this shift. Saves some work relative to `_computecolptrs_halfperm!` as described in `uncheckednoalias_permute!`'s documentation.
