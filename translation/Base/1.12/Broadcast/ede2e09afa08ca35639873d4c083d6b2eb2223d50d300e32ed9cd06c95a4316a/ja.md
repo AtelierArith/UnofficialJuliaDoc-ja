@@ -1,0 +1,1 @@
+`Broadcast.ArrayStyle{MyArrayType}()` は、ブロードキャスト用にオブジェクトが配列として振る舞うことを示す [`BroadcastStyle`](@ref) です。これは、特定の `AbstractArray` コンテナタイプのための [`Broadcast.AbstractArrayStyle`](@ref) を構築するための簡単な方法を提供します。この方法で作成されたブロードキャストスタイルは、次元の追跡を失います。もしあなたのタイプにとって次元の追跡が重要であれば、独自のカスタム [`Broadcast.AbstractArrayStyle`](@ref) を作成するべきです。
