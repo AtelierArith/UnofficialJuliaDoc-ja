@@ -1,1 +1,0 @@
-スパース配列のサポート。`AbstractSparseArray`とそのサブタイプを提供します。
