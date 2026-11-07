@@ -6,7 +6,7 @@ Julia 1.13.3 の公式ドキュメントを日本語へ翻訳するプロジェ�
 
 Julia 本体をソースからビルドできる開発環境が必要です。初回実行では Julia 本体もビルドします。
 
-General に登録された DocstringTranslation.jl 0.1.9 を使用します。ローカルチェックアウトは不要です。`assets/Project_1.13.3.toml` の compat は `"0.1.9"`、`assets/Manifest_1.13.3.toml` の解決済みバージョンは 0.1.9 です。`run.sh` は毎回これらのファイルを `julia/doc/translation-env/` にコピーするため、コピー先だけを編集しても次回実行時に上書きされます。
+General に登録された DocstringTranslation.jl 0.1.10 を使用します。ローカルチェックアウトは不要です。`assets/Project_1.13.3.toml` の compat は `"0.1.10"`、`assets/Manifest_1.13.3.toml` の解決済みバージョンは 0.1.10 です。`run.sh` は毎回これらのファイルを `julia/doc/translation-env/` にコピーするため、コピー先だけを編集しても次回実行時に上書きされます。
 
 初めてチェックアウトする場合：
 
@@ -149,7 +149,7 @@ diff -u "/tmp/julia-make-${JULIA_OLD_VERSION}.jl" "assets/make_${JULIA_NEW_VERSI
 
 - `[compat] julia` を新しいバージョンに合わせる。
 - Documenter などの依存・互換条件を、新しい上流 `make.jl` と照合する。
-- DocstringTranslation の compat を確認する。並列翻訳・モデルフォールバック API と、チェックアウト先に依存しないページキャッシュキー、Markdown の往復で崩れない書き出しを備えた登録済み 0.1.9 以降を使用する。開発目的で `[sources]` を追加した場合は、登録版へ戻す際に上書きを外して Manifest を再解決する。
+- DocstringTranslation の compat を確認する。並列翻訳・モデルフォールバック API と、チェックアウト先に依存しないページキャッシュキー、Markdown の往復で崩れない書き出しを備えた登録済み 0.1.10 以降を使用する。開発目的で `[sources]` を追加した場合は、登録版へ戻す際に上書きを外して Manifest を再解決する。
 
 Juliaup を使用している場合の依存解決例です。**対象バージョンの Julia** で新しい Manifest を生成します。
 
@@ -213,7 +213,7 @@ DocstringTranslation 自体を変更した場合は、そのリポジトリで�
 
 This project translates Julia 1.13.3 documentation into Japanese. A Julia source-build toolchain is required; the first run builds Julia itself.
 
-This project uses DocstringTranslation.jl 0.1.9 from General; no local package checkout is required. `assets/Project_1.13.3.toml` sets compatibility to `"0.1.9"`, and the accompanying Manifest resolves version 0.1.9. `run.sh` overwrites `julia/doc/translation-env/` from these assets on each run.
+This project uses DocstringTranslation.jl 0.1.10 from General; no local package checkout is required. `assets/Project_1.13.3.toml` sets compatibility to `"0.1.10"`, and the accompanying Manifest resolves version 0.1.10. `run.sh` overwrites `julia/doc/translation-env/` from these assets on each run.
 
 For a new checkout:
 
