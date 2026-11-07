@@ -14,7 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # Publish only merged translations; a pull request would otherwise
+      # overwrite the translation branch with unmerged work.
       - name: Build and Deploy
+        if: github.event_name == 'push'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: translation

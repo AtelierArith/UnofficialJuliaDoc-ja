@@ -34,7 +34,10 @@ jobs:
 
       - name: Build Julia doc
         run: bash run.sh
+      # Pull requests only build the docs; publishing unmerged work would
+      # replace the live site with the PR's version.
       - name: Build and Deploy
+        if: github.event_name == 'push'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
