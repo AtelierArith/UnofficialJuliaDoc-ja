@@ -35,7 +35,8 @@ if "deps" in ARGS
 end
 
 using DotEnv
-DotEnv.load!(joinpath(buildroot, "..", ".env"))
+dotenv_path = joinpath(buildroot, "..", ".env")
+isfile(dotenv_path) && DotEnv.load!(dotenv_path)
 if get(ENV, "DOCSTRINGTRANSLATION_CACHE_ONLY", "0") == "1"
     delete!(ENV, "OPENAI_API_KEY")
     @info "Cache-only documentation build; no API requests"
