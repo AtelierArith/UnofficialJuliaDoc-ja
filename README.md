@@ -6,13 +6,7 @@ Julia 1.13.3 の公式ドキュメントを日本語へ翻訳するプロジェ�
 
 Julia 本体をソースからビルドできる開発環境が必要です。初回実行では Julia 本体もビルドします。
 
-この作業版は、今回の変更を含む DocstringTranslation.jl を暫定的に次のローカルチェックアウトから読み込みます。
-
-```text
-/Users/atelierarith/work/atelierarith/DocstringTranslation.jl
-```
-
-参照先は `assets/Project_1.13.3.toml` の `[sources]` と `assets/Manifest_1.13.3.toml` に記録されています。別の場所で使う場合は、`[sources]` のパスを変更し、Julia 1.13.3 で Manifest を再解決してください。`run.sh` は毎回これらのファイルを `julia/doc/translation-env/` にコピーするため、コピー先だけを編集しても次回実行時に上書きされます。
+General に登録された DocstringTranslation.jl 0.1.6 を使用します。ローカルチェックアウトは不要です。`assets/Project_1.13.3.toml` の compat は `"0.1.6"`、`assets/Manifest_1.13.3.toml` の解決済みバージョンは 0.1.6 です。`run.sh` は毎回これらのファイルを `julia/doc/translation-env/` にコピーするため、コピー先だけを編集しても次回実行時に上書きされます。
 
 初めてチェックアウトする場合：
 
@@ -155,7 +149,7 @@ diff -u "/tmp/julia-make-${JULIA_OLD_VERSION}.jl" "assets/make_${JULIA_NEW_VERSI
 
 - `[compat] julia` を新しいバージョンに合わせる。
 - Documenter などの依存・互換条件を、新しい上流 `make.jl` と照合する。
-- 暫定的な DocstringTranslation の `[sources]` パスが有効か確認する。登録済み版へ戻す場合は `[sources]` の上書きを外し、今回追加した並列翻訳・モデルフォールバック API を含む登録済みバージョンを指定する。
+- DocstringTranslation の compat を確認する。並列翻訳・モデルフォールバック API を含む登録済み 0.1.6 以降を使用する。開発目的で `[sources]` を追加した場合は、登録版へ戻す際に上書きを外して Manifest を再解決する。
 
 Juliaup を使用している場合の依存解決例です。**対象バージョンの Julia** で新しい Manifest を生成します。
 
@@ -182,7 +176,7 @@ end
 - `julia/VERSION` の期待値。
 - `Project_*.toml`、`Manifest_*.toml`、`make_*.jl` の参照名。
 
-`make.jl` を終了時に復元する trap は維持します。README の対象バージョン、タグ、ローカル依存の説明も更新してください。
+`make.jl` を終了時に復元する trap は維持します。README の対象バージョン、タグ、依存バージョンの説明も更新してください。
 
 ### 5. 段階的に動作確認
 
@@ -219,7 +213,7 @@ DocstringTranslation 自体を変更した場合は、そのリポジトリで�
 
 This project translates Julia 1.13.3 documentation into Japanese. A Julia source-build toolchain is required; the first run builds Julia itself.
 
-This working version temporarily uses the local DocstringTranslation checkout at `/Users/atelierarith/work/atelierarith/DocstringTranslation.jl`, selected by `[sources]` in `assets/Project_1.13.3.toml` and the accompanying Manifest. Adjust the source path and resolve the Manifest on Julia 1.13.3 if you use another location. `run.sh` overwrites `julia/doc/translation-env/` from these assets on each run.
+This project uses DocstringTranslation.jl 0.1.6 from General; no local package checkout is required. `assets/Project_1.13.3.toml` sets compatibility to `"0.1.6"`, and the accompanying Manifest resolves version 0.1.6. `run.sh` overwrites `julia/doc/translation-env/` from these assets on each run.
 
 For a new checkout:
 
