@@ -2,9 +2,9 @@
 apply_to_tree(repo::GitRepo, preimage::GitTree, diff::GitDiff, options::ApplyOptions=ApplyOptions())
 ```
 
-[`GitTree`](@ref) に [`GitDiff`](@ref) を適用し、結果のインデックスを返します。`preimage` は、差分を適用するツリーです。`diff` は、`preimage` から別のツリーへの差分として生成します。
+[`GitDiff`](@ref) を [`GitTree`](@ref) に適用し、結果のインデックスを返します。`preimage` は、差分を適用するツリーです。`diff` は、`preimage` から別のツリーへの差分として生成します。
 
-返される [`GitIndex`](@ref) には、差分を適用した結果が含まれます。これを [`write_tree_to!`](@ref) を使ってツリーとして書き出せます。
+返される [`GitIndex`](@ref) には、差分を適用した結果が含まれます。[`write_tree_to!`](@ref) を使って、これをツリーとして書き出せます。
 
 これは [`git_apply_to_tree`](https://libgit2.org/libgit2/#HEAD/group/apply/git_apply_to_tree) と同等です。
 

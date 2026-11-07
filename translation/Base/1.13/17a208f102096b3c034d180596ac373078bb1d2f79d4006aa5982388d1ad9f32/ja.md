@@ -4,11 +4,11 @@ Threads.foreach(f, channel::Channel;
                 ntasks=Threads.threadpoolsize())
 ```
 
-`foreach(f, channel)`と同様ですが、`channel`の反復処理と`f`の呼び出しは、`Threads.@spawn`が生成する`ntasks`タスクに分割されます。この関数は、内部で生成したすべてのタスクが完了するまで待ってから戻ります。
+`foreach(f, channel)`と同様ですが、`channel`の反復処理と`f`の呼び出しは、`Threads.@spawn`が生成する複数の`ntasks`タスクに分割されます。この関数は、内部で生成したすべてのタスクが完了するまで待ってから戻ります。
 
-`schedule isa FairSchedule`の場合、`Threads.foreach`は、Juliaのスケジューラが作業項目をスレッド間でより柔軟に負荷分散できるような方法でタスクを生成しようとします。この方法は一般に項目ごとのオーバーヘッドが大きくなりますが、他のマルチスレッド処理と並行して実行する場合、`StaticSchedule`より高い性能を発揮することがあります。
+`schedule isa FairSchedule`の場合、`Threads.foreach`は、Juliaのスケジューラがスレッド間で作業項目をより柔軟に負荷分散できるような方法でタスクを生成します。この方法は一般に項目ごとのオーバーヘッドが大きくなりますが、他のマルチスレッド処理と同時に実行する場合、`StaticSchedule`より高い性能を発揮することがあります。
 
-`schedule isa StaticSchedule`の場合、`Threads.foreach`は、`FairSchedule`より項目ごとのオーバーヘッドが小さい一方、負荷分散にはあまり適さない方法でタスクを生成します。そのため、この方法は粒度が細かく均一な処理に適している可能性がありますが、他のマルチスレッド処理と並行して実行する場合、`FairSchedule`より性能が低下することがあります。
+`schedule isa StaticSchedule`の場合、`Threads.foreach`は、`FairSchedule`より項目ごとのオーバーヘッドが小さい一方、負荷分散には適していない方法でタスクを生成します。そのため、この方法は粒度が細かく均一なワークロードに適している可能性がありますが、他のマルチスレッド処理と同時に実行する場合、`FairSchedule`より性能が低下することがあります。
 
 # Examples
 

@@ -4,7 +4,7 @@ mutable struct
 
 `mutable struct`は[`struct`](@ref)に似ていますが、構築後に型のフィールドを設定できる点が異なります。
 
-mutable structの個々のフィールドには`const`を指定して、不変にできます。
+可変構造体の個々のフィールドには`const`を指定して、不変にできます。
 
 ```julia
 mutable struct Baz
@@ -14,7 +14,7 @@ end
 ```
 
 !!! compat "Julia 1.8"
-    mutable structのフィールドに対する`const`キーワードの使用には、Julia 1.8以降が必要です。
+    可変構造体のフィールドに`const`キーワードを使用するには、Julia 1.8以降が必要です。
 
 
 詳しくは、[Composite Types](@ref)に関するマニュアルの節を参照してください。

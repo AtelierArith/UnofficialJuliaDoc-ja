@@ -48,7 +48,7 @@ julia> v # shares memory with both p and r
  4
 ```
 
-ただし、要素自体が数値行列であるベクトルでは、`permutedims` の結果は `transpose` と異なります。
+ただし、要素自体が数値行列であるベクトルでは、`permutedims` の結果は `transpose` の結果と異なります。
 
 ```jldoctest; setup = :(using LinearAlgebra)
 julia> V = [[[1 2; 3 4]]; [[5 6; 7 8]]]

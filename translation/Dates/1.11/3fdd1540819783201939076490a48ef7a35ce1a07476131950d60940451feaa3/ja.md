@@ -2,7 +2,7 @@
 Dates.RFC1123Format
 ```
 
-日付と時刻のRFC1123形式を表します。
+日付と時刻のRFC1123形式について説明します。
 
 # Examples
 

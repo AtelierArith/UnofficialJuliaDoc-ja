@@ -2,7 +2,7 @@
 powermod(x::Integer, p::Integer, m)
 ```
 
-``x^p \pmod m`` を計算します。
+``x^p \pmod m``を計算します。
 
 # Examples
 

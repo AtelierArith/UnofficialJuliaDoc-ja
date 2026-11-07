@@ -2,7 +2,7 @@
 dayofweek(dt::TimeType)::Int64
 ```
 
-曜日を [`Int64`](@ref) として、`1 = Monday, 2 = Tuesday, etc.` で返します。
+曜日を `1 = Monday, 2 = Tuesday, etc.` として返します（[`Int64`](@ref)）。
 
 # Examples
 

@@ -2,7 +2,7 @@
 now(::Type{UTC})::DateTime
 ```
 
-ユーザーのシステム時刻に対応する UTC/GMT の `DateTime` を返します。その他のタイムゾーンについては、TimeZones.jl パッケージを参照してください。
+ユーザーのシステム時刻に対応するUTC/GMTの`DateTime`を返します。その他のタイムゾーンについては、TimeZones.jlパッケージを参照してください。
 
 # Examples
 

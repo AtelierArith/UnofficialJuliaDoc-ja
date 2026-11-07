@@ -2,7 +2,7 @@
 replace!(new::Union{Function, Type}, A; [count::Integer])
 ```
 
-コレクション `A` 内の各要素 `x` を `new(x)` に置き換えます。`count` が指定されている場合、合計で最大 `count` 個の値を置き換えます（置換とは `new(x) !== x` と定義されます）。
+コレクション `A` 内の各要素 `x` を `new(x)` に置き換えます。`count` が指定されている場合、置き換える値の合計は最大 `count` 個です（置き換えとは `new(x) !== x` と定義されます）。
 
 # Examples
 

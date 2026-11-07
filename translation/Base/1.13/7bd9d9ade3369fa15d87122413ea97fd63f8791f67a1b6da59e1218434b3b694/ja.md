@@ -2,7 +2,7 @@
 filter!(f, d::AbstractDict)
 ```
 
-`d`を更新し、`f`が`false`である要素を削除します。関数`f`には、`key=>value`のペアが渡されます。
+`d`を更新し、`f`が`false`である要素を削除します。関数`f`には、`key=>value`のペアを渡します。
 
 # Examples
 

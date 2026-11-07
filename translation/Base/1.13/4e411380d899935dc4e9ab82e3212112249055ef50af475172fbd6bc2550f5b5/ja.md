@@ -2,7 +2,7 @@
 fieldoffset(type, name::Symbol | i::Integer)
 ```
 
-型の先頭からの相対位置で表した、フィールド（名前またはインデックスで指定）のバイトオフセット。
+型の先頭からの、フィールド（名前またはインデックスで指定）のバイトオフセット。
 
 # Examples
 
@@ -19,7 +19,7 @@ julia> fieldoffset(Foo, :x)
 0x0000000000000000
 ```
 
-これを使って、構造体に関する情報を要約できます。
+これを使って、構造体に関する情報をまとめられます。
 
 ```jldoctest
 julia> structinfo(T) = [(fieldoffset(T,i), fieldname(T,i), fieldtype(T,i)) for i = 1:fieldcount(T)];

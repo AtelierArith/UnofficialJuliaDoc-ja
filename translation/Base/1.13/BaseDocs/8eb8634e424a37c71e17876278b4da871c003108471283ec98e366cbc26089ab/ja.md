@@ -8,4 +8,4 @@ modifyglobal!(module::Module, name::Symbol, op, x, [order::Symbol=:monotonic])::
     この関数を使用するには、Julia 1.11 以降が必要です。
 
 
-関連項目: [`modifyproperty!`](@ref Base.modifyproperty!)、[`setglobal!`](@ref)。
+[`modifyproperty!`](@ref Base.modifyproperty!) および [`setglobal!`](@ref) も参照してください。

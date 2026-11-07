@@ -11,7 +11,7 @@ Pkg.add(pkg::Union{PackageSpec, Vector{PackageSpec}}; preserve=PRESERVE_TIERED, 
 
 ## Loaded Version Preference
 
-Pkg REPL モード（`pkg> add`）からパッケージを追加する場合、Pkg はデフォルトで、現在の Julia セッションですでに読み込まれているパッケージ（およびその依存関係）のバージョンを優先します。これにより、セッション内ですでに実行中のコードとの互換性を保ちやすくなります。その後、`pkg> up` を実行すると、互換性のある最新バージョンに更新できます。プログラムから `Pkg.add` を呼び出す場合、デフォルトでは逆に、現在読み込まれているパッケージとは独立してバージョンが解決され、より再現性の高い動作になります。デフォルトを変更するには、`prefer_loaded_versions=true`/`false` を渡します。
+Pkg REPL モード（`pkg> add`）からパッケージを追加すると、Pkg はデフォルトで、現在の Julia セッションですでに読み込まれているパッケージ（およびその依存関係）のバージョンを優先します。これにより、セッション内ですでに実行中のコードとの互換性を保ちやすくなります。その後、`pkg> up` を実行すると、互換性のある最新バージョンに更新できます。プログラムから `Pkg.add` を呼び出す場合、デフォルトの動作は逆で、再現性を高めるため、現在読み込まれているパッケージとは独立してバージョンが解決されます。デフォルトの動作を変更するには、`prefer_loaded_versions=true`/`false` を渡します。
 
 !!! compat "Julia 1.13"
     `prefer_loaded_versions` キーワード引数を使うには、Julia 1.13 以降が必要です。
@@ -19,26 +19,26 @@ Pkg REPL モード（`pkg> add`）からパッケージを追加する場合、P
 
 ## Resolution Tiers
 
-`Pkg` は、段階的なアルゴリズムを使って環境内のパッケージ構成を解決します。キーワード引数 `preserve` を指定すると、解決アルゴリズムの特定の段階を選択できます。以下の表では、`preserve` に指定できる値を、制約の厳しい順に示します。
+`Pkg` は、段階的なアルゴリズムを使って環境内のパッケージの組み合わせを解決します。`preserve` キーワード引数を使うと、解決アルゴリズムの特定の段階を指定できます。以下の表では、`preserve` に指定できる値を、制約の厳しい順に説明します。
 
-| 値                           | 説明                                                          |
-|:--------------------------- |:----------------------------------------------------------- |
-| `PRESERVE_ALL_INSTALLED`    | `PRESERVE_ALL` と同様ですが、すでにインストールされているものだけを追加します              |
-| `PRESERVE_ALL`              | 既存のすべての依存関係（再帰的な依存関係を含む）の状態を維持します                           |
-| `PRESERVE_DIRECT`           | 既存のすべての直接依存関係の状態を維持します                                      |
-| `PRESERVE_SEMVER`           | 直接依存関係のうち、semver 互換のバージョンを維持します                             |
-| `PRESERVE_NONE`             | バージョン情報の維持を試みません                                            |
-| `PRESERVE_TIERED_INSTALLED` | `PRESERVE_TIERED` と同様ですが、最初に `PRESERVE_ALL_INSTALLED` を試します |
-| `PRESERVE_TIERED`           | バージョン解決を成功させつつ、最も多くのバージョン情報を維持できる段階を使用します（デフォルト）            |
-|                             |                                                             |
+| 値                           | 説明                                                         |
+|:--------------------------- |:---------------------------------------------------------- |
+| `PRESERVE_ALL_INSTALLED`    | `PRESERVE_ALL` と同様ですが、すでにインストールされているものだけを追加します             |
+| `PRESERVE_ALL`              | 既存のすべての依存関係（再帰的な依存関係を含む）の状態を維持します                          |
+| `PRESERVE_DIRECT`           | 既存のすべての直接依存関係の状態を維持します                                     |
+| `PRESERVE_SEMVER`           | 直接依存関係のうち、semver 互換のバージョンを維持します                            |
+| `PRESERVE_NONE`             | バージョン情報の維持を試みません                                           |
+| `PRESERVE_TIERED_INSTALLED` | `PRESERVE_TIERED` と同様ですが、先に `PRESERVE_ALL_INSTALLED` を試します |
+| `PRESERVE_TIERED`           | バージョン解決を成功させつつ、最も多くのバージョン情報を維持できる段階を使用します（デフォルト）           |
+|                             |                                                            |
 
 !!! note
     デフォルトの戦略を `PRESERVE_TIERED_INSTALLED` に変更するには、環境変数 `JULIA_PKG_PRESERVE_TIERED_INSTALLED` を true に設定します。
 
 
-新しいパッケージをインストールすると、プロジェクトがプリコンパイルされます。詳しくは `pkg> ?precompile` を参照してください。
+新しいパッケージをインストールすると、プロジェクトはプリコンパイルされます。詳しくは `pkg> ?precompile` を参照してください。
 
-`PRESERVE_ALL_INSTALLED` 戦略では、追加したパッケージはすでにプリコンパイルされている可能性が高いですが、そうでない場合は、この環境で解決されたパッケージバージョンの組み合わせがこれまで解決・プリコンパイルされていないか、LRU キャッシュストレージによってプリコンパイルキャッシュが削除された可能性があります（`JULIA_MAX_NUM_PRECOMPILE_FILES` を参照）。
+`PRESERVE_ALL_INSTALLED` 戦略では、追加したパッケージはすでにプリコンパイルされている可能性が高いです。そうでない場合は、この環境で解決されたパッケージのバージョンの組み合わせが、これまで解決・プリコンパイルされていないか、LRU キャッシュストレージによってプリコンパイルキャッシュが削除された可能性があります（`JULIA_MAX_NUM_PRECOMPILE_FILES` を参照）。
 
 !!! compat "Julia 1.9"
     `PRESERVE_TIERED_INSTALLED` 戦略と `PRESERVE_ALL_INSTALLED` 戦略を使うには、Julia 1.9 以降が必要です。
@@ -63,6 +63,6 @@ Pkg.add(url="/remote/mycompany/juliapackages/OurPackage") # From path to local g
 Pkg.add(url="https://github.com/Company/MonoRepo", subdir="juliapkgs/Package.jl") # With subdir
 ```
 
-新しいパッケージをインストールすると、プロジェクトがプリコンパイルされます。詳しくは [Environment Precompilation](@ref) を参照してください。
+新しいパッケージをインストールすると、プロジェクトはプリコンパイルされます。詳しくは [Environment Precompilation](@ref) を参照してください。
 
 [`PackageSpec`](@ref)、[`Pkg.develop`](@ref) も参照してください。

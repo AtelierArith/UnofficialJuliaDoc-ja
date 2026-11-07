@@ -3,9 +3,9 @@ sizeof(T::DataType)
 sizeof(obj)
 ```
 
-指定された `DataType` `T` の正規バイナリ表現がある場合、そのサイズ（バイト単位）。`DataType` でない場合は、オブジェクト `obj` のサイズ（バイト単位）。
+指定された `DataType` `T` に標準的なバイナリ表現がある場合、そのサイズをバイト単位で返します。また、オブジェクト `obj` が `DataType` でない場合は、そのオブジェクトのサイズをバイト単位で返します。
 
-関連項目: [`Base.summarysize`](@ref)。
+[`Base.summarysize`](@ref) も参照してください。
 
 # Examples
 
@@ -34,7 +34,7 @@ julia> sizeof(Int64) + sizeof(Bool) # different from above
 9
 ```
 
-`DataType` `T` に特定のサイズがない場合、エラーがスローされます。
+`DataType` `T` のサイズが定まっていない場合は、エラーがスローされます。
 
 ```jldoctest
 julia> sizeof(AbstractArray)

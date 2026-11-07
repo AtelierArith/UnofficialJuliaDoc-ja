@@ -1,1 +1,1 @@
-K"module" が bare でない場合に設定する（`module`、`baremodule` ではない）
+K"module" が裸の式ではない場合に設定する（`module`、`baremodule` ではない）

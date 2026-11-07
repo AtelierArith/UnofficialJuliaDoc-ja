@@ -2,7 +2,7 @@
 repeat(A::AbstractArray, counts::Integer...)
 ```
 
-各次元で指定された回数だけ配列 `A` を繰り返して、配列を構築します。回数は `counts` で指定します。
+配列 `A` を、`counts` で指定した各次元の回数だけ繰り返して配列を構築します。
 
 関連項目: [`fill`](@ref)、[`Iterators.repeated`](@ref)、[`Iterators.cycle`](@ref)。
 

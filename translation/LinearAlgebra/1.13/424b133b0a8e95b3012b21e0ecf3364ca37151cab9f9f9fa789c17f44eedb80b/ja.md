@@ -2,15 +2,15 @@
 cholesky(A, NoPivot(); check = true) -> Cholesky
 ```
 
-密な対称正定値行列 `A` のコレスキー分解を計算し、[`Cholesky`](@ref) 分解を返します。行列 `A` は、[`Symmetric`](@ref)、[`Hermitian`](@ref) [`AbstractMatrix`](@ref)、または *完全に* 対称あるいはエルミートな `AbstractMatrix` のいずれでもかまいません。
+密な対称正定値行列 `A` のコレスキー分解を計算し、[`Cholesky`](@ref) 分解を返します。行列 `A` には、[`Symmetric`](@ref)、[`Hermitian`](@ref) [`AbstractMatrix`](@ref)、または *完全に* 対称な、あるいはエルミートな `AbstractMatrix` を指定できます。
 
-三角コレスキー因子は、分解 `F` から `F.L` および `F.U` を使って取得できます。このとき、`A ≈ F.U' * F.U ≈ F.L * F.L'` です。
+三角コレスキー因子は、分解 `F` から `F.L` と `F.U` を使って取得できます。ここで、`A ≈ F.U' * F.U ≈ F.L * F.L'` です。
 
-`Cholesky` オブジェクトでは、次の関数を利用できます: [`size`](@ref)、[`\`](@ref)、[`inv`](@ref)、[`det`](@ref)、[`logdet`](@ref)、[`isposdef`](@ref)。
+`Cholesky` オブジェクトでは、次の関数を使用できます。[`size`](@ref)、[`\`](@ref)、[`inv`](@ref)、[`det`](@ref)、[`logdet`](@ref)、[`isposdef`](@ref)。
 
-行列 `A` の構築時に生じた丸め誤差により、わずかにエルミートでない場合は、`cholesky` に渡す前に `Hermitian(A)` でラップすると、完全にエルミートな行列として扱えます。
+行列 `A` の構築時に生じた丸め誤差により、行列がわずかに非エルミートになっている場合は、`cholesky` に渡す前に `Hermitian(A)` でラップすると、完全にエルミートな行列として扱えます。
 
-`check = true` の場合、分解に失敗するとエラーがスローされます。`check = false` の場合、分解が有効かどうかを [`issuccess`](@ref) で確認する責任はユーザーにあります。
+`check = true` の場合、分解に失敗するとエラーがスローされます。`check = false` の場合、分解の妥当性を [`issuccess`](@ref) で確認する責任はユーザーにあります。
 
 # Examples
 

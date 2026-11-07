@@ -7,6 +7,6 @@ annotated_chartransform(f::Function, str::AnnotatedString, state=nothing)
   * `f(c::Char) -> Char`
   * `f(c::Char, state) -> (Char, state)`
 
-これは、`f` による変換の前後で各文字のコード単位数を比較し、差分を記録・集計したうえで、その差分をアノテーション領域に適用することで実現します。
+これは、`f` で変換する前後の各文字のコード単位数を比較し、その差を記録して集計したうえで、アノテーション領域に反映することで実現します。
 
-戻り値は `AnnotatedString{String}` です（`str` の元の文字列型にかかわらず）。
+元の `str` の文字列型にかかわらず、`AnnotatedString{String}` を返します。

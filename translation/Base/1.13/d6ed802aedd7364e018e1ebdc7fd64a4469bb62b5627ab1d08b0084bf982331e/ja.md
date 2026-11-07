@@ -4,7 +4,7 @@ pushfirst!(collection, items...) -> collection
 
 `collection`の先頭に、1つ以上の`items`を挿入します。
 
-この関数は、他の多くのプログラミング言語では`unshift`と呼ばれます。
+この関数は、ほかの多くのプログラミング言語では`unshift`と呼ばれます。
 
 # Examples
 

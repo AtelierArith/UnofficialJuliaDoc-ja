@@ -2,7 +2,7 @@
 WeakRef(x)
 ```
 
-`w = WeakRef(x)` は、Julia の値 `x` に対する [weak reference](https://en.wikipedia.org/wiki/Weak_reference) を構築します。`w` は `x` への参照を保持しますが、`x` がガベージコレクションによって回収されることを妨げません。`w.value` は、`x` がまだガベージコレクションによって回収されていなければ `x` となり、`x` がすでに回収されていれば `nothing` となります。
+`w = WeakRef(x)` は、Julia の値 `x` への [weak reference](https://en.wikipedia.org/wiki/Weak_reference) を構築します。`w` は `x` への参照を保持しますが、`x` がガベージコレクションで回収されることを妨げません。`w.value` は、`x` がまだガベージコレクションで回収されていなければ `x`、`x` がすでに回収されていれば `nothing` になります。
 
 ```jldoctest
 julia> x = "a string"

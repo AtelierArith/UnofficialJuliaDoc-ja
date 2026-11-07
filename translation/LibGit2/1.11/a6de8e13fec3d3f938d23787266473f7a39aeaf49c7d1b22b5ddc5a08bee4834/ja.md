@@ -2,7 +2,7 @@
 GitRemote(repo::GitRepo, rmt_name::AbstractString, rmt_url::AbstractString)::GitRemote
 ```
 
-名前と URL を使ってリモート Git リポジトリを検索します。デフォルトのフェッチ refspec を使用します。
+名前と URL を使ってリモートの Git リポジトリを検索します。デフォルトのフェッチ refspec を使用します。
 
 # Examples
 

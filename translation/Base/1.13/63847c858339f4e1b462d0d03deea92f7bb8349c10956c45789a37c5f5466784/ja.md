@@ -3,7 +3,7 @@ findfirst(pattern::AbstractString, string::AbstractString)
 findfirst(pattern::AbstractPattern, string::String)
 ```
 
-`string` 内で `pattern` が最初に現れる位置を検索します。[`findnext(pattern, string, firstindex(s))`](@ref) と同等です。
+`string` 内で `pattern` が最初に出現する位置を検索します。[`findnext(pattern, string, firstindex(s))`](@ref) と同等です。
 
 # Examples
 

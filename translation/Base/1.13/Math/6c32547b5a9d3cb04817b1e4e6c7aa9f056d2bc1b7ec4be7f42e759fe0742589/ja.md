@@ -2,7 +2,7 @@
 log1p(x)
 ```
 
-`1+x` の正確な自然対数。[`Real`](@ref) が -1 未満の場合は [`DomainError`](@ref) をスローします。
+`1+x` の高精度な自然対数。-1 未満の [`Real`](@ref) 引数に対しては [`DomainError`](@ref) をスローします。
 
 # Examples
 

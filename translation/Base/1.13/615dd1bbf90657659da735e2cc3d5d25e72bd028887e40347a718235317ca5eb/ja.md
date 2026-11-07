@@ -2,9 +2,9 @@
 something(x...)
 ```
 
-引数のうち、[`nothing`](@ref) と等しくない最初の値を返します。該当する値がない場合は、エラーをスローします。[`Some`](@ref) 型の引数はアンラップされます。
+引数の中から[`nothing`](@ref)と等しくない最初の値を返します。該当する値がない場合は、エラーをスローします。[`Some`](@ref)型の引数はアンラップされます。
 
-関連項目: [`coalesce`](@ref)、[`skipmissing`](@ref)、[`@something`](@ref)。
+[`coalesce`](@ref)、[`skipmissing`](@ref)、[`@something`](@ref)も参照してください。
 
 # Examples
 

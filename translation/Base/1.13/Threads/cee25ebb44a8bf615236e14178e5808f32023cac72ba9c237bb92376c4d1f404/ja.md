@@ -2,9 +2,9 @@
 Threads.atomic_add!(x::Atomic{T}, val::T) where T <: ArithmeticTypes
 ```
 
-`x` に `val` をアトミックに加算します。
+`val` を `x` にアトミックに加算します。
 
-`x[] += val` をアトミックに実行します。**古い**値を返します。`Atomic{Bool}` では定義されていません。
+`x[] += val` をアトミックに実行します。**古い**値を返します。`Atomic{Bool}` には定義されていません。
 
 詳しくは、LLVM の `atomicrmw add` 命令を参照してください。
 

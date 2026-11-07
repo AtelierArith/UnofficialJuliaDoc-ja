@@ -7,7 +7,7 @@ copyto!(dest::AbstractArray, src) -> dest
 関連項目: [`copy!`](@ref Base.copy!)、[`copy`](@ref)。
 
 !!! warning
-    変更対象の引数がほかの引数とメモリを共有している場合、予期しない動作になることがあります。
+    変更される引数がほかの引数とメモリを共有している場合、予期しない動作になることがあります。
 
 
 # Examples

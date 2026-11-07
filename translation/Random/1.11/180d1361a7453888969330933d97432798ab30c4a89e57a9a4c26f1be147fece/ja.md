@@ -2,7 +2,7 @@
 randsubseq!([rng=default_rng(),] S, A, p)
 ```
 
-[`randsubseq`](@ref)と同様ですが、結果は`S`に格納されます（必要に応じてサイズが変更されます）。
+[`randsubseq`](@ref)と同様ですが、結果は必要に応じてサイズが変更される`S`に格納されます。
 
 # Examples
 

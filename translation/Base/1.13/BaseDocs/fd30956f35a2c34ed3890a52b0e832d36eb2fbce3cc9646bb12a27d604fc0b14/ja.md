@@ -4,7 +4,7 @@ applicable(f, args...)::Bool
 
 指定されたジェネリック関数に、指定された引数に適用できるメソッドがあるかどうかを判定します。
 
-関連項目: [`hasmethod`](@ref)。
+[`hasmethod`](@ref)も参照してください。
 
 # Examples
 

@@ -11,7 +11,7 @@ eachindex(::IndexStyle, A::AbstractArray...)
 
 `AbstractArray` 引数を複数指定すると、`eachindex` はすべての引数に対して高速な反復可能オブジェクトを作成します（通常、すべての入力が高速な線形インデックスに対応していれば [`UnitRange`](@ref)、そうでなければ [`CartesianIndices`](@ref)）。配列のサイズや次元数が異なる場合は、`DimensionMismatch` 例外がスローされます。
 
-インデックスと値をまとめて反復するには [`pairs`](@ref)`(A)` を、1つの次元に沿った有効なインデックスを取得するには [`axes`](@ref)`(A, 2)` も参照してください。
+インデックスと値をまとめて反復するには [`pairs`](@ref)`(A)` を、1つの次元における有効なインデックスについては [`axes`](@ref)`(A, 2)` を参照してください。
 
 # Examples
 

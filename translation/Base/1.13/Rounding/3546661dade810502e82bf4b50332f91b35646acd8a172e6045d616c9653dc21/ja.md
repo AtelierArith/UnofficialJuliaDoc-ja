@@ -5,7 +5,7 @@ RoundFromZero
 ゼロから遠ざかる方向に丸めます。
 
 !!! compat "Julia 1.9"
-    `RoundFromZero` を使用するには、Julia 1.9 以降が必要です。それ以前のバージョンでは、`BigFloat` に対してのみ `RoundFromZero` がサポートされています。
+    `RoundFromZero` には Julia 1.9 以降が必要です。それ以前のバージョンでは、`BigFloat` に対してのみ `RoundFromZero` がサポートされています。
 
 
 # Examples

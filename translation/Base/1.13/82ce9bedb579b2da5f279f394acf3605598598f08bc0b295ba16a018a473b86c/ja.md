@@ -2,7 +2,7 @@
 empty!(collection) -> collection
 ```
 
-`collection` からすべての要素を削除します。
+`collection`からすべての要素を削除します。
 
 # Examples
 

@@ -2,7 +2,7 @@
 LibGit2.shortname(ref::GitReference)
 ```
 
-`ref` の名前を短縮した、人が読みやすい形式で返します。
+`ref` の名前を短縮した、「人が読みやすい」形式を返します。
 
 ```julia-repl
 julia> repo = GitRepo(path_to_repo);

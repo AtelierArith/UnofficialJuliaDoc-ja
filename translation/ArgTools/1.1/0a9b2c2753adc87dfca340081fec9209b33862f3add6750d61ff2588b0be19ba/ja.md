@@ -3,7 +3,7 @@ arg_mkdir(f::Function, arg::AbstractString) -> arg
 arg_mkdir(f::Function, arg::Nothing) -> mktempdir()
 ```
 
-`arg_mkdir` 関数は `arg` を受け取ります。これは、次のいずれかでなければなりません。
+`arg_mkdir` 関数は `arg` を受け取ります。これは次のいずれかでなければなりません。
 
   * すでに存在する空のディレクトリへのパス
   * ディレクトリとして作成可能な、まだ存在しないパス

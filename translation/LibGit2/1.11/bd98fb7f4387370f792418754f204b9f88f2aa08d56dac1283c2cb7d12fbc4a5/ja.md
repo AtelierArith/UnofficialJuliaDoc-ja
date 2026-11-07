@@ -2,7 +2,7 @@
 is_ancestor_of(a::AbstractString, b::AbstractString, repo::GitRepo)::Bool
 ```
 
-`true` が `a` の祖先である場合、文字列形式の [`GitHash`](@ref) が文字列形式の `b` の祖先であれば、[`GitHash`](@ref) を返します。
+`true`を返すのは、文字列形式の[`GitHash`](@ref)である`a`が、文字列形式の[`GitHash`](@ref)である`b`の祖先である場合です。
 
 # Examples
 

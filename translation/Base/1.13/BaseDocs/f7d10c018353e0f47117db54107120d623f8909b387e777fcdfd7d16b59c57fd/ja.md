@@ -2,9 +2,9 @@
 Bool <: Integer
 ```
 
-値 `true` と `false` を持つブール型。
+値 `true` と `false` を持つブール型です。
 
-`Bool` は数値型の一種です。`false` は数値的に `0` と等しく、`true` は数値的に `1` と等しくなります。さらに、`false` は [`NaN`](@ref) および [`Inf`](@ref) に対して、乗法における「強いゼロ」として働きます。
+`Bool` は数値の一種です。`false` は数値的に `0` と等しく、`true` は数値的に `1` と等しくなります。さらに、`false` は [`NaN`](@ref) および [`Inf`](@ref) に対して、乗法における「強いゼロ」として働きます。
 
 ```jldoctest
 julia> [true, false] == [1, 0]
@@ -22,7 +22,7 @@ julia> false .* (NaN, Inf, -Inf)
 
 [`if`](@ref) などの条件分岐が受け付けるのは、`Bool` のみです。Julia に「truthy」な値はありません。
 
-比較演算は通常 `Bool` を返しますが、ブロードキャストされた比較では `Array{Bool}` の代わりに [`BitArray`](@ref) が返されることがあります。
+比較演算は通常 `Bool` を返します。また、ブロードキャストされた比較は `Array{Bool}` ではなく、[`BitArray`](@ref) を返すことがあります。
 
 ```jldoctest
 julia> [1 2 3 4 5] .< pi
@@ -34,4 +34,4 @@ julia> map(>(pi), [1 2 3 4 5])
  0  0  0  1  1
 ```
 
-関連項目: [`trues`](@ref)、[`falses`](@ref)、[`ifelse`](@ref)。
+[`trues`](@ref)、[`falses`](@ref)、[`ifelse`](@ref) も参照してください。

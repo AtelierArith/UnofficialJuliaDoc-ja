@@ -13,14 +13,14 @@ ttyhastruecolor()
   * VTEのバージョンが3600以上である（環境変数 `VTE_VERSION` から判定）
   * 現在の端末で環境変数 `XTERM_VERSION` が設定されている
   * 環境変数 `TERMINAL_PROGRAM` に基づき、現在の端末がiTermと判断される
-  * 環境変数 `TERM` が linuxvt、rxvt、または st に対応している
+  * 環境変数 `TERM` が linuxvt、rxvt、または st に該当する
 
 [^1]: Ncurses 6.1で追加され、`TERM=*-direct` のterminfoで使用されています。
 
-[^2]: 慣例 [added to tmux in 2016](https://github.com/tmux/tmux/commit/427b8204268af5548d09b830e101c59daa095df9)。後に `RGB` に置き換えられました。
+[^2]: [added to tmux in 2016](https://github.com/tmux/tmux/commit/427b8204268af5548d09b830e101c59daa095df9) の慣例。後に `RGB` に置き換えられました。
 
 [^3]: [Rüdiger Sonderfeld in 2013](https://lists.gnu.org/archive/html/bug-ncurses/2013-10/msg00007.html) による提案で、いくつかの端末エミュレーターに採用されています。
 
 !!! note
-    条件の整理が難しいのは、状況そのものが混乱しており、解決の見通しも立っていないためです。`COLORTERM` は広く受け入れられていますが、`ssh` セッションをまたいで渡されるのが `TERM` だけであるため、完全な解決策ではありません。端末が機能を宣言する場所としてはterminfoが当然ですが、ncurses/terminfoが標準機能（`RGB`）を宣言するまでに十分な年月がかかったため、ほかの方式もいくつか定着してしまいました。さらに、公式の `RGB` 機能は256色動作と*互換性がない*ため、端末エコシステムの分断を解消できません。
+    条件の整理が複雑なのは、状況そのものが混乱しており、解決の見通しも立っていないためです。`COLORTERM` は広く受け入れられていますが、`ssh` セッションをまたいで渡されるのが `TERM` だけであるため、完全な解決策ではありません。端末が機能を宣言する場所としてはterminfoが自然ですが、ncurses/terminfoが標準機能（`RGB`）を宣言するまでに長い年月がかかったため、ほかの方式もいくつか定着してしまいました。さらに、公式の `RGB` 機能は256色動作と*互換性がない*ため、端末エコシステムの分断を解消できません。
 

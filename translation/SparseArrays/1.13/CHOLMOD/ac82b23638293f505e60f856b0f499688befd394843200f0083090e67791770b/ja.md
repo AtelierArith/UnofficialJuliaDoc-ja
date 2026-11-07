@@ -7,5 +7,5 @@ ldlt!(F::CHOLMOD.Factor, A::SparseMatrixCSC; shift = 0.0, check = true) -> CHOLM
 関連項目: [`ldlt`](@ref)。
 
 !!! note
-    このメソッドは、[SuiteSparse](https://github.com/DrTimothyAldenDavis/SuiteSparse) の CHOLMOD ライブラリを使用します。このライブラリがサポートするのは、単精度または倍精度の実数型および複素数型のみです。要素型がこれらに該当しない入力行列は、適切な型に変換されます。
+    このメソッドは [SuiteSparse](https://github.com/DrTimothyAldenDavis/SuiteSparse) の CHOLMOD ライブラリを使用します。このライブラリがサポートするのは、単精度または倍精度の実数型と複素数型のみです。これら以外の要素型を持つ入力行列は、適宜これらの型に変換されます。
 

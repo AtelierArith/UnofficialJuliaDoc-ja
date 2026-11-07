@@ -2,4 +2,4 @@
 Base.Experimental.entrypoint(f, argtypes::Tuple)
 ```
 
-`--trim` オプションが指定された場合に、そのメソッドを含めるよう指定します。
+`--trim` オプションが指定された場合に、そのメソッドを含めるように指定します。

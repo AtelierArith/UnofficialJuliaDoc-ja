@@ -2,15 +2,15 @@
 clone(repo_url::AbstractString, repo_path::AbstractString; kwargs...)
 ```
 
-リモートリポジトリ `repo_url` を、ローカルファイルシステム上の `repo_path` にクローンします。
+`repo_url` にあるリモートリポジトリを、ローカルファイルシステム上の `repo_path` にクローンします。
 
 キーワード引数は次のとおりです。
 
   * `branch::AbstractString=""`: リモートのどのブランチをクローンするかを指定します。指定しない場合は、リポジトリのデフォルトブランチ（通常は `master`）が使われます。
-  * `isbare::Bool=false`: `true` の場合、リモートをベアリポジトリとしてクローンします。この場合、`repo_path` 自体が `repo_path/.git` の代わりに Git ディレクトリになります。そのため、作業ツリーをチェックアウトできません。Git CLI の引数 `--bare` に相当します。
+  * `isbare::Bool=false`: `true` の場合、リモートをベアリポジトリとしてクローンします。この場合、`repo_path` 自体が `repo_path/.git` ではなく Git ディレクトリになります。そのため、作業ツリーはチェックアウトできません。Git CLI の引数 `--bare` に相当します。
   * `remote_cb::Ptr{Cvoid}=C_NULL`: クローンの前にリモートを作成するために使うコールバックです。`C_NULL`（デフォルト）の場合、リモートの作成は試みず、すでに存在するものとして扱います。
-  * `depth::Integer=0`: 指定したコミット数まで履歴を切り詰めたシャロークローンを作成します。`0` は完全なクローンを指定します（デフォルト）。シャロークローンから不足しているデータをすべて取得するには、`Consts.FETCH_DEPTH_UNSHALLOW` を使います。注: 執筆時点では、シャロークローンはネットワークプロトコル（http、https、git、ssh）でのみサポートされており、ローカルファイルシステムのパスには対応していません。（https://github.com/libgit2/libgit2/issues/6634)
-  * `credentials::Creds=nothing`: プライベートリポジトリへの認証時に、認証情報や設定を指定します。
+  * `depth::Integer=0`: 指定したコミット数まで履歴を切り詰めたシャロークローンを作成します。`0` は完全なクローン（デフォルト）を指定します。シャロークローンから不足しているデータをすべて取得するには、`Consts.FETCH_DEPTH_UNSHALLOW` を使います。注: 執筆時点では、シャロークローンはネットワークプロトコル（http、https、git、ssh）でのみサポートされており、ローカルファイルシステムのパスではサポートされていません。（https://github.com/libgit2/libgit2/issues/6634)
+  * `credentials::Creds=nothing`: プライベートリポジトリの認証に使う認証情報や設定を指定します。
   * `callbacks::Callbacks=Callbacks()`: ユーザーが指定するコールバックとペイロードです。
 
 `git clone [-b <branch>] [--bare] [--depth <depth>] <repo_url> <repo_path>` と同等です。

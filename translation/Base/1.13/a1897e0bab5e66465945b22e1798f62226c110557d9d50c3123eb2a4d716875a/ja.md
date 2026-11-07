@@ -2,9 +2,9 @@
 fieldname(x::DataType, i::Integer)
 ```
 
-`DataType` のフィールド `i` の名前を取得します。
+`i` の `DataType` のフィールド名を取得します。
 
-戻り値の型は `Symbol` です。ただし、`x <: Tuple` の場合は、フィールドのインデックスが返され、その型は `Int` です。
+戻り値の型は `Symbol` です。ただし、`x <: Tuple` の場合はフィールドのインデックスが返され、その型は `Int` です。
 
 # Examples
 

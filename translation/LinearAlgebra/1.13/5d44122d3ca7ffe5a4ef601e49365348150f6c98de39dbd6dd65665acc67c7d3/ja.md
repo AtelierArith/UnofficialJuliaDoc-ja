@@ -2,7 +2,7 @@
 cis(A::AbstractMatrix)
 ```
 
-正方行列 `A` の `exp(im*A)` をより効率的に計算する方法です（特に、`A` が `Hermitian` または実数の `Symmetric` の場合）。
+正方行列 `A` の `exp(im*A)` を求めるための、より効率的なメソッドです（特に `A` が `Hermitian` または実数の `Symmetric` である場合）。
 
 [`cispi`](@ref)、[`sincos`](@ref)、[`exp`](@ref) も参照してください。
 

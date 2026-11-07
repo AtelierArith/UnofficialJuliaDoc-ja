@@ -2,4 +2,4 @@
 numeric_flags(x)
 ```
 
-`SyntaxHead`に付随する数値を返します。現時点では、`K"nrow"`と`K"ncat"`の種類のみが対象です。
+`SyntaxHead` に付随する番号を返します。現時点では、`K"nrow"` と `K"ncat"` の種類に限ります。

@@ -4,7 +4,7 @@ base64decode(string)
 
 base64でエンコードされた`string`をデコードし、デコードされたバイト列の`Vector{UInt8}`を返します。
 
-[`base64encode`](@ref)も参照してください。
+関連項目：[`base64encode`](@ref)。
 
 # Examples
 

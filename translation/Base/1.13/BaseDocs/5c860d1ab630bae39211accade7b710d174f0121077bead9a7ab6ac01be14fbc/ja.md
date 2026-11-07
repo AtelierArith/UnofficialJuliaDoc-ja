@@ -2,7 +2,7 @@
 Matrix{T}(missing, m, n)
 ```
 
-[`Matrix{T}`](@ref)を、`m`×`n`のサイズで構築し、[`missing`](@ref)の要素で初期化します。要素型`T`は、これらの値を格納できる必要があります。つまり、`Missing <: T`です。
+[`Matrix{T}`](@ref)をサイズ`m`×`n`で構築し、[`missing`](@ref)の要素で初期化します。要素型`T`は、これらの値を格納できる必要があります。つまり、`Missing <: T`です。
 
 # Examples
 

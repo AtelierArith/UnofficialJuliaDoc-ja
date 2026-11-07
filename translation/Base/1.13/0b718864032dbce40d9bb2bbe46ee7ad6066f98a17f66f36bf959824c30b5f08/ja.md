@@ -2,7 +2,7 @@
 Base.locate_package(pkg::PkgId)::Union{String, Nothing}
 ```
 
-識別子 `pkg` に対応するパッケージのエントリーポイントファイルへのパス。見つからない場合は `nothing`。詳細は [`identify_package`](@ref) を参照してください。
+識別子 `pkg` に対応するパッケージのエントリーポイントファイルへのパス。見つからない場合は `nothing`。詳しくは [`identify_package`](@ref) も参照してください。
 
 ```julia-repl
 julia> pkg = Base.identify_package("Pkg")

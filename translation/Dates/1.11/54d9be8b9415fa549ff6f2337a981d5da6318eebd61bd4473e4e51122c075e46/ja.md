@@ -2,7 +2,7 @@
 lastdayofyear(dt::TimeType)::TimeType
 ```
 
-`dt`を、その年の最終日に調整します。
+`dt` を、その年の最終日に調整します。
 
 # Examples
 

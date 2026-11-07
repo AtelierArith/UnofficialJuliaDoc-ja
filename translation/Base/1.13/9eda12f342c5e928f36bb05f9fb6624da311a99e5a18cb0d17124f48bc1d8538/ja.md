@@ -4,7 +4,7 @@ axes(A, d)
 
 配列 `A` の次元 `d` における、有効なインデックスの範囲を返します。
 
-[`size`](@ref) および [arrays with custom indices](@ref man-custom-indices) に関するマニュアルの章も参照してください。
+[`size`](@ref) および、[arrays with custom indices](@ref man-custom-indices) に関するマニュアルの章も参照してください。
 
 # Examples
 
@@ -20,7 +20,7 @@ true
 
 # Usage note
 
-各インデックスは `AbstractUnitRange{<:Integer}` である必要がありますが、同時に、カスタムインデックスを使用する型でもかまいません。たとえば、部分集合が必要な場合は、`begin`/`end` や [`firstindex`](@ref)/[`lastindex`](@ref) のような汎用インデックス構文を使用してください。
+各インデックスは `AbstractUnitRange{<:Integer}` である必要がありますが、同時に、カスタムインデックスを使用する型でもかまいません。そのため、たとえば部分集合が必要な場合は、`begin`/`end` や [`firstindex`](@ref)/[`lastindex`](@ref) のような汎用インデックス構文を使用してください。
 
 ```julia
 ix = axes(v, 1)

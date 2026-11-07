@@ -2,7 +2,7 @@
 dropstored!(A::AbstractSparseMatrixCSC, i::Integer, j::Integer)
 ```
 
-`A[i,j]` が保存されている場合は、`A` から `A[i,j]` を削除し、保存されていない場合は何もしません。
+`A` に `A[i,j]` が格納されている場合は、`A[i,j]` のエントリを削除します。格納されていない場合は何もしません。
 
 ```jldoctest
 julia> A = sparse([1 2; 0 0])

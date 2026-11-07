@@ -2,11 +2,11 @@
 fieldnames(x::DataType)
 ```
 
-`DataType`のフィールド名をタプルとして取得します。
+`DataType` のフィールド名をタプルとして取得します。
 
-各名前は`Symbol`です。ただし、`x <: Tuple`の場合、各名前（実際にはフィールドのインデックス）は`Int`です。
+各名前は `Symbol` です。ただし `x <: Tuple` の場合は、各名前（実際にはフィールドのインデックス）は `Int` になります。
 
-関連項目：[`propertynames`](@ref)、[`hasfield`](@ref)。
+関連項目: [`propertynames`](@ref)、[`hasfield`](@ref)。
 
 # Examples
 

@@ -4,7 +4,7 @@ Pkg.Registry.add(registry::RegistrySpec)
 
 新しいパッケージレジストリを追加します。
 
-引数なしの `Pkg.Registry.add()` は、デフォルトのレジストリをインストールします。
+引数なしの`Pkg.Registry.add()`を実行すると、デフォルトのレジストリがインストールされます。
 
 # Examples
 

@@ -2,7 +2,7 @@
 eigvals(A::Union{SymTridiagonal, Hermitian, Symmetric}, vl::Real, vu::Real) -> values
 ```
 
-`A` の固有値を返します。固有値の下限と上限を指定する `vl` と `vu` のペアを指定すると、固有値の一部のみを計算できます。
+`A`の固有値を返します。固有値の下限と上限を指定する`vl`と`vu`のペアを指定すると、固有値の一部だけを計算できます。
 
 # Examples
 

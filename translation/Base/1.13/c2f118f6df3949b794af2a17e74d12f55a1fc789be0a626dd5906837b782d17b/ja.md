@@ -2,9 +2,9 @@
 typemax(T)
 ```
 
-指定された（実数）数値`DataType`で表現可能な最大値。
+指定された（実数）数値型で表現できる最大値 `DataType`。
 
-関連項目：[`floatmax`](@ref)、[`maxintfloat`](@ref)、[`typemin`](@ref)、[`eps`](@ref)。
+関連項目: [`floatmax`](@ref), [`maxintfloat`](@ref), [`typemin`](@ref), [`eps`](@ref)。
 
 # Examples
 

@@ -63,9 +63,9 @@ julia> @atomic mem[1] # fetch the first value of mem, with sequential consistenc
 ```
 
 !!! compat "Julia 1.7"
-    アトミックフィールド機能を使用するには、Julia 1.7 以降が必要です。
+    Atomic フィールド機能を使用するには、Julia 1.7 以降が必要です。
 
 
 !!! compat "Julia 1.12"
-    アトミック参照機能を使用するには、Julia 1.12 以降が必要です。
+    Atomic 参照機能を使用するには、Julia 1.12 以降が必要です。
 

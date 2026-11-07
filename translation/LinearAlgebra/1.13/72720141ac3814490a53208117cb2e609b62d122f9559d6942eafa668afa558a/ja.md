@@ -2,9 +2,9 @@
 _modify!(_add::MulAddMul, x, C, idx)
 ```
 
-`C[idx] = _add(x, C[idx])`の短絡評価版。
+`C[idx] = _add(x, C[idx])` の短絡評価版。
 
-`C[idx]`のインデックス指定を短絡評価することで、`BigFloat`のような非プリミティブ数値の配列を変更する際に、`UndefRefError`を回避できます。
+`C[idx]` のインデックス指定を短絡評価することで、`BigFloat` のような非プリミティブ数値の配列を変更する際に `UndefRefError` が発生するのを防げます。
 
 # Examples
 

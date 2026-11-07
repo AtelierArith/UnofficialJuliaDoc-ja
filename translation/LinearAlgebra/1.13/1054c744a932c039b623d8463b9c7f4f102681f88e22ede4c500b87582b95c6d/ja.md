@@ -2,9 +2,9 @@
 Diagonal(V::AbstractVector)
 ```
 
-`V`を対角成分とする遅延行列を構築します。
+`V` を対角成分とする遅延行列を構築します。
 
-遅延単位行列`I`については[`UniformScaling`](@ref)を、密行列を作成する方法については[`diagm`](@ref)を、対角成分を抽出する方法については[`diag`](@ref)を参照してください。
+遅延単位行列 `I` については [`UniformScaling`](@ref) を、密行列を作成するには [`diagm`](@ref) を、対角要素を取り出すには [`diag`](@ref) も参照してください。
 
 # Examples
 
@@ -32,7 +32,7 @@ julia> I(2)
 ```
 
 !!! note
-    1列の行列はベクトルとして扱われず、代わりに1要素の`diag(A)`を抽出するメソッド`Diagonal(A::AbstractMatrix)`が呼び出されます。
+    1 列の行列はベクトルとして扱われず、代わりに 1 要素の `diag(A)` を取り出すメソッド `Diagonal(A::AbstractMatrix)` が呼び出されます。
 
 
 ```jldoctest

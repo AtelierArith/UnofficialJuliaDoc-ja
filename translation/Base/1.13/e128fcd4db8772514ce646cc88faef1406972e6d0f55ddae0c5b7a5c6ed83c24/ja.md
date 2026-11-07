@@ -2,7 +2,7 @@
 tail(x::Tuple)::Tuple
 ```
 
-`x` の最初の要素を除いたすべての要素からなる `Tuple` を返します。
+`Tuple` は、`x` の最初の要素を除いたすべての要素からなるものを返します。
 
 関連項目: [`front`](@ref Base.front)、[`rest`](@ref Base.rest)、[`first`](@ref)、[`Iterators.peel`](@ref)。
 

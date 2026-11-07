@@ -4,7 +4,7 @@ bitstring(n)
 
 プリミティブ型のビット表現を文字列で示します（ビッグエンディアン、つまり最上位ビットが先頭）。
 
-関連項目: [`count_ones`](@ref)、[`count_zeros`](@ref)、[`digits`](@ref)。
+関連項目：[`count_ones`](@ref)、[`count_zeros`](@ref)、[`digits`](@ref)。
 
 # Examples
 

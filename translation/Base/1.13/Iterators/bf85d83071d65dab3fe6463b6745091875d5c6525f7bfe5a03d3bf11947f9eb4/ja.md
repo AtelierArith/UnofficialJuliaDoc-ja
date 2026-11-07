@@ -2,7 +2,7 @@
 Iterators.map(f, iterators...)
 ```
 
-遅延評価されるマッピングを作成します。これは、`(f(args...) for args in zip(iterators...))`を記述する別の構文です。
+遅延マッピングを作成します。これは、`(f(args...) for args in zip(iterators...))` を記述する別の構文です。
 
 !!! compat "Julia 1.6"
     この関数を使用するには、Julia 1.6 以降が必要です。

@@ -2,7 +2,7 @@
 combine_axes(As...)::Tuple
 ```
 
-`As` 内のすべての値にわたるブロードキャストの結果の軸を決定します。
+`As`内のすべての値に対するブロードキャストの結果の軸を決定します。
 
 ```jldoctest
 julia> Broadcast.combine_axes([1], [1 2; 3 4; 5 6])

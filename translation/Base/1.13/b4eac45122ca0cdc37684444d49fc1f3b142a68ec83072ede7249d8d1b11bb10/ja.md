@@ -6,4 +6,4 @@ Juliaオブジェクトのメモリアドレスを`Ptr`として取得します�
 
 不変オブジェクトには安定したメモリアドレスがないため、この関数を呼び出すことはできません。
 
-関連項目: [`unsafe_pointer_to_objref`](@ref)。
+[`unsafe_pointer_to_objref`](@ref)も参照してください。

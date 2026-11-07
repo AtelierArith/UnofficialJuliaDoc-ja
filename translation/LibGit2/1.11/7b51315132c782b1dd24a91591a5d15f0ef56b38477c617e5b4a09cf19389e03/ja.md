@@ -2,7 +2,7 @@
 fetchheads(repo::GitRepo)::Vector{FetchHead}
 ```
 
-`repo` のすべての fetch head を、それぞれ [`FetchHead`](@ref) として返してください。各項目には、名前、URL、マージ状態を含めてください。
+`repo` のすべてのフェッチヘッドを、それぞれ [`FetchHead`](@ref) として返してください。各フェッチヘッドには、名前、URL、マージ状態を含めてください。
 
 # Examples
 

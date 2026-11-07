@@ -2,4 +2,4 @@
 StridedVector{T}
 ```
 
-[`StridedArray`](@ref) は、要素の型が `T` である一次元のものです。
+[`StridedArray`](@ref)（1次元）で、要素の型は`T`です。

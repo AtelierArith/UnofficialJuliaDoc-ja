@@ -2,11 +2,11 @@
 Hermitian(A::AbstractMatrix, uplo::Symbol=:U)
 ```
 
-行列 `A` の上三角部分（`uplo = :U` の場合）または下三角部分（`uplo = :L` の場合）のビュー `Hermitian` を構築します。
+行列 `A` の上三角部分（`uplo = :U` の場合）または下三角部分（`uplo = :L` の場合）のビューを `Hermitian` として構築します。
 
-`A` のエルミート部分を計算するには、[`hermitianpart`](@ref) を使用してください。
+`A` のエルミート部分を計算するには、[`hermitianpart`](@ref) を使用します。
 
-エルミートビューと共有される `A` の三角部分に対応する `uplo` シンボルは、関数 [`LinearAlgebra.uplo`](@ref) を使って取得できます。エルミートビューからは、`parent` を使って元の行列 `A` を取得できます。
+エルミートビューと共有される `A` の三角部分に対応する `uplo` シンボルは、関数 [`LinearAlgebra.uplo`](@ref) を使って取得できます。元の行列 `A` は、`parent` を使ってエルミートビューから取得できます。
 
 # Examples
 
@@ -36,9 +36,9 @@ julia> hermitianpart(A)
  5.0+1.5im  7.0+7.0im  9.0+0.0im
 ```
 
-`A` 自体がエルミート行列（たとえば `A == adjoint(A)` の場合）でない限り、`Hupper` と `Hlower` は等しくないことに注意してください。
+`A` 自体がエルミート行列でない限り（たとえば `A == adjoint(A)` の場合）、`Hupper` と `Hlower` は等しくないことに注意してください。
 
-対角成分の非実数部分はすべて無視されます。
+対角成分の虚部はすべて無視されます。
 
 ```julia
 Hermitian(fill(complex(1,1), 1, 1)) == fill(1, 1, 1)

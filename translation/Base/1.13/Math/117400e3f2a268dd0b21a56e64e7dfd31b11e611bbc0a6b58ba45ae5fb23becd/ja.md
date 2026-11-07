@@ -4,7 +4,7 @@ hypot(x, y)
 
 オーバーフローやアンダーフローを避けて、斜辺 ``\sqrt{|x|^2+|y|^2}`` を計算します。
 
-このコードは、Carlos F. Borges による「An Improved Algorithm for `hypot(a,b)`」で説明されているアルゴリズムを実装したものです。論文は arXiv で公開されています。リンクはこちらです：  https://arxiv.org/abs/1904.09481
+このコードは、Carlos F. Borges による「An Improved Algorithm for `hypot(a,b)`」で説明されているアルゴリズムを実装したものです。論文は arXiv で公開されています。リンクはこちらです。   https://arxiv.org/abs/1904.09481
 
 ```julia
 hypot(x...)
@@ -12,7 +12,7 @@ hypot(x...)
 
 オーバーフローやアンダーフローを避けて、斜辺 ``\sqrt{\sum |x_i|^2}`` を計算します。
 
-`norm` も、標準ライブラリの [`LinearAlgebra`](@ref man-linalg) を参照してください。
+標準ライブラリの `norm` も参照してください。[`LinearAlgebra`](@ref man-linalg)
 
 # Examples
 

@@ -2,7 +2,7 @@
 repeat(A::AbstractArray; inner=ntuple(Returns(1), ndims(A)), outer=ntuple(Returns(1), ndims(A)))
 ```
 
-`A`の各要素を繰り返して配列を構築します。`inner`のi番目の要素は、`A`のi番目の次元にある各要素を繰り返す回数を指定します。`outer`のi番目の要素は、`A`のi番目の次元に沿ったスライスを繰り返す回数を指定します。`inner`または`outer`を省略した場合、繰り返しは行われません。
+`A` の各要素を繰り返して配列を構築します。`inner` の i 番目の要素は、`A` の i 番目の次元にある各要素を繰り返す回数を指定します。`outer` の i 番目の要素は、`A` の i 番目の次元に沿ったスライスを繰り返す回数を指定します。`inner` または `outer` を省略した場合、繰り返しは行われません。
 
 # Examples
 

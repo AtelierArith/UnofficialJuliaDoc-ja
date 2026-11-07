@@ -2,7 +2,7 @@
 eigvecs(A; permute::Bool=true, scale::Bool=true, `sortby`) -> Matrix
 ```
 
-列が`A`の固有ベクトルである行列`M`を返します。（`k`番目の固有ベクトルは、スライス`M[:, k]`から取得できます。）キーワード`permute`、`scale`、`sortby`は、[`eigen`](@ref)と同じです。
+列が`A`の固有ベクトルとなる行列`M`を返します。（`k`番目の固有ベクトルは、スライス`M[:, k]`から取得できます。）キーワード`permute`、`scale`、`sortby`は、[`eigen`](@ref)の場合と同じです。
 
 # Examples
 

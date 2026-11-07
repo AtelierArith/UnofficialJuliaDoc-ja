@@ -2,4 +2,4 @@
 struct ConstsLattice <: AbstractLattice
 ```
 
-`JLTypeLattice`、`Const`、`PartialTypeVar`に隣接する格子。
+`JLTypeLattice`にまで広がり、`Const`および`PartialTypeVar`に隣接する格子。

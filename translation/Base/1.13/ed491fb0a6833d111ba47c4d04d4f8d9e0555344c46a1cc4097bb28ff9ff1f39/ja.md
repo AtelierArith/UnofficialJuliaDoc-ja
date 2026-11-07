@@ -11,7 +11,7 @@ chopsuffix(s::AbstractString, suffix::Union{AbstractString,Regex,AbstractChar}):
 
 
 !!! compat "Julia 1.13"
-    `AbstractChar` を受け取るメソッドは Julia 1.13 以降で利用できます。
+    `AbstractChar` のサフィックスを受け取るメソッドは Julia 1.13 以降で利用できます。
 
 
 # Examples

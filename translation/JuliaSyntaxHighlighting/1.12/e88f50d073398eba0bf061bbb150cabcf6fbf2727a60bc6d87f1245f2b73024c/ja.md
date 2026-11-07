@@ -4,14 +4,14 @@ highlight(content::Union{AbstractString, IO},
           syntax_errors::Bool = false) -> AnnotatedString{String}
 ```
 
-`content`に`JuliaSyntax`を使って構文ハイライトを適用します。
+`content`に、`JuliaSyntax`を使って構文ハイライトを適用します。
 
-デフォルトでは、`JuliaSyntax.parseall`を使い、`ignore_errors`キーワード引数を`true`に設定して、`ast`を生成します。代わりに、あらかじめ生成された`ast`を指定することもできます。
+デフォルトでは、`ignore_errors`キーワード引数を`true`に設定して、`JuliaSyntax.parseall`を使い、`ast`を生成します。代わりに、事前に生成した`ast`を指定することもできます。
 
 `syntax_errors`が設定されている場合、検出された構文エラーには`julia_error`フェイスが適用されます。
 
 !!! warning
-    `JuliaSyntax`で使われるフェイスやその適用方法は、変更される可能性があることに注意してください。
+    `JuliaSyntax`で使われるフェイスや、その適用方法は変更される可能性があることに注意してください。
 
 
 # Examples

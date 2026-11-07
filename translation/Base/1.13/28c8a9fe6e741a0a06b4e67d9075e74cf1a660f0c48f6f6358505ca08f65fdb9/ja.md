@@ -5,7 +5,7 @@ Base.infer_exception_types(
     interp::NativeInterpreter=Core.Compiler.NativeInterpreter(world)) -> excts::Vector{Any}
 ```
 
-指定した関数 `f` と引数型 `types` に対して、発生しうる例外型の一覧を返します。この一覧は、`f` と `types` に一致するすべてのメソッド候補について、型推論を行った結果に対応します（[`methods(f, types)`](@ref methods) も参照）。[`Base.return_types`](@ref) と同様に動作しますが、戻り値の型ではなく例外型を推論します。
+指定した関数 `f` と引数型 `types` に対して、発生しうる例外型の一覧を返します。この一覧は、`f` と `types` に一致するすべてのメソッド候補について、型推論した結果に対応します（[`methods(f, types)`](@ref methods) も参照）。[`Base.return_types`](@ref) と同様に動作しますが、戻り値の型ではなく例外型を推論します。
 
 # Arguments
 
@@ -16,7 +16,7 @@ Base.infer_exception_types(
 
 # Returns
 
-  * `excts::Vector{Any}`: 指定した `f` と `types` に一致するメソッドについて、推論によって特定された例外型の一覧。この一覧の順序は、`methods(f, types)` が返す順序と一致します。
+  * `excts::Vector{Any}`: 指定した `f` と `types` に一致するメソッドについて、型推論によって判明した例外型の一覧。この一覧の順序は、`methods(f, types)` が返す順序と一致します。
 
 # Examples
 

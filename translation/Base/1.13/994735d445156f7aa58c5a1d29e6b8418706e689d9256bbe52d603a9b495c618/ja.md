@@ -9,5 +9,5 @@
 
 
 !!! warning
-    Julia 1.8以降では、`@pure`の代わりに[`@assume_effects`](@ref)を使用するのが望ましいです。`@assume_effects`ではJuliaの純粋性モデルをより細かく制御でき、エフェクトシステムによって、より幅広い最適化が可能になるためです。
+    Julia 1.8以降では、`@pure`の代わりに[`@assume_effects`](@ref)を使用することを推奨します。これは、`@assume_effects`ではJuliaの純粋性モデルをより細かく制御でき、エフェクトシステムによって、より幅広い最適化が可能になるためです。
 

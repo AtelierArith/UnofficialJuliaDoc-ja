@@ -9,9 +9,9 @@
 
 値がまだ設定されていない場合に、条件付き代入をアトミックに実行します。返される値 `success::Bool` は、代入が完了したかどうかを示します。
 
-この操作は `setpropertyonce!(a.b, :x, value)` に変換されます。参照の場合は `setindexonce_atomic!(m, success_order, fail_order, value, idx)` の呼び出しに変換されます。どちらも、順序のデフォルトは `:sequentially_consistent` です。
+この操作は `setpropertyonce!(a.b, :x, value)` に変換されます。参照の場合は `setindexonce_atomic!(m, success_order, fail_order, value, idx)` の呼び出しに変換され、どちらも順序の既定値は `:sequentially_consistent` です。
 
-詳しくは、マニュアルの [Per-field atomics](@ref man-atomics) セクションを参照してください。
+詳細については、マニュアルの [Per-field atomics](@ref man-atomics) セクションを参照してください。
 
 # Examples
 

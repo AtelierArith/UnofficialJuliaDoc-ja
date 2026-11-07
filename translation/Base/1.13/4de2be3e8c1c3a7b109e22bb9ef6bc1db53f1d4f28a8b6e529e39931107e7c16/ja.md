@@ -20,4 +20,4 @@ binomial(x::Number, k::Integer)
 
 # External links
 
-  * [Binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient)（Wikipedia）。
+  * Wikipediaの[Binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient)。

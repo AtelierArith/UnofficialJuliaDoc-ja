@@ -3,7 +3,7 @@ Array{T}(nothing, dims)
 Array{T,N}(nothing, dims)
 ```
 
-`N`次元の[`Array`](@ref)を構築します。要素の型は`T`とし、[`nothing`](@ref)の値で初期化します。要素型`T`は、これらの値を格納できる必要があります。つまり、`Nothing <: T`です。
+`N`次元の[`Array`](@ref)を作成します。要素の型は`T`とし、[`nothing`](@ref)の値で初期化します。要素型の`T`は、これらの値を格納できる必要があります。つまり、`Nothing <: T`です。
 
 # Examples
 

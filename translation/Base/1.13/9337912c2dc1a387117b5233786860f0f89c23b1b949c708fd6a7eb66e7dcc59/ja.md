@@ -2,12 +2,12 @@
 readeach(io::IO, T)
 ```
 
-[`read(io, T)`](@ref) を返す反復可能オブジェクト。
+[`read(io, T)`](@ref)を返す反復可能オブジェクト。
 
 関連項目: [`skipchars`](@ref)、[`eachline`](@ref)、[`readuntil`](@ref)。
 
 !!! compat "Julia 1.6"
-    `readeach` は Julia 1.6 以降が必要です。
+    `readeach`にはJulia 1.6以降が必要です。
 
 
 # Examples

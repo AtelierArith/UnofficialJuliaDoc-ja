@@ -5,7 +5,7 @@ isnegative(x)
 `x < 0`かどうかをテストします。[`ispositive`](@ref)も参照してください。
 
 !!! compat "Julia 1.13"
-    この関数を使用するには、Julia 1.13以降が必要です。
+    この関数を使用するには、Julia 1.13 以降が必要です。
 
 
 # Examples

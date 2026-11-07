@@ -2,7 +2,7 @@
 cld(x, y)
 ```
 
-`x / y`以上の最小の整数。`div(x, y, RoundUp)`と同等。
+`x / y`以上の最小の整数。`div(x, y, RoundUp)`と同等です。
 
 関連項目：[`div`](@ref)、[`fld`](@ref)。
 

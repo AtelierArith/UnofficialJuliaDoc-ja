@@ -15,4 +15,4 @@ B[i1,j] = r
 B[i2,j] = 0
 ```
 
-関連項目: [`LinearAlgebra.Givens`](@ref)。
+[`LinearAlgebra.Givens`](@ref) も参照してください。

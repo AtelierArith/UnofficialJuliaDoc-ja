@@ -2,7 +2,7 @@
 reverse(v [, start=firstindex(v) [, stop=lastindex(v) ]] )
 ```
 
-`v`を先頭から末尾まで逆順にしたコピーを返します。コピーを作成せずに逆順で反復する方法については[`Iterators.reverse`](@ref)を、インプレースで行う方法については[`reverse!`](@ref)も参照してください。
+`v`を先頭から末尾まで逆順にしたコピーを返します。コピーを作成せずに逆順で反復処理する方法については[`Iterators.reverse`](@ref)を、インプレースで行う方法については[`reverse!`](@ref)も参照してください。
 
 # Examples
 

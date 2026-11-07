@@ -9,4 +9,4 @@ UpgradeLevel
   * `UPLEVEL_MINOR`
   * `UPLEVEL_MAJOR`
 
-パッケージの更新をどこまで許可するかを指定します。[`PackageSpec`](@ref)または[`Pkg.update`](@ref)の引数として使用します。
+パッケージに許可される更新の範囲を決定します。[`PackageSpec`](@ref)または[`Pkg.update`](@ref)の引数として使用します。

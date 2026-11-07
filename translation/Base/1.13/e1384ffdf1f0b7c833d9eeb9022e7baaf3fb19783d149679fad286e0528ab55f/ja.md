@@ -4,7 +4,7 @@ stride(A, k::Integer)
 
 次元 `k` における隣接要素間のメモリ上の距離（要素数）を返します。
 
-関連項目: [`strides`](@ref).
+関連項目: [`strides`](@ref)。
 
 # Examples
 

@@ -3,13 +3,13 @@
 @nif N conditionexpr expr elseexpr
 ```
 
-`if ... elseif ... else ... end` 文の列を生成します。たとえば、
+一連の `if ... elseif ... else ... end` 文を生成します。たとえば、
 
 ```julia
 @nif 3 d->(i_d >= size(A,d)) d->(error("Dimension ", d, " too big")) d->println("All OK")
 ```
 
-次のように生成されます。
+は、次のように生成します。
 
 ```julia
 if i_1 > size(A, 1)

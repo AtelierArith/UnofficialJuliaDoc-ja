@@ -2,7 +2,7 @@
 CompoundPeriod(periods)
 ```
 
-`Vector` の `Period` を使って、`CompoundPeriod` を構築します。同じ型の `Period` はすべて加算されます。
+`Vector`の`Period`から`CompoundPeriod`を構築します。同じ型の`Period`はすべて加算されます。
 
 # Examples
 

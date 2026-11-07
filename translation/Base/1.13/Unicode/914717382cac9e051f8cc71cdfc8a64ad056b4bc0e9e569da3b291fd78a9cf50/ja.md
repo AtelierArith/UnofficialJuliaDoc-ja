@@ -2,9 +2,9 @@
 titlecase(c::AbstractChar)
 ```
 
-`c`をタイトルケースに変換します。二重音字の場合は大文字とは異なることがあります。以下の例を参照してください。
+`c` をタイトルケースに変換します。二重音字の場合は大文字とは異なることがあります。以下の例を参照してください。
 
-[`uppercase`](@ref)、[`lowercase`](@ref)も参照してください。
+関連項目: [`uppercase`](@ref)、[`lowercase`](@ref)。
 
 # Examples
 

@@ -2,11 +2,11 @@
 collect(iterator)
 ```
 
-コレクションまたはイテレータのすべての要素を含む`Array`を返します。辞書の場合は、`Vector`の`key=>value` [Pair](@ref Pair)を返します。引数が配列のようなオブジェクトであるか、[`HasShape`](@ref IteratorSize)トレイトを持つイテレータの場合、結果は引数と同じ形状および次元数になります。
+コレクションまたはイテレータのすべての要素を含む`Array`を返します。辞書の場合は、`Vector`の`key=>value` [Pair](@ref Pair)を返します。引数が配列のようなオブジェクトであるか、[`HasShape`](@ref IteratorSize)トレイトを持つイテレータである場合、結果は引数と同じ形状および次元数になります。
 
-[comprehensions](@ref man-comprehensions)が[generator expression](@ref man-generators)を`Array`に変換する際に使用されます。そのため、*ジェネレータでは*、角括弧の記法を使って`collect`の呼び出しを置き換えられます。2つ目の例を参照してください。
+[comprehensions](@ref man-comprehensions)が[generator expression](@ref man-generators)を`Array`に変換するために使用します。そのため、*ジェネレータでは*、`collect`を呼び出す代わりに角括弧表記を使用できます。2つ目の例を参照してください。
 
-返される配列の要素型は、収集された値の型に基づいて決まります。ただし、イテレータが空の場合、返される（空の）配列の要素型は型推論によって決まります。
+返される配列の要素型は、収集された値の型に基づきます。ただし、イテレータが空の場合、返される（空の）配列の要素型は型推論によって決まります。
 
 # Examples
 
@@ -37,7 +37,7 @@ julia> [rand(Bool) ? 1 : missing for _ in []]
 Union{Missing, Int64}[]
 ```
 
-イテレータが空でない場合、結果の型は値のみに依存します。
+イテレータが空でない場合、結果の型は値のみによって決まります。
 
 ```julia-repl
 julia> [rand(Bool) ? 1 : missing for _ in [""]]

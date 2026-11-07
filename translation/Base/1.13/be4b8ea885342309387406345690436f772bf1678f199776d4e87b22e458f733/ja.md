@@ -6,7 +6,7 @@ printstyled([io], xs...; bold::Bool=false, italic::Bool=false, underline::Bool=f
 
 キーワード`color`には、`:normal`、`:italic`、`:default`、`:bold`、`:black`、`:blink`、`:blue`、`:cyan`、`:green`、`:hidden`、`:light_black`、`:light_blue`、`:light_cyan`、`:light_green`、`:light_magenta`、`:light_red`、`:light_white`、`:light_yellow`、`:magenta`、`:nothing`、`:red`、`:reverse`、`:underline`、`:white`、`:yellow`、または0以上255以下の整数を指定できます。ただし、すべての端末が256色に対応しているわけではありません。
 
-キーワード`bold=true`、`italic=true`、`underline=true`、`blink=true`の意味は明らかです。キーワード`reverse=true`を指定すると、前景色と背景色を入れ替えて出力します。`hidden=true`は端末上では見えませんが、コピーすることはできます。これらの属性は任意に組み合わせて使用できます。
+キーワード`bold=true`、`italic=true`、`underline=true`、`blink=true`の意味は明らかです。キーワード`reverse=true`を指定すると、前景色と背景色を入れ替えて出力します。`hidden=true`は端末上では表示されませんが、コピーすることはできます。これらの属性は任意に組み合わせて使用できます。
 
 関連項目：[`print`](@ref)、[`println`](@ref)、[`show`](@ref)。
 

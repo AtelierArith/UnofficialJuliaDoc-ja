@@ -7,7 +7,7 @@ diagind(m::Integer, n::Integer, k::Integer = 0)
 
 行列の `k` 番目の対角線のインデックスを返す `AbstractRange` です。行列 `M` 自体、またはその次元 `m` と `n` を指定します。必要に応じて、返される範囲の型を決めるインデックススタイルも指定できます。`indstyle isa IndexLinear`（デフォルト）の場合、`AbstractRange{Integer}` を返します。一方、`indstyle isa IndexCartesian` の場合は、`AbstractRange{CartesianIndex{2}}` を返します。
 
-`k` を省略した場合は、`0`（主対角線に相当）とみなされます。
+`k` を指定しない場合は、`0`（主対角線に対応）とみなされます。
 
 関連項目: [`diag`](@ref)、[`diagm`](@ref)、[`Diagonal`](@ref)。
 

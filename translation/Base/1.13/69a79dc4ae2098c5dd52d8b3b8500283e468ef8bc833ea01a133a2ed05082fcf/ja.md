@@ -2,18 +2,18 @@
 eachcol(A::AbstractVecOrMat) <: AbstractVector
 ```
 
-行列またはベクトル `A` の各列を要素とするベクトルである [`ColumnSlices`](@ref) オブジェクトを作成します。列のスライスは、`A` の `AbstractVector` ビューとして返されます。
+行列またはベクトル `A` の列をベクトルとしてまとめた [`ColumnSlices`](@ref) オブジェクトを作成します。列のスライスは、`A` の `AbstractVector` ビューとして返されます。
 
 逆の操作については、[`stack`](@ref)`(cols)` または `reduce(`[`hcat`](@ref)`, cols)` を参照してください。
 
 [`eachrow`](@ref)、[`eachslice`](@ref)、[`mapslices`](@ref) も参照してください。
 
 !!! compat "Julia 1.1"
-    この関数には Julia 1.1 以降が必要です。
+    この関数を使用するには、Julia 1.1 以降が必要です。
 
 
 !!! compat "Julia 1.9"
-    Julia 1.9 より前では、この関数はイテレータを返していました。
+    Julia 1.9 より前のバージョンでは、イテレーターを返していました。
 
 
 # Examples

@@ -2,7 +2,7 @@
 push_refspecs(rmt::GitRemote)::Vector{String}
 ```
 
-指定した`rmt`の*push* refspecを取得します。これらのrefspecには、どのブランチにプッシュするかを示す情報が含まれています。
+指定した`rmt`の*push* refspecを取得します。これらのrefspecには、どのブランチをプッシュするかを示す情報が含まれています。
 
 # Examples
 

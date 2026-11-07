@@ -1,1 +1,1 @@
-`halfperm!`用のヘルパーメソッドです。`getcolptr(X)`内で`transpose(A[:,q])`の列ポインタが1つ先にずれている状態で、`rowvals(A)`と、`f`で変換した`nonzeros(A)`を、それぞれ`rowvals(X)`と`nonzeros(X)`に適切に振り分けて`map(f, transpose(A[:,q]))`を計算します。同時に、`getcolptr(X)`の1つ先へのずれも修正します。
+`halfperm!`用のヘルパーメソッドです。`getcolptr(X)`内で`transpose(A[:,q])`の列ポインターが1つ前方にずれている状態で、`rowvals(A)`と、`f`で変換した`nonzeros(A)`をそれぞれ`rowvals(X)`と`nonzeros(X)`に適切に振り分けて、`map(f, transpose(A[:,q]))`を計算します。同時に、`getcolptr(X)`の1つ前方へのずれも修正します。

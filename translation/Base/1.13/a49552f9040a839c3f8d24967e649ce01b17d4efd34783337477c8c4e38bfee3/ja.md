@@ -4,7 +4,7 @@ AnnotatedString{S <: AbstractString} <: AbstractString
 
 注釈付き領域を含む、メタデータ付きの文字列です。
 
-より具体的には、これは任意の[`AbstractString`](@ref)を包むシンプルなラッパーで、ラップされた文字列の領域にラベル付きの値を注釈として付与できます。
+より具体的には、任意の[`AbstractString`](@ref)を包むシンプルなラッパーで、ラップされた文字列の領域にラベル付きの値を注釈として付与できます。
 
 ```text
                            C
@@ -15,18 +15,18 @@ AnnotatedString{S <: AbstractString} <: AbstractString
                     B
 ```
 
-上の図は、3つの範囲に注釈（`A`、`B`、`C`）が付与された`AnnotatedString`を示しています。各注釈は、ラベル（`Symbol`）と値（`Any`）を持ちます。この3つの情報は、`@NamedTuple{region::UnitRange{Int64}, label::Symbol, value}`として保持されます。
+上の図は、3つの範囲に注釈（ラベルは`A`、`B`、`C`）が付与された`AnnotatedString`を示しています。各注釈は、ラベル（`Symbol`）と値（`Any`）を持ちます。この3つの情報は、`@NamedTuple{region::UnitRange{Int64}, label::Symbol, value}`として保持されます。
 
-ラベルは一意である必要はなく、同じ領域に同じラベルの注釈を複数付与できます。
+ラベルは一意である必要はありません。同じ領域に、同じラベルの注釈を複数付与できます。
 
-`AnnotatedString`全般を対象とするコードでは、次の性質を維持する必要があります。
+一般に、`AnnotatedString`向けに書かれたコードでは、次の性質を維持する必要があります。
 
   * 注釈が適用される文字
   * 各文字に注釈が適用される順序
 
-`AnnotatedString`の用途によっては、これらに加えて別の意味が導入されることがあります。
+`AnnotatedString`の具体的な用途によっては、さらに意味が加わる場合があります。
 
-この規則から、同じラベルと値を持つ注釈が隣接して連続している場合、それらは範囲を結合した単一の注釈と等価になります。
+この規則から、同じラベルと値を持つ注釈が隣接して連続している場合、それらは結合した範囲に付与された単一の注釈と同等になります。
 
 [`AnnotatedChar`](@ref)、[`annotatedstring`](@ref)、[`annotations`](@ref)、[`annotate!`](@ref)も参照してください。
 

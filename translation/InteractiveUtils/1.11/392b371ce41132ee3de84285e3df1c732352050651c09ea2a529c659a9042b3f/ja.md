@@ -10,9 +10,9 @@
 @code_native syntax=:intel debuginfo=:default binary=true dump_module=false f(x)
 ```
 
-  * アセンブリ構文を指定するには、`syntax`に、Intel構文の場合は`:intel`（デフォルト）、AT&T構文の場合は`:att`を設定します。
-  * コードコメントの詳細度を指定するには、`debuginfo`に`:source`（デフォルト）または`:none`を設定します。
-  * `binary`が`true`の場合、各命令のバイナリマシンコードも、短縮アドレスを先頭に付けて出力します。
+  * アセンブリ構文を指定するには、`syntax`を設定します。`:intel`（デフォルト）はIntel構文、`:att`はAT&T構文です。
+  * コードコメントの詳細度を指定するには、`debuginfo`を`:source`（デフォルト）または`:none`に設定します。
+  * `binary`が`true`の場合、各命令のバイナリ機械語コードも、短縮アドレスを先頭に付けて出力します。
   * `dump_module`が`false`の場合、rodataやディレクティブなどのメタデータは出力しません。
 
-関連項目: [`code_native`](@ref)、[`@code_warntype`](@ref)、[`@code_typed`](@ref)、[`@code_lowered`](@ref)、[`@code_llvm`](@ref)。
+関連項目：[`code_native`](@ref)、[`@code_warntype`](@ref)、[`@code_typed`](@ref)、[`@code_lowered`](@ref)、[`@code_llvm`](@ref)。

@@ -2,7 +2,7 @@
 ^(b::Number, A::AbstractMatrix)
 ```
 
-行列指数関数。``\exp(\log(b)A)``と同等です。
+行列指数関数。``\exp(\log(b)A)``と等価です。
 
 !!! compat "Julia 1.1"
     `Irrational`の数値（`ℯ`など）を行列に累乗する機能は、Julia 1.1で追加されました。

@@ -3,7 +3,7 @@
 @atomic order ex
 ```
 
-`var` または `ex` を、`ex` がサポートされている式である場合に、アトミックに実行します。`order` が指定されていない場合、デフォルトは :sequentially_consistent です。
+`var` または `ex` をアトミックに実行するものとして指定します。`ex` がサポートされている式である必要があります。`order` が指定されていない場合、デフォルトは :sequentially_consistent です。
 
 ```julia
 @atomic a.b.x = new
@@ -18,9 +18,9 @@
 
 右辺で表されるストア操作をアトミックに実行し、新しい値を返します。
 
-代入（`=`）の場合、この操作は `setproperty!(a.b, :x, new)` 呼び出しに変換されます。参照の場合は `setindex_atomic!(m, order, new, idx)` 呼び出しに変換され、`order` のデフォルトは `:sequentially_consistent` です。
+代入（`=`）の場合、この操作は `setproperty!(a.b, :x, new)` に変換されます。参照の場合は `setindex_atomic!(m, order, new, idx)` の呼び出しに変換され、`order` のデフォルトは `:sequentially_consistent` です。
 
-変更演算子の場合、この操作は `modifyproperty!(a.b, :x, op, addend)[2]` 呼び出しに変換されます。参照の場合は `modifyindex_atomic!(m, order, op, addend, idx...)[2]` 呼び出しに変換され、`order` のデフォルトは `:sequentially_consistent` です。
+変更演算子の場合、この操作は `modifyproperty!(a.b, :x, op, addend)[2]` に変換されます。参照の場合は `modifyindex_atomic!(m, order, op, addend, idx...)[2]` の呼び出しに変換され、`order` のデフォルトは `:sequentially_consistent` です。
 
 ```julia
 @atomic a.b.x max arg2
@@ -39,9 +39,9 @@
 
 右辺で表される二項演算をアトミックに実行します。結果を第1引数のフィールドまたは参照に格納し、値 `(old, new)` を返します。
 
-この操作は `modifyproperty!(a.b, :x, func, arg2)` 呼び出しに変換されます。参照の場合は `modifyindex_atomic!(m, order, func, arg2, idx)` 呼び出しに変換され、`order` のデフォルトは `:sequentially_consistent` です。
+この操作は `modifyproperty!(a.b, :x, func, arg2)` に変換されます。参照の場合は `modifyindex_atomic!(m, order, func, arg2, idx)` の呼び出しに変換され、`order` のデフォルトは `:sequentially_consistent` です。
 
-詳細は、マニュアルの [Per-field atomics](@ref man-atomics) セクションを参照してください。
+詳細については、マニュアルの [Per-field atomics](@ref man-atomics) セクションを参照してください。
 
 # Examples
 
@@ -99,9 +99,9 @@ julia> @atomic mem[1] max 5 # again change the first value of mem to the max val
 ```
 
 !!! compat "Julia 1.7"
-    アトミックフィールド機能には、Julia 1.7 以降が必要です。
+    アトミックフィールド機能を使用するには、Julia 1.7 以降が必要です。
 
 
 !!! compat "Julia 1.12"
-    アトミック参照機能には、Julia 1.12 以降が必要です。
+    アトミック参照機能を使用するには、Julia 1.12 以降が必要です。
 

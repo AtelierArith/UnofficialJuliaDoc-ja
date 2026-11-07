@@ -2,9 +2,9 @@
 fld1(x, y)
 ```
 
-床除算。`mod1(x,y)`と整合する値を返します。
+床除算。`mod1(x,y)` と整合する値を返します。
 
-関連項目：[`mod1`](@ref)、[`fldmod1`](@ref)。
+関連項目: [`mod1`](@ref)、[`fldmod1`](@ref)。
 
 # Examples
 

@@ -2,4 +2,4 @@
 read(command::Cmd, String)
 ```
 
-`command` を実行し、得られた出力を `String` として返してください。
+`command` を実行し、結果を `String` として返してください。

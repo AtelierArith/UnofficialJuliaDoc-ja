@@ -9,4 +9,4 @@ info::ModifyOpInfo <: CallInfo
   * `memoryrefmodify!(memref, op, x, order, boundscheck)`
   * `Intrinsics.atomic_pointermodify(ptr, op, x, order)`
 
-`info.info`は、`op(getval(), x)`の呼び出し情報をラップします。
+`info.info` は、`op(getval(), x)` の呼び出し情報をラップします。

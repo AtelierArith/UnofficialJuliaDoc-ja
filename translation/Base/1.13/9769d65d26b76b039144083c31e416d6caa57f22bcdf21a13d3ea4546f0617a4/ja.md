@@ -2,7 +2,7 @@
 collect(element_type, collection)
 ```
 
-コレクションまたは反復可能オブジェクトのすべての要素を、指定した要素型の `Array` に変換します。結果の形状と次元数は `collection` と同じです。
+コレクションまたはイテラブル内のすべての要素を、指定した要素型の `Array` に変換して返します。結果の形状と次元数は `collection` と同じです。
 
 # Examples
 

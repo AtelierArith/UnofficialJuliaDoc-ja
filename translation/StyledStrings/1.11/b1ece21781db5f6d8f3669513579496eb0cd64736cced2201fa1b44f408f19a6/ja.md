@@ -2,7 +2,7 @@
 termcolor(io::IO, color::SimpleColor, category::Char)
 ```
 
-`io`に、`category`のスロットを`color`に設定するSGRコードを出力します。`category`は、次のように設定されます。
+`category`のスロットを`color`に設定するSGRコードを、`io`に出力します。`category`は、次のように設定されます。
 
   * `'3'`は前景色を設定します
   * `'4'`は背景色を設定します

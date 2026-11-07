@@ -5,4 +5,4 @@ struct MyContainerStyle <: BroadcastStyle end
 Base.BroadcastStyle(::Type{<:MyContainer}) = MyContainerStyle()
 ```
 
-次に、`Broadcasted{MyContainerStyle}`を対象とするメソッド（少なくとも[`similar`](@ref)）を記述します。`BroadcastStyle`には、あらかじめ定義されたサブタイプもいくつかあり、活用できる場合があります。詳しくは[Interfaces chapter](@ref man-interfaces-broadcasting)を参照してください。
+次に、`Broadcasted{MyContainerStyle}`を対象とするメソッド（少なくとも[`similar`](@ref)）を記述します。また、活用できる可能性のある、あらかじめ定義された`BroadcastStyle`のサブタイプもいくつかあります。詳しくは[Interfaces chapter](@ref man-interfaces-broadcasting)を参照してください。

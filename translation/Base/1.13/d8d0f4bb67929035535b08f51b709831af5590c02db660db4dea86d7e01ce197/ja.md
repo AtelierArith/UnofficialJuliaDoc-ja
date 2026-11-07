@@ -4,7 +4,7 @@ trunc(x; digits::Integer= [, base = 10])
 trunc(x; sigdigits::Integer= [, base = 10])
 ```
 
-`trunc(x)` は、`x` と同じ型で、絶対値が `x` の絶対値以下となる最も近い整数値を返します。
+`trunc(x)` は、`x` の絶対値以下で、絶対値が最も大きい整数値を、`x` と同じ型で返します。
 
 `trunc(T, x)` は、結果を `T` 型に変換します。切り捨てた値を `T` で表現できない場合は、`InexactError` をスローします。
 

@@ -2,9 +2,9 @@
 any(itr)::Bool
 ```
 
-ブール値のコレクションに`true`である要素があるかどうかを調べ、`itr`内で最初に`true`の値が見つかった時点で（短絡評価により）`true`を返します。`false`で短絡評価するには、[`all`](@ref)を使用してください。
+ブール値のコレクションに`true`である要素があるかを調べ、`itr`内で最初に`true`の値が見つかった時点で（短絡評価により）`true`を返します。`false`で短絡評価するには、[`all`](@ref)を使用してください。
 
-入力に[`missing`](@ref)の値が含まれる場合、[three-valued logic](https://en.wikipedia.org/wiki/Three-valued_logic)に従い、欠損値以外の値がすべて`false`である（つまり、入力に`true`の値が含まれない）ときは、`missing`を返します。
+入力に[`missing`](@ref)の値が含まれる場合、欠損値以外のすべての値が`false`であれば（または同じことですが、入力に`true`の値が含まれなければ）、[three-valued logic](https://en.wikipedia.org/wiki/Three-valued_logic)に従って`missing`を返します。
 
 関連項目: [`all`](@ref)、[`count`](@ref)、[`sum`](@ref)、[`|`](@ref)、[`||`](@ref)。
 

@@ -2,4 +2,4 @@
 quarter(dt::TimeType)::Int64
 ```
 
-`Date` または `DateTime` の四半期を [`Int64`](@ref) として。
+`Date` または `DateTime` の四半期を、[`Int64`](@ref) として。

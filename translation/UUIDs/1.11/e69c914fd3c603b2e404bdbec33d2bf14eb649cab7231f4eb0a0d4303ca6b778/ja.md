@@ -2,7 +2,7 @@
 uuid5(ns::UUID, name::String)::UUID
 ```
 
-[RFC 4122](https://tools.ietf.org/html/rfc4122)で規定されている、バージョン5（名前空間とドメインに基づく）の汎用一意識別子（UUID）を生成します。
+[RFC 4122](https://tools.ietf.org/html/rfc4122)で規定されている、バージョン5（名前空間およびドメインベース）の汎用一意識別子（UUID）を生成します。
 
 !!! compat "Julia 1.1"
     この関数を使用するには、Julia 1.1以降が必要です。

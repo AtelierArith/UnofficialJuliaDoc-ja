@@ -6,7 +6,7 @@ islocked(lock) -> Status (Boolean)
 
 # Extended help
 
-たとえば、`lock`の実装が以下に記載する性質を満たしていれば、次のように指数バックオフを実装できます。
+たとえば、`lock`の実装が以下に記載する特性を満たしていれば、次のように指数バックオフを実装できます。
 
 ```julia
 nspins = 0
@@ -23,7 +23,7 @@ end
 
 ## Implementation
 
-ロックの実装では、`islocked`を以下の性質を満たすように定義し、その旨をdocstringに記載することを推奨します。
+ロックの実装では、以下の特性を持つ`islocked`を定義し、その旨をdocstringに記載することを推奨します。
 
-  * `islocked(lock)`はデータ競合を起こさない。
-  * `islocked(lock)`が`false`を返した場合、他のタスクによる干渉がなければ、直後に`trylock(lock)`を呼び出すと必ず成功し（`true`を返す）。
+  * `islocked(lock)`はデータ競合が発生しない。
+  * `islocked(lock)`が`false`を返した場合、他のタスクによる干渉がなければ、直後に`trylock(lock)`を呼び出すと成功し（`true`を返し）なければならない。

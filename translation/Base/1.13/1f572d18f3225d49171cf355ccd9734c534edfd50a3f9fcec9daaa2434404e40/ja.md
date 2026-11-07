@@ -2,11 +2,11 @@
 findprev(pattern::AbstractString, string::AbstractString, start::Integer)
 ```
 
-`start` の位置から `string` 内を検索し、`pattern` が最後に現れる位置を探します。
+位置 `start` を起点に、`string` 内で `pattern` が直前に出現する箇所を検索します。
 
-戻り値は、一致した並びが見つかったインデックスの範囲です。つまり、`s[findprev(x, s, i)] == x` の場合は次のようになります。
+戻り値は、一致するシーケンスが見つかったインデックスの範囲であり、`s[findprev(x, s, i)] == x` を満たします。
 
-`findprev("substring", string, i)` == `start:stop` であり、`string[start:stop] == "substring"` と `stop <= i` を満たす場合です。一致しない場合は `nothing` です。
+`string[start:stop] == "substring"` および `stop <= i` を満たす `findprev("substring", string, i)` == `start:stop`。一致しない場合は `nothing` を返します。
 
 # Examples
 

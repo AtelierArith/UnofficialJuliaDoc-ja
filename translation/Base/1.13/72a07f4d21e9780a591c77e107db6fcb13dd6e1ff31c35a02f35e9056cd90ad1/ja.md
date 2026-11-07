@@ -2,7 +2,7 @@
 nextprod(factors::Union{Tuple,AbstractVector}, n)
 ```
 
-`n`以上で、``p_1``、``p_2``などの整数について、``k_i``を`factors`で表したときに``\prod k_i^{p_i}``となる最小の整数。
+`n`以上で、``p_1``、``p_2``などの整数について、因子``k_i``を`factors`に含めたときに、``\prod k_i^{p_i}``と表せる最小の整数。
 
 # Examples
 

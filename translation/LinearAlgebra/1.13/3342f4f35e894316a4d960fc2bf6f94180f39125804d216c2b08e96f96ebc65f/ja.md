@@ -2,7 +2,7 @@
 eigvals(A::Union{SymTridiagonal, Hermitian, Symmetric}, irange::UnitRange) -> values
 ```
 
-`A` の固有値を返します。ソートされた固有値のインデックスを指定する [`UnitRange`](@ref) `irange` を指定すると、固有値の一部だけを計算できます。たとえば、2番目から8番目までの固有値を指定できます。
+`A` の固有値を返します。ソートされた固有値のインデックス範囲を指定する [`UnitRange`](@ref) `irange` を指定すると、固有値の一部だけを計算できます。たとえば、2番目から8番目までの固有値を指定できます。
 
 # Examples
 

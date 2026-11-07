@@ -2,7 +2,7 @@
 @trace_compile
 ```
 
-式を実行し、コンパイルされたメソッド（再コンパイルされたメソッドは黄色で表示）を表示するマクロです。julia の引数 `--trace-compile=stderr --trace-compile-timing` と同様ですが、特に呼び出しを対象とします。
+式を実行し、コンパイルされたメソッド（再コンパイルされたメソッドは黄色で表示）を表示するマクロです。julia の引数 `--trace-compile=stderr --trace-compile-timing` と同様ですが、特定の呼び出しを対象とします。
 
 ```julia-repl
 julia> @trace_compile rand(2,2) * rand(2,2)

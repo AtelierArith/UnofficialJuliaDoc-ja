@@ -2,10 +2,10 @@
 eigvals!(A; permute::Bool=true, scale::Bool=true, sortby) -> values
 ```
 
-[`eigvals`](@ref)と同じですが、コピーを作成せず、入力の`A`を上書きすることでメモリを節約します。`permute`、`scale`、`sortby`の各キーワードは、[`eigen`](@ref)の場合と同じです。
+[`eigvals`](@ref)と同じですが、コピーを作成せず、入力の`A`を上書きすることで、メモリを節約します。`permute`、`scale`、`sortby`の各キーワードは、[`eigen`](@ref)の場合と同じです。
 
 !!! note
-    入力行列`A`は、`eigvals!`を呼び出した後、固有値を保持しません。`A`は作業領域として使用されます。
+    `eigvals!`を呼び出すと、入力行列`A`には固有値が残りません。ワークスペースとして`A`が使用されます。
 
 
 # Examples

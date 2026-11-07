@@ -4,7 +4,7 @@ isuppercase(c::AbstractChar)::Bool
 
 文字が大文字かどうかを判定します（Unicode 標準の `Uppercase` 派生プロパティに基づきます）。
 
-[`islowercase`](@ref) を参照してください。
+[`islowercase`](@ref) も参照してください。
 
 # Examples
 

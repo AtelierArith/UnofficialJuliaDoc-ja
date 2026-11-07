@@ -2,4 +2,4 @@
 CyclePadding(padding, total_size)
 ```
 
-`Padding` 構造体のイテレーターを循環させ、`total_size` でパディングを再開します。たとえば、`padding` が構造体内のすべてのパディングで、`total_size` がその配列のアラインメント後の合計サイズである場合、`CyclePadding` は、そのような構造体を無限に並べたベクトル内のパディングに対応します。
+`Padding` 構造体のイテレーターを循環させ、パディングを `total_size` から再開します。たとえば、構造体内のパディング全体が `padding` で、その配列のアラインメント後の合計サイズが `total_size` の場合、`CyclePadding` は、そのような構造体を無限に並べたベクトル内のパディングに対応します。

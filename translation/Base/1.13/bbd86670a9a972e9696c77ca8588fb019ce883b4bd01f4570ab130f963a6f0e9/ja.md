@@ -6,9 +6,9 @@ show([io::IO = stdout], x)
 
 [`repr`](@ref) は、`show` の出力を文字列として返します。
 
-`T` 型のオブジェクトを、より詳しく人間が読みやすいテキストで出力するには、`show(io::IO, ::MIME"text/plain", ::T)` も定義してください。このようなメソッドでは、`io` の `:compact` [`IOContext`](@ref) キー（多くの場合、`get(io, :compact, false)::Bool` として確認されます）を調べることを推奨します。一部のコンテナは、このメソッドを `:compact => true` で呼び出して要素を表示するためです。
+`T` 型のオブジェクトについて、より詳しく人が読みやすいテキスト出力を行うには、`show(io::IO, ::MIME"text/plain", ::T)` も定義してください。このようなメソッドでは、`io` の `:compact` [`IOContext`](@ref) キー（多くの場合 `get(io, :compact, false)::Bool` として確認されます）を調べることを推奨します。一部のコンテナは、このメソッドを `:compact => true` とともに呼び出して要素を表示するためです。
 
-装飾のない表現を書き込む [`print`](@ref) も参照してください。
+装飾なしの表現を書き込む [`print`](@ref) も参照してください。
 
 # Examples
 

@@ -11,4 +11,4 @@ disable_sigint() do
 end
 ```
 
-ワーカースレッド（`Threads.threadid() != 1`）では、`InterruptException` はマスタースレッドにのみ送信されるため、これは必要ありません。Julia コードや Julia ランタイムを呼び出さない外部関数は、実行中に sigint を自動的に無効にします。
+ワーカースレッド（`Threads.threadid() != 1`）では必要ありません。`InterruptException` はマスタースレッドにのみ送信されるためです。Julia コードや Julia ランタイムを呼び出さない外部関数は、実行中に自動的に SIGINT を無効にします。

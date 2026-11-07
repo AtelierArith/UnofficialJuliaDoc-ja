@@ -3,7 +3,7 @@ monthname(dt::TimeType; locale="english")::String
 monthname(month::Integer, locale="english")::String
 ```
 
-指定された`locale`の中から、`Date`、`DateTime`、または`Integer`の月の正式名称を返してください。
+指定された`locale`に含まれる`Date`、`DateTime`、または`Integer`の月名を、省略せずに返してください。
 
 # Examples
 

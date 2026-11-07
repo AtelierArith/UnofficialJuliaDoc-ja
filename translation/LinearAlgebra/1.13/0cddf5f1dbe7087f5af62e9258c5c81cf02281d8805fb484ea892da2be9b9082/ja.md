@@ -4,7 +4,7 @@ svd(A; full::Bool = false, alg::Algorithm = default_svd_alg(A), atol::Real=0, rt
 
 `A` の特異値分解（SVD）を計算し、`SVD` オブジェクトを返します。
 
-`U`、`S`、`V`、`Vt` は、`F.U`、`F.S`、`F.V`、`F.Vt` を用いた因数分解 `F` から得られます。このとき、`A = U * Diagonal(S) * Vt` となります。このアルゴリズムは `Vt` を生成するため、`Vt` の抽出は `V` より効率的です。`S` 内の特異値は降順に並んでいます。
+`U`、`S`、`V`、`Vt` は、`F.U`、`F.S`、`F.V`、`F.Vt` を用いた因数分解 `F` から得られます。このとき、`A = U * Diagonal(S) * Vt` が成り立ちます。このアルゴリズムは `Vt` を生成するため、`Vt` は `V` より効率よく取り出せます。`S` 内の特異値は降順に並んでいます。
 
 分解を反復すると、成分 `U`、`S`、`V` が得られます。
 
@@ -15,14 +15,14 @@ svd(A; full::Bool = false, alg::Algorithm = default_svd_alg(A), atol::Real=0, rt
   * `alg = LinearAlgebra.DivideAndConquer()`（デフォルト）：`LAPACK.gesdd!` を呼び出します。
   * `alg = LinearAlgebra.QRIteration()`：`LAPACK.gesvd!` を呼び出します（通常は低速ですが、より高精度です）。
 
-`atol` および `rtol` パラメーターは、SVD を切り詰めるための省略可能な許容誤差を指定します。`max(atol, rtol*σ₁)` 未満の特異値は破棄され（ゼロに設定され）ます。ここで、`σ₁` は `A` の最大特異値です。
+`atol` と `rtol` は、SVD を打ち切るための省略可能な許容誤差を指定します。`max(atol, rtol*σ₁)` 未満の特異値は削除され（ゼロに設定され）ます。ここで、`σ₁` は `A` の最大特異値です。
 
 !!! compat "Julia 1.3"
     `alg` キーワード引数を使用するには、Julia 1.3 以降が必要です。
 
 
 !!! compat "Julia 1.13"
-    `atol` および `rtol` 引数を使用するには、Julia 1.13 以降が必要です。
+    `atol` 引数と `rtol` 引数を使用するには、Julia 1.13 以降が必要です。
 
 
 # Examples

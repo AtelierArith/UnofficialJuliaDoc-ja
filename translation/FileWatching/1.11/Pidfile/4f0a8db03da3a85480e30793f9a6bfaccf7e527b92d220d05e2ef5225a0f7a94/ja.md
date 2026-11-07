@@ -2,4 +2,4 @@
 close(lock::LockMonitor)
 ```
 
-pidfile のロックを解除します。
+pidfile のロックを解放します。

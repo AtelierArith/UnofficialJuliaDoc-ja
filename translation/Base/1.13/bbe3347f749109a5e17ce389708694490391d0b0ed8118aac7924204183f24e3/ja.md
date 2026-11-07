@@ -2,10 +2,10 @@
 append!(collection, collections...) -> collection.
 ```
 
-順序付きコンテナ `collection` に、各 `collections` の要素を追加します。
+順序付きコンテナ `collection` に、各 `collections` の要素を末尾に追加します。
 
 !!! compat "Julia 1.6"
-    複数のコレクションを追加するには、Julia 1.6 以降が必要です。
+    追加するコレクションを複数指定するには、Julia 1.6 以降が必要です。
 
 
 # Examples
@@ -27,7 +27,7 @@ julia> append!([1, 2, 3], [4, 5], [6])
  6
 ```
 
-別のコレクションに含まれていない個々の要素を `collection` に追加するには、[`push!`](@ref) を使用します。先ほどの例の結果は、`push!([1, 2, 3], 4, 5, 6)` と同等です。
+別のコレクションに含まれていない個々の項目を `collection` に追加するには、[`push!`](@ref) を使います。先ほどの例の結果は `push!([1, 2, 3], 4, 5, 6)` と同等です。
 
 パフォーマンスモデルについては [`sizehint!`](@ref) を参照してください。
 

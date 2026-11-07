@@ -2,7 +2,7 @@
 getaddrinfo(host::AbstractString, IPAddr) -> IPAddr
 ```
 
-指定された`host`の`IPAddr`型の最初のIPアドレスを取得します。オペレーティングシステムの基盤となるgetaddrinfo実装を使用するため、DNSルックアップが行われる場合があります。
+指定された`IPAddr`型の`host`について、最初のIPアドレスを取得します。オペレーティングシステムの基盤となるgetaddrinfo実装を使用するため、DNSルックアップが行われる場合があります。
 
 # Examples
 

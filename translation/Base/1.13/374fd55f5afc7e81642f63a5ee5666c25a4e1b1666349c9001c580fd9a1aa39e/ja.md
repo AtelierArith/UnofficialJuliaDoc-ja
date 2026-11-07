@@ -2,10 +2,10 @@
 clamp!(array::AbstractArray, lo, hi)
 ```
 
-`array` の値を、指定した範囲内にその場で制限します。[`clamp`](@ref) も参照してください。
+`array`の値を、指定した範囲内にその場で制限します。[`clamp`](@ref)も参照してください。
 
 !!! compat "Julia 1.3"
-    `array` 内の `missing` エントリを使用するには、Julia 1.3 以降が必要です。
+    `array`内の`missing`エントリを使用するには、Julia 1.3以降が必要です。
 
 
 # Examples

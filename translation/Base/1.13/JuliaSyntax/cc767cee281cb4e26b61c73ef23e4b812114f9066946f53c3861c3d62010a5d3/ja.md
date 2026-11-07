@@ -1,1 +1,1 @@
-構文解析中に不正な非自明トークン（リーフノード／リテラル）が `ignore_errors=true` の場合、ErrorVal に変換されます。
+不正な非トリビアトークン（リーフノード／リテラル）は、解析中に`ignore_errors=true`の場合、ErrorValとして解析されます。

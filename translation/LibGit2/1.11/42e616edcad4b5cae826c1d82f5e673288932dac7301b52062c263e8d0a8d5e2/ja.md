@@ -2,7 +2,7 @@
 checkout!(repo::GitRepo, commit::AbstractString=""; force::Bool=true)
 ```
 
-`git checkout [-f] --detach <commit>`と同等です。`repo`で、git コミット `commit`（文字列形式の [`GitHash`](@ref)）をチェックアウトします。`force`が`true`の場合は、強制的にチェックアウトし、現在の変更をすべて破棄します。これにより、現在の HEAD がデタッチされることに注意してください。
+`git checkout [-f] --detach <commit>`と同等です。`repo`で、git コミット `commit`（文字列形式の[`GitHash`](@ref)）をチェックアウトします。`force`が`true`の場合は、強制的にチェックアウトし、現在の変更をすべて破棄します。これにより、現在のHEADがデタッチされることに注意してください。
 
 # Examples
 

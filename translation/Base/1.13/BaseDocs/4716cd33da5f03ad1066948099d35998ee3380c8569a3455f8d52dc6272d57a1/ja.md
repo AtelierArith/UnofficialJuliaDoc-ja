@@ -5,7 +5,7 @@ replacefield!(value, i::Int, expected, desired,
               [success_order::Symbol, [fail_order::Symbol=success_order]) -> (; old, success::Bool)
 ```
 
-フィールドの取得と、条件に応じた指定値への設定をアトミックに実行します。
+フィールドの値を取得し、条件に応じて指定した値に設定する操作をアトミックに実行します。
 
 ```julia
 y = getfield(value, name, fail_order)

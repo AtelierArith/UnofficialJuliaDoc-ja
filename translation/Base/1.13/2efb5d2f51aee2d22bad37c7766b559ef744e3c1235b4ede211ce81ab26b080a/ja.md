@@ -2,7 +2,7 @@
 NaN, NaN64
 ```
 
-型が [`Float64`](@ref) の非数値（NaN）値。
+[`Float64`](@ref) 型の非数値。
 
 関連項目: [`isnan`](@ref)、[`missing`](@ref)、[`NaN32`](@ref)、[`Inf`](@ref)。
 
@@ -20,7 +20,7 @@ julia> NaN == NaN, isequal(NaN, NaN), isnan(NaN)
 ```
 
 !!! note
-    `NaN` の判定には、必ず [`isnan`](@ref) または [`isequal`](@ref) を使用してください。`x === NaN` を使用すると、予期しない結果になることがあります。
+    `NaN` の確認には、必ず [`isnan`](@ref) または [`isequal`](@ref) を使用してください。`x === NaN` を使用すると、予期しない結果になることがあります。
 
     ```jldoctest
     julia> reinterpret(UInt32, NaN32)

@@ -2,7 +2,7 @@
 libc(p::AbstractPlatform)
 ```
 
-指定された`Platform`オブジェクトのlibcを、`String`として取得します。明示的な`libc`の選択肢がないプラットフォーム（ほとんどのプラットフォームが該当）では、`nothing`を返します。
+指定された`Platform`オブジェクトのlibcを、`String`として取得します。明示的な`libc`の選択肢がないプラットフォーム（ほとんどのプラットフォーム）では、`nothing`を返します。
 
 # Examples
 

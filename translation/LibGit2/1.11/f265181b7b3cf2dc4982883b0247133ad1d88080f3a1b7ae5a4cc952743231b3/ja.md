@@ -2,7 +2,7 @@
 LibGit2.addblob!(repo::GitRepo, path::AbstractString)
 ```
 
-`path` のファイルを読み込み、`repo` のオブジェクトデータベースにルーズオブジェクトとして追加します。生成された blob の [`GitHash`](@ref) を返します。
+`path` のファイルを読み込み、`repo` のオブジェクトデータベースにルースブロブとして追加します。生成されたブロブの [`GitHash`](@ref) を返します。
 
 # Examples
 

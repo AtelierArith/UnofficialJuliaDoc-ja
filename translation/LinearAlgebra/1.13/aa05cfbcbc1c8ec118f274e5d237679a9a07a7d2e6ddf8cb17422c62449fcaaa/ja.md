@@ -2,9 +2,9 @@
 isposdef(A) -> Bool
 ```
 
-`A` のコレスキー分解を試みて、行列が正定値（かつエルミート）かどうかを判定します。
+`A`のコレスキー分解を試みて、行列が正定値（かつエルミート）かどうかを判定します。
 
-関連項目: [`isposdef!`](@ref)、[`cholesky`](@ref)。
+関連項目：[`isposdef!`](@ref)、[`cholesky`](@ref)。
 
 # Examples
 

@@ -2,10 +2,10 @@
 LibGit2.GitDescribeResult(repo::GitRepo; kwarg...)
 ```
 
-リポジトリ `repo` の作業ディレクトリについて、`GitDescribeResult` を生成します。`GitDescribeResult` には、次のキーワード引数に基づく作業ディレクトリの詳細情報が含まれます。
+リポジトリ `repo` の作業ディレクトリを表す `GitDescribeResult` を生成します。`GitDescribeResult` には、次のキーワード引数に基づく作業ディレクトリの詳細情報が含まれます。
 
   * `options::DescribeOptions=DescribeOptions()`
 
-この場合、HEAD に対して説明を実行し、HEAD の祖先である最新のタグを生成します。その後、[`workdir`](@ref) のステータスを確認し、`workdir` がダーティ（[`isdirty`](@ref) を参照）であれば、説明もダーティとみなされます。
+この場合、HEAD を基準に説明を生成し、HEAD の祖先である最新のタグを取得します。その後、[`workdir`](@ref) の状態を確認し、`workdir` が汚れている場合（[`isdirty`](@ref) を参照）、説明も汚れているものとして扱います。
 
 `git describe` と同等です。詳しくは [`DescribeOptions`](@ref) を参照してください。

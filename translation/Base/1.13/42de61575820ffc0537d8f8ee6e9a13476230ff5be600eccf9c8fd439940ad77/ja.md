@@ -9,8 +9,8 @@ checkbounds_indices(Bool, (IA1, IA...), (I1, I...)) = checkindex(Bool, IA1, I1) 
                                                       checkbounds_indices(Bool, IA, I)
 ```
 
-配列の1つの次元に対する実際の境界チェックには、[`checkindex`](@ref) が使われることに注意してください。
+配列の1つの次元に対する実際の境界チェックには、[`checkindex`](@ref) が使われていることに注意してください。
 
-1対1の規則には、線形インデックスと CartesianIndex{N} という2つの重要な例外があります。どちらも `IA` の要素を複数個「消費」することがあります。
+1対1の規則には、重要な例外が2つあります。線形インデックスと CartesianIndex{N} は、`IA` の要素を複数消費することがあります。
 
 [`checkbounds`](@ref) も参照してください。

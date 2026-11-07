@@ -2,7 +2,7 @@
 @invokelatest f(args...; kwargs...)
 ```
 
-[`invokelatest`](@ref)を呼び出すための便利な方法を提供します。`@invokelatest f(args...; kwargs...)`は、単に`Base.invokelatest(f, args...; kwargs...)`に展開されます。
+[`invokelatest`](@ref)を呼び出すための便利な方法を提供します。`@invokelatest f(args...; kwargs...)`は、単純に`Base.invokelatest(f, args...; kwargs...)`に展開されます。
 
 次の構文にも対応しています。
 
@@ -24,5 +24,5 @@
 
 
 !!! compat "Julia 1.10"
-    追加された構文`x.f`および`xs[i]`には、Julia 1.10が必要です。
+    追加の構文`x.f`および`xs[i]`にはJulia 1.10が必要です。
 

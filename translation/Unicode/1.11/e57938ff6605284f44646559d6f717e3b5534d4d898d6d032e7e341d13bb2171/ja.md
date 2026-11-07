@@ -3,24 +3,24 @@ Unicode.normalize(s::AbstractString; keywords...)
 Unicode.normalize(s::AbstractString, normalform::Symbol)
 ```
 
-文字列 `s` を正規化します。デフォルトでは、Unicode のバージョン間の安定性を保証せずに、正準合成（`compose=true`）を行います（`compat=false`）。これにより、可能な限り短い等価文字列が得られますが、以前の Unicode バージョンには存在しない合成文字が導入される場合があります。
+文字列 `s` を正規化します。デフォルトでは、Unicode のバージョン間の安定性を保証せずに（`compat=false`）、正準合成（`compose=true`）を行います。これにより、等価な文字列のうち最も短いものが生成されますが、以前の Unicode バージョンには存在しない合成文字が導入される場合があります。
 
-また、Unicode 標準で定義されている4つの「正規形」のいずれかを指定することもできます。`normalform` には、`:NFC`、`:NFD`、`:NFKC`、`:NFKD` を指定できます。正規形 C（正準合成）と D（正準分解）は、見た目は同じでも異なる表現を持つ文字列を、単一の正準形に変換します。C のほうがよりコンパクトです。KC と KD はさらに「互換等価」な文字も正準化します。つまり、抽象的には似ていても見た目が異なる文字を、単一の正準形に変換します（たとえば、合字を個々の文字に展開します）。KC のほうがよりコンパクトです。
+また、Unicode 標準の4つの「正規化形式」のいずれかを指定することもできます。`normalform` には、`:NFC`、`:NFD`、`:NFKC`、または `:NFKD` を指定できます。正規化形式 C（正準合成）と D（正準分解）は、同じ抽象的な文字列を表す、見た目が同一の異なる表現を、単一の正準形式に変換します。形式 C のほうがよりコンパクトになります。正規化形式 KC と KD は、さらに「互換等価」な表現も正規化します。つまり、抽象的には類似していても見た目が異なる文字を、単一の正準表現に変換します（たとえば、合字を個々の文字に展開します）。形式 KC のほうがよりコンパクトになります。
 
-より細かな制御や追加の変換を行うには、`Unicode.normalize(s; keywords...)` を呼び出します。次のブール値キーワードオプションを任意の数だけ指定できます（`compose` を除き、デフォルトはすべて `false` です）。
+より細かな制御や追加の変換を行うには、`Unicode.normalize(s; keywords...)` を呼び出し、以下の真偽値のキーワードオプションを任意の数だけ指定します（`compose` を除き、デフォルトはすべて `false` です）。
 
-  * `compose=false`: 正準合成を行わない
-  * `decompose=true`: 正準合成の代わりに正準分解を行う（指定されていても `compose=true` は無視される）
-  * `compat=true`: 互換等価な文字を正準化する
-  * `casefold=true`: Unicode のケースフォールディングを行う（大文字・小文字を区別しない文字列比較などに使用）
-  * `newline2lf=true`、`newline2ls=true`、または `newline2ps=true`: さまざまな改行シーケンス（LF、CRLF、CR、NEL）を、それぞれラインフィード（LF）、行区切り（LS）、段落区切り（PS）文字に変換する
-  * `stripmark=true`: ダイアクリティカルマーク（アクセントなど）を除去する
-  * `stripignore=true`: Unicode の「デフォルト無視可能」文字（ソフトハイフンや左から右へのマーカーなど）を除去する
-  * `stripcc=true`: 制御文字を除去する。水平タブとフォームフィードは空白に変換される。改行変換フラグが指定されていない場合、改行も空白に変換される
-  * `rejectna=true`: 未割り当てのコードポイントが見つかった場合にエラーをスローする
-  * `stable=true`: Unicode のバージョン間の安定性を保証する（以前の Unicode バージョンに存在しない文字を決して導入しない）
+  * `compose=false`: 正準合成を行いません。
+  * `decompose=true`: 正準合成の代わりに正準分解を行います（`compose=true` が指定されていても無視されます）。
+  * `compat=true`: 互換等価な表現を正規化します。
+  * `casefold=true`: 大文字と小文字を区別しない文字列比較などのために、Unicode のケースフォールディングを行います。
+  * `newline2lf=true`、`newline2ls=true`、または `newline2ps=true`: 各種の改行シーケンス（LF、CRLF、CR、NEL）を、それぞれ改行文字（LF）、行区切り文字（LS）、または段落区切り文字（PS）に変換します。
+  * `stripmark=true`: ダイアクリティカルマーク（アクセント記号など）を除去します。
+  * `stripignore=true`: Unicode の「デフォルトで無視可能」な文字（ソフトハイフンや左から右へのマークなど）を除去します。
+  * `stripcc=true`: 制御文字を除去します。水平タブと改ページ文字はスペースに変換されます。改行変換フラグが指定されていない場合は、改行もスペースに変換されます。
+  * `rejectna=true`: 未割り当てのコードポイントが見つかった場合にエラーをスローします。
+  * `stable=true`: Unicode のバージョン間の安定性を保証します（以前の Unicode バージョンに存在しない文字を導入しません）。
 
-`chartransform` キーワード（デフォルトは `identity`）を使って、任意の *関数* を渡すこともできます。この関数は `Integer` コードポイントを別のコードポイントに対応付け、`s` の各文字が処理される際に呼び出されます。これにより、任意の追加正規化を行えます。たとえば、`chartransform=Unicode.julia_chartransform` を渡すと、識別子の解析時に Julia が行う、Julia 固有の文字正規化をいくつか適用できます（NFC 正規化に加えて行われます: `compose=true, stable=true`）。
+`chartransform` キーワード（デフォルトは `identity`）を使って、`Integer` のコードポイントをコードポイントに写像する任意の*関数*を渡すこともできます。この関数は、`s` の各文字が処理される際に呼び出され、任意の追加の正規化を行えます。たとえば、`chartransform=Unicode.julia_chartransform` を渡すと、Julia が識別子を解析する際に行う、Julia 固有の文字の正規化をいくつか適用できます（NFC 正規化 `compose=true, stable=true` に加えて適用されます）。
 
 たとえば、NFKC はオプション `compose=true, compat=true, stable=true` に相当します。
 

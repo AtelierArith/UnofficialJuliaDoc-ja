@@ -2,7 +2,7 @@
 setindex(nt::NamedTuple, val, key::Symbol)
 ```
 
-キーが`key`、値が`val`の新しい`NamedTuple`を構築します。`key`がすでに`nt`のキーに含まれている場合、`val`によって古い値が置き換えられます。
+キー `key` の値を `val` に設定した、新しい `NamedTuple` を構築します。`key` がすでに `nt` のキーに含まれている場合、`val` は以前の値を置き換えます。
 
 ```jldoctest
 julia> nt = (a = 3,)

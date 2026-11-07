@@ -2,4 +2,4 @@
 second(dt::DateTime)::Int64
 ```
 
-[`Int64`](@ref)としての`DateTime`の2番目。
+`DateTime` の2番目は、[`Int64`](@ref) として機能します。

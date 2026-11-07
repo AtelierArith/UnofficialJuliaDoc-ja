@@ -2,10 +2,10 @@
 isnothing(x)
 ```
 
-`x === nothing`の場合は`true`を返し、そうでない場合は`false`を返します。
+`true`を返します。`x === nothing`の場合は、`false`を返します。
 
 !!! compat "Julia 1.1"
-    この関数を使用するには、Julia 1.1以降が必要です。
+    この関数を使用するには、Julia 1.1 以降が必要です。
 
 
-こちらも参照してください：[`something`](@ref)、[`Base.notnothing`](@ref)、[`ismissing`](@ref)。
+関連項目: [`something`](@ref)、[`Base.notnothing`](@ref)、[`ismissing`](@ref)。

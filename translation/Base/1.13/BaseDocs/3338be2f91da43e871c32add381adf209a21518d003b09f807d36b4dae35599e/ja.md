@@ -4,7 +4,7 @@ typeof(x)
 
 `x`の具象型を取得します。
 
-関連項目: [`eltype`](@ref)。
+[`eltype`](@ref)を参照してください。
 
 # Examples
 

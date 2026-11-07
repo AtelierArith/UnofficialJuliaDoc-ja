@@ -2,10 +2,10 @@
 DateTime(dt::AbstractString, format::AbstractString; locale="english")
 ```
 
-`format` 文字列で指定されたパターンに従って、`dt` 日時文字列を解析し、`DateTime` を構築します（構文については [`DateFormat`](@ref) を参照）。
+`dt` の日時文字列を、`format` 文字列で指定されたパターンに従って解析し、`DateTime` を構築します（構文については [`DateFormat`](@ref) を参照してください）。
 
 !!! note
-    このメソッドは、呼び出すたびに `DateFormat` オブジェクトを作成します。同じ書式を繰り返し使用する場合のパフォーマンス低下を避けるため、代わりに [`DateFormat`](@ref) オブジェクトを作成し、それを第2引数として使用することをおすすめします。
+    このメソッドは、呼び出すたびに `DateFormat` オブジェクトを作成します。同じ書式を繰り返し使用する場合のパフォーマンス低下を避けるため、代わりに [`DateFormat`](@ref) オブジェクトを作成し、第2引数として使用することをおすすめします。
 
 
 # Examples

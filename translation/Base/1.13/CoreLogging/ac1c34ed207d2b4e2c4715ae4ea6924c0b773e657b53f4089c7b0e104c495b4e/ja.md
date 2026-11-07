@@ -2,4 +2,4 @@
 shouldlog(logger, level, _module, group, id)
 ```
 
-`true`を返します。これは、`logger`が`level`でメッセージを受け付けたときに生成され、`_module`、`group`、および一意のログ識別子`id`が含まれます。
+`logger` が `_module` 用に生成されたメッセージを `level` で受け付けたとき、`group` と一意のログ識別子 `id` を含む `true` を返します。

@@ -2,7 +2,7 @@
 fillband!(A::AbstractMatrix, x, l, u)
 ```
 
-対角線 `l` と `u` の間の帯を、値 `x` で埋めます。
+対角線 `l` と `u` の間の帯を、値 `x` で塗りつぶします。
 
 # Examples
 

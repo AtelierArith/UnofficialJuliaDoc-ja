@@ -2,7 +2,7 @@
 @sprintf("%Fmt", args...)
 ```
 
-[`@printf`](@ref) 形式の出力を文字列として返してください。
+[`@printf`](@ref) を文字列としてフォーマットした出力を返します。
 
 # Examples
 

@@ -2,9 +2,9 @@
 filter(f)
 ```
 
-`f` を使って引数をフィルタリングする関数を、[`filter`](@ref) を使って作成します。これは `x -> filter(f, x)` と同等の関数です。
+`f` を [`filter`](@ref) で使って引数をフィルタリングする関数を作成します。つまり、`x -> filter(f, x)` と同等の関数です。
 
-返される関数の型は `Base.Fix1{typeof(filter)}` で、これを使って特化メソッドを実装できます。
+返される関数の型は `Base.Fix1{typeof(filter)}` で、これを使って特化したメソッドを実装できます。
 
 # Examples
 
@@ -20,5 +20,5 @@ julia> map(filter(iseven), [1:3, 2:4, 3:5])
 ```
 
 !!! compat "Julia 1.9"
-    このメソッドを使うには、Julia 1.9 以降が必要です。
+    このメソッドには Julia 1.9 以降が必要です。
 

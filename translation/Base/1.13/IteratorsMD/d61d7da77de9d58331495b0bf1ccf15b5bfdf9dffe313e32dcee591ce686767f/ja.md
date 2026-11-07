@@ -3,11 +3,11 @@ CartesianIndex(i, j, k...)   -> I
 CartesianIndex((i, j, k...)) -> I
 ```
 
-多次元配列 `A` のインデックスとして使用できる、多次元インデックス `I` を作成します。特に、`A[I]` は `A[i,j,k...]` と同等です。整数インデックスと `CartesianIndex` インデックスは自由に組み合わせられます。たとえば、`A[Ipre, i, Ipost]`（`Ipre` と `Ipost` は `CartesianIndex` インデックス、`i` は `Int`）は、任意の次元数の配列について、単一の次元に沿って処理するアルゴリズムを書く際に便利な式です。
+多次元配列 `A` のインデックスとして使用できる、多次元インデックス `I` を作成します。特に、`A[I]` は `A[i,j,k...]` と同等です。整数インデックスと `CartesianIndex` インデックスは自由に組み合わせられます。たとえば、`A[Ipre, i, Ipost]`（`Ipre` と `Ipost` は `CartesianIndex` インデックス、`i` は `Int`）という式は、任意の次元数の配列について、単一の次元に沿って処理するアルゴリズムを書く際に役立ちます。
 
-`CartesianIndex` は [`eachindex`](@ref) によって生成されることがあり、明示的な [`CartesianIndices`](@ref) を使って反復処理する場合には必ず生成されます。
+`CartesianIndex` は [`eachindex`](@ref) によって生成されることがあり、明示的な [`CartesianIndices`](@ref) を使って反復処理を行う場合には必ず生成されます。
 
-`I::CartesianIndex` は、`broadcast` において「スカラー」（コンテナーではないもの）として扱われます。`CartesianIndex` の各要素を反復処理するには、`Tuple(I)` を使ってタプルに変換してください。
+`I::CartesianIndex` は、`broadcast` において「スカラー」（コンテナーではないもの）として扱われます。`CartesianIndex` の各要素を反復処理するには、`Tuple(I)` を使ってタプルに変換します。
 
 # Examples
 
@@ -41,5 +41,5 @@ julia> A[CartesianIndex((1, 1, 2, 1))]
 ```
 
 !!! compat "Julia 1.10"
-    `CartesianIndex` を `broadcast` の「スカラー」として扱うには Julia 1.10 が必要です。それ以前のバージョンでは、`Ref(I)` を使用してください。
+    `CartesianIndex` を `broadcast` の「スカラー」として扱うには Julia 1.10 が必要です。それ以前のリリースでは、`Ref(I)` を使用してください。
 

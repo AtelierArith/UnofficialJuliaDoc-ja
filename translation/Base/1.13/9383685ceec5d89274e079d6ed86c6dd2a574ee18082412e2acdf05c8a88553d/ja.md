@@ -2,7 +2,7 @@
 findlast(pattern::AbstractString, string::AbstractString)
 ```
 
-`string` 内で `pattern` が最後に出現する位置を検索します。[`findprev(pattern, string, lastindex(string))`](@ref) と同等です。
+`pattern` が `string` 内に最後に現れる位置を検索します。[`findprev(pattern, string, lastindex(string))`](@ref) と同等です。
 
 # Examples
 

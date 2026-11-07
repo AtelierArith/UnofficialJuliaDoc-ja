@@ -2,7 +2,7 @@
 ispostfixoperator(s::Union{Symbol,AbstractString})
 ```
 
-その記号を後置演算子として使用できる場合は、`true`を返し、使用できない場合は`false`を返します。
+その記号を後置演算子として使用できる場合は`true`を、そうでない場合は`false`を返します。
 
 # Examples
 

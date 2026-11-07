@@ -2,7 +2,7 @@
 Threads.atomic_sub!(x::Atomic{T}, val::T) where T <: ArithmeticTypes
 ```
 
-`x` から `val` をアトミックに減算します。
+`val` を `x` からアトミックに減算します。
 
 `x[] -= val` をアトミックに実行します。**古い**値を返します。`Atomic{Bool}` では定義されていません。
 

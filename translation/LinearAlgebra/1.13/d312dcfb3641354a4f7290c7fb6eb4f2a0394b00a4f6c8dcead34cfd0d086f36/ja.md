@@ -2,7 +2,7 @@
 issuccess(F::LU; allowsingular = false)
 ```
 
-行列の LU 分解が成功したかどうかをテストします。デフォルトでは、有効ではあるもののランク落ちした U 因子を生成する分解は失敗とみなされます。これは `allowsingular = true` を渡すことで変更できます。
+行列の LU 分解が成功したかどうかをテストします。デフォルトでは、有効ではあるものの階数落ちした U 因子を生成する分解は失敗とみなされます。これは `allowsingular = true` を渡すことで変更できます。
 
 !!! compat "Julia 1.11"
     `allowsingular` キーワード引数は Julia 1.11 で追加されました。

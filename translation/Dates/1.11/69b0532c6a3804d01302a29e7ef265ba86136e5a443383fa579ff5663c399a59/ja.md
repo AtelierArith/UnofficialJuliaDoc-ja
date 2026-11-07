@@ -2,4 +2,4 @@
 minute(t::Time)::Int64
 ```
 
-`Time`の議事録を[`Int64`](@ref)として。
+`Time`の分を、[`Int64`](@ref)として。

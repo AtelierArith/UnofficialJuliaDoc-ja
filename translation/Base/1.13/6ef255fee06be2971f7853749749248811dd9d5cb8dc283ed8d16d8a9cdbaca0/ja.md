@@ -4,7 +4,7 @@ clamp(x, T)::T
 
 `x`を`typemin(T)`と`typemax(T)`の間に収め、その結果を型`T`に変換します。
 
-こちらも参照してください：[`trunc`](@ref)。
+関連項目：[`trunc`](@ref)。
 
 # Examples
 

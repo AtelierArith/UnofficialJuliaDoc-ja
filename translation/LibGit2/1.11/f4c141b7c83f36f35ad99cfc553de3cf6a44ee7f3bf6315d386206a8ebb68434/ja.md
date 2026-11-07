@@ -6,7 +6,7 @@ diff_files(repo::GitRepo, branch1::AbstractString, branch2::AbstractString; kwar
 
 キーワード引数は次のとおりです。
 
-  * `filter::Set{Consts.DELTA_STATUS}=Set([Consts.DELTA_ADDED, Consts.DELTA_MODIFIED, Consts.DELTA_DELETED]))`。差分の表示オプションを指定します。デフォルトでは、追加、変更、削除されたファイルが表示されます。
+  * `filter::Set{Consts.DELTA_STATUS}=Set([Consts.DELTA_ADDED, Consts.DELTA_MODIFIED, Consts.DELTA_DELETED]))`。差分のオプションを指定します。デフォルトでは、追加、変更、削除されたファイルが表示されます。
 
 変更されたファイルの内容ではなく、ファイル名のみを返します。
 

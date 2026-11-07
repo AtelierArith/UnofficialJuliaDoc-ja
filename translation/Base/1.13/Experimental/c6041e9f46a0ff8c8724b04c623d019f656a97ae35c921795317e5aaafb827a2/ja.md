@@ -2,7 +2,7 @@
 Experimental.@sync
 ```
 
-[`@async`](@ref)、[`@spawn`](@ref Threads.@spawn)、`Distributed.@spawnat`、`Distributed.@distributed`で字句的に囲まれたすべての処理が完了するか、いずれかでエラーが発生するまで待機します。最初に発生した例外は直ちに再スローされます。エラー処理中に実行中の処理をキャンセルする責任は、ユーザーにあります。
+[`@async`](@ref)、[`@spawn`](@ref Threads.@spawn)、`Distributed.@spawnat`、`Distributed.@distributed`で字句的に囲まれたすべての処理が完了するか、いずれかでエラーが発生するまで待機します。最初に発生した例外は直ちに再スローされます。エラー処理中に、まだ実行中の処理をキャンセルする責任はユーザーにあります。
 
 !!! Note     これは[`@sync`](@ref)とは異なり、ラップされたタスクからのエラーは、すべてのタスクが戻る前に直ちにスローされる可能性があります。
 

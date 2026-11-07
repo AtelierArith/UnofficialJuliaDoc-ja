@@ -5,18 +5,18 @@ Base.return_types(
     interp::NativeInterpreter=Core.Compiler.NativeInterpreter(world)) -> rts::Vector{Any}
 ```
 
-指定した関数 `f` と引数の型 `types` に対して、戻り値の型として考えられるものの一覧を返します。この一覧は、`f` と `types` に一致するすべてのメソッド候補について、型推論を行った結果に対応します（[`methods(f, types)`](@ref methods) も参照）。
+指定した関数 `f` と引数の型 `types` に対して、戻り値の型の候補を一覧で返します。この一覧は、`f` と `types` に一致するすべてのメソッド候補について、型推論を行った結果に対応します（[`methods(f, types)`](@ref methods) も参照）。
 
 # Arguments
 
   * `f`: 解析する関数。
   * `types`（省略可）: 関数の引数の型。既定値は、`f` の既定のタプル型です。
   * `world`（省略可）: 解析に使用するワールドカウンター。既定値は現在のワールドカウンターです。
-  * `interp`（省略可）: 解析に使用する抽象インタープリター。指定した `world` を持つ新しい `Core.Compiler.NativeInterpreter` が既定で使用されます。
+  * `interp`（省略可）: 解析に使用する抽象インタープリター。既定値は、指定された `world` を持つ新しい `Core.Compiler.NativeInterpreter` です。
 
 # Returns
 
-  * `rts::Vector{Any}`: 指定した `f` と `types` に一致するメソッドを推論して得られる、戻り値の型の一覧。この一覧の順序は、`methods(f, types)` が返す順序と一致します。
+  * `rts::Vector{Any}`: 指定された `f` と `types` に一致するメソッドについて、型推論によって求められた戻り値の型の一覧です。一覧の順序は、`methods(f, types)` が返す順序と一致します。
 
 # Examples
 

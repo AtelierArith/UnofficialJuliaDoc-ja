@@ -2,9 +2,9 @@
 popfirst!(collection) -> item
 ```
 
-`collection`から最初の`item`を削除します。
+`collection` から最初の `item` を削除します。
 
-この関数は、他の多くのプログラミング言語では`shift`と呼ばれます。
+この関数は、ほかの多くのプログラミング言語では `shift` と呼ばれます。
 
 関連項目: [`pop!`](@ref)、[`popat!`](@ref)、[`delete!`](@ref)。
 

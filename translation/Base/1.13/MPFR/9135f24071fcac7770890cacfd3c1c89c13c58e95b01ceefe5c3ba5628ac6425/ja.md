@@ -2,11 +2,11 @@
 BigFloat(x::Union{Real, AbstractString} [, rounding::RoundingMode=rounding(BigFloat)]; [precision::Integer=precision(BigFloat)])
 ```
 
-`x`から、精度`precision`の任意精度浮動小数点数を作成します。変換を正確に行えない場合に、結果をどの方向に丸めるかは`rounding`引数で指定します。省略した場合は、現在のグローバル値が使われます。
+`x`から、精度`precision`の任意精度浮動小数点数を作成します。変換を正確に行えない場合に、結果をどの方向に丸めるかは`rounding`引数で指定します。指定しない場合は、現在のグローバル値が使われます。
 
 `BigFloat(x::Real)`は`convert(BigFloat,x)`と同じですが、`x`自体がすでに`BigFloat`の場合は例外です。この場合、精度が現在のグローバル精度に設定された値を返します。一方、`convert`は常に`x`を返します。
 
-`BigFloat(x::AbstractString)`は[`parse`](@ref)と同じです。10進リテラルはパース時に`Float64`へ変換されるため、`BigFloat(2.1)`が期待どおりの結果にならないことがあります。このため、便宜上用意されています。
+`BigFloat(x::AbstractString)`は[`parse`](@ref)と同じです。10進リテラルはパース時に`Float64`に変換されるため、`BigFloat(2.1)`が期待どおりの結果にならないことがあります。このため、利便性を考慮して用意されています。
 
 関連項目:
 

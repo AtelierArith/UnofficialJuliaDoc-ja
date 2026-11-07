@@ -2,7 +2,7 @@
 first(s::AbstractString, n::Integer)
 ```
 
-`s`の先頭から`n`文字を取り出して文字列を取得します。
+`s`の先頭から`n`文字を取り出した文字列を取得します。
 
 # Examples
 

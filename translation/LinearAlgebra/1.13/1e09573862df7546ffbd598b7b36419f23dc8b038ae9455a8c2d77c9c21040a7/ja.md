@@ -2,9 +2,9 @@
 cbrt(A::AbstractMatrix{<:Real})
 ```
 
-実数値行列 `A` の実数値の立方根を計算します。`T = cbrt(A)` の場合、`T*T*T ≈ A` となります。以下の例を参照してください。
+実数値行列 `A` の実数値立方根を計算します。`T = cbrt(A)` の場合、`T*T*T ≈ A` となります。以下の例を参照してください。
 
-`A` が実対称またはエルミート行列の場合は、その固有値分解（[`eigen`](@ref)）を用いて立方根を求めます。それ以外の場合は、実数値シュール分解（[`schur`](@ref)）を利用して立方根を計算する、p 乗根アルゴリズムの特殊版 [^S03] を使用します。
+`A` が実対称またはエルミート行列の場合は、その固有値分解（[`eigen`](@ref)）を用いて立方根を求めます。それ以外の場合は、p 乗根アルゴリズム [^S03] の専用版を使用します。このアルゴリズムは実数値シュール分解（[`schur`](@ref)）を利用して立方根を計算します。
 
 [^S03]: Matthew I. Smith, “A Schur Algorithm for Computing Matrix pth Roots”, SIAM Journal on Matrix Analysis and Applications, vol. 24, 2003, pp. 971–989. [doi:10.1137/S0895479801392697](https://doi.org/10.1137/s0895479801392697)
 

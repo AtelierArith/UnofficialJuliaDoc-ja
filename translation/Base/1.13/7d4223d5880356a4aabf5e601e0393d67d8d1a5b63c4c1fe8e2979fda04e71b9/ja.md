@@ -2,7 +2,7 @@
 floatmax(T = Float64)
 ```
 
-`T` 型の浮動小数点数で表現できる最大の有限値を返します。
+浮動小数点型 `T` で表現可能な最大の有限数を返します。
 
 関連項目: [`typemax`](@ref)、[`maxintfloat`](@ref)、[`floatmin`](@ref)、[`eps`](@ref)。
 

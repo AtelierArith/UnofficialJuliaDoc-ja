@@ -5,9 +5,9 @@ e
 
 定数 ℯ。
 
-Unicode文字`ℯ`は、Julia REPLや多くのエディターで`\euler`と入力してTabキーを押すと入力できます。
+Unicode `ℯ` は、Julia REPL や多くのエディターで `\euler` と入力して Tab キーを押すと入力できます。
 
-関連項目：[`exp`](@ref)、[`cis`](@ref)、[`cispi`](@ref)。
+関連項目: [`exp`](@ref)、[`cis`](@ref)、[`cispi`](@ref)。
 
 # Examples
 

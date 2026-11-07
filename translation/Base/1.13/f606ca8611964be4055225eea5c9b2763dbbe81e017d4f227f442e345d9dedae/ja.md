@@ -2,4 +2,4 @@
 Cuint
 ```
 
-ネイティブの`unsigned int` c型（[`UInt32`](@ref)）と同等です。
+ネイティブの`unsigned int`型（[`UInt32`](@ref)）と同等です。

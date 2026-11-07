@@ -6,7 +6,7 @@ setglobal!(module::Module, name::Symbol, x, [order::Symbol=:monotonic])
 
 この操作では、アトミック順序を指定することもできます。指定しない場合は、デフォルトで monotonic になります。
 
-通常、ユーザーは [`setproperty!`](@ref Base.setproperty!) 関数または対応する構文（つまり `module.name = x`）を通じてこの機能を利用するため、これは非常に特殊な用途を想定したものです。
+通常、ユーザーは [`setproperty!`](@ref Base.setproperty!) 関数または対応する構文（つまり `module.name = x`）を通じてこの機能を利用するため、これは非常に限定的な用途を想定しています。
 
 !!! compat "Julia 1.9"
     この関数を使用するには、Julia 1.9 以降が必要です。

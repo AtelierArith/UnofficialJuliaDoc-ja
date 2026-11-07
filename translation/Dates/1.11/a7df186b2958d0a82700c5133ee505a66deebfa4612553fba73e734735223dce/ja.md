@@ -2,4 +2,4 @@
 Nanosecond(dt::Time)
 ```
 
-Time のナノ秒部分は `Nanosecond` です。
+Time のナノ秒部分は、`Nanosecond` として表されます。

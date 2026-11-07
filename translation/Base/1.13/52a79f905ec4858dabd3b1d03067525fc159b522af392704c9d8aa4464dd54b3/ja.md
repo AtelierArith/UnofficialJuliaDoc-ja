@@ -2,10 +2,10 @@
 mapreduce(f, op, A::AbstractArray...; dims=:, [init])
 ```
 
-`reduce(op, map(f, A...); dims=dims, init=init)` と同じ結果になりますが、中間配列を作成しないため、一般にこちらのほうが高速です。
+`reduce(op, map(f, A...); dims=dims, init=init)` と同じ結果になりますが、中間配列を作成しないため、一般により高速です。
 
 !!! compat "Julia 1.2"
-    複数のイテレータを使う `mapreduce` は、Julia 1.2 以降が必要です。
+    複数のイテレーターを使う `mapreduce` には、Julia 1.2 以降が必要です。
 
 
 # Examples

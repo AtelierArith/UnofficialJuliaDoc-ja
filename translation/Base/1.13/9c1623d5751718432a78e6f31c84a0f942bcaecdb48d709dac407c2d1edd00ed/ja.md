@@ -2,7 +2,7 @@
 BitVector(nt::Tuple{Vararg{Bool}})
 ```
 
-タプルから `BitVector` を構築します。`Bool`
+`Bool`のタプルから`BitVector`を構築します。
 
 # Examples
 

@@ -2,4 +2,4 @@
 Cptrdiff_t
 ```
 
-ネイティブの`ptrdiff_t` c型（`Int`）と同等です。
+ネイティブの`ptrdiff_t`型（`Int`）と同等です。

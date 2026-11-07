@@ -2,7 +2,7 @@
 cholesky!(A::AbstractMatrix, NoPivot(); check = true) -> Cholesky
 ```
 
-[`cholesky`](@ref)と同じですが、コピーを作成せずに入力`A`を上書きするため、メモリを節約できます。因数分解の結果が`A`の要素型で表現できない数になる場合（整数型の場合など）、[`InexactError`](@ref)例外がスローされます。
+[`cholesky`](@ref)と同じですが、コピーを作成せずに入力の`A`を上書きするため、メモリを節約できます。因数分解の結果が`A`の要素型で表現できない数になる場合（整数型の場合など）、[`InexactError`](@ref)例外がスローされます。
 
 # Examples
 

@@ -20,7 +20,7 @@ julia> isascii("αβγ")
 false
 ```
 
-たとえば、`isascii`は、非ASCII文字を削除または置換するための述語関数として、[`filter`](@ref)または[`replace`](@ref)にそれぞれ渡せます。
+たとえば、`isascii`は、非ASCII文字を削除または置換するための述語関数として、[`filter`](@ref)または[`replace`](@ref)に渡せます。
 
 ```jldoctest
 julia> filter(isascii, "abcdeγfgh") # discard non-ASCII chars

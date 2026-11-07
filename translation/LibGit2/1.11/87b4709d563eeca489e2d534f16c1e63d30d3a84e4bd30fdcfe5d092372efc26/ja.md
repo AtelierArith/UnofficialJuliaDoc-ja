@@ -3,7 +3,7 @@ set_remote_url(repo::GitRepo, remote_name, url)
 set_remote_url(repo::String, remote_name, url)
 ```
 
-`remote_name` の [`GitRepo`](@ref)、または `path` にある git リポジトリについて、fetch と push の両方の `url` を設定します。通常、git リポジトリではリモート名に `"origin"` を使います。
+[`GitRepo`](@ref)または`path`にあるgitリポジトリの`remote_name`について、fetchとpushの両方を`url`に設定します。通常、gitリポジトリではリモート名に`"origin"`を使用します。
 
 # Examples
 

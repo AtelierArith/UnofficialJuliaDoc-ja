@@ -3,4 +3,4 @@ issocket(path)::Bool
 issocket(path_elements...)::Bool
 ```
 
-`path`がソケットを指している場合は`true`を返し、そうでない場合は`false`を返します。
+`true` を返します。`path` がソケットを指している場合はそうし、それ以外の場合は `false` を返します。

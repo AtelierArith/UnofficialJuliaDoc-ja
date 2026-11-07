@@ -2,7 +2,7 @@
 istriu(A::AbstractMatrix, k::Integer = 0) -> Bool
 ```
 
-`A`が、`k`次の上対角線から上三角行列になっているかを判定します。
+`A`が`k`次の上対角線から上三角行列になっているかを判定します。
 
 # Examples
 

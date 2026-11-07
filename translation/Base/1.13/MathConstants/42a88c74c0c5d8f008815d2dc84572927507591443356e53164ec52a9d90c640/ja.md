@@ -5,7 +5,7 @@ pi
 
 定数 pi。
 
-Unicode の `π` は、Julia REPL や多くのエディターで `\pi` と入力してから Tab キーを押すと入力できます。
+Unicode `π` は、Julia REPL や多くのエディタで `\pi` と入力してから Tab キーを押すと入力できます。
 
 関連項目: [`sinpi`](@ref)、[`sincospi`](@ref)、[`deg2rad`](@ref)。
 

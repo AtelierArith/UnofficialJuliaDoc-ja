@@ -1,1 +1,1 @@
-`trace_callback` の C 関数ポインター
+C 関数ポインター `trace_callback`

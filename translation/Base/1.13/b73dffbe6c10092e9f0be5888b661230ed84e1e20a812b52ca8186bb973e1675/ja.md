@@ -3,11 +3,11 @@ findnext(pattern::AbstractString, string::AbstractString, start::Integer)
 findnext(pattern::AbstractPattern, string::String, start::Integer)
 ```
 
-`pattern` が `string` 内で、位置 `start` 以降に現れる次の箇所を検索します。`pattern` は文字列または正規表現を指定できます。正規表現の場合、`string` は `String` 型でなければなりません。
+`start` の位置から始めて、`string` 内で `pattern` が次に現れる位置を検索します。`pattern` は文字列または正規表現で、その場合、`string` は `String` 型でなければなりません。
 
-戻り値は、一致する並びが見つかったインデックスの範囲です。次の条件を満たします。`s[findnext(x, s, i)] == x`:
+戻り値は、一致した並びが見つかったインデックス範囲です。次の条件を満たします。`s[findnext(x, s, i)] == x`:
 
-`findnext("substring", string, i)` == `start:stop` であり、`string[start:stop] == "substring"` および `i <= start` を満たす場合。一致しない場合は `nothing` です。
+`findnext("substring", string, i)` == `start:stop` であり、`string[start:stop] == "substring"` および `i <= start` を満たす場合。一致しなければ `nothing` です。
 
 # Examples
 

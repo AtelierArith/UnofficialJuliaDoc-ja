@@ -2,7 +2,7 @@
 sincosd(x::T) where T -> Tuple{float(T),float(T)}
 ```
 
-`x` の正弦と余弦を同時に計算し、`x` が度数法で表される場合は、タプル `(sine, cosine)` を返します。
+`x` の正弦と余弦を同時に計算し、`x` が度数法で表されている場合は、タプル `(sine, cosine)` を返します。
 
 `isinf(x)` の場合は [`DomainError`](@ref) をスローし、`isnan(x)` の場合は `(T(NaN), T(NaN))` タプルを返します。
 

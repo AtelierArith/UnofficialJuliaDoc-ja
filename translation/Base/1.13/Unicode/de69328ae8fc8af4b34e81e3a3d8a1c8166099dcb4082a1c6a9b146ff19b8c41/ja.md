@@ -2,9 +2,9 @@
 lowercase(s::AbstractString)
 ```
 
-すべての文字を小文字に変換した`s`を返します。
+すべての文字を小文字に変換した `s` を返します。
 
-[`uppercase`](@ref)、[`titlecase`](@ref)、[`lowercasefirst`](@ref)も参照してください。
+こちらも参照してください：[`uppercase`](@ref)、[`titlecase`](@ref)、[`lowercasefirst`](@ref)。
 
 # Examples
 

@@ -3,7 +3,7 @@ Pkg.free(pkg::Union{String, Vector{String}}; io::IO=stderr, all_pkgs::Bool=false
 Pkg.free(pkgs::Union{PackageSpec, Vector{PackageSpec}}; io::IO=stderr, all_pkgs::Bool=false, workspace::Bool=false)
 ```
 
-`pkg` が pin されている場合は、pin を解除します。`pkg` がパスを追跡している場合（たとえば [`Pkg.develop`](@ref) の後など）は、登録済みバージョンの追跡に戻します。すべての依存関係を解放するには、`all_pkgs=true` を設定します。
+`pkg` がピン留めされている場合は、ピン留めを解除します。`pkg` がパスを追跡している場合（たとえば [`Pkg.develop`](@ref) の後など）は、登録済みバージョンの追跡に戻します。すべての依存関係を解放するには、`all_pkgs=true` を設定します。
 
 `workspace` が `true` で、`all_pkgs` が `true` の場合、ワークスペース内のすべてのプロジェクトのパッケージが含まれます。
 

@@ -2,7 +2,7 @@
 Bidiagonal(A, uplo::Symbol)
 ```
 
-`A` の主対角線と、その第1上対角線（`uplo=:U` の場合）または第1下対角線（`uplo=:L` の場合）から、`Bidiagonal` 行列を構築します。
+`A` の主対角線と、その第1上対角線（`uplo=:U` の場合）または第1下対角線（`uplo=:L` の場合）から、`Bidiagonal` 行列を構成します。
 
 # Examples
 

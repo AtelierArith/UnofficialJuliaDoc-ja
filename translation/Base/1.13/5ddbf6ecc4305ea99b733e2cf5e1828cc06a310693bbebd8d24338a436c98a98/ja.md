@@ -2,9 +2,9 @@
 conj(z)
 ```
 
-複素数 `z` の複素共役を求めます。
+複素数 `z` の複素共役を計算します。
 
-関連項目: [`angle`](@ref)、[`adjoint`](@ref)。
+関連項目: [`angle`](@ref), [`adjoint`](@ref).
 
 # Examples
 

@@ -2,7 +2,7 @@
 parentindices(A)
 ```
 
-[`parent`](@ref)に含まれる、`A`に対応するインデックスを返してください。
+[`parent`](@ref) に含まれる、`A` に対応するインデックスを返してください。
 
 # Examples
 

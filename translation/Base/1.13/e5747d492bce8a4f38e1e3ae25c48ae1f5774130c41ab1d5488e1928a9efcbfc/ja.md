@@ -5,7 +5,7 @@ map!(function, array)
 [`map`](@ref)と同様ですが、結果は同じ配列に格納されます。
 
 !!! compat "Julia 1.12"
-    このメソッドを使用するには、Julia 1.12以降が必要です。それ以前のバージョンもサポートするには、同等の`map!(function, array, array)`を使用してください。
+    このメソッドを使用するには、Julia 1.12以降が必要です。以前のバージョンにも対応するには、同等の`map!(function, array, array)`を使用してください。
 
 
 # Examples

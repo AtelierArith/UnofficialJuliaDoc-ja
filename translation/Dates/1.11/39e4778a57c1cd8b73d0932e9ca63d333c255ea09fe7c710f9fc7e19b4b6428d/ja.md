@@ -17,4 +17,4 @@ julia> ceil(Hour(36), Day)
 2 days
 ```
 
-`Month`または`Year`の`precision`への丸めはサポートされていません。これらの`Period`の長さは一定ではないためです。
+`precision`を`Month`または`Year`にする丸めはサポートされていません。これらの`Period`の長さは一定ではないためです。

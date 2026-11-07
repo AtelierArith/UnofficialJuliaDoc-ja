@@ -2,4 +2,4 @@
 emit(l::Lexer, kind::Kind)
 ```
 
-`RawToken`（種類は `kind`、内容は `str`）を返し、新しい `RawToken`を開始します。
+`RawToken`型の`kind`を返します。内容は`str`で、新しい`RawToken`を開始します。

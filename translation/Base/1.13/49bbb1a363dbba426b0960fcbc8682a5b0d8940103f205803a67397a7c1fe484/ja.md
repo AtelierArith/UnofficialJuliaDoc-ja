@@ -2,9 +2,9 @@
 mod(x::Integer, r::AbstractUnitRange)
 ```
 
-`y` が `r` の範囲内で、`x` ≡ `y` (mod `n`) を満たすように求めます。ここで、`n = length(r)`、すなわち `y = mod(x - first(r), n) + first(r)` です。
+範囲 `r` 内で、`x` ≡ `y` (mod `n`) を満たす `y` を求めます。ここで `n = length(r)`、つまり `y = mod(x - first(r), n) + first(r)` です。
 
-関連項目: [`mod1`](@ref)。
+[`mod1`](@ref) も参照してください。
 
 # Examples
 

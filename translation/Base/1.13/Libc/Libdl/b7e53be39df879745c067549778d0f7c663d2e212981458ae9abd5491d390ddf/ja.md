@@ -2,4 +2,4 @@
 dlpath(handle::Ptr{Cvoid})
 ```
 
-`dlopen`から`handle`のライブラリが与えられたとき、完全なパスを返します。
+`dlopen`から`handle`を取得し、フルパスを返します。

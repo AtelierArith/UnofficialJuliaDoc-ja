@@ -4,7 +4,7 @@ Iterators.flatmap(f, iterators...)
 
 `flatten(map(f, iterators...))`と同等です。
 
-関連項目: [`Iterators.flatten`](@ref)、[`Iterators.map`](@ref)。
+関連項目：[`Iterators.flatten`](@ref)、[`Iterators.map`](@ref)。
 
 !!! compat "Julia 1.9"
     この関数はJulia 1.9で追加されました。

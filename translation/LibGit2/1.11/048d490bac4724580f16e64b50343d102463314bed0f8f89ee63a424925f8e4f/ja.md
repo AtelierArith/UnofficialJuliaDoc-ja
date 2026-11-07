@@ -2,7 +2,7 @@
 clone(repo_url::AbstractString, repo_path::AbstractString, clone_opts::CloneOptions)
 ```
 
-リモートリポジトリ（リモート URL またはローカルファイルシステム上のパス）を `repo_url` から `repo_path`（ローカルファイルシステム上のパスである必要があります）にクローンします。ベアクローンを作成するかどうかなどのクローンオプションは、[`CloneOptions`](@ref) で設定します。
+リモートリポジトリ（リモート URL またはローカルファイルシステム上のパス）を `repo_url` から `repo_path`（ローカルファイルシステム上のパスである必要があります）にクローンします。ベアクローンにするかどうかなどのクローンオプションは、[`CloneOptions`](@ref) で設定します。
 
 # Examples
 

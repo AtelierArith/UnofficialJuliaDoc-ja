@@ -2,18 +2,18 @@
 eachrow(A::AbstractVecOrMat) <: AbstractVector
 ```
 
-[`RowSlices`](@ref) オブジェクトを作成します。これは、行列またはベクトル `A` の行からなるベクトルです。行スライスは `A` の `AbstractVector` ビューとして返されます。
+行列またはベクトル`A`の行を要素とするベクトルである[`RowSlices`](@ref)オブジェクトを作成します。行のスライスは、`A`の`AbstractVector`ビューとして返されます。
 
-逆の操作については、[`stack`](@ref)`(rows; dims=1)` を参照してください。
+逆の操作については、[`stack`](@ref)`(rows; dims=1)`を参照してください。
 
-[`eachcol`](@ref)、[`eachslice`](@ref)、[`mapslices`](@ref) も参照してください。
+[`eachcol`](@ref)、[`eachslice`](@ref)、[`mapslices`](@ref)も参照してください。
 
 !!! compat "Julia 1.1"
-    この関数を使用するには、Julia 1.1 以降が必要です。
+    この関数を使用するには、Julia 1.1以降が必要です。
 
 
 !!! compat "Julia 1.9"
-    Julia 1.9 より前のバージョンでは、これはイテレーターを返していました。
+    Julia 1.9より前のバージョンでは、これはイテレーターを返していました。
 
 
 # Examples

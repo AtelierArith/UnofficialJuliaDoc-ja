@@ -9,7 +9,7 @@
 
 
 !!! compat "Julia 1.6"
-    ステップ範囲メソッド start:step:stop を使用するには、Julia 1.6以降が必要です。
+    ステップ範囲メソッドstart:step:stopを使用するには、Julia 1.6以降が必要です。
 
 
 # Examples

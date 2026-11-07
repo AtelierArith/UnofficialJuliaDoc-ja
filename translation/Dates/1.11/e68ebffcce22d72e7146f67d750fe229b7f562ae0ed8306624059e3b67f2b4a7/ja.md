@@ -2,9 +2,9 @@
 ceil(dt::TimeType, p::Period)::TimeType
 ```
 
-解像度`p`で、`dt`以上となる最も近い`Date`または`DateTime`を返します。
+解像度`p`において、`dt`以上となる最小の`Date`または`DateTime`を返します。
 
-便宜上、`p`には値ではなく型を指定できます。`ceil(dt, Dates.Hour)`は`ceil(dt, Dates.Hour(1))`のショートカットです。
+便宜上、`p`は値ではなく型でもかまいません。`ceil(dt, Dates.Hour)`は`ceil(dt, Dates.Hour(1))`の省略形です。
 
 ```jldoctest
 julia> ceil(Date(1985, 8, 16), Month)

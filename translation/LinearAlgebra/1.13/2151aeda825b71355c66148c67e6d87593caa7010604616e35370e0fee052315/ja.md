@@ -2,10 +2,10 @@
 lu!(F::LU, pivot = RowMaximum(); check = true, allowsingular = false) -> LU
 ```
 
-`lu!` は [`lu`](@ref) と同じですが、コピーを作成せず、入力の `F` を上書きするため、メモリを節約できます。
+`lu!`は[`lu`](@ref)と同じですが、コピーを作成せず、入力の`F`を上書きすることで、メモリを節約します。
 
 !!! compat "Julia 1.13"
-    `lu!` で密な `LU` 分解を再利用するには、Julia 1.13 以降が必要です。
+    `lu!`で密な`LU`分解を再利用するには、Julia 1.13以降が必要です。
 
 
 # Examples

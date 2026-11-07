@@ -2,7 +2,7 @@
 isleapyear(dt::TimeType)::Bool
 ```
 
-`true` を返します。`dt` がうるう年の場合に限ります。
+`true`を返します。`dt`の年がうるう年の場合です。
 
 # Examples
 

@@ -5,7 +5,7 @@ logrange(start, stop; length)
 
 指定された両端の間に、要素が対数間隔で並ぶ特殊な配列を構築します。つまり、隣り合う要素の比は一定で、その値は配列の長さから計算されます。
 
-Python の `geomspace` に似ています。Mathematica の `PowerRange` とは異なり、比ではなく要素数を指定します。また、Python や Matlab の `logspace` とは異なり、引数 `start` と `stop` は、何らかの底に適用するべき乗ではなく、常に結果の最初と最後の要素を表します。
+Python の `geomspace` に似ています。Mathematica の `PowerRange` とは異なり、比ではなく要素数を指定します。また、Python や Matlab の `logspace` とは異なり、引数 `start` と `stop` は、何らかの底に適用する指数ではなく、常に結果の最初と最後の要素を表します。
 
 # Examples
 
@@ -28,7 +28,7 @@ julia> logrange(1, 1000, length=4) ≈ 10 .^ (0:3)
 true
 ```
 
-詳しくは、[`LogRange`](@ref Base.LogRange) 型を参照してください。
+詳しくは、型 [`LogRange`](@ref Base.LogRange) を参照してください。
 
 線形間隔の点については、[`range`](@ref) も参照してください。
 

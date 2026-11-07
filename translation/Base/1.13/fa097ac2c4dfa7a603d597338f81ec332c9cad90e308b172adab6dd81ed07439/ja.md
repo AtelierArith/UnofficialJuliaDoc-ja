@@ -2,11 +2,11 @@
 annotatedstring(values...)
 ```
 
-任意の数の`values`から、それらの[`print`](@ref)表現を使って`AnnotatedString`を作成します。
+`AnnotatedString` を、任意の数の `values` から、それらの [`print`](@ref) 表現を使って作成します。
 
-これは[`string`](@ref)と同様に動作しますが、存在する注釈（[`AnnotatedString`](@ref)または[`AnnotatedChar`](@ref)の値）を保持します。
+これは [`string`](@ref) と同様に動作しますが、存在する注釈（[`AnnotatedString`](@ref) または [`AnnotatedChar`](@ref) の値として表されるもの）を保持します。
 
-[`AnnotatedString`](@ref)および[`AnnotatedChar`](@ref)も参照してください。
+[`AnnotatedString`](@ref) および [`AnnotatedChar`](@ref) も参照してください。
 
 ## Examples
 

@@ -2,7 +2,7 @@
 filter(f, itr::SkipMissing{<:AbstractArray})
 ```
 
-指定された`SkipMissing`イテレーターでラップされた配列に似たベクトルを返します。ただし、欠損値と、`f`が`false`を返す要素はすべて除外されます。
+指定された`SkipMissing`イテレータでラップされた配列に似たベクトルを返します。ただし、欠損値と、`f`が`false`を返す要素はすべて除外されます。
 
 !!! compat "Julia 1.2"
     このメソッドを使用するには、Julia 1.2以降が必要です。

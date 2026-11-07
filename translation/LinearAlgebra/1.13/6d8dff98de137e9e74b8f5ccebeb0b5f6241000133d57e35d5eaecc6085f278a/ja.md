@@ -2,13 +2,13 @@
 bunchkaufman(A, rook::Bool=false; check = true) -> S::BunchKaufman
 ```
 
-対称行列またはエルミート行列 `A` の Bunch-Kaufman 分解[^Bunch1977]を計算します。`A` に格納されている三角部分に応じて、`P'*U*D*U'*P` または `P'*L*D*L'*P` として分解し、[`BunchKaufman`](@ref) オブジェクトを返します。ここで、`U` と `L` はそれぞれ上三角行列と下三角行列、`P` は置換行列、`D` は 1×1 および 2×2 ブロックからなるブロック対角行列です。`A` が複素対称行列の場合、`U'` と `L'` は共役を取らない転置を表し、すなわち `transpose(U)` と `transpose(L)` であることに注意してください。
+対称行列またはエルミート行列 `A` の Bunch-Kaufman 分解[^Bunch1977]を計算します。`A` に格納されている三角部分に応じて、`P'*U*D*U'*P` または `P'*L*D*L'*P` として分解し、[`BunchKaufman`](@ref) オブジェクトを返します。ここで、`U` と `L` はそれぞれ上三角行列と下三角行列、`P` は置換行列、`D` は 1×1 および 2×2 ブロックからなるブロック対角行列です。`A` が複素対称行列の場合、`U'` と `L'` は共役を取らない転置を表すことに注意してください。すなわち、`transpose(U)` と `transpose(L)` です。
 
-分解を反復すると、`S.uplo` に応じて、`S.D`、`S.U` または `S.L`、および `S.p` が得られます。
+分解を反復すると、`S.uplo` に応じて、`S.D`、`S.U` または `S.L`、および `S.p` の各成分が得られます。
 
-`rook` が `true` の場合、ルークピボット法が使用されます。`rook` が false の場合、ルークピボット法は使用されません。
+`rook` が `true` の場合、rook ピボット法が使用されます。`rook` が false の場合、rook ピボット法は使用されません。
 
-`check = true` の場合、分解に失敗するとエラーがスローされます。`check = false` の場合、分解が有効かどうかの確認（[`issuccess`](@ref) による）はユーザーの責任です。
+`check = true` の場合、分解に失敗するとエラーがスローされます。`check = false` の場合、分解が有効かどうか（[`issuccess`](@ref) を使用）の確認はユーザーの責任です。
 
 `BunchKaufman` オブジェクトでは、次の関数を使用できます: [`size`](@ref)、`\`、[`inv`](@ref)、[`issymmetric`](@ref)、[`ishermitian`](@ref)、[`getindex`](@ref)。
 

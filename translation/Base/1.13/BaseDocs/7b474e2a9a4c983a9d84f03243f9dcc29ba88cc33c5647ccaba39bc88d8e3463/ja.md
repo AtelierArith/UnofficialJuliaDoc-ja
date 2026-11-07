@@ -2,7 +2,7 @@
 Integer <: Real
 ```
 
-すべての整数（例：[`Signed`](@ref)、[`Unsigned`](@ref)、[`Bool`](@ref)）の抽象スーパータイプ。
+すべての整数（例：[`Signed`](@ref)、[`Unsigned`](@ref)、[`Bool`](@ref)）の抽象スーパータイプです。
 
 関連項目：[`isinteger`](@ref)、[`trunc`](@ref)、[`div`](@ref)。
 

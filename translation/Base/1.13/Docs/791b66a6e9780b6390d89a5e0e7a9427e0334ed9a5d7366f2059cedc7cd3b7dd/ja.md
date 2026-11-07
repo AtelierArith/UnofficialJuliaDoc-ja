@@ -2,7 +2,7 @@
 MultiDoc
 ```
 
-関連するオブジェクト、つまり `Function`/`DataType` と、それに関連する `Method` オブジェクトの docstring をまとめて格納します。
+関連するオブジェクト、つまり `Function`/`DataType` と、それに関連付けられた `Method` オブジェクトの docstring をまとめて格納します。
 
 `MultiDoc` 内の各ドキュメント対象オブジェクトは、そのシグネチャで参照されます。シグネチャは、`Tuple` 型の `Union` で表されます。たとえば、次の `Method` 定義は
 

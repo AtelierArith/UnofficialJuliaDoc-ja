@@ -4,9 +4,9 @@ for outer
 
 `for` ループで、既存のローカル変数を反復処理に再利用します。
 
-詳しくは、[manual section on variable scoping](@ref scope-of-variables) を参照してください。
+詳しくは[manual section on variable scoping](@ref scope-of-variables)をご覧ください。
 
-こちらも参照してください: [`for`](@ref)。
+こちらもご覧ください：[`for`](@ref)。
 
 # Examples
 

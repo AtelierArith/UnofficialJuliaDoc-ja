@@ -3,9 +3,9 @@ permute(A::AbstractSparseMatrixCSC{Tv,Ti}, p::AbstractVector{<:Integer},
         q::AbstractVector{<:Integer}) where {Tv,Ti}
 ```
 
-`A`を両方向に並べ替え、`PAQ`（`A[p,q]`）を返します。列の並べ替えに使う`q`の長さは、`A`の列数（`length(q) == size(A, 2)`）と一致する必要があります。行の並べ替えに使う`p`の長さは、`A`の行数（`length(p) == size(A, 1)`）と一致する必要があります。
+`A`を行と列の両方で並べ替え、`PAQ`（`A[p,q]`）を返します。列の並べ替えに使う`q`の長さは、`A`の列数（`length(q) == size(A, 2)`）と一致する必要があります。行の並べ替えに使う`p`の長さは、`A`の行数（`length(p) == size(A, 1)`）と一致する必要があります。
 
-エキスパートドライバーと詳細については、[`permute!`](@ref)を参照してください。
+エキスパートドライバーや詳細については、[`permute!`](@ref)を参照してください。
 
 # Examples
 

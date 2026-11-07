@@ -2,7 +2,7 @@
 Base64EncodePipe(ostream)
 ```
 
-書き込まれたバイト列をBase64エンコードしたASCIIバイト列に変換し、`ostream`に書き込む、書き込み専用のI/Oストリームを返します。エンコードを完了するには、`Base64EncodePipe`ストリームに対して[`close`](@ref)を呼び出す必要があります（ただし、`ostream`は閉じられません）。
+書き込まれたバイト列をBase64エンコードされたASCIIバイト列に変換し、`ostream`に書き込む、新しい書き込み専用I/Oストリームを返します。エンコードを完了するには、`Base64EncodePipe`ストリームに対して[`close`](@ref)を呼び出す必要があります（ただし、`ostream`は閉じません）。
 
 # Examples
 

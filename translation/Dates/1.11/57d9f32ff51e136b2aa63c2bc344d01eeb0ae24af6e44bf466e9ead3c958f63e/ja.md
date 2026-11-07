@@ -2,4 +2,4 @@
 Day(dt::Date)
 ```
 
-Dateの「日」部分を表す`Day`。
+Date の日部分を表す `Day`。

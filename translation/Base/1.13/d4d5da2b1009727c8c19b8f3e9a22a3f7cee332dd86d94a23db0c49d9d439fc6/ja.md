@@ -4,7 +4,7 @@ minmax(x, y)
 
 `(min(x,y), max(x,y))`を返します。
 
-`(minimum(x), maximum(x))`を返す[`extrema`](@ref)も参照してください。
+[`extrema`](@ref)も参照してください。`(minimum(x), maximum(x))`を返します。
 
 # Examples
 

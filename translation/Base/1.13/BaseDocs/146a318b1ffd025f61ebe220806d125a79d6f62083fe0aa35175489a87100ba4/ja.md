@@ -2,7 +2,7 @@
 global
 ```
 
-`global x`を使うと、現在のスコープとその内側のスコープで、`x`が同名のグローバル変数を参照するようになります。詳しくは[manual section on variable scoping](@ref scope-of-variables)を参照してください。
+`global x`を使うと、現在のスコープとその内側のスコープで、`x`がその名前のグローバル変数を参照するようになります。詳しくは[manual section on variable scoping](@ref scope-of-variables)を参照してください。
 
 # Examples
 

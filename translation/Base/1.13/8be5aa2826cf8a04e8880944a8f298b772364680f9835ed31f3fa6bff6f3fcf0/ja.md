@@ -3,9 +3,9 @@
 ∌(collection, item)::Bool
 ```
 
-`item` が `collection` に含まれていないことを確認する、`∈` と `∋` の否定。
+`∈`および`∋`の否定、つまり、`item`が`collection`に含まれていないことを確認します。
 
-`items .∉ collection` でブロードキャストすると、`items` と `collection` の両方がブロードキャストされますが、これは意図した動作でないことがよくあります。たとえば、両方の引数がベクトルで（次元が一致している場合）、コレクション `items` の各値が、`collection` の対応する位置の値に含まれていないかどうかを示すベクトルが結果になります。`items` の各値が `collection` に含まれていないかどうかを示すベクトルを得るには、次のように `collection` をタプルまたは `Ref` で囲みます: `items .∉ Ref(collection)`。
+`items .∉ collection`でブロードキャストすると、`items`と`collection`の両方がブロードキャストされますが、これは意図した動作でないことがよくあります。たとえば、両方の引数がベクトルで（次元が一致している場合）、結果は、コレクション`items`の各値が、`collection`の対応する位置にある値に含まれていないかどうかを示すベクトルになります。`items`の各値が`collection`に含まれていないかどうかを示すベクトルを得るには、次のように`collection`をタプルまたは`Ref`で囲みます。`items .∉ Ref(collection)`。
 
 # Examples
 

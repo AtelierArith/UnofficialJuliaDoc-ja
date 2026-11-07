@@ -2,7 +2,7 @@
 UndefKeywordError(var::Symbol)
 ```
 
-関数呼び出しで必須のキーワード引数 `var` が指定されていません。
+関数呼び出しで、必須のキーワード引数 `var` が指定されていません。
 
 # Examples
 

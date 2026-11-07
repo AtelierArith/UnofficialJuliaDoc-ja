@@ -5,7 +5,7 @@
 
 `Meta.isexpr`の型推論に適した代替手段。
 
-次のパターンを使う場合
+次のパターンを使うと、
 
 ```julia
 if @isexpr(ex, headsym)

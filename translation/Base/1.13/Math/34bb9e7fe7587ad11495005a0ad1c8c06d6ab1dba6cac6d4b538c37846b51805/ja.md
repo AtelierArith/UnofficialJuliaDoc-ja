@@ -2,7 +2,7 @@
 tanpi(x::T) where T -> float(T)
 ```
 
-``\tan(\pi x)``を`tan(pi*x)`よりも高精度に計算します。特に、`x`が大きい場合に有効です。
+``\tan(\pi x)``を、特に大きな`x`について、`tan(pi*x)`よりも高い精度で計算します。
 
 `isinf(x)`の場合は[`DomainError`](@ref)をスローし、`isnan(x)`の場合は`T(NaN)`を返します。
 

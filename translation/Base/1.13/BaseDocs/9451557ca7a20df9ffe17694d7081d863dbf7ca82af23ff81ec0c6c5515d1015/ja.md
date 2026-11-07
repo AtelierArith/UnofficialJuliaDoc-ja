@@ -2,7 +2,7 @@
 Vector{T}(undef, n)
 ```
 
-長さ `n` の未初期化の [`Vector{T}`](@ref) を構築します。
+長さが`n`の未初期化の[`Vector{T}`](@ref)を構築します。
 
 # Examples
 

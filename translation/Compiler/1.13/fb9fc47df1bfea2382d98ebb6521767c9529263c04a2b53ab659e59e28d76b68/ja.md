@@ -3,7 +3,7 @@
 const compute_trycatch = ComputeTryCatch{SimpleHandler}()
 ```
 
-関数のコードを受け取り、各文における現在の try/catch ハンドラーと、例外スタックの現在のトップを計算します。この関数は次のタプルを返します。
+関数のコードを受け取り、各ステートメントにおける現在の try/catch ハンドラーと、現在の例外スタックのトップを計算します。この関数は次のタプルを返します。
 
 ```julia
 1. `handler_info.handler_at`: A statement length vector of tuples

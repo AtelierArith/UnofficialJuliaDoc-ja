@@ -2,7 +2,7 @@
 float(T::Type)
 ```
 
-`T`型の値を浮動小数点値として表すのに適した型を返します。`typeof(float(zero(T)))`と同等です。
+`T` 型の値を浮動小数点値として表すのに適した型を返します。`typeof(float(zero(T)))` と同等です。
 
 # Examples
 

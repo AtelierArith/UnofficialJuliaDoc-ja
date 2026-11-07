@@ -2,10 +2,10 @@
 Sys.isnetbsd([os])
 ```
 
-OSがNetBSDの派生版かどうかを判定する述語です。詳しくは[Handling Operating System Variation](@ref)を参照してください。
+OSがNetBSDの派生OSかどうかを判定する述語です。詳細は[Handling Operating System Variation](@ref)を参照してください。
 
 !!! note
-    `Sys.isbsd()`と混同しないでください。これはNetBSD上では`true`ですが、ほかのBSDベースのシステムでも同様です。`Sys.isnetbsd()`が指すのはNetBSDのみです。
+    `Sys.isbsd()`と混同しないでください。NetBSDだけでなく、ほかのBSD系システムでも`true`です。`Sys.isnetbsd()`が指すのはNetBSDのみです。
 
 
 !!! compat "Julia 1.1"

@@ -2,7 +2,7 @@
 Threads.atomic_max!(x::Atomic{T}, val::T) where T
 ```
 
-`x` と `val` の最大値を、`x` にアトミックに格納します。
+`x` と `val` のうち大きい方を、`x` にアトミックに格納します。
 
 `x[] = max(x[], val)` をアトミックに実行します。**古い**値を返します。
 

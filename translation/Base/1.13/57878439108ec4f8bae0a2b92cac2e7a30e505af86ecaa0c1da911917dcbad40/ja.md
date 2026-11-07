@@ -1,1 +1,1 @@
-`AbstractMatch`オブジェクトは、`AbstractPattern`を使って文字列内で見つかったマッチに関する情報を表すために使用されます。
+`AbstractMatch` オブジェクトは、`AbstractPattern` を使って文字列内で見つかったマッチに関する情報を表すために使用されます。

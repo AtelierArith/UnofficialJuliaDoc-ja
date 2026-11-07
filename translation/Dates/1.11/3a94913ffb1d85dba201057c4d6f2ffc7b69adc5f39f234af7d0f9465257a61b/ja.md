@@ -3,7 +3,7 @@ dayname(dt::TimeType; locale="english")::String
 dayname(day::Integer; locale="english")::String
 ```
 
-指定された`locale`における`Date`または`DateTime`の曜日に対応する、曜日の正式名称を返します。`Integer`も受け付けます。
+指定された`locale`における`Date`または`DateTime`の曜日を、曜日名（省略なし）で返します。`Integer`も受け付けます。
 
 # Examples
 

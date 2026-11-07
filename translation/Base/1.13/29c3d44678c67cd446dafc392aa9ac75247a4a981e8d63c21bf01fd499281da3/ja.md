@@ -2,7 +2,7 @@
 typemin(T)
 ```
 
-指定された（実数の）数値型 DataType で表現できる最小の値 `T`。
+指定された（実数の）数値 DataType で表現可能な最小値 `T`。
 
 関連項目: [`floatmin`](@ref)、[`maxintfloat`](@ref)、[`typemax`](@ref)、[`eps`](@ref)。
 

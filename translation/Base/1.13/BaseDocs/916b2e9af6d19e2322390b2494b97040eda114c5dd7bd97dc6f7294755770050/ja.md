@@ -2,7 +2,7 @@
 Vector{T}(nothing, m)
 ```
 
-長さが`m`で、[`nothing`](@ref)で初期化された[`Vector{T}`](@ref)を構築します。要素型`T`は、これらの値を格納できる必要があります。つまり、`Nothing <: T`です。
+長さが`m`で、[`nothing`](@ref)の値で初期化された[`Vector{T}`](@ref)を構築します。要素型`T`は、これらの値を格納できる必要があります。つまり、`Nothing <: T`です。
 
 # Examples
 
