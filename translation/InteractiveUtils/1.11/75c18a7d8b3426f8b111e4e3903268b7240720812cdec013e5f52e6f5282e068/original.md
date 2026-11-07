@@ -1,0 +1,1 @@
+Transform a dot expression into one where each argument has been replaced by a variable "xj" (with j an integer from 1 to the returned i). The list `args` contains the original arguments that have been replaced.

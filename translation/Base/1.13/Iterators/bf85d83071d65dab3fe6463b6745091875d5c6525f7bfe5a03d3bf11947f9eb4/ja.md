@@ -1,0 +1,19 @@
+```julia
+Iterators.map(f, iterators...)
+```
+
+遅延評価されるマッピングを作成します。これは、`(f(args...) for args in zip(iterators...))`を記述する別の構文です。
+
+!!! compat "Julia 1.6"
+    この関数を使用するには、Julia 1.6 以降が必要です。
+
+
+# Examples
+
+```jldoctest
+julia> collect(Iterators.map(x -> x^2, 1:3))
+3-element Vector{Int64}:
+ 1
+ 4
+ 9
+```

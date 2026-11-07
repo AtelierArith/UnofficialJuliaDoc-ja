@@ -1,0 +1,1 @@
+Matches the snca*compress algorithm in Figure 2.8 of [LG05], with the modification suggested in the paper to use `last*linked`to determine whether an ancestor has been processed rather than storing`0` in the ancestor array.
