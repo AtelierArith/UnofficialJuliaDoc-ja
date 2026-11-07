@@ -4,7 +4,7 @@ asin(A::AbstractMatrix)
 
 正方行列 `A` の逆正弦を計算します。
 
-`A` が実対称行列またはエルミート行列の場合、固有分解（[`eigen`](@ref)）を用いて逆正弦を計算します。それ以外の場合は、[`log`](@ref) と [`sqrt`](@ref) を用いて逆正弦を求めます。この関数の計算に用いる理論と対数公式については、[^AH16_2] を参照してください。
+`A` が実対称行列またはエルミート行列の場合は、その固有値分解（[`eigen`](@ref)）を使って逆正弦を計算します。それ以外の場合は、[`log`](@ref) と [`sqrt`](@ref) を使って逆正弦を求めます。この関数の計算に用いる理論と対数公式については、[^AH16_2] を参照してください。
 
 [^AH16_2]: Mary Aprahamian and Nicholas J. Higham, "Matrix Inverse Trigonometric and Inverse Hyperbolic Functions: Theory and Algorithms", MIMS EPrint: 2016.4. [https://doi.org/10.1137/16M1057577](https://doi.org/10.1137/16M1057577)
 

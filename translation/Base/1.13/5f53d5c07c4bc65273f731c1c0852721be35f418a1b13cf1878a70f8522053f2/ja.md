@@ -3,9 +3,9 @@ allequal(itr)::Bool
 allequal(f, itr)::Bool
 ```
 
-`true`を返します。これは、[`isequal`](@ref)との比較で、`itr`のすべての値が等しい場合です。2つ目の方法では、`[f(x) for x in itr]`のすべての値が等しい場合に返します。
+`true`を返します。これは、[`isequal`](@ref)で比較したときに、`itr`のすべての値が等しい場合です。2つ目の方法では、`[f(x) for x in itr]`のすべての値が等しい場合にも返します。
 
-`allequal(f, itr)`が`f`を呼び出す回数は、`length(itr)`回より少ない場合があります。正確な呼び出し回数は実装の詳細とみなされます。
+`allequal(f, itr)`が`length(itr)`回より少ない回数しか`f`を呼び出さない場合があることに注意してください。呼び出し回数の正確な値は、実装の詳細とみなされます。
 
 関連項目: [`unique`](@ref)、[`allunique`](@ref)。
 

@@ -5,7 +5,7 @@ eps(::Type{Time})::Nanosecond
 eps(::TimeType)::Period
 ```
 
-`TimeType` がサポートする最小の単位値を返します。
+`TimeType`がサポートする最小の単位値を返します。
 
 # Examples
 

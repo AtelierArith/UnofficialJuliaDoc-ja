@@ -2,7 +2,7 @@
 Matrix{T}(nothing, m, n)
 ```
 
-[`Matrix{T}`](@ref)をサイズ`m`×`n`で作成し、[`nothing`](@ref)の要素で初期化します。要素型`T`は、これらの値を格納できる必要があります。つまり、`Nothing <: T`です。
+[`Matrix{T}`](@ref)を`m`×`n`のサイズで作成し、[`nothing`](@ref)の要素で初期化します。要素型`T`は、これらの値を格納できる必要があります。つまり、`Nothing <: T`です。
 
 # Examples
 

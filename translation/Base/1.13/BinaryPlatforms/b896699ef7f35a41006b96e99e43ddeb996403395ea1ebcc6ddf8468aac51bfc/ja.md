@@ -2,4 +2,4 @@
 host_triplet()
 ```
 
-`Sys.MACHINE`や、`libgfortran_version`、`libstdcxx_version`、`cxxstring_abi`などのコンパイラABI値を検出する各種のイントロスペクションユーティリティを使って、ビルドホストのトリプレットを構築します。これらの処理は、`Platform`の技術を使わずに行います。ビルドがまだほとんど進んでいない段階で実行する必要があるためです。
+`Sys.MACHINE`や、`libgfortran_version`、`libstdcxx_version`、`cxxstring_abi`などのコンパイラ ABI 値を検出する各種のイントロスペクション用ユーティリティから、ビルドホストのトリプレットを構築します。これらは、`Platform`の技術を使わずに実行します。ビルド済みのものがまだほとんどない段階で動作する必要があるためです。

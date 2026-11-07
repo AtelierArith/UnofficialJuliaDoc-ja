@@ -2,7 +2,7 @@
 setrounding(f::Function, T, mode)
 ```
 
-`f`の実行中、浮動小数点型`T`の丸めモードを変更します。これは論理的には次と同等です。
+浮動小数点型 `T` の丸めモードを、`f` の実行中に変更します。これは論理的には次と同等です。
 
 ```julia
 old = rounding(T)
@@ -11,4 +11,4 @@ f()
 setrounding(T, old)
 ```
 
-使用可能な丸めモードについては、[`RoundingMode`](@ref)を参照してください。
+使用可能な丸めモードについては、[`RoundingMode`](@ref) を参照してください。

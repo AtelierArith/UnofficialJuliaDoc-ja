@@ -2,9 +2,9 @@
 Union{Types...}
 ```
 
-`Union`型は抽象型であり、その引数型のいずれかのインスタンスをすべて含みます。つまり、`T <: Union{T,S}`と`S <: Union{T,S}`が含まれます。
+`Union`型は抽象型であり、その引数型のいずれかに属するすべてのインスタンスを含みます。つまり、`T <: Union{T,S}`と`S <: Union{T,S}`です。
 
-ほかの抽象型と同様、引数がすべて具象型であっても、インスタンス化することはできません。
+ほかの抽象型と同様、すべての引数が具象型であっても、インスタンス化することはできません。
 
 # Examples
 
@@ -24,6 +24,6 @@ false
 
 # Extended Help
 
-ほとんどのパラメトリック型とは異なり、ユニオンはパラメーターに関して共変です。たとえば、`Union{Real, String}`は`Union{Number, AbstractString}`のサブタイプです。
+ほとんどのパラメトリック型とは異なり、Union型はパラメーターに関して共変です。たとえば、`Union{Real, String}`は`Union{Number, AbstractString}`のサブタイプです。
 
-空のユニオン[`Union{}`](@ref)は、Juliaのボトム型です。
+空のUnion型である[`Union{}`](@ref)は、Juliaのボトム型です。

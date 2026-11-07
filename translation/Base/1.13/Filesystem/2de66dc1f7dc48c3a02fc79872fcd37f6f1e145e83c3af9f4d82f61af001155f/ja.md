@@ -2,4 +2,4 @@
 readlink(path::AbstractString)::String
 ```
 
-シンボリックリンク `path` が指すリンク先を返します。
+シンボリックリンク `path` が指す対象の場所を返します。

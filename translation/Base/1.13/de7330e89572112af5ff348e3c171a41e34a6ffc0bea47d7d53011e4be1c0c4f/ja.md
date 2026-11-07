@@ -2,7 +2,7 @@
 big(T::Type)
 ```
 
-任意精度の数値型 `T` を表す型を計算します。`typeof(big(zero(T)))` と同等です。
+任意精度で数値型 `T` を表す型を計算します。`typeof(big(zero(T)))` と同等です。
 
 # Examples
 

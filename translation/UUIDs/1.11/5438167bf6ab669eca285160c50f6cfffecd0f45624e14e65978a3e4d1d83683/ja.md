@@ -4,7 +4,7 @@ uuid4([rng::AbstractRNG])::UUID
 
 [RFC 4122](https://tools.ietf.org/html/rfc4122)で規定されている、バージョン4（ランダムまたは疑似ランダム）の汎用一意識別子（UUID）を生成します。
 
-`uuid4`で使用されるデフォルトのrngは`Random.default_rng()`ではありません。引数なしで`uuid4()`を呼び出すたびに、一意の識別子が返されると考えて差し支えありません。重要なのは、`Random.seed!(seed)`を呼び出しても、`uuid4`の出力が重複しないことです。現在（Julia 1.6時点）、`uuid4`はデフォルトのrngとして`Random.RandomDevice`を使用します。ただし、これは実装の詳細であり、将来変更される可能性があります。
+`uuid4`で使われるデフォルトの乱数生成器は`Random.default_rng()`ではないため、引数なしで`uuid4()`を呼び出すたびに、一意な識別子が返されると考えて差し支えありません。重要なのは、`Random.seed!(seed)`を呼び出しても、`uuid4`の出力が重複しないことです。現在（Julia 1.6時点）、`uuid4`はデフォルトの乱数生成器として`Random.RandomDevice`を使用します。ただし、これは実装の詳細であり、将来変更される可能性があります。
 
 !!! compat "Julia 1.6"
     Julia 1.6以降、`uuid4`の出力は`Random.default_rng()`に依存しません。

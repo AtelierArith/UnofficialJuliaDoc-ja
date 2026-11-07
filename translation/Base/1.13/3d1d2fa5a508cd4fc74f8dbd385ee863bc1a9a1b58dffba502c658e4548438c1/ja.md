@@ -3,7 +3,7 @@ BitArray(undef, dims::Integer...)
 BitArray{N}(undef, dims::NTuple{N,Int})
 ```
 
-指定された次元を持つ未定義の[`BitArray`](@ref)を構築します。[`Array`](@ref)コンストラクターと同じように動作します。[`undef`](@ref)を参照してください。
+指定された次元で未定義の[`BitArray`](@ref)を構築します。[`Array`](@ref)コンストラクターと同じように動作します。[`undef`](@ref)を参照してください。
 
 # Examples
 

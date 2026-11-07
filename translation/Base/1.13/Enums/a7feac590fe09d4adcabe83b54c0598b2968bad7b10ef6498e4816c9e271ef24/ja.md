@@ -2,7 +2,7 @@
 @enum EnumName[::BaseType] value1[=x] value2[=y]
 ```
 
-`Enum{BaseType}` サブタイプを作成し、名前を `EnumName`、列挙メンバーの値を `value1` と `value2` にします。必要に応じて、それぞれに `x` と `y` の値を割り当てることもできます。`EnumName` は、他の型や列挙メンバーの値と同様に、通常の値として使用できます。たとえば、
+`Enum{BaseType}` サブタイプを作成し、名前を `EnumName` とします。列挙メンバーの値には `value1` と `value2` を指定し、それぞれに `x` と `y` を任意で割り当てることができます。`EnumName` は、通常の値として、ほかの型や列挙メンバーの値と同様に使用できます。たとえば、
 
 # Examples
 
@@ -28,16 +28,16 @@ apple::Fruit = 1
 end
 ```
 
-`BaseType` は、デフォルトでは [`Int32`](@ref) となり、`Integer` のプリミティブサブタイプでなければなりません。メンバーの値は、列挙型と `BaseType` の間で変換できます。`read` と `write` は、これらの変換を自動的に行います。デフォルト以外の `BaseType` を指定して列挙型を作成した場合、`Integer(value1)` は、型が `BaseType` の整数 `value1` を返します。
+`BaseType` は、デフォルトでは [`Int32`](@ref) となり、`Integer` のプリミティブサブタイプでなければなりません。メンバー値は、列挙型と `BaseType` の間で相互に変換できます。`read` と `write` は、これらの変換を自動的に行います。列挙型をデフォルト以外の `BaseType` で作成した場合、`Integer(value1)` は、型が `BaseType` の整数 `value1` を返します。
 
-列挙型のすべてのインスタンスを一覧表示するには、`instances` を使用します。たとえば、
+列挙型のすべてのインスタンスを列挙するには、`instances` を使用します。たとえば、
 
 ```jldoctest fruitenum
 julia> instances(Fruit)
 (apple, orange, kiwi)
 ```
 
-列挙型のインスタンスからシンボルを作成することもできます。
+列挙型のインスタンスからシンボルを構築することもできます。
 
 ```jldoctest fruitenum
 julia> Symbol(apple)

@@ -2,7 +2,7 @@
 iszero(x)
 ```
 
-`true` が `x == zero(x)` の場合、`x` が配列であれば、`x` のすべての要素がゼロかどうかを判定します。
+`true` を返します。`x == zero(x)` の場合、`x` が配列であれば、`x` のすべての要素がゼロかどうかを判定します。
 
 関連項目: [`isone`](@ref)、[`isinteger`](@ref)、[`isfinite`](@ref)、[`isnan`](@ref)。
 

@@ -2,7 +2,7 @@
 count_zeros(x::Integer)::Integer
 ```
 
-`x` の2進表現に含まれるゼロの数。
+`x`の2進表現に含まれる0の個数。
 
 # Examples
 

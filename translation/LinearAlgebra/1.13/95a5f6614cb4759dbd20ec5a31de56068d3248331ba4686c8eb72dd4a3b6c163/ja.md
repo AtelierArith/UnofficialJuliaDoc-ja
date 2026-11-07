@@ -2,7 +2,7 @@
 isbanded(A::AbstractMatrix, kl::Integer, ku::Integer) -> Bool
 ```
 
-`A` が、`kl` 番目の上対角から始まる下側帯幅と、`ku` 番目の上対角までの上側帯幅を持つ帯行列かどうかを判定します。
+`A` が、`kl` 番目の上副対角から始まる下側の帯幅と、`ku` 番目の上副対角までの上側の帯幅を持つ帯行列かどうかを判定します。
 
 # Examples
 

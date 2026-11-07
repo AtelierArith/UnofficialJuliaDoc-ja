@@ -2,7 +2,7 @@
 result_style(s1::BroadcastStyle[, s2::BroadcastStyle])::BroadcastStyle
 ```
 
-1つまたは2つの`BroadcastStyle`を受け取り、[`BroadcastStyle`](@ref)を使ってそれらを組み合わせ、共通の`BroadcastStyle`を求めます。
+1つまたは2つの`BroadcastStyle`を受け取り、[`BroadcastStyle`](@ref)を使ってそれらを組み合わせ、共通の`BroadcastStyle`を判定します。
 
 # Examples
 

@@ -2,4 +2,4 @@
 isbits(x)
 ```
 
-`true` が [`isbitstype`](@ref) 型のインスタンスである場合は、`x` を返します。
+`true` を返すのは、`x` が [`isbitstype`](@ref) 型のインスタンスである場合です。

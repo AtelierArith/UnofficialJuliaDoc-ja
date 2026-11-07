@@ -3,7 +3,7 @@ spdiagm(kv::Pair{<:Integer,<:AbstractVector}...)
 spdiagm(m::Integer, n::Integer, kv::Pair{<:Integer,<:AbstractVector}...)
 ```
 
-ベクトルと対角線の`Pair`から疎な対角行列を構築します。各ベクトル`kv.second`は、`kv.first`対角線上に配置されます。既定では行列は正方行列で、そのサイズは`kv`から推定されます。ただし、最初の引数として`m,n`を渡すと、必要に応じてゼロで埋められた、`m`×`n`の非正方行列を指定できます。
+ベクトルや対角成分の`Pair`から、疎な対角行列を構築します。各ベクトル`kv.second`は、`kv.first`対角成分に配置されます。デフォルトでは行列は正方行列で、そのサイズは`kv`から推定されます。ただし、最初の引数として`m,n`を渡すと、必要に応じてゼロで埋められる、`m`×`n`の非正方行列を指定できます。
 
 # Examples
 

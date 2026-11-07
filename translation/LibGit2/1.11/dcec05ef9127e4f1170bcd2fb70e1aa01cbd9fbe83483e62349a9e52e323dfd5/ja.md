@@ -2,7 +2,7 @@
 LibGit2.isdiff(repo::GitRepo, treeish::AbstractString, pathspecs::AbstractString=""; cached::Bool=false)
 ```
 
-`treeish`で指定されたツリーと、作業ツリー内の追跡対象ファイル（`cached=false`の場合）またはインデックス（`cached=true`の場合）との間に差分があるかどうかを確認します。`pathspecs`は、diffのオプションの指定です。
+`treeish`で指定されたツリーと、作業ツリー内の追跡対象ファイル（`cached=false`の場合）またはインデックス（`cached=true`の場合）との間に差分があるかどうかを確認します。`pathspecs`は、diffのオプションを指定します。
 
 # Examples
 

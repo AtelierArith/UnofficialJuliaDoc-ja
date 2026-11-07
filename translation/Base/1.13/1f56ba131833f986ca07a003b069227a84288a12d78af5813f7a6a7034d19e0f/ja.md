@@ -4,10 +4,10 @@ cumsum(itr)
 
 イテレータの累積和。
 
-[`accumulate`](@ref) を使うと、`+` 以外の関数を適用できます。
+[`accumulate`](@ref)を使うと、`+`以外の関数を適用できます。
 
 !!! compat "Julia 1.5"
-    配列以外のイテレータに対する `cumsum` の使用には、Julia 1.5 以降が必要です。
+    配列以外のイテレータに対する`cumsum`の使用には、Julia 1.5以降が必要です。
 
 
 # Examples

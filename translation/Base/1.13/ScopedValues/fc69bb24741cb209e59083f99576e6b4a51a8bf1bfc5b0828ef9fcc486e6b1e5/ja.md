@@ -2,7 +2,7 @@
 isassigned(val::ScopedValue)
 ```
 
-`ScopedValue`に値が割り当てられているかどうかを確認します。
+`ScopedValue`に値が割り当てられているかどうかをテストします。
 
 関連項目: [`ScopedValues.with`](@ref)、[`ScopedValues.@with`](@ref)、[`ScopedValues.get`](@ref)。
 

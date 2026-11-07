@@ -2,7 +2,7 @@
 ^(A::AbstractMatrix, p::Number)
 ```
 
-行列のべき乗。``\exp(p\log(A))`` と等価です。
+行列のべき乗。``\exp(p\log(A))``と等価です。
 
 # Examples
 

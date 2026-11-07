@@ -2,13 +2,13 @@
 FieldError(type::DataType, field::Symbol)
 ```
 
-`type` 型のオブジェクトで、無効な `field` にアクセスしようとしました。
+オブジェクト `type` の無効な `field` にアクセスしようとしました。
 
 !!! compat "Julia 1.12"
     Julia 1.12 より前のバージョンでは、無効なフィールドへのアクセス時に [`ErrorException`](@ref) がスローされていました。
 
 
-[`getfield`](@ref)
+[`getfield`](@ref) を参照してください。
 
 # Examples
 

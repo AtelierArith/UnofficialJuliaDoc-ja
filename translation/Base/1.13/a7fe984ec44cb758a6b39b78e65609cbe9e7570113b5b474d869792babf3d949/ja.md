@@ -3,7 +3,7 @@ eachregion(s::AnnotatedString{S})
 eachregion(s::SubString{AnnotatedString{S}})
 ```
 
-`s`のうち、アノテーションが一定である連続部分文字列を特定し、各部分文字列と該当するアノテーションを`Tuple{SubString{S}, Vector{@NamedTuple{label::Symbol, value}}}`として返すイテレーターを返します。
+`s`のうち、注釈が一定である連続部分文字列を特定し、各部分文字列と該当する注釈を`Tuple{SubString{S}, Vector{@NamedTuple{label::Symbol, value}}}`として返すイテレーターを返します。
 
 # Examples
 

@@ -2,7 +2,7 @@
 @nospecs def
 ```
 
-`def` の注釈が付いていない引数に、`@nospecialize` 注釈を追加します。
+`def` の注釈が付いていない引数に、`@nospecialize` の注釈を追加します。
 
 ```julia
 (Core.Compiler) julia> @macroexpand @nospecs function tfunc(𝕃::AbstractLattice, x, y::Bool, zs...)

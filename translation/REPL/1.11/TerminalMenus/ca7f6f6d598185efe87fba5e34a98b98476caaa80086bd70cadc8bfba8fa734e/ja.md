@@ -7,5 +7,5 @@ printmenu(out, m::AbstractMenu, cursoridx::Int; init::Bool=false, oldstate=nothi
 !!! compat "Julia 1.6"
     `printmenu`にはJulia 1.6以降が必要です。
 
-    それ以前のJuliaでは、これは`printMenu`という名前で、`state`引数／戻り値はありませんでした。この旧関数はすべてのJulia 1.xバージョンでサポートされていますが、Julia 2.0で削除される予定です。
+    それ以前のJuliaでは、これは`printMenu`という名前で、`state`引数／戻り値はありませんでした。この旧関数はすべてのJulia 1.xでサポートされていますが、Julia 2.0で削除される予定です。
 

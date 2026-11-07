@@ -1,1 +1,1 @@
-`MersenneTwister` 用のキャッシュ済みジャンプ多項式。
+`MersenneTwister`用のキャッシュ済みジャンプ多項式。

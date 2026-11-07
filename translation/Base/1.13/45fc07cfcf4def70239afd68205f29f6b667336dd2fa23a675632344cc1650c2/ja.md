@@ -2,7 +2,7 @@
 filter(f, d::AbstractDict)
 ```
 
-`d` のコピーを返します。`f` が `false` である要素は取り除きます。この関数 `f` には、`key=>value` のペアを渡します。
+`d` のコピーを返します。ただし、`f` が `false` である要素は削除します。関数 `f` には、`key=>value` のペアを渡します。
 
 # Examples
 

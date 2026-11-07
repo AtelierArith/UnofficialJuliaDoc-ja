@@ -9,4 +9,4 @@ Microsoft Windows では、コマンドライン全体が単一の文字列と�
 
 この関数は、これらの規則に準拠したパーサーの逆変換を実装します。Windows の C/C++/Julia アプリケーションに渡すコマンドライン引数を結合し、必要に応じて空白、TAB、二重引用符、バックスラッシュなどのメタ文字をエスケープまたは引用符で囲みます。
 
-関連項目: [`Base.shell_escape_wincmd()`](@ref)、[`Base.escape_raw_string()`](@ref)。
+[`Base.shell_escape_wincmd()`](@ref)、[`Base.escape_raw_string()`](@ref) も参照してください。

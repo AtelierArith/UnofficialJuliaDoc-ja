@@ -2,9 +2,9 @@
 Set{T} <: AbstractSet{T}
 ```
 
-`Set`は、メンバーシップの判定を高速に行える可変コンテナです。
+`Set`は、メンバーシップを高速に判定できる可変コンテナーです。
 
-`Set`では、`in`、`union`、`intersect`などの集合演算が効率的に実装されています。`Set`の要素は、各要素の`isequal`の定義に従って一意です。`Set`内の要素の順序は実装の詳細であり、依存することはできません。
+`Set`では、`in`、`union`、`intersect`などの集合演算が効率的に実装されています。`Set`内の要素は、各要素の`isequal`の定義に従って一意です。`Set`内の要素の順序は実装の詳細であり、依存することはできません。
 
 関連項目: [`AbstractSet`](@ref)、[`BitSet`](@ref)、[`Dict`](@ref)、[`push!`](@ref)、[`empty!`](@ref)、[`union!`](@ref)、[`in`](@ref)、[`isequal`](@ref)
 

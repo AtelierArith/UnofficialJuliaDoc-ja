@@ -2,7 +2,7 @@
 @with (var::ScopedValue{T} => val)... expr
 ```
 
-`with` のマクロ版です。式 `@with var=>val expr` は、新しい動的スコープで `expr` を評価し、`var` を `val` に設定します。`val` は型 `T` に変換されます。`@with var=>val expr` は `with(var=>val) do expr end` と同等ですが、`@with` ではクロージャが作成されません。
+`with`のマクロ版です。式`@with var=>val expr`は、新しい動的スコープ内で`expr`を評価し、その際`var`には`val`が設定されます。`val`は型`T`に変換されます。`@with var=>val expr`は`with(var=>val) do expr end`と同等ですが、`@with`ではクロージャが作成されません。
 
 関連項目: [`ScopedValues.with`](@ref)、[`ScopedValues.ScopedValue`](@ref)、[`ScopedValues.get`](@ref)。
 

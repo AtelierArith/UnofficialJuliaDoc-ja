@@ -2,7 +2,7 @@
 reverseind(v, i)
 ```
 
-[`reverse(v)`](@ref) 内のインデックス `i` が与えられたとき、`v[reverseind(v,i)] == reverse(v)[i]` となるように、対応する `v` 内のインデックスを返します。（`v` に非 ASCII 文字が含まれる場合、これは単純ではありません。）
+[`reverse(v)`](@ref) 内のインデックス `i` が与えられたとき、`v` 内で対応するインデックスを返します。これにより、`v[reverseind(v,i)] == reverse(v)[i]` が成り立ちます。（`v` に非 ASCII 文字が含まれる場合、これは単純ではありません。）
 
 # Examples
 

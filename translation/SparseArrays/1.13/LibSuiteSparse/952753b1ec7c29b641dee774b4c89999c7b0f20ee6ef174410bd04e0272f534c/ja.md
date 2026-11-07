@@ -2,7 +2,7 @@
 LibSuiteSparse.init_suitesparse
 ```
 
-SuiteSparseライブラリを正しいメモリ管理関数で初期化するために使用される内部関数です。以下のSuiteSparseライブラリのいずれかを直接ラップするパッケージは、そのライブラリを使用する前に、この関数が呼び出されるようにしなければなりません：AMD、CAMD、COLAMD、CCOLAMD、UMFPACK、CXSparse、CHOLMOD、KLU、BTF、LDL、RBio、SPQR、SPEX、ParU
+SuiteSparseライブラリのメモリ管理関数を適切に設定するために使用される内部関数です。以下のSuiteSparseライブラリのいずれかを直接ラップするパッケージは、そのライブラリを使用する前に、この関数が呼び出されるようにしなければなりません。AMD、CAMD、COLAMD、CCOLAMD、UMFPACK、CXSparse、CHOLMOD、KLU、BTF、LDL、RBio、SPQR、SPEX、ParU
 
 # Notes:
 

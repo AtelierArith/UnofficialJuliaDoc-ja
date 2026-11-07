@@ -2,7 +2,7 @@
 Base64DecodePipe(istream)
 ```
 
-`istream` から読み込んだ Base64 エンコードデータをデコードする、新しい読み取り専用 I/O ストリームを返します。
+`istream`から読み込んだBase64エンコードデータをデコードする、新しい読み取り専用I/Oストリームを返します。
 
 # Examples
 

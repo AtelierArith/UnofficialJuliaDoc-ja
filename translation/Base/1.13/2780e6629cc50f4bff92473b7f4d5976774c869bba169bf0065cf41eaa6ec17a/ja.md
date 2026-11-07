@@ -7,11 +7,11 @@ format_bytes(bytes; binary=true)
 # Arguments
 
   * `bytes`: 変換するバイト数。
-  * `binary=true`: `true` の場合、バイト数を2進単位（1024の累乗）で表します。`false` の場合は、10進単位（1000の累乗）を使用します。
+  * `binary=true`: `true` の場合、バイナリ単位（1024 の累乗）でバイト数を表します。`false` の場合は、10 進単位（1000 の累乗）を使用します。
 
 # Returns
 
-`String`: バイト数を人が読みやすい文字列で表したもの。`binary` 引数に応じて、2進単位または10進単位で表されます。
+`String`: `binary` 引数に応じて、バイナリ単位または 10 進単位で表した、人が読みやすいバイト数の文字列表現。
 
 # Examples
 

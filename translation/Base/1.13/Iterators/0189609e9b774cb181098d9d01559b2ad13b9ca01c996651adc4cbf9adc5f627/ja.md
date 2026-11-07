@@ -4,7 +4,7 @@ cycle(iter[, n::Int])
 
 `iter`を無限に繰り返すイテレータです。`n`を指定すると、`iter`をその回数だけ繰り返します。`iter`が空の場合、`cycle(iter)`と`cycle(iter, n)`も空になります。
 
-`Iterators.cycle(iter, n)`は[`Base.repeat`](@ref)`(vector, n)`の遅延評価版です。また、[`Iterators.repeated`](@ref)`(iter, n)`は、[`Base.fill`](@ref)`(item, n)`の遅延評価版です。
+`Iterators.cycle(iter, n)`は[`Base.repeat`](@ref)`(vector, n)`の遅延評価版です。一方、[`Iterators.repeated`](@ref)`(iter, n)`は[`Base.fill`](@ref)`(item, n)`の遅延評価版です。
 
 !!! compat "Julia 1.11"
     メソッド`cycle(iter, n)`はJulia 1.11で追加されました。

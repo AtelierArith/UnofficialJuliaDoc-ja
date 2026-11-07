@@ -2,7 +2,7 @@
 diag(M, k::Integer=0)
 ```
 
-行列の`k`番目の対角成分をベクトルとして返します。
+行列の`k`番目の対角成分をベクトルとして取得します。
 
 関連項目: [`diagm`](@ref)、[`diagind`](@ref)、[`Diagonal`](@ref)、[`isdiag`](@ref)。
 

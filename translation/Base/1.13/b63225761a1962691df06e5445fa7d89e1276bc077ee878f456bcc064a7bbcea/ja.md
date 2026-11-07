@@ -2,7 +2,7 @@
 isreal(x)::Bool
 ```
 
-`x` またはそのすべての要素が、無限大や NaN を含む実数のいずれかと数値的に等しいかどうかを判定します。`isequal(x, real(x))` が true の場合、`isreal(x)` は true です。
+`x` またはそのすべての要素が、無限大や NaN を含む何らかの実数と数値的に等しいかどうかを判定します。`isreal(x)` は、`isequal(x, real(x))` が true の場合に true になります。
 
 # Examples
 

@@ -2,7 +2,7 @@
 findlast(ch::AbstractChar, string::AbstractString)
 ```
 
-`string` 内で、文字 `ch` が最後に現れる位置を検索します。
+`ch` の中で、`string` に最後に現れる文字を検索します。
 
 !!! compat "Julia 1.3"
     このメソッドを使用するには、Julia 1.3 以降が必要です。

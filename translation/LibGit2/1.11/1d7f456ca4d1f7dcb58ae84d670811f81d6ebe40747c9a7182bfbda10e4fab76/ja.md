@@ -2,7 +2,7 @@
 add_push!(repo::GitRepo, rmt::GitRemote, push_spec::String)
 ```
 
-指定した`rmt`に対して、*push* refspecを追加します。このrefspecには、push先のブランチに関する情報が含まれます。
+指定した`rmt`に対して、*push* refspecを追加します。このrefspecには、どのブランチをpushするかを指定します。
 
 # Examples
 
@@ -16,5 +16,5 @@ String["refs/heads/master"]
 ```
 
 !!! note
-    push refspecを更新した後、変更を反映させ、[`push`](@ref)の呼び出しが機能するようにするには、対象の`GitRemote`を[`close`](@ref)してから、再度開く必要がある場合があります。
+    push refspecを更新した後、変更を反映させ、[`push`](@ref)の呼び出しを機能させるには、対象の`GitRemote`を[`close`](@ref)してから、再度開く必要がある場合があります。
 

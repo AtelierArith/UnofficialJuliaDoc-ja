@@ -5,7 +5,7 @@
 @atomicswap :sequentially_consistent m[idx] = new
 ```
 
-`new`を`a.b.x`に格納します（参照の場合は`m[idx]`）。また、以前の`a.b.x`の値（参照の場合は、`m[idx]`に格納されていた値）を返します。
+`new`を`a.b.x`に格納します（参照の場合は`m[idx]`）。また、以前の値である`a.b.x`（参照の場合は`m[idx]`に格納されていた値）を返します。
 
 この操作は、`swapproperty!(a.b, :x, new)`呼び出しに変換されます。参照の場合は`swapindex_atomic!(mem, order, new, idx)`呼び出しとなり、`order`のデフォルト値は`:sequentially_consistent`です。
 

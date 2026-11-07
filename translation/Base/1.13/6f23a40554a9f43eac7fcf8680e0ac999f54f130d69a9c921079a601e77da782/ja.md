@@ -4,12 +4,12 @@ mergewith!(combine)
 merge!(combine, d::AbstractDict, others::AbstractDict...) -> d
 ```
 
-他のコレクションのペアを使ってコレクションを更新します。同じキーを持つ値は、結合関数を使って結合されます。カリー化形式の `mergewith!(combine)` は、関数 `(args...) -> mergewith!(combine, args...)` を返します。
+他のコレクションのペアを使ってコレクションを更新します。同じキーを持つ値は、結合関数を使って結合されます。カリー化形式の`mergewith!(combine)`は、関数`(args...) -> mergewith!(combine, args...)`を返します。
 
-`mergewith!(combine, args...)` の別名であるメソッド `merge!(combine::Union{Function,Type}, args...)` は、後方互換性のため引き続き利用できます。
+`mergewith!(combine, args...)`の別名であるメソッド`merge!(combine::Union{Function,Type}, args...)`は、後方互換性のため引き続き利用できます。
 
 !!! compat "Julia 1.5"
-    `mergewith!` は Julia 1.5 以降で利用できます。
+    `mergewith!`にはJulia 1.5以降が必要です。
 
 
 # Examples

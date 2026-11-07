@@ -2,9 +2,9 @@
 string(n::Integer; base::Integer = 10, pad::Integer = 1)
 ```
 
-整数 `n` を、指定した `base` の文字列に変換します。必要に応じて、ゼロ埋めする桁数も指定できます。
+整数 `n` を、指定した `base` の文字列に変換します。必要に応じて、パディングする桁数も指定できます。
 
-[`digits`](@ref)、[`bitstring`](@ref)、[`count_zeros`](@ref)、および標準ライブラリの Printf も参照してください。
+関連項目: [`digits`](@ref)、[`bitstring`](@ref)、[`count_zeros`](@ref)、および Printf 標準ライブラリ。
 
 # Examples
 

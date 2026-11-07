@@ -2,7 +2,7 @@
 enable_in_core!([enable=true; freeze_world_age=true, debug_filename=nothing])
 ```
 
-JuliaSyntax パーサーを Julia ランタイムに接続し、すべての解析処理で flisp パーサーに置き換えます。つまり、`include()`、`Meta.parse()`、REPL などで JuliaSyntax が使用されます。参照パーサーに戻すには、`enable_in_core!(false)` を使用します。
+JuliaSyntax パーサーを Julia ランタイムに接続し、すべての構文解析処理で flisp パーサーに置き換えます。つまり、`include()`、`Meta.parse()`、REPL などで JuliaSyntax が使われます。参照パーサーに戻すには、`enable_in_core!(false)` を使用します。
 
 キーワード引数:
 

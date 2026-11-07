@@ -2,14 +2,14 @@
 replace(A, old_new::Pair...; [count::Integer])
 ```
 
-`A`のコピーを返します。`old_new`内の各`old=>new`について、`old`のすべての出現箇所を`new`に置き換えます。等価性の判定には[`isequal`](@ref)を使用します。`count`が指定されている場合、置換する出現箇所の合計は最大でも`count`個です。
+`old_new` 内の各 `old=>new` について、`A` のすべての `old` を `new` に置き換えたコレクションのコピーを返します。等価性の判定には [`isequal`](@ref) を使用します。`count` が指定されている場合、置換されるのは合計で最大 `count` 個です。
 
-結果の要素型は、`A`の要素型と、ペア内の`new`の値の型に基づき、昇格（[`promote_type`](@ref)を参照）によって決まります。`count`が省略され、`A`の要素型が`Union`である場合、結果の要素型には、異なる型の値に置き換えられるシングルトン型は含まれません。たとえば、`missing`が置き換えられると、`Union{T,Missing}`は`T`になります。
+結果の要素型は、`A` の要素型と、ペア内の `new` の値の型に基づく型昇格（[`promote_type`](@ref) を参照）によって決まります。`count` が省略され、`A` の要素型が `Union` の場合、異なる型の値に置き換えられるシングルトン型は、結果の要素型に含まれません。たとえば、`missing` が置き換えられると、`Union{T,Missing}` は `T` になります。
 
-関連項目：[`replace!`](@ref)、[`splice!`](@ref)、[`delete!`](@ref)、[`insert!`](@ref)。
+関連項目: [`replace!`](@ref)、[`splice!`](@ref)、[`delete!`](@ref)、[`insert!`](@ref)。
 
 !!! compat "Julia 1.7"
-    `Tuple`の要素を置換するには、バージョン1.7が必要です。
+    `Tuple` の要素を置き換えるには、バージョン1.7が必要です。
 
 
 # Examples

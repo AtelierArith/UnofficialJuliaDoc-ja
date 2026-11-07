@@ -2,7 +2,7 @@
 insert!(a::Vector, index::Integer, item)
 ```
 
-指定された`index`の位置に、`a`へ`item`を挿入します。`index`は、挿入後の`a`における`item`のインデックスです。
+指定された`index`の位置に、`item`を`a`に挿入します。`index`は、挿入後の`a`における`item`のインデックスです。
 
 関連項目: [`push!`](@ref)、[`replace`](@ref)、[`popat!`](@ref)、[`splice!`](@ref)。
 

@@ -2,7 +2,7 @@
 Mmap.Anonymous(name::AbstractString="", readonly::Bool=false, create::Bool=true)
 ```
 
-`IO`のようなオブジェクトを作成します。ファイルに紐付かない、ゼロ初期化されたメモリマップ領域を作成し、[`mmap`](@ref mmap)で使用します。共有メモリ配列の作成には`SharedArray`が使用します。
+`IO`のようなオブジェクトを作成します。ファイルに紐付かない、ゼロ初期化されたメモリマップドメモリを作成し、[`mmap`](@ref mmap)で使用します。共有メモリ配列の作成に`SharedArray`が使用します。
 
 # Examples
 

@@ -8,11 +8,11 @@ sort(v::NTuple; kws...)::NTuple
 辞書の[`keys`](@ref)または[`values`](@ref)に対して`sort`を呼び出すと、`v`が収集されてからソートされます。
 
 !!! compat "Julia 1.12"
-    `NTuple`のソートには、Julia 1.12以降が必要です。
+    `NTuple`のソートにはJulia 1.12以降が必要です。
 
 
 !!! compat "Julia 1.13"
-    キーセットと値イテレータのソートには、Julia 1.13以降が必要です。
+    キーセットと値イテレータのソートにはJulia 1.13以降が必要です。
 
 
 # Examples

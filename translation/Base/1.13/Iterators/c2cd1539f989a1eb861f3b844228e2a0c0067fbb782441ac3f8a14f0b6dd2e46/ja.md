@@ -3,7 +3,7 @@ findeach(f, it)
 findeach(it)
 ```
 
-`pairs(it)` のキーと値のペアから、`f(value)` が `true` を返すようなすべてのキーを生成するイテレーターです。
+`pairs(it)` のキーと値のペアから、`f(value)` が `true` を返す場合に、すべてのキーを生成するイテレーターです。
 
 `f` が指定されていない場合、デフォルトは `identity` です。
 

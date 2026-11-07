@@ -2,7 +2,7 @@
 hasfield(T::Type, name::Symbol)
 ```
 
-`T` が `name` を自身のフィールドの1つとして持つかどうかを示すブール値を返します。
+`T` が `name` を自身のフィールドの1つとして持つかどうかを示す真偽値を返します。
 
 関連項目: [`fieldnames`](@ref)、[`fieldcount`](@ref)、[`hasproperty`](@ref)。
 

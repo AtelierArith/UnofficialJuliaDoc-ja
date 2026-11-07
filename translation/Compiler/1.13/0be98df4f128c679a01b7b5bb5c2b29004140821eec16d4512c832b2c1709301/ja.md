@@ -2,7 +2,7 @@
 opt_params::OptimizationParams
 ```
 
-オプティマイザーの動作を制御するパラメーター。
+オプティマイザーの動作を制御するパラメーターです。
 
 ---
 
@@ -14,15 +14,15 @@ opt_params::OptimizationParams
 
 ---
 
-  * `opt_params.inline_nonleaf_penalty::Int = 1000` 動的ディスパッチのペナルティコストを指定します。
+  * `opt_params.inline_nonleaf_penalty::Int = 1000` 動的ディスパッチに対するペナルティコストを指定します。
 
 ---
 
-  * `opt_params.inline_tupleret_bonus::Int = 250` 具象型でないタプル戻り値型を持つメソッド特殊化について、インライン化をどれだけ積極的に行うかを指定します（分割を促すため）。インライン化の判断時に、`opt_params.inline_tupleret_bonus` が `opt_params.inline_cost_threshold` に加算されます。
+  * `opt_params.inline_tupleret_bonus::Int = 250` 戻り値のタプル型が具象型でないメソッド特殊化について、インライン化をどれだけ積極的に行うかを指定します（分割を期待したものです）。インライン化の判断時に、`opt_params.inline_tupleret_bonus` が `opt_params.inline_cost_threshold` に加算されます。
 
 ---
 
-  * `opt_params.max_tuple_splat::Int = 32` `Core._apply_iterate` のインライン化を試みる際、タプルの要素数がこの値を超えている場合は最適化を中止します。
+  * `opt_params.max_tuple_splat::Int = 32` `Core._apply_iterate` のインライン化を試みる際、タプルの要素数がこの値を超えていれば最適化を中止します。
 
 ---
 

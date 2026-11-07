@@ -2,13 +2,13 @@
 getindex(A, inds...)
 ```
 
-インデックス `inds` で選択した配列 `A` の部分配列を返します。
+配列 `A` から、インデックス `inds` で指定した要素を返します。
 
-各インデックスには、サポートされているインデックスの [supported index type](@ref man-supported-index-types)（たとえば、[`Integer`](@ref)、[`CartesianIndex`](@ref)、[range](@ref Base.AbstractRange)、[array](@ref man-multi-dim-arrays)）を指定できます。特定の次元に沿ったすべての要素を選択するには [:](@ref Base.Colon) を使用できます。また、ブール配列（たとえば `Array{Bool}` や [`BitArray`](@ref)）を使うと、対応するインデックスが `true` である要素を抽出できます。
+各インデックスには、サポートされているインデックスの [supported index type](@ref man-supported-index-types)、たとえば [`Integer`](@ref)、[`CartesianIndex`](@ref)、[range](@ref Base.AbstractRange)、[array](@ref man-multi-dim-arrays) のいずれかを指定できます。特定の次元のすべての要素を選択するには [:](@ref Base.Colon) を使用できます。また、ブール配列（例: `Array{Bool}` や [`BitArray`](@ref)）を使うと、対応するインデックスが `true` である要素を抽出できます。
 
-`inds` が複数の要素を選択する場合、この関数は新たに確保した配列を返します。コピーせずに複数の要素をインデックス指定するには、代わりに [`view`](@ref) を使用してください。
+`inds` で複数の要素を選択すると、この関数は新しい配列を割り当てて返します。コピーせずに複数の要素をインデックス指定するには、代わりに [`view`](@ref) を使用してください。
 
-詳しくは、マニュアルの [array indexing](@ref man-array-indexing) の節を参照してください。
+詳しくは、[array indexing](@ref man-array-indexing) のマニュアルの節を参照してください。
 
 # Examples
 

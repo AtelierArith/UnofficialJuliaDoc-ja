@@ -2,7 +2,7 @@
 supertype(T::Union{DataType, UnionAll})
 ```
 
-型 `T` の直接のスーパータイプを返します。`T` は、[`DataType`](@ref) 型または [`UnionAll`](@ref) 型です。型 [`Union`](@ref) はサポートしていません。[Types](@ref man-types) も参照してください。
+型 `T` の直接のスーパータイプを返します。`T` は、[`DataType`](@ref) 型または [`UnionAll`](@ref) 型を指定できます。[`Union`](@ref) 型には対応していません。[Types](@ref man-types) も参照してください。
 
 # Examples
 

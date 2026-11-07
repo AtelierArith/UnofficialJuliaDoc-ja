@@ -2,7 +2,7 @@
 LibGit2.ApplyOptions
 ```
 
-差分の適用方法を指定するオプションです。[`git_apply_options`](https://libgit2.org/libgit2/#HEAD/type/git_apply_options) 構造体に対応します。
+差分を適用するためのオプションです。[`git_apply_options`](https://libgit2.org/libgit2/#HEAD/type/git_apply_options) 構造体に対応します。
 
 各フィールドの意味は次のとおりです。
 

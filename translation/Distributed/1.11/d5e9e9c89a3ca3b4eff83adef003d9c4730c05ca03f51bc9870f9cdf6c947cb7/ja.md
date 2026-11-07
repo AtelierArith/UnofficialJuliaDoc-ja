@@ -2,7 +2,7 @@
 remotecall(f, pool::AbstractWorkerPool, args...; kwargs...) -> Future
 ```
 
-[`WorkerPool`](@ref) は `remotecall(f, pid, ....)` のバリアントです。`pool` から空いているワーカーを待って取得し、そのワーカー上で `remotecall` を実行します。
+[`WorkerPool`](@ref) は `remotecall(f, pid, ....)` のバリアントです。`pool` から空いているワーカーを待って取得し、そのワーカーに対して `remotecall` を実行します。
 
 # Examples
 
@@ -17,4 +17,4 @@ julia> f = remotecall(maximum, wp, A)
 Future(2, 1, 6, nothing)
 ```
 
-この例では、pid 1 から呼び出され、pid 2 でタスクが実行されました。
+この例では、pid 1 から呼び出されたタスクが pid 2 で実行されました。

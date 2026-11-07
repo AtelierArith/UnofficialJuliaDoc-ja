@@ -8,9 +8,9 @@ ensure_all_artifacts_installed(artifacts_toml::String;
                                 io::IO=stderr)
 ```
 
-指定された`(Julia)Artifacts.toml`ファイルに含まれる、遅延読み込みではないすべてのアーティファクトをインストールします。デポ内の`Overrides.toml`エントリによるオーバーライドを正しくサポートするには、`package_uuid`を指定する必要があります。
+指定された`(Julia)Artifacts.toml`ファイルに含まれる、遅延読み込みではないすべてのアーティファクトをインストールします。デポ内の`Overrides.toml`エントリによるオーバーライドを適切にサポートするには、`package_uuid`を指定する必要があります。
 
-`include_lazy`が`true`に設定されている場合は、遅延読み込みパッケージもインストールされます。
+`include_lazy`が`true`に設定されている場合は、遅延読み込みのパッケージもインストールされます。
 
 この関数は非推奨です。次のスニペットに置き換えてください。
 

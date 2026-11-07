@@ -7,7 +7,7 @@ clamp(x, lo, hi)
 関連項目: [`clamp!`](@ref)、[`min`](@ref)、[`max`](@ref)。
 
 !!! compat "Julia 1.3"
-    第1引数に `missing` を指定するには、Julia 1.3 以降が必要です。
+    最初の引数に `missing` を指定するには、Julia 1.3 以降が必要です。
 
 
 # Examples

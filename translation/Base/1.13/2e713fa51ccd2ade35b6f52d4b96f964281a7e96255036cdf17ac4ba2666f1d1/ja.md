@@ -4,7 +4,7 @@ AnnotatedChar{S <: AbstractChar} <: AbstractChar
 
 注釈付きの Char です。
 
-より具体的には、任意のラベル付き注釈（`@NamedTuple{label::Symbol, value}`）のリストを、ラップされた文字とともに保持する、他の任意の [`AbstractChar`](@ref) を包むシンプルなラッパーです。
+より具体的には、任意の [`AbstractChar`](@ref) を包む単純なラッパーで、包まれた文字とともに、任意のラベル付き注釈のリスト（`@NamedTuple{label::Symbol, value}`）を保持します。
 
 関連項目：[`AnnotatedString`](@ref)、[`annotatedstring`](@ref)、`annotations`、`annotate!`。
 

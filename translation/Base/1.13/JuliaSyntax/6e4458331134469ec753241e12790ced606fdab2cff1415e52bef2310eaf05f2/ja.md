@@ -2,7 +2,7 @@
 tokenize(text; operators_as_identifiers=true)
 ```
 
-UTF-8エンコードされた`text`をトークン化し、`Token`のベクトルとして返します。トークンのテキストは`untokenize()`を使って取得できます。たとえば、`join(untokenize.(tokenize(text), text))`を使うと、テキスト全体を再構成できます。
+UTF-8エンコードされた`text`をトークン化し、`Token`のベクターとして返します。トークンのテキストは`untokenize()`を使って取得できます。たとえば、`join(untokenize.(tokenize(text), text))`を使うと、テキスト全体を再構築できます。
 
 このインターフェースが扱うのは、UTF-8エンコードされた文字列またはバッファーデータのみです。
 

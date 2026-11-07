@@ -4,9 +4,9 @@ TestLogger(; min_level=Info, catch_exceptions=false)
 
 ログに記録されたメッセージを`logs::Vector{LogRecord}`フィールドに格納する`TestLogger`を作成します。
 
-`LogLevel`を制御するには`min_level`を設定します。ログイベントの生成中に発生した例外を捕捉するかどうかは`catch_exceptions`で、整数`n`に対して`maxlog=n`を付けたメッセージを最大`n`回記録する慣例に従うかどうかは`respect_maxlog`で設定します。
+`min_level`を設定すると、`LogLevel`を制御できます。`catch_exceptions`は、ログイベントの生成中に発生した例外を捕捉するかどうかを指定します。また、`respect_maxlog`は、整数`n`について、メッセージを`maxlog=n`で最大`n`回記録する慣例に従うかどうかを指定します。
 
-関連項目: [`LogRecord`](@ref)。
+関連項目：[`LogRecord`](@ref)。
 
 ## Examples
 

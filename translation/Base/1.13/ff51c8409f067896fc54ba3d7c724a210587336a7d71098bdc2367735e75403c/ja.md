@@ -2,11 +2,11 @@
 all(itr)::Bool
 ```
 
-論理値のコレクションのすべての要素が`true`であるかをテストします。`itr`内で最初に`false`の値が見つかった時点で、`false`を返します（短絡評価）。`true`で短絡評価するには、[`any`](@ref)を使用してください。
+ブール値のコレクションのすべての要素が`true`であるかをテストします。`itr`内で最初の`false`値が見つかると、直ちに`false`を返します（短絡評価）。`true`で短絡評価するには、[`any`](@ref)を使用してください。
 
-入力に[`missing`](@ref)の値が含まれる場合、[three-valued logic](https://en.wikipedia.org/wiki/Three-valued_logic)に従い、欠損値以外のすべての値が`true`であれば（または、入力に`false`の値が含まれなければ）、`missing`を返します。
+入力に[`missing`](@ref)値が含まれる場合、[three-valued logic](https://en.wikipedia.org/wiki/Three-valued_logic)に従い、欠損値以外のすべての値が`true`であれば（つまり、入力に`false`値が含まれなければ）、`missing`を返します。
 
-関連項目：[`all!`](@ref)、[`any`](@ref)、[`count`](@ref)、[`&`](@ref)、[`&&`](@ref)、[`allunique`](@ref)。
+関連項目: [`all!`](@ref)、[`any`](@ref)、[`count`](@ref)、[`&`](@ref)、[`&&`](@ref)、[`allunique`](@ref)。
 
 # Examples
 

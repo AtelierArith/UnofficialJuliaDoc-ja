@@ -6,7 +6,7 @@ AbstractMenu
 
 # Functions
 
-以下の関数は、すべての <:AbstractMenu 型で呼び出せます。詳細は次を参照してください。
+以下の関数は、すべての <:AbstractMenu 型に対して呼び出せます。詳細は次を参照してください。
 
 ## Exported
 
@@ -19,11 +19,11 @@ AbstractMenu
 
 # Subtypes
 
-すべてのサブタイプは可変でなければならず、`pagesize::Int` と `pageoffset::Int` のフィールドを含む必要があります。また、以下の関数も実装しなければなりません。
+すべてのサブタイプはミュータブルでなければならず、`pagesize::Int` と `pageoffset::Int` のフィールドを含む必要があります。また、以下の関数も実装しなければなりません。
 
 ## Necessary Functions
 
-これらの関数は、AbstractMenu のすべてのサブタイプで実装する必要があります。
+AbstractMenu のすべてのサブタイプで、以下の関数を実装する必要があります。
 
   * `pick(m::AbstractMenu, cursor::Int)`
   * `cancel(m::AbstractMenu)`
@@ -34,7 +34,7 @@ AbstractMenu
 
 ## Optional Functions
 
-これらの関数は、AbstractMenu のすべてのサブタイプで実装する必要はありません。
+以下の関数は、すべての AbstractMenu サブタイプで実装する必要はありません。
 
   * `header(m::AbstractMenu)`
   * `keypress(m::AbstractMenu, i::UInt32)`

@@ -2,7 +2,7 @@
 Adjoint
 ```
 
-元の線形代数オブジェクト（通常は `AbstractVector`/`AbstractMatrix`）の随伴ビューを表す遅延ラッパー型です。通常、`Adjoint` コンストラクターを直接呼び出す必要はありません。代わりに [`adjoint`](@ref) を使用してください。ビューを実体化するには [`copy`](@ref) を使用します。
+元の線形代数オブジェクト（通常は `AbstractVector`/`AbstractMatrix`）の随伴ビューを表す遅延ラッパー型です。通常、`Adjoint` コンストラクターを直接呼び出すべきではありません。代わりに [`adjoint`](@ref) を使用してください。ビューを実体化するには [`copy`](@ref) を使用します。
 
 この型は線形代数での使用を想定しています。一般的なデータ操作については [`permutedims`](@ref Base.permutedims) を参照してください。
 

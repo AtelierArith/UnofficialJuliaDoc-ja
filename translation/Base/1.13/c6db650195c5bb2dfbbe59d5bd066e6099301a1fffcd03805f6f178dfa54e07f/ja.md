@@ -2,7 +2,7 @@
 @sync
 ```
 
-[`@async`](@ref)、[`@spawn`](@ref Threads.@spawn)、`Distributed.@spawnat`、`Distributed.@distributed`で字句的に囲まれたすべての処理が完了するまで待機します。囲まれた非同期処理で発生した例外はすべて収集され、[`CompositeException`](@ref)としてスローされます。
+`Distributed.@spawnat`、`Distributed.@distributed`、[`@async`](@ref)、[`@spawn`](@ref Threads.@spawn)で字句的に囲まれたすべての処理が完了するまで待機します。囲まれた非同期処理でスローされた例外はすべて収集され、[`CompositeException`](@ref)としてスローされます。
 
 # Examples
 

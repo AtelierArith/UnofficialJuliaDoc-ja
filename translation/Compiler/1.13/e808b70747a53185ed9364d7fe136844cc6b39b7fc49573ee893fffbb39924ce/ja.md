@@ -6,19 +6,19 @@ inf_params::InferenceParams
 
 ---
 
-  * `inf_params.max_methods::Int = 3` 一致するメソッドが `max_methods` 個を超える場合、型推論はその呼び出しの解析を打ち切ります。これは、コンパイラーのレイテンシーと生成コードの性能とのトレードオフを調整します。通常、多数のメソッドを考慮しても、質の低い型情報を得るために*多くの*時間を費やすことになるため、このオプションの値は小さく保つべきです。[`Base.Experimental.@max_methods`](@ref) を使うと、モジュール単位またはメソッド単位の注釈によって、この設定をより細かく制御できます。
+  * `inf_params.max_methods::Int = 3` 一致するメソッドが `max_methods` 個を超える場合、型推論はその呼び出しの解析を打ち切ります。これは、コンパイラーのレイテンシーと生成コードの性能とのトレードオフを調整します。通常、多数のメソッドを考慮すると、質の低い型情報を得るために*多くの*時間を費やすことになるため、このオプションの値は小さく保つべきです。[`Base.Experimental.@max_methods`](@ref) を使うと、モジュール単位またはメソッド単位の注釈によって、この設定をより細かく制御できます。
 
 ---
 
-  * `inf_params.max_union_splitting::Int = 4` 一致するメソッドまたは条件型の集合を計算する前に、入れ替えまたは展開する union-tuple の最大数を指定します。
+  * `inf_params.max_union_splitting::Int = 4` 一致するメソッドまたは条件型の集合を計算する前に、入れ替えまたは展開するユニオンタプルの最大数を指定します。
 
 ---
 
-  * `inf_params.max_apply_union_enum::Int = 8` `Core._apply_iterate` の呼び出しを推論する際に、入れ替えまたは展開する union-tuple の最大数を指定します。
+  * `inf_params.max_apply_union_enum::Int = 8` `Core._apply_iterate` の呼び出しを推論する際に、入れ替えまたは展開するユニオンタプルの最大数を指定します。
 
 ---
 
-  * `inf_params.max_tuple_splat::Int = 32` `Core._apply_iterate` の呼び出しを推論しようとする際、タプルの要素数がこの値を超えると解析を中止します。
+  * `inf_params.max_tuple_splat::Int = 32` `Core._apply_iterate` の呼び出しを推論する際、タプルの要素数がこの値を超えると解析を中止します。
 
 ---
 
@@ -34,7 +34,7 @@ inf_params::InferenceParams
 
 ---
 
-  * `inf_params.assume_bindings_static::Bool = false` が `true` の場合、新しいバインディングは追加されないと仮定します。つまり、推論時に存在しないバインディングは実行時にも常に存在しないとみなせます（したがって、たとえばそれへのアクセスは `throw` になります）。この仮定はネイティブコード実行時の Julia の意味論では成り立たないため、既定値は `false` です。
+  * `inf_params.assume_bindings_static::Bool = false` が `true` の場合、新しいバインディングは追加されないものとみなします。つまり、推論時に存在しないバインディングは実行時にも常に存在しないと仮定できます（したがって、たとえばそれへのアクセスは `throw` になります）。この仮定はネイティブコード実行時の Julia のセマンティクスでは成り立たないため、既定値は `false` です。
 
 ---
 

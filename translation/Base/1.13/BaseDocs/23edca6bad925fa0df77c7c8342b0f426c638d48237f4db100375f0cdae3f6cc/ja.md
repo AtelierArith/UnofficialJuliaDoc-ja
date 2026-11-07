@@ -3,7 +3,7 @@ swapfield!(value, name::Symbol, x, [order::Symbol])
 swapfield!(value, i::Int, x, [order::Symbol])
 ```
 
-フィールドの取得と設定を同時に、アトミックに実行します。
+フィールドの取得と設定を同時に行う操作をアトミックに実行します。
 
 ```julia
 y = getfield(value, name)

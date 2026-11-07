@@ -2,4 +2,4 @@
 HAMT{K,V}
 ```
 
-永続性をオプションでサポートする HashArrayMappedTrie。
+永続性をオプションでサポートするHashArrayMappedTrie。

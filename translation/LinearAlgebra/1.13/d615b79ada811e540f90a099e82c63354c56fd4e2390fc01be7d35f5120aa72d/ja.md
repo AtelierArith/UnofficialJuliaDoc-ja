@@ -2,7 +2,7 @@
 GeneralizedSVD <: Factorization
 ```
 
-2つの行列 `A` と `B` の一般化特異値分解（SVD）を表す行列因子分解型です。`A = F.U*F.D1*F.R0*F.Q'` および `B = F.V*F.D2*F.R0*F.Q'` を満たします。対応する行列因子分解関数 [`svd(_, _)`](@ref) の戻り値の型です。
+2つの行列 `A` と `B` の一般化特異値分解（SVD）を表す行列因子分解型です。`A = F.U*F.D1*F.R0*F.Q'` と `B = F.V*F.D2*F.R0*F.Q'` を満たします。これは、対応する行列因子分解関数 [`svd(_, _)`](@ref) の戻り値の型です。
 
 M×N 行列 `A` と P×N 行列 `B` に対して、
 
@@ -17,7 +17,7 @@ M×N 行列 `A` と P×N 行列 `B` に対して、
 
 分解を反復すると、成分 `U`、`V`、`Q`、`D1`、`D2`、`R0` が得られます。
 
-`F.D1` と `F.D2` の要素には関連があり、その詳細は、内部で呼び出される [generalized SVD](https://www.netlib.org/lapack/lug/node36.html) および [xGGSVD3](https://www.netlib.org/lapack/explore-html/d6/db3/dggsvd3_8f.html) ルーチンに関する LAPACK のドキュメント（LAPACK 3.6.0 以降）で説明されています。
+`F.D1` と `F.D2` の要素の関係については、内部で呼び出される [generalized SVD](https://www.netlib.org/lapack/lug/node36.html) および [xGGSVD3](https://www.netlib.org/lapack/explore-html/d6/db3/dggsvd3_8f.html) ルーチンの LAPACK ドキュメント（LAPACK 3.6.0 以降）を参照してください。
 
 # Examples
 

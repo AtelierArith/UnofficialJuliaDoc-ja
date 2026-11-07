@@ -4,7 +4,7 @@ invperm(v)
 
 `v` の逆置換を返します。`B = A[v]` の場合は、`A == B[invperm(v)]` です。
 
-関連項目：[`sortperm`](@ref)、[`invpermute!`](@ref)、[`isperm`](@ref)、[`permutedims`](@ref)。
+関連項目: [`sortperm`](@ref)、[`invpermute!`](@ref)、[`isperm`](@ref)、[`permutedims`](@ref)。
 
 # Examples
 

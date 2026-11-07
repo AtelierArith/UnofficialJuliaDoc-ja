@@ -2,7 +2,7 @@
 with(f, (var::ScopedValue{T} => val)...)
 ```
 
-`f`を、新しい動的スコープで実行します。このとき、`var`は`val`に設定されます。`val`は、型`T`に変換されます。
+`var`を`val`に設定して、`f`を新しい動的スコープで実行します。`val`は`T`型に変換されます。
 
 関連項目: [`ScopedValues.@with`](@ref)、[`ScopedValues.ScopedValue`](@ref)、[`ScopedValues.get`](@ref)。
 

@@ -20,4 +20,4 @@ julia> occursin(r"a.a", "abba")
 false
 ```
 
-[`contains`](@ref)。
+[`contains`](@ref)

@@ -2,4 +2,4 @@
 MAX_PAREN_HIGHLIGHT_DEPTH
 ```
 
-[`HIGHLIGHT_FACES`](@ref)から切り替えられる`julia_rainbow_{paren,bracket_curly}_{n}`面の数。
+[`HIGHLIGHT_FACES`](@ref)から順に切り替えられる面の数。 `julia_rainbow_{paren,bracket_curly}_{n}`

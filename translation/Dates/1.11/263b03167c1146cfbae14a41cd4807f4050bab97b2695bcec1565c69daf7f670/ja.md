@@ -2,4 +2,4 @@
 minute(dt::DateTime)::Int64
 ```
 
-`DateTime` の分として、[`Int64`](@ref)。
+`DateTime` の分を、[`Int64`](@ref) として。

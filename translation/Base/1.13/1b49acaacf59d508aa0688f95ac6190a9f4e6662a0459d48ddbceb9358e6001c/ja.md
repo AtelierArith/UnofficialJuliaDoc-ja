@@ -7,7 +7,7 @@ redirect_stdio(f; stdin=nothing, stderr=nothing, stdout=nothing)
 各ストリームに指定できる値は次のとおりです。
 
   * `nothing`：ストリームをリダイレクトしません。
-  * `path::AbstractString`：ストリームを `path` のファイルにリダイレクトします。
+  * `path::AbstractString`：ストリームをファイル `path` にリダイレクトします。
   * `io`：`IOStream`、`TTY`、[`Pipe`](@ref)、ソケット、または `devnull`。
 
 # Examples

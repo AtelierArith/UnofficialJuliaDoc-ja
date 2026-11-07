@@ -2,9 +2,9 @@
 read_while!(f::Function, state::Base.Stateful, lastchar::Char)
 ```
 
-`state`を`f(::Char)`まで読み取ると、`false`になります。
+`state` を `f(::Char)` まで読み取ると、`false` になります。
 
-`Stateful`が`(_, char::Char)`のペアを反復し、述語`f(::Char)::Bool`が与えられたとき、`(str, lastchar)`を返します。ここで、`str::String`には`f(char) == true`を満たすすべての`char`が含まれ、`lastchar`は最後に確認された`char`要素です。`state`の要素がない場合は、入力`lastchar`を返します。
+`Stateful` が `(_, char::Char)` のペアを反復し、述語 `f(::Char)::Bool` が与えられたとき、`(str, lastchar)` を返します。ここで、`str::String` には `f(char) == true` を満たす `char` がすべて含まれ、`lastchar` は最後に確認された `char` 要素です。ただし、`state` の要素がない場合は、入力 `lastchar` になります。
 
 # Examples
 

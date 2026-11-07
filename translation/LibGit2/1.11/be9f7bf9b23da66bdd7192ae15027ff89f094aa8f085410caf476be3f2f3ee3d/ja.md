@@ -11,7 +11,7 @@ LibGit2.RebaseOperation
       * `REBASE_OPERATION_PICK`: 対象のコミットを cherry-pick します。
       * `REBASE_OPERATION_REWORD`: 対象のコミットを cherry-pick し、プロンプトを使ってコミットメッセージを書き換えます。
       * `REBASE_OPERATION_EDIT`: 対象のコミットを cherry-pick し、コミットの内容とメッセージをユーザーが編集できるようにします。
-      * `REBASE_OPERATION_SQUASH`: 対象のコミットを直前のコミットに squash します。2 つのコミットメッセージは統合されます。
+      * `REBASE_OPERATION_SQUASH`: 対象のコミットを直前のコミットに squash します。2つのコミットメッセージは統合されます。
       * `REBASE_OPERATION_FIXUP`: 対象のコミットを直前のコミットに squash します。直前のコミットメッセージのみが使用されます。
       * `REBASE_OPERATION_EXEC`: コミットを cherry-pick せず、コマンドを実行します。コマンドが正常終了した場合は続行します。
   * `id`: このリベース手順で処理するコミットの [`GitHash`](@ref)。

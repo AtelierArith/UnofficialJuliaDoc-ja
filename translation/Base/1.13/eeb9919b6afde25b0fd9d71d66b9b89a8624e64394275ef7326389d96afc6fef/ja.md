@@ -2,9 +2,9 @@
 issubnormal(f)::Bool
 ```
 
-浮動小数点数が非正規化数かどうかを判定します。
+浮動小数点数が非正規数かどうかを判定します。
 
-IEEE 浮動小数点数は、指数部のビットがすべて 0 で、仮数部が 0 でない場合、[subnormal](https://en.wikipedia.org/wiki/Subnormal_number) です。
+IEEE 浮動小数点数は、指数部のビットがすべて 0 で、仮数部が 0 でない場合、[subnormal](https://en.wikipedia.org/wiki/Subnormal_number)です。
 
 # Examples
 

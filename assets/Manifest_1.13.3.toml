@@ -2,7 +2,7 @@
 
 julia_version = "1.13.3"
 manifest_format = "2.1"
-project_hash = "560af68465fb6cea200fd3f0d4928a7ea9fd7093"
+project_hash = "dc443890979b28d0bfa7bedbf1e3b37189641543"
 
 [[deps.ANSIColoredPrinters]]
 git-tree-sha1 = "574baf8110975760d391c710b6341da1afa48d8c"
@@ -66,10 +66,10 @@ version = "0.10.2"
 
 [[deps.DocstringTranslation]]
 deps = ["Documenter", "Markdown", "OpenAI", "SHA", "Scratch"]
-git-tree-sha1 = "b1eba3d0467f0a074625bc6d409da9d5be878303"
+git-tree-sha1 = "b6a5edcbe9335fb40eeeb208b97f8d9b986c94a4"
 registries = "General"
 uuid = "d404e13b-1f8e-41a5-a26a-0b758a0c6c97"
-version = "0.1.6"
+version = "0.1.8"
 
 [[deps.Documenter]]
 deps = ["ANSIColoredPrinters", "AbstractTrees", "Base64", "CodecZlib", "Dates", "DocStringExtensions", "Downloads", "Git", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "MarkdownAST", "Pkg", "PrecompileTools", "REPL", "RegistryInstances", "SHA", "SimpleImageMetadata", "TOML", "Test", "Unicode"]

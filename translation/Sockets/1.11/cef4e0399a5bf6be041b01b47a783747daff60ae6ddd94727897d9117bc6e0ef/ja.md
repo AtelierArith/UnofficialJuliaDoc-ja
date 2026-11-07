@@ -2,4 +2,4 @@
 connect([host], port::Integer) -> TCPSocket
 ```
 
-ホスト `host` にポート `port` で接続します。
+ホスト `host` のポート `port` に接続します。

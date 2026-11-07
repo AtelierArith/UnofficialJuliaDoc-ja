@@ -2,4 +2,4 @@
 accept_batch(l::Lexer, f)
 ```
 
-`accept(l, f)`までの後続文字をすべて読み込みます。`false`
+`accept(l, f)` 以降のすべての文字を `false` まで消費します。

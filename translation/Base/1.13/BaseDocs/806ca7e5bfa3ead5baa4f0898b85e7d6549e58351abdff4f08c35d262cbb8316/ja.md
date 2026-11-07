@@ -8,4 +8,4 @@ swapglobal!(module::Module, name::Symbol, x, [order::Symbol=:monotonic])
     この関数を使用するには、Julia 1.11 以降が必要です。
 
 
-関連項目: [`swapproperty!`](@ref Base.swapproperty!) および [`setglobal!`](@ref)。
+関連項目: [`swapproperty!`](@ref Base.swapproperty!)、[`setglobal!`](@ref)。

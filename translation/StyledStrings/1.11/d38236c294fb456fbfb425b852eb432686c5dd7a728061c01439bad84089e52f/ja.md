@@ -2,7 +2,7 @@
 loadface!(name::Symbol => update::Face)
 ```
 
-`name`を`FACES``.current`の`update`とマージします。`name`が`FACES``.current`にまだ存在しない場合は、`update`に設定されます。顔をリセットするには、`update`を`nothing`に設定します。
+`name` のフェイスを `FACES``.current` の `update` とマージします。`name` のフェイスが `FACES``.current` にまだ存在しない場合は、`update` に設定されます。フェイスをリセットするには、`update` を `nothing` に設定します。
 
 # Examples
 

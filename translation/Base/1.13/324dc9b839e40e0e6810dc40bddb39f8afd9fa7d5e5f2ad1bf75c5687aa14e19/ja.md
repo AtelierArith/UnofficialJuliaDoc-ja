@@ -4,9 +4,9 @@ vcat(A...)
 
 配列または数値を縦方向に連結します。[`cat`](@ref)`(A...; dims=1)`および構文`[a; b; c]`と同等です。
 
-大きな配列ベクトルを連結する場合、`reduce(vcat, A)`は、ペアごとに処理するのではなく、`A isa AbstractVector{<:AbstractVecOrMat}`のときに効率的なメソッドを呼び出します。
+配列の大きなベクトルを連結する場合、`reduce(vcat, A)`は、`A isa AbstractVector{<:AbstractVecOrMat}`のときに、ペアごとに処理するのではなく、効率的なメソッドを呼び出します。
 
-関連項目：[`hcat`](@ref)、[`Iterators.flatten`](@ref)、[`stack`](@ref)。
+[`hcat`](@ref)、[`Iterators.flatten`](@ref)、[`stack`](@ref)も参照してください。
 
 # Examples
 

@@ -3,18 +3,18 @@ in(item, collection)::Bool
 ∈(item, collection)::Bool
 ```
 
-指定されたコレクションを反復処理して生成される値のいずれかと、ある項目が[`==`](@ref)であるかどうかを判定します。中置記法でも同様に使用できます。
+指定されたコレクションを反復して生成される値のいずれかに[`==`](@ref)かどうかを判定します。中置記法でも同様に使用できます。
 
 ```julia
 item in collection
 item ∈ collection
 ```
 
-`Bool`の値を返します。ただし、`item`が[`missing`](@ref)である場合、または`collection`に`missing`が含まれ、`item`が含まれない場合は、`missing`を返します（[three-valued logic](https://en.wikipedia.org/wiki/Three-valued_logic)。[`any`](@ref)および[`==`](@ref)と同じ動作です）。コレクションによっては、定義が少し異なります。たとえば、[`Set`](@ref)では、項目が要素のいずれかと[`isequal`](@ref)かどうかを調べます。[`Dict`](@ref)では`key=>value`のペアを検索し、`key`は[`isequal`](@ref)を使って比較します。
+`Bool`の値を返します。ただし、`item`が[`missing`](@ref)である場合、または`collection`に`missing`が含まれ、`item`は含まれない場合は、`missing`を返します（[three-valued logic](https://en.wikipedia.org/wiki/Three-valued_logic)。[`any`](@ref)および[`==`](@ref)と同じ動作です）。コレクションによっては、定義が少し異なります。たとえば、[`Set`](@ref)では、項目がいずれかの要素に[`isequal`](@ref)かどうかを調べます。[`Dict`](@ref)では`key=>value`のペアを検索し、`key`は[`isequal`](@ref)を使って比較します。
 
 辞書にキーが存在するかどうかを調べるには、[`haskey`](@ref)または`k in keys(dict)`を使用してください。上記のコレクションでは、結果は常に`Bool`です。
 
-`in.(items, collection)`または`items .∈ collection`でブロードキャストすると、`items`と`collection`の両方がブロードキャストされますが、これは意図した動作でないことがよくあります。たとえば、両方の引数がベクトルで（次元が一致している場合）、コレクション`items`の各値が、`collection`の対応する位置にある値と`in`かどうかを示すベクトルが返されます。`items`の各値が`collection`に含まれるかどうかを示すベクトルを得るには、次のように`collection`をタプルまたは`Ref`で囲みます。`in.(items, Ref(collection))`または`items .∈ Ref(collection)`。
+`in.(items, collection)`または`items .∈ collection`でブロードキャストすると、`items`と`collection`の両方がブロードキャストされますが、これは意図した動作でないことがよくあります。たとえば、両方の引数がベクトルで（次元が一致している場合）、コレクション`items`の各値が、`collection`の対応する位置にある値に`in`かどうかを示すベクトルが返されます。`items`の各値が`collection`に含まれるかどうかを示すベクトルを得るには、次のように`collection`をタプルまたは`Ref`で囲みます。`in.(items, Ref(collection))`または`items .∈ Ref(collection)`。
 
 関連項目：[`∉`](@ref)、[`insorted`](@ref)、[`contains`](@ref)、[`occursin`](@ref)、[`issubset`](@ref)。
 

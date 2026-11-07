@@ -2,7 +2,7 @@
 round(dt::TimeType, p::Period, [r::RoundingMode]) -> TimeType
 ```
 
-解像度`p`で、`dt`に最も近い`Date`または`DateTime`を返します。デフォルト（`RoundNearestTiesUp`）では、ちょうど中間の場合（たとえば、9:30を最も近い時間に丸める場合）は切り上げます。
+解像度`p`で、`dt`に最も近い`Date`または`DateTime`を返します。デフォルト（`RoundNearestTiesUp`）では、ちょうど中間の場合（例：9:30を最も近い時間に丸める場合）は切り上げます。
 
 便宜上、`p`には値ではなく型を指定できます。`round(dt, Dates.Hour)`は`round(dt, Dates.Hour(1))`の省略形です。
 

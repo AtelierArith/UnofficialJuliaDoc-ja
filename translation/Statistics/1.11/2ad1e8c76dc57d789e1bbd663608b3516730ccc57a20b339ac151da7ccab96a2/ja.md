@@ -2,4 +2,4 @@
 cor(x::AbstractVector)
 ```
 
-1を返します。
+1 を返します。

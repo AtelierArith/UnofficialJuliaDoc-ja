@@ -2,7 +2,7 @@
 LinearAlgebra.uplo(S::Union{Symmetric, Hermitian})::Symbol
 ```
 
-行列 `S` において、格納されている三角部分（`:U` または `:L`）に対応する `Symbol` を返します。つまり、その三角部分について、`S` と `parent(S)` に共通する要素を返します。
+行列 `S` の格納された三角部分（`:U` または `:L`）に対応する `Symbol` を返します。つまり、その三角部分について、`S` と `parent(S)` の両方に共通する要素です。
 
 # Example
 

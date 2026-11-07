@@ -2,9 +2,9 @@
 floatmin(T = Float64)
 ```
 
-浮動小数点型`T`で表現できる、最小の正規化数を返します。
+浮動小数点型 `T` で表現可能な、最小の正規化数を返します。
 
-関連項目：[`typemin`](@ref)、[`maxintfloat`](@ref)、[`floatmax`](@ref)、[`eps`](@ref)。
+関連項目: [`typemin`](@ref)、[`maxintfloat`](@ref)、[`floatmax`](@ref)、[`eps`](@ref)。
 
 # Examples
 

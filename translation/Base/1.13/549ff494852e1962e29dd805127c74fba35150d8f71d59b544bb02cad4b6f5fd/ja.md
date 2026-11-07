@@ -4,7 +4,7 @@ hcat(A...)
 
 配列または数値を水平方向に連結します。[`cat`](@ref)`(A...; dims=2)`と同等で、構文`[a b c]`または`[a;; b;; c]`でも表せます。
 
-配列を格納した大きなベクトルに対しては、`reduce(hcat, A)`は`A isa AbstractVector{<:AbstractVecOrMat}`の場合に効率的なメソッドを呼び出します。ベクトルのベクトルの場合は、[`stack`](@ref)`(A)`とも書けます。
+配列を多数含むベクトルの場合、`reduce(hcat, A)`は`A isa AbstractVector{<:AbstractVecOrMat}`のときに効率的なメソッドを呼び出します。ベクトルのベクトルの場合は、[`stack`](@ref)`(A)`とも書けます。
 
 関連項目: [`vcat`](@ref)、[`hvcat`](@ref)。
 

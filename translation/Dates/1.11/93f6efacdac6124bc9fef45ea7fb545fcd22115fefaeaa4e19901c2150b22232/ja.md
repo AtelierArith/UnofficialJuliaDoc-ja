@@ -4,7 +4,7 @@ floor(dt::TimeType, p::Period)::TimeType
 
 解像度 `p` において、`dt` 以下で最も近い `Date` または `DateTime` を返します。
 
-便宜上、`p` は値ではなく型でもかまいません。`floor(dt, Dates.Hour)` は `floor(dt, Dates.Hour(1))` の省略形です。
+便宜上、`p` は値ではなく型でもかまいません。`floor(dt, Dates.Hour)` は `floor(dt, Dates.Hour(1))` のショートカットです。
 
 ```jldoctest
 julia> floor(Date(1985, 8, 16), Month)

@@ -2,15 +2,15 @@
 ispublic(m::Module, s::Symbol)::Bool
 ```
 
-シンボルがモジュール内でパブリックとしてマークされているかどうかを返します。
+シンボルがモジュール内で public としてマークされているかどうかを返します。
 
-エクスポートされたシンボルはパブリックとみなされます。
+エクスポートされたシンボルは public とみなされます。
 
 !!! compat "Julia 1.11"
-    この関数とパブリックという概念は、Julia 1.11で追加されました。
+    この関数と public という概念は、Julia 1.11 で追加されました。
 
 
-関連項目: [`isexported`](@ref)、[`names`](@ref)
+関連項目: [`isexported`](@ref), [`names`](@ref)
 
 ```jldoctest
 julia> module Mod

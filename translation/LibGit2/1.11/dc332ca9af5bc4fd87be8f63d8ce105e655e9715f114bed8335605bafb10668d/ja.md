@@ -2,7 +2,7 @@
 add_fetch!(repo::GitRepo, rmt::GitRemote, fetch_spec::String)
 ```
 
-指定した`rmt`に対する *fetch* refspec を追加します。この refspec には、どのブランチを取得するかを示す情報が含まれます。
+指定した`rmt`に対する *fetch* refspec を追加します。この refspec には、どのブランチをフェッチするかを示す情報が含まれます。
 
 # Examples
 

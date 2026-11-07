@@ -2,4 +2,4 @@
 Hour(dt::Time)
 ```
 
-Time の時の部分を `Hour` として扱います。
+Time の時の部分は `Hour` です。

@@ -2,7 +2,7 @@
 Meta.quot(ex)::Expr
 ```
 
-式 `ex` をクォートすると、ヘッドが `quote` の式が生成されます。これは、たとえば AST 内で型 `Expr` のオブジェクトを表すために使用できます。[QuoteNode](@ref man-quote-node) に関するマニュアルの節も参照してください。
+式 `ex` をクォートすると、ヘッドが `quote` の式が生成されます。たとえば、AST 内で型 `Expr` のオブジェクトを表すために使用できます。[QuoteNode](@ref man-quote-node) に関するマニュアルのセクションも参照してください。
 
 # Examples
 

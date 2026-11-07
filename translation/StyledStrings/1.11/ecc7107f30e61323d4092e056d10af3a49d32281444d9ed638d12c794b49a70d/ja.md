@@ -2,4 +2,4 @@
 getface(c::AnnotatedChar)
 ```
 
-[`Face`](@ref) を取得します。これは `c` に適用されます。
+`c`に適用されるマージ済みの[`Face`](@ref)を取得します。

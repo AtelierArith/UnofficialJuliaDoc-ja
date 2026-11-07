@@ -2,9 +2,9 @@
 timedwait(testcb, timeout::Real; pollint::Real=0.1)
 ```
 
-`testcb()`秒が経過するか、`true`秒または`timeout`秒のいずれか早い方が経過するまで待ちます。テスト関数は`pollint`秒ごとにポーリングされます。`pollint`の最小値は0.001秒、つまり1ミリ秒です。
+`testcb()` が `true` または `timeout` 秒経過するまで待ちます。いずれか早い方が適用されます。テスト関数は `pollint` 秒ごとにポーリングされます。`pollint` の最小値は 0.001 秒、つまり 1 ミリ秒です。
 
-`:ok`または`:timed_out`を返します。
+`:ok` または `:timed_out` を返します。
 
 # Examples
 

@@ -4,9 +4,9 @@ repr(x; context=nothing)
 
 2引数の`show(io, x)`関数を使うと、任意の値を文字列表現にできます。この関数は、可能な場合にJuliaコードとして解析できる文字列を生成することを目指しています。つまり、`eval(Meta.parse(repr(x))) == x`が成り立つ必要があります。`repr`にメソッドを追加してはいけません。代わりに、[`show`](@ref)メソッドを定義してください。
 
-省略可能なキーワード引数`context`には、`:key=>value`のペア、`:key=>value`のペアのタプル、または属性が`show`に渡されるI/Oストリームに使用される`IO`または[`IOContext`](@ref)オブジェクトを指定できます。
+省略可能なキーワード引数`context`には、`:key=>value`のペア、`:key=>value`のペアのタプル、または`IO`や[`IOContext`](@ref)のオブジェクトを指定できます。これらの属性は、`show`に渡されるI/Oストリームに使用されます。
 
-`repr(x)`は通常、Juliaで`x`の値を入力する方法に似ています。人が読みやすいように整形された`x`の表現を返すには、`x`をREPLで表示するのと同等の、3引数の`show(io, mime, x)`を使う[`repr(MIME("text/plain"), x)`](@ref)も参照してください。
+`repr(x)`は通常、`x`の値をJuliaで入力する方法に似ています。人が読みやすい形式で「整形表示」した`x`を返すには、[`repr(MIME("text/plain"), x)`](@ref)も参照してください。これは、`x`のREPL表示に相当し、3引数の`show(io, mime, x)`を使います。
 
 !!! compat "Julia 1.7"
     キーワード`context`にタプルを渡すには、Julia 1.7以降が必要です。

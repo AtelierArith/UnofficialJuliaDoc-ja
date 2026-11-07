@@ -2,7 +2,7 @@
 GitDiff(content::AbstractString)
 ```
 
-バッファから差分を解析します。`content`は統一diff形式である必要があります。[`GitDiff`](@ref)オブジェクトを返します。
+バッファから差分を解析します。`content`は統一 diff 形式である必要があります。[`GitDiff`](@ref)オブジェクトを返します。
 
 これは[`git_diff_from_buffer`](https://libgit2.org/libgit2/#HEAD/group/diff/git_diff_from_buffer)と同等です。
 

@@ -4,7 +4,7 @@ map(f, A::AbstractArray...) -> N-array
 
 同じ[`ndims`](@ref)の多次元配列に対して処理を行う場合、すべての配列の[`axes`](@ref)が同じでなければならず、結果も同じになります。
 
-サイズが一致しなくてもよい[`broadcast`](@ref)も参照してください。
+サイズが一致しない場合に使える[`broadcast`](@ref)も参照してください。
 
 # Examples
 

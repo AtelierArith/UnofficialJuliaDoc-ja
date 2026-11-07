@@ -2,7 +2,7 @@
 open(f::Function, args...; kwargs...)
 ```
 
-`open(args...; kwargs...)`の結果に関数`f`を適用し、完了したら生成されたファイル記述子を閉じてください。
+`open(args...; kwargs...)`の結果に関数`f`を適用し、完了後に生成されたファイル記述子を閉じてください。
 
 # Examples
 

@@ -2,4 +2,4 @@
 Threads.threadpool(tid = threadid())::Symbol
 ```
 
-指定したスレッドのスレッドプールを返します。戻り値は `:default`、`:interactive`、または `:foreign` です。
+指定したスレッドのスレッドプールを返します。`:default`、`:interactive`、または`:foreign`のいずれかです。

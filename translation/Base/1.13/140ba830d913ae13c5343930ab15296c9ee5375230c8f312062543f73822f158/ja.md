@@ -2,7 +2,7 @@
 _eval_import(imported::Bool, to::Module, from::Union{Expr, Nothing}, paths::Expr...)
 ```
 
-インポートパスを評価し、インポートする各名前について `Core._import` を呼び出します。`imported` インポートは `import` で作成され、`using A: x` はこれを false に設定します。`from` は、インポートパスのうち `:` より前の部分です。これは `import`、`import ...:`、`using ...:` を低水準化した形式です。
+インポートパスを評価し、インポートする各名前について `Core._import` を呼び出します。`imported` インポートは `import` で作成され、`using A: x` はこれを false に設定します。`from` は、インポートパスのうち `:` より前の部分です。これは `import`、`import ...:`、`using ...:` の低水準形式です。
 
 ```julia
 import A             => _eval_import(true,  Main, nothing,          Expr(:., :A))

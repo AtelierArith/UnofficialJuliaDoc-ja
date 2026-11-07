@@ -2,7 +2,7 @@
 getnameinfo(host::IPAddr) -> String
 ```
 
-オペレーティングシステムの基盤となる`getnameinfo`実装を使用して、IPアドレスを逆引きし、ホスト名とサービスを返します。
+オペレーティングシステムの基盤となる`getnameinfo`実装を使用して、IPアドレスの逆引きを行い、ホスト名とサービスを返します。
 
 # Examples
 

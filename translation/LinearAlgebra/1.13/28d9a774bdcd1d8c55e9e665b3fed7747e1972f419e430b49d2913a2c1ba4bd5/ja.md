@@ -4,7 +4,7 @@ eigvecs(A::Union{Symmetric, Hermitian, SymTridiagonal}[, eigvals])::Matrix
 
 列が`A`の固有ベクトルとなる行列`M`を返します。（`k`番目の固有ベクトルは、スライス`M[:, k]`から取得できます。）
 
-固有値のオプションベクトル`eigvals`を指定すると、`eigvecs`はそれに対応する固有ベクトルを返します。
+固有値のオプションベクトル`eigvals`を指定すると、`eigvecs`は対応する固有ベクトルを返します。
 
 # Examples
 

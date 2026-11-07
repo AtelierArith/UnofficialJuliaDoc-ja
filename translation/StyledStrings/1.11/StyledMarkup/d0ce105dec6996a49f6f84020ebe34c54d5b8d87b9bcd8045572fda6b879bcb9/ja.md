@@ -2,4 +2,4 @@
 skipwhitespace!(state::State)
 ```
 
-`state.s`内の空白、タブ、改行文字をすべて読み飛ばします。
+`state.s` 内のすべての空白、タブ、改行文字を読み飛ばします。

@@ -2,7 +2,7 @@
 reinterpret(::Type{Out}, x::In)
 ```
 
-isbits値`x`内のバイナリデータの型解釈を、isbits型`Out`として解釈されるように変更します。`Out`のサイズ（パディングを除く）は、`x`の型のサイズと同じでなければなりません。たとえば、`reinterpret(Float32, UInt32(7))`は、`UInt32(7)`に対応する4バイトを[`Float32`](@ref)として解釈します。なお、`reinterpret(In, reinterpret(Out, x)) === x`
+isbits 値 `x` 内のバイナリデータを、isbits 型 `Out` として解釈します。`Out` のサイズ（パディングを除く）は、`x` の型のサイズと同じでなければなりません。たとえば、`reinterpret(Float32, UInt32(7))` は、`UInt32(7)` に対応する 4 バイトを [`Float32`](@ref) として解釈します。なお、`reinterpret(In, reinterpret(Out, x)) === x`
 
 ```jldoctest
 julia> reinterpret(Float32, UInt32(7))
@@ -19,9 +19,9 @@ julia> reinterpret(Tuple{UInt16, UInt8}, (0x01, 0x0203))
 ```
 
 !!! note
-    パディングの扱いは、reinterpret(::DataType, ::AbstractArray)の場合とは異なります。
+    パディングの扱いは、reinterpret(::DataType, ::AbstractArray) の場合とは異なります。
 
 
 !!! warning
-    `Out`内のビットの組み合わせの一部が有効とみなされず、本来なら型のコンストラクターやメソッドによって排除される場合は、注意してください。追加の検証を行わないと、予期しない動作が発生する可能性があります。
+    `Out` のビットの組み合わせの中に無効とみなされるものがあり、それが型のコンストラクターやメソッドによって通常は防がれる場合は、注意してください。追加の検証を行わないと、予期しない動作が発生する可能性があります。
 

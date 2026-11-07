@@ -4,7 +4,7 @@ copy_transpose!(B::AbstractMatrix, ir_dest::AbstractUnitRange, jr_dest::Abstract
                 M::AbstractVecOrMat, ir_src::AbstractUnitRange, jr_src::AbstractUnitRange) -> B
 ```
 
-文字パラメーター `tM` に応じて、行列 `M` の要素を `B` に効率よくコピーします。
+文字パラメーター `tM` に応じて、行列 `M` の要素を `B` に効率よくコピーします。条件は次のとおりです。
 
 |  `tM` | コピー先                  | コピー元                           |
 | -----:|:--------------------- |:------------------------------ |
@@ -12,6 +12,6 @@ copy_transpose!(B::AbstractMatrix, ir_dest::AbstractUnitRange, jr_dest::Abstract
 | `'T'` | `B[ir_dest, jr_dest]` | `M[jr_src, ir_src]`            |
 | `'C'` | `B[ir_dest, jr_dest]` | `conj(M)[jr_src, ir_src]`      |
 
-`B[ir_dest, jr_dest]` の要素は上書きされます。また、インデックス範囲のパラメーターは `length(ir_dest) == length(jr_src)` および `length(jr_dest) == length(ir_src)` を満たす必要があります。
+`B[ir_dest, jr_dest]` の要素は上書きされます。また、インデックス範囲パラメーターは `length(ir_dest) == length(jr_src)` および `length(jr_dest) == length(ir_src)` を満たす必要があります。
 
 [`copyto!`](@ref) および [`copy_adjoint!`](@ref) も参照してください。

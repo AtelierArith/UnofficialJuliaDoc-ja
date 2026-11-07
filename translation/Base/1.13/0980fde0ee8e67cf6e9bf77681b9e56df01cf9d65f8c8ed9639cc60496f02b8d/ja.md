@@ -2,7 +2,7 @@
 SubstitutionString(substr) <: AbstractString
 ```
 
-指定された文字列 `substr` を `SubstitutionString` として格納します。正規表現による置換で使用します。通常は [`@s_str`](@ref) マクロを使って構築します。
+正規表現による置換で使用するため、指定された文字列 `substr` を `SubstitutionString` として格納します。通常は [`@s_str`](@ref) マクロを使って構築します。
 
 # Examples
 

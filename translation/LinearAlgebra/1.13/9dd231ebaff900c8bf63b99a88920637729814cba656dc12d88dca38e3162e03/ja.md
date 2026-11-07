@@ -2,15 +2,15 @@
 exp(A::AbstractMatrix)
 ```
 
-行列指数関数 `A` を、次のように定義して計算します。
+`A` の行列指数関数を、次のように定義して計算します。
 
 ```math
 e^A = \sum_{n=0}^{\infty} \frac{A^n}{n!}.
 ```
 
-`A` が対称行列またはエルミート行列の場合は固有値分解（[`eigen`](@ref)）を使用し、それ以外の場合はスケーリング・二乗法（[^H05] を参照）を使用します。
+対称またはエルミートな `A` には固有分解（[`eigen`](@ref)）を使用し、それ以外の場合はスケーリング・二乗法（[^H05] を参照）を選択します。
 
-[^H05]: Nicholas J. Higham, “The squaring and scaling method for the matrix exponential revisited”, SIAM Journal on Matrix Analysis and Applications, 26(4), 2005, 1179–1193. [doi:10.1137/090768539](https://doi.org/10.1137/090768539)
+[^H05]: Nicholas J. Higham, "The squaring and scaling method for the matrix exponential revisited", SIAM Journal on Matrix Analysis and Applications, 26(4), 2005, 1179-1193. [doi:10.1137/090768539](https://doi.org/10.1137/090768539)
 
 # Examples
 

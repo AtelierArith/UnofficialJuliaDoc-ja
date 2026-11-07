@@ -6,4 +6,4 @@ Core.Intrinsics.atomic_pointerset(pointer::Ptr{T}, new::T, order::Symbol) --> po
     この関数を使用するには、Julia 1.7 以降が必要です。
 
 
-[`unsafe_store!`](@ref Base.unsafe_store!)。
+[`unsafe_store!`](@ref Base.unsafe_store!)

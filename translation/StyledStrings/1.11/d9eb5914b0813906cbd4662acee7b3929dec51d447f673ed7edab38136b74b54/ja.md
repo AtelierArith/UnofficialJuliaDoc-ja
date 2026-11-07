@@ -2,7 +2,7 @@
 struct SimpleColor
 ```
 
-文字列のスタイル設定に使用する、色の基本的な表現です。名前付きの色（`:red`など）か、ビット深度が8の`r`、`g`、`b`色を指定するNamedTuple（`RGBTuple`）のいずれかを格納できます。
+文字列のスタイル設定に用いる、色の基本的な表現です。名前付きの色（`:red` など）、または `RGBTuple` を格納できます。後者は、`r`、`g`、`b` の各成分を8ビットで指定する NamedTuple です。
 
 # Constructors
 
@@ -13,4 +13,4 @@ SimpleColor(r::Integer, b::Integer, b::Integer)
 SimpleColor(rgb::UInt32)   # e.g. 0x123456
 ```
 
-`tryparse(SimpleColor, rgb::String)`も参照してください。
+`tryparse(SimpleColor, rgb::String)` も参照してください。

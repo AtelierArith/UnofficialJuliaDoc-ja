@@ -2,4 +2,4 @@
 SparseMatrixCSCSymmHerm
 ```
 
-`Symmetric` または `Hermitian`（`SparseMatrixCSC` または `SparseMatrixCSCView` のもの）。
+`Symmetric` または `Hermitian` の `SparseMatrixCSC` または `SparseMatrixCSCView`。

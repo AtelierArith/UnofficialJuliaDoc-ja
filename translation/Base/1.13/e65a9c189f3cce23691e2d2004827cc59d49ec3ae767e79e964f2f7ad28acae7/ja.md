@@ -2,7 +2,7 @@
 f = Returns(value)
 ```
 
-`f` が `f(args...; kw...) === value` を満たすように、呼び出し可能なものを作成します。
+`f` が `f(args...; kw...) === value` を満たすような呼び出し可能オブジェクトを作成します。
 
 # Examples
 

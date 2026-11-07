@@ -2,7 +2,7 @@
 isvalid(T, value)::Bool
 ```
 
-指定された値がその型として有効な場合は、`true`を返します。型は現在、`AbstractChar`または`String`のいずれかです。`AbstractChar`の値は、`AbstractChar`型または[`UInt32`](@ref)型にできます。`String`の値は、その型、`SubString{String}`、`Vector{UInt8}`、またはそれらの連続した部分配列にできます。
+指定された値がその型として有効な場合、`true`を返します。型は現在、`AbstractChar`または`String`のいずれかです。`AbstractChar`の値は、`AbstractChar`型または[`UInt32`](@ref)型にできます。`String`の値は、その型、`SubString{String}`、`Vector{UInt8}`、またはそれらの連続した部分配列にできます。
 
 # Examples
 

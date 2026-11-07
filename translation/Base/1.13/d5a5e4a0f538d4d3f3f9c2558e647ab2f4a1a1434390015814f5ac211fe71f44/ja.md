@@ -2,7 +2,7 @@
 trailing_ones(x::Integer)::Integer
 ```
 
-`x` の2進表現で末尾に連続する1の個数。
+2進表現の末尾に連続する 1 の個数（`x`）。
 
 # Examples
 

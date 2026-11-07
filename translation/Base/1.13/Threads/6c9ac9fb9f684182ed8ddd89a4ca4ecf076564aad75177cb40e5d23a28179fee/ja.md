@@ -2,7 +2,7 @@
 Threads.atomic_min!(x::Atomic{T}, val::T) where T
 ```
 
-`x` と `val` の最小値を `x` にアトミックに格納します。
+`x` と `val` の最小値を、`x` にアトミックに格納します。
 
 `x[] = min(x[], val)` をアトミックに実行します。**古い**値を返します。
 

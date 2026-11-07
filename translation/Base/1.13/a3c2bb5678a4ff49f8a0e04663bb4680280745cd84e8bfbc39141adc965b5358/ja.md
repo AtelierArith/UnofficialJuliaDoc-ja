@@ -4,7 +4,7 @@ mod(x::Integer, T::Type{<:Integer})::T
 %(x::Integer, T::Type{<:Integer})::T
 ```
 
-`y` が `[typemin(T),typemax(T)]` の整数であるとき、`x` ≡ `y` (mod n) を満たす `y::T` を求めます。ここで n は、`T` で表現可能な整数の個数です。`T` が任意の整数を表現できる場合（例：`T == BigInt`）、この操作は `T` への変換に相当します。
+`y` が `[typemin(T),typemax(T)]` の整数であるとき、`x` ≡ `y` (mod n) を満たす `y::T` を求めます。ここで、n は `T` で表現可能な整数の個数です。`T` が任意の整数を表現できる場合（例：`T == BigInt`）、この演算は `T` への変換に相当します。
 
 # Examples
 

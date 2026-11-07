@@ -6,12 +6,12 @@ abspath(path::AbstractString)::String
 
 # Examples
 
-`JuliaExample`ディレクトリから見て2階層上にあるデータを使用していて、現在のディレクトリが`JuliaExample`という名前の場合、次のように記述できます。
+`JuliaExample`というディレクトリにいて、使用するデータが`JuliaExample`ディレクトリから見て2階層上にある場合は、次のように記述できます。
 
 ```julia
 abspath("../../data")
 ```
 
-これにより、`"/home/JuliaUser/data/"`のようなパスが得られます。
+この場合、パスは`"/home/JuliaUser/data/"`のようになります。
 
 [`joinpath`](@ref)、[`pwd`](@ref)、[`expanduser`](@ref)も参照してください。

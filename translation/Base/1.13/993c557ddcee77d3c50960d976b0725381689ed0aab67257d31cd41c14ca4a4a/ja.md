@@ -2,7 +2,7 @@
 front(x::Tuple)::Tuple
 ```
 
-`Tuple`は、`x`の最後の要素を除いたものを返します。
+`Tuple`は、`x`の最後の要素を除いたものです。
 
 関連項目: [`first`](@ref)、[`tail`](@ref Base.tail)。
 

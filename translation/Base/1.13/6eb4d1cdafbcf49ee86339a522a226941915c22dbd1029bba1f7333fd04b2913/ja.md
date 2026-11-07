@@ -2,7 +2,7 @@
 takestring!(io::IOBuffer)::String
 ```
 
-バッファを初期状態にリセットし、`io`の内容を`String`として返します。`IOBuffer`から文字列を作成するには、`String(take!(io))`を呼び出すよりも、この方法が推奨されます。
+`io` の内容を `String` として返し、バッファを初期状態にリセットします。`IOBuffer` から文字列を作成するために `String(take!(io))` を呼び出すよりも、この方法が推奨されます。
 
 # Examples
 
@@ -19,5 +19,5 @@ true
 ```
 
 !!! compat "Julia 1.13"
-    この関数を使用するには、Julia 1.13以降が必要です。
+    この関数を使用するには、Julia 1.13 以降が必要です。
 

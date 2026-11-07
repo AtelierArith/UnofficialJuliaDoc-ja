@@ -5,7 +5,7 @@ mean(A::AbstractArray; dims)
 指定された次元に沿って配列の平均を計算します。
 
 !!! compat "Julia 1.1"
-    空の配列に対する`mean`の使用には、Julia 1.1以降が必要です。
+    空の配列に対する `mean` の使用には、Julia 1.1 以降が必要です。
 
 
 # Examples

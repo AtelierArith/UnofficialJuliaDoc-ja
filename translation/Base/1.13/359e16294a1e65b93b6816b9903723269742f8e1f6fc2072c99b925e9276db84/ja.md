@@ -2,11 +2,11 @@
 Base.split_rest(collection, n::Int[, itr_state]) -> (rest_but_n, last_n)
 ```
 
-`collection` の末尾を、特定の反復状態 `itr_state` から分割する汎用関数です。新しいコレクションを2つ含むタプルを返します。1つ目には末尾の要素のうち、最後の `n` 個を除いたすべてが含まれ、残りの要素は2つ目のコレクションに格納されます。
+`collection` の末尾を、特定の反復状態 `itr_state` から分割する汎用関数です。2つの新しいコレクションからなるタプルを返します。1つ目には、末尾の要素のうち最後の `n` 個を除いたすべてが含まれ、除かれた要素は2つ目のコレクションに格納されます。
 
 1つ目のコレクションの型は、通常 [`Base.rest`](@ref) の型に従います。ただし、フォールバックの場合は遅延評価されず、ベクターに即時収集されます。
 
-ユーザー定義のコレクション型でオーバーロードして、[slurping in assignments](@ref destructuring-assignment) が末尾以外の位置にある場合の動作（たとえば `a, b..., c = collection`）をカスタマイズできます。
+ユーザー定義のコレクション型でオーバーロードすることで、[slurping in assignments](@ref destructuring-assignment) が末尾以外の位置にある場合の動作（たとえば `a, b..., c = collection`）をカスタマイズできます。
 
 !!! compat "Julia 1.9"
     `Base.split_rest` には Julia 1.9 以降が必要です。

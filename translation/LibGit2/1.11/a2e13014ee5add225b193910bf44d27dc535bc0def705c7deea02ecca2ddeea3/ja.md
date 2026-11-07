@@ -1,1 +1,1 @@
-`credentials_callback` 用の C 関数ポインター
+`credentials_callback` の C 関数ポインター

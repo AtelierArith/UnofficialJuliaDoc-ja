@@ -10,5 +10,5 @@ ImmutableDict(KV::Pair)
 
 `ImmutableDict`に`key => value`のペアを新しく追加します。
 
-  * この組み合わせがプロパティセットに含まれているかどうかを確認するには、`(key => value) in dict`を使用します。
-  * 特定のキーに対応する最新の値を取得するには、`get(dict, key, default)`を使用します。
+  * この組み合わせがプロパティセットに含まれているかどうかを確認するには、`(key => value) in dict`を使います。
+  * 特定のキーに対応する最新の値を取得するには、`get(dict, key, default)`を使います。

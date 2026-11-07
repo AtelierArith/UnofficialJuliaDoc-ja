@@ -1,1 +1,1 @@
-C関数ポインター（`mirror_callback`）
+C 関数ポインター（`mirror_callback`）

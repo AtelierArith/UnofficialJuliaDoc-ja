@@ -4,9 +4,9 @@ issubset(a, b)::Bool
 ⊇(b, a)::Bool
 ```
 
-`a`のすべての要素が`b`にも含まれているかどうかを、[`in`](@ref)を使って判定します。
+`a` のすべての要素が `b` にも含まれているかどうかを、[`in`](@ref) を使って判定します。
 
-関連項目：[`⊊`](@ref)、[`⊈`](@ref)、[`∩`](@ref intersect)、[`∪`](@ref union)、[`contains`](@ref)。
+関連項目: [`⊊`](@ref)、[`⊈`](@ref)、[`∩`](@ref intersect)、[`∪`](@ref union)、[`contains`](@ref)。
 
 # Examples
 

@@ -2,11 +2,11 @@
 Sys.JIT::String
 ```
 
-現在のランタイムで使用されている、特定のJust-In-Time（JIT）コンパイラを表す文字列です。
+現在のランタイムで使用されている、特定のJust-In-Time（JIT）コンパイラーを表す文字列です。
 
 # Examples
 
-現在、この値はLLVMの「ORC」（「On-Request Compilation」）JITライブラリを表す`"ORCJIT"`です。
+現在は、LLVMの「ORC」（「On-Request Compilation」）JITライブラリを示す`"ORCJIT"`です。
 
 ```jldoctest
 julia> Sys.JIT

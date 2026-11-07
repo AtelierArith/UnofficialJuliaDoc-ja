@@ -2,7 +2,7 @@
 wordsize(p::AbstractPlatform)
 ```
 
-指定した`Platform`オブジェクトのワードサイズを取得します。
+指定された`Platform`オブジェクトのワードサイズを取得します。
 
 # Examples
 

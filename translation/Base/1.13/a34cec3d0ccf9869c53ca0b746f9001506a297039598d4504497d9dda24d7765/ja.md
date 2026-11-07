@@ -2,7 +2,7 @@
 memoryindex(ref::GenericMemoryRef)::Int
 ```
 
-`GenericMemory`内での`ref`の1始まりのインデックスを取得します。
+`ref` の `GenericMemory` 内での 1 始まりのインデックスを取得します。
 
 # Examples
 
@@ -17,5 +17,5 @@ julia> Base.memoryindex(memoryref(Memory{Nothing}(undef, 10), 8))
 ```
 
 !!! compat "Julia 1.13"
-    この関数を使用するには、Julia 1.13以降が必要です。
+    この関数を使用するには、Julia 1.13 以降が必要です。
 

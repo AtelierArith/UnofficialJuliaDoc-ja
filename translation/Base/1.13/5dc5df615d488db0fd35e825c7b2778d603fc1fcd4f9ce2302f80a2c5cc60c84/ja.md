@@ -2,7 +2,7 @@
 @v_str
 ```
 
-文字列を解析して[`VersionNumber`](@ref)に変換するための文字列マクロ。
+文字列を解析して[`VersionNumber`](@ref)に変換する文字列マクロ。
 
 # Examples
 

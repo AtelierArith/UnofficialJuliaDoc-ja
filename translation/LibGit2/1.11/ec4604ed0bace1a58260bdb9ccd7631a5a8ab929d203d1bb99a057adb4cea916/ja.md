@@ -13,7 +13,7 @@ LibGit2.split_cfg_entry(ce::LibGit2.ConfigEntry)::Tuple{String,String,String,Str
     username = me
 ```
 
-`ConfigEntry`は次のようになります。
+`ConfigEntry`は、次のようになります。
 
 ```julia-repl
 julia> entry

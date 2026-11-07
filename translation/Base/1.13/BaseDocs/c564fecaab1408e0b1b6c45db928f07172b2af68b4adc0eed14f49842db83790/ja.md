@@ -2,7 +2,7 @@
 typeassert(x, type)
 ```
 
-[`TypeError`](@ref) をスローします。ただし、`x isa type` の場合を除きます。構文 `x::type` はこの関数を呼び出します。
+[`TypeError`](@ref)をスローします。ただし、`x isa type`の場合を除きます。この関数は、`x::type`という構文で呼び出します。
 
 # Examples
 

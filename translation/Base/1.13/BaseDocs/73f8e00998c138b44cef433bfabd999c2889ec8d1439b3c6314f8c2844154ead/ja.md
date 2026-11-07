@@ -2,7 +2,7 @@
 Matrix{T}(undef, m, n)
 ```
 
-サイズが`m`×`n`の未初期化の[`Matrix{T}`](@ref)を構築します。
+サイズが`m`×`n`の、未初期化の[`Matrix{T}`](@ref)を構築します。
 
 # Examples
 

@@ -6,4 +6,4 @@ sinpi(x::T) where T -> float(T)
 
 `isinf(x)`の場合は[`DomainError`](@ref)をスローし、`isnan(x)`の場合は`T(NaN)`を返します。
 
-関連項目: [`sind`](@ref)、[`cospi`](@ref)、[`sincospi`](@ref)。
+関連項目：[`sind`](@ref)、[`cospi`](@ref)、[`sincospi`](@ref)。

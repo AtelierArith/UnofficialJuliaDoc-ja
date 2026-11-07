@@ -9,10 +9,10 @@ eachsplit(str::AbstractString; limit::Integer=0, keepempty::Bool=false)
 
 省略可能なキーワード引数は次のとおりです。
 
-  * `limit`：結果の最大サイズ。`limit=0`を指定すると上限なし（デフォルト）になります。
-  * `keepempty`：結果に空のフィールドを含めるかどうか。`dlm`引数を指定しない場合のデフォルトは`false`、`dlm`引数を指定した場合のデフォルトは`true`です。
+  * `limit`: 結果の最大サイズ。`limit=0`を指定すると上限なし（デフォルト）
+  * `keepempty`: 結果に空のフィールドを含めるかどうか。デフォルトは、`dlm`引数を指定しない場合は`false`、`dlm`引数を指定した場合は`true`です。
 
-関連項目：[`split`](@ref)。
+関連項目: [`split`](@ref)。
 
 !!! compat "Julia 1.8"
     `eachsplit`関数を使用するには、Julia 1.8以降が必要です。

@@ -2,4 +2,4 @@
 second(t::Time)::Int64
 ```
 
-`Time` の2つ目は、[`Int64`](@ref) として。
+[`Int64`](@ref) の `Time` 番目。

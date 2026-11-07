@@ -2,7 +2,7 @@
 get!(collection, key, default)
 ```
 
-指定されたキーに対応する値を返します。キーに対応するマッピングが存在しない場合は、`key => default`を格納し、`default`を返します。
+指定されたキーに対応する値を返します。キーに対応するマッピングが存在しない場合は、`key => default`を格納して、`default`を返します。
 
 # Examples
 

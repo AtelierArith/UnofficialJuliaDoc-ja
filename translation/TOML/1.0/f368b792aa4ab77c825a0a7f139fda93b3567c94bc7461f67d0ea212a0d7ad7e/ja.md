@@ -2,7 +2,7 @@
 ParserError
 ```
 
-[`tryparse`](@ref)および[`tryparsefile`](@ref)の解析に失敗したときに返される型です。次のフィールドなどを含みます。
+[`tryparse`](@ref)および[`tryparsefile`](@ref)で解析に失敗した場合に返される型です。次のフィールドなどを含みます。
 
   * `pos`：エラーが発生した文字列内の位置
   * `table`：それまでに正常に解析された結果

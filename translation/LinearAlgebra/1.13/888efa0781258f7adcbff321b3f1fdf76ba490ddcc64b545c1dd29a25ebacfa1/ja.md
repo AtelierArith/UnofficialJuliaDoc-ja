@@ -2,11 +2,11 @@
 Schur <: Factorization
 ```
 
-行列 `A` の Schur 分解における行列因子分解の型です。対応する行列因子分解関数 [`schur(_)`](@ref) の戻り値の型でもあります。
+行列 `A` のシュール分解における行列因子分解の型です。対応する行列因子分解関数 [`schur(_)`](@ref) の戻り値の型です。
 
-因子分解オブジェクトが `F::Schur` の場合、（準）三角 Schur 因子は `F.Schur` または `F.T` で、直交／ユニタリ Schur ベクトルは `F.vectors` または `F.Z` で取得できます。このとき、`A = F.vectors * F.Schur * F.vectors'` が成り立ちます。`A` の固有値は `F.values` で取得できます。
+因子分解オブジェクトが `F::Schur` の場合、（準）三角シュール因子は `F.Schur` または `F.T` で取得でき、直交／ユニタリなシュールベクトルは `F.vectors` または `F.Z` で取得できます。このとき `A = F.vectors * F.Schur * F.vectors'` が成り立ちます。`A` の固有値は `F.values` で取得できます。
 
-この分解を反復すると、成分 `F.T`、`F.Z`、`F.values` が得られます。
+分解を反復処理すると、成分 `F.T`、`F.Z`、`F.values` が得られます。
 
 # Examples
 

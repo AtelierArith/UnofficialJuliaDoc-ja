@@ -2,7 +2,7 @@
 getkey(collection, key, default)
 ```
 
-`collection` に `key` に一致するキーが存在する場合はそのキーを返し、存在しない場合は `default` を返します。
+`key` に一致する引数が `collection` に存在する場合は、そのキーを返します。存在しない場合は、`default` を返します。
 
 # Examples
 

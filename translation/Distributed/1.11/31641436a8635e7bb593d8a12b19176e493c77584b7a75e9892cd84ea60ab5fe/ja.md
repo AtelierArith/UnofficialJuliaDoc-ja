@@ -2,9 +2,9 @@
 remotecall_fetch(f, id::Integer, args...; kwargs...)
 ```
 
-`fetch(remotecall(...))` を1つのメッセージで実行します。キーワード引数がある場合は、`f` に渡されます。リモートで発生した例外は [`RemoteException`](@ref) に格納され、スローされます。
+`fetch(remotecall(...))` を1つのメッセージ内で実行します。キーワード引数がある場合は、`f` に渡されます。リモートで発生した例外は [`RemoteException`](@ref) に格納され、スローされます。
 
-[`fetch`](@ref) および [`remotecall`](@ref) も参照してください。
+[`fetch`](@ref) と [`remotecall`](@ref) も参照してください。
 
 # Examples
 

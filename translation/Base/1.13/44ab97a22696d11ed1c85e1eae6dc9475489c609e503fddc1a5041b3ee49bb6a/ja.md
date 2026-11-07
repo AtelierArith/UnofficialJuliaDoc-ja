@@ -2,7 +2,7 @@
 trailing_zeros(x::Integer)::Integer
 ```
 
-`x` の2進表現で末尾に続くゼロの個数。
+`x` の2進表現における末尾のゼロの個数。
 
 # Examples
 

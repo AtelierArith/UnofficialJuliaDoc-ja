@@ -2,7 +2,7 @@
 Dates.ISODateTimeFormat
 ```
 
-日付と時刻の ISO8601 形式を表します。これは、`DateTime` の `Dates.format` のデフォルト値です。
+日付と時刻の ISO 8601 形式を表します。これは、`DateTime` の `Dates.format` のデフォルト値です。
 
 # Examples
 

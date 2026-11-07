@@ -2,10 +2,10 @@
 retry(f;  delays=ExponentialBackOff(), check=nothing) -> Function
 ```
 
-`f` を呼び出す無名関数を返します。例外が発生した場合、`check` が `true` を返すたびに、`delays` で指定された秒数だけ待機してから、`f` を繰り返し呼び出します。`check` には、`delays` の現在の状態と `Exception` を渡します。
+`f` 関数を呼び出す無名関数を返します。例外が発生した場合、`check` が `true` を返すたびに、`delays` で指定された秒数だけ待機してから、`f` が繰り返し再度呼び出されます。`check` は、`delays` の現在の状態と `Exception` を入力として受け取ります。
 
 !!! compat "Julia 1.2"
-    Julia 1.2 より前では、このシグネチャは `f::Function` に制限されていました。
+    Julia 1.2 より前では、このシグネチャは `f::Function` に限定されていました。
 
 
 # Examples

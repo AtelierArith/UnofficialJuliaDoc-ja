@@ -2,7 +2,7 @@
 findprev(predicate::Function, A, i)
 ```
 
-`i`以前またはその位置にある要素のうち、`A`に属し、`predicate`が`true`を返す要素のインデックスを返します。見つからない場合は`nothing`を返します。これは、[`getindex`](@ref)、[`keys(A)`](@ref)、[`nextind`](@ref)をサポートする配列、文字列、その他ほとんどのコレクションで使用できます。
+`i`以前または同じ位置にある要素のうち、`A`に対して`predicate`を適用した結果が`true`となる要素のインデックスを返します。見つからない場合は`nothing`を返します。これは、[`getindex`](@ref)、[`keys(A)`](@ref)、[`nextind`](@ref)をサポートするArray、String、およびその他のほとんどのコレクションで動作します。
 
 インデックスの型は、[`keys(A)`](@ref)および[`pairs(A)`](@ref)が返す型と同じです。
 

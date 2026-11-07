@@ -4,7 +4,7 @@
 @ccall $function_pointer(argvalue1::argtype1, ...)::returntype
 ```
 
-`library.function_name`で指定した、Cからエクスポートされた共有ライブラリ内の関数を呼び出します。`library`は文字列定数または文字列リテラルです。ライブラリは省略できます。その場合、`function_name`は現在のプロセス内で解決されます。また、`@ccall`を使って、`dlsym`が返す値などの関数ポインタ`$function_pointer`を呼び出すこともできます。
+`library.function_name`で指定された、C形式でエクスポートされた共有ライブラリ内の関数を呼び出します。`library`は文字列定数または文字列リテラルです。ライブラリは省略できます。その場合、`function_name`は現在のプロセス内で解決されます。また、`@ccall`を使って、`dlsym`などが返す関数ポインター`$function_pointer`を呼び出すこともできます。
 
 `argvalue`から`@ccall`までの各引数は、`unsafe_convert(argtype, cconvert(argtype, argvalue))`の呼び出しが自動的に挿入され、対応する`argtype`に変換されます。（詳しくは、[`unsafe_convert`](@ref Base.unsafe_convert)および[`cconvert`](@ref Base.cconvert)のドキュメントも参照してください。）ほとんどの場合、これは単に`convert(argtype, argvalue)`の呼び出しになります。
 
@@ -22,7 +22,7 @@ size_t strlen(char *)
 
 Juliaの変数名`s`を使います。`ccall`も参照してください。
 
-可変長引数は、次の規則に従ってサポートされます。
+可変長引数は、次の規則でサポートされます。
 
 ```julia
 @ccall printf("%s = %d"::Cstring ; "foo"::Cstring, foo::Cint)::Cint
@@ -48,12 +48,12 @@ const glib = "libglib-2.0"
 @ccall gc_safe=true strlen(s::Cstring)::Csize_t
 ```
 
-これにより、ccallの実行中にガベージコレクタを並行して動作させられます。`ccall`がJuliaの外部でブロックする可能性がある場合に便利です。
+これにより、ccallの実行中にガベージコレクターを並行して動作させることができます。これは、`ccall`がJuliaの外部でブロックする可能性がある場合に便利です。
 
 !!! warning
-    ccallからJuliaランタイムにコールバックすると未定義動作につながる可能性があるため、このオプションは慎重に使用してください。ただし、`@cfunction`/`@ccallables`は安全です。
+    ccallがJuliaランタイムをコールバックする場合、未定義の動作につながる可能性があるため、このオプションは慎重に使用してください。ただし、`@cfunction`/`@ccallables`は安全です。
 
 
 !!! compat "Julia 1.12"
-    `gc_safe`引数を使うには、Julia 1.12以降が必要です。
+    `gc_safe`引数にはJulia 1.12以降が必要です。
 

@@ -8,4 +8,4 @@ Core.memoryrefswap!(::GenericMemoryRef, value, ordering::Symbol, boundscheck::Bo
     この関数を使用するには、Julia 1.11 以降が必要です。
 
 
-関連項目: [`swapproperty!`](@ref Base.swapproperty!)、[`Core.memoryrefset!`](@ref)。
+[`swapproperty!`](@ref Base.swapproperty!) および [`Core.memoryrefset!`](@ref) も参照してください。

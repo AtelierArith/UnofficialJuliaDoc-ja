@@ -4,7 +4,7 @@ permute!(X::AbstractSparseMatrixCSC{Tv,Ti}, A::AbstractSparseMatrixCSC{Tv,Ti},
          [C::AbstractSparseMatrixCSC{Tv,Ti}]) where {Tv,Ti}
 ```
 
-`A`を左右両側から並べ替え、その結果`PAQ`（`A[p,q]`）を`X`に格納します。中間結果`(AQ)^T`（`transpose(A[:,q])`）は、存在する場合、オプション引数`C`に格納されます。`X`、`A`、および存在する場合は`C`が互いにエイリアスでないことが必要です。結果`PAQ`を`A`に書き戻すには、`X`を使わない次の方法を使用してください。
+`A`を両側から並べ替え、結果を`X`に格納します（`PAQ`（`A[p,q]`））。中間結果`(AQ)^T`（`transpose(A[:,q])`）は、存在する場合、オプション引数`C`に格納されます。`X`、`A`、および存在する場合は`C`が互いにエイリアスでないことが必要です。結果`PAQ`を`A`に戻して格納するには、`X`を使わない次の方法を使用してください。
 
 ```julia
 permute!(A::AbstractSparseMatrixCSC{Tv,Ti}, p::AbstractVector{<:Integer},
@@ -18,4 +18,4 @@ permute!(A::AbstractSparseMatrixCSC{Tv,Ti}, p::AbstractVector{<:Integer},
 
 アルゴリズムの詳細、および引数チェックを省略するこれらのメソッドのバージョンについては、非公開の親メソッド`unchecked_noalias_permute!`および`unchecked_aliasing_permute!`を参照してください。
 
-関連項目：[`permute`](@ref)。
+[`permute`](@ref)も参照してください。

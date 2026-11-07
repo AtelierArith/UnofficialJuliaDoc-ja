@@ -2,7 +2,7 @@
 DateTime(d::Date, t::Time)
 ```
 
-`Date`と`Time`から、`DateTime`型を構築します。`Time`型にゼロ以外のマイクロ秒またはナノ秒が含まれている場合、`InexactError`になります。
+`Date`と`Time`から`DateTime`型を構築します。`Time`型でマイクロ秒またはナノ秒がゼロ以外の場合、`InexactError`になります。
 
 !!! compat "Julia 1.1"
     この関数を使用するには、Julia 1.1以降が必要です。

@@ -2,7 +2,7 @@
 head_and_tail(c, n) -> head, tail
 ```
 
-`c` の先頭 `n` 個の要素を `head` として返し、残りの要素を反復処理するイテレータを `tail` として返します。
+`head`を返します。これは`c`の先頭`n`個の要素です。また、`tail`は残りの要素を反復するイテレーターです。
 
 ```jldoctest
 julia> b, c = Distributed.head_and_tail(1:10, 3)

@@ -2,8 +2,8 @@
 lowrankdowndate(F::CHOLMOD.Factor, C::AbstractArray) -> FF::CHOLMOD.Factor
 ```
 
-`A` の `LDLt` 分解または `LLt` 分解 `F` を指定して、`A + C*C'` の `LDLt` 分解を取得します。
+`A + C*C'` の `A` を、`LDLt` または `LLt` の因子分解 `F` から `LDLt` 因子分解として取得します。
 
-返される分解は常に `LDLt` 分解です。
+返される因子は、常に `LDLt` 因子分解です。
 
-[`lowrankdowndate!`](@ref)、[`lowrankupdate`](@ref)、[`lowrankupdate!`](@ref) も参照してください。
+関連項目: [`lowrankdowndate!`](@ref)、[`lowrankupdate`](@ref)、[`lowrankupdate!`](@ref)。

@@ -2,7 +2,7 @@
 trues(dims)
 ```
 
-すべての値を `true` に設定した `BitArray` を作成します。
+すべての値を`true`に設定した`BitArray`を作成します。
 
 # Examples
 

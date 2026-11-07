@@ -2,7 +2,7 @@
 push_url(rmt::GitRemote)
 ```
 
-リモートの Git リポジトリの push URL を取得します。
+リモート Git リポジトリの push URL を取得します。
 
 # Examples
 

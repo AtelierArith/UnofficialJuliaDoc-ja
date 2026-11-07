@@ -2,7 +2,7 @@
 take(iter, n)
 ```
 
-`iter` の先頭から最大 `n` 個の要素を生成するイテレータ。
+`iter` の要素を先頭から最大 `n` 個生成するイテレータ。
 
 関連項目: [`drop`](@ref Iterators.drop), [`peel`](@ref Iterators.peel), [`first`](@ref), [`Base.take!`](@ref).
 

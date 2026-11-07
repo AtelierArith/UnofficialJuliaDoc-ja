@@ -6,7 +6,7 @@ GenericMemory{kind::Symbol, T, addrspace=Core.CPU} <: DenseVector{T}
 
 `kind` は、現在 `:not_atomic` または `:atomic` のいずれかです。`:atomic` が意味する内容については、[`AtomicMemory`](@ref) を参照してください。
 
-`addrspace` に設定できるのは、現在 `Core.CPU` のみです。GPU などの他のシステムが、次のような値を定義して拡張できるように設計されています。
+`addrspace` に現在設定できるのは、`Core.CPU` のみです。GPU などの他のシステムが、次のような値を定義して拡張できるように設計されています。
 
 ```julia
 module CUDA

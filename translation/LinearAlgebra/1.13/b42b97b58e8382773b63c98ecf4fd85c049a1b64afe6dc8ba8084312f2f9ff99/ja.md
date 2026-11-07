@@ -8,7 +8,7 @@ eigen(A::Union{SymTridiagonal, Hermitian, Symmetric}, vl::Real, vu::Real) -> Eig
 
 `Eigen` オブジェクトでは、次の関数を使用できます：[`inv`](@ref)、[`det`](@ref)、[`isposdef`](@ref)。
 
-`vl` は検索対象となる固有値の範囲の下限、`vu` は上限です。
+`vl` は検索対象とする固有値の範囲の下限、`vu` は上限です。
 
 !!! note
     [`vl`, `vu`] に `A` のすべての固有値が含まれていない場合、返される分解は *切り詰められた* 分解になります。

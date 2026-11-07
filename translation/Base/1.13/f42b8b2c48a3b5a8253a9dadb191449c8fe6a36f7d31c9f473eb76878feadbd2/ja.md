@@ -2,7 +2,7 @@
 copyto!(dest, Rdest::CartesianIndices, src, Rsrc::CartesianIndices) -> dest
 ```
 
-`src` の範囲 `Rsrc` にあるブロックを、`Rdest` の範囲 `dest` にあるブロックにコピーします。2つの領域のサイズは一致している必要があります。
+`src`のブロックを、`Rsrc`の範囲から、`dest`のブロックへ、`Rdest`の範囲内でコピーします。2つの領域のサイズは一致している必要があります。
 
 # Examples
 

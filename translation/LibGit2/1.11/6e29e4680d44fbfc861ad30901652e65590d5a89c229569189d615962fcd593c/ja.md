@@ -6,5 +6,5 @@ connect(rmt::GitRemote, direction::Consts.GIT_DIRECTION; kwargs...)
 
 キーワード引数は次のとおりです。
 
-  * `credentials::Creds=nothing`: プライベートリポジトリへの認証時に使用する認証情報や設定を指定します。
+  * `credentials::Creds=nothing`: プライベートリポジトリへの認証時に、認証情報や設定を指定します。
   * `callbacks::Callbacks=Callbacks()`: ユーザーが指定するコールバックとペイロードです。

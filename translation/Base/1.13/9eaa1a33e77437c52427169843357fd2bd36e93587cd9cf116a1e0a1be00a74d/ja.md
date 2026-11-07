@@ -2,9 +2,9 @@
 findfirst(predicate::Function, A)
 ```
 
-`A` の最初の要素のうち、`predicate` が `true` を返す要素のインデックスまたはキーを返します。そのような要素がない場合は、`nothing` を返します。
+`A`の最初の要素のうち、`predicate`が`true`を返す要素のインデックスまたはキーを返します。そのような要素がない場合は、`nothing`を返します。
 
-インデックスまたはキーの型は、[`keys(A)`](@ref) および [`pairs(A)`](@ref) が返す型と同じです。
+インデックスまたはキーの型は、[`keys(A)`](@ref)および[`pairs(A)`](@ref)が返す型と同じです。
 
 # Examples
 

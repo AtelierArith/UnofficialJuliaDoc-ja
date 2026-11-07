@@ -2,7 +2,7 @@
 Sys.isopenbsd([os])
 ```
 
-OSがOpenBSDの派生版かどうかを判定する述語です。詳細は[Handling Operating System Variation](@ref)を参照してください。
+OSがOpenBSDの派生版かどうかを判定する述語です。ドキュメントは[Handling Operating System Variation](@ref)を参照してください。
 
 !!! note
     `Sys.isbsd()`と混同しないでください。これはOpenBSDだけでなく、ほかのBSD系システムでも`true`です。`Sys.isopenbsd()`が指すのはOpenBSDのみです。

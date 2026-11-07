@@ -6,9 +6,9 @@ argmin(itr)
 
 コレクションは空であってはなりません。
 
-インデックスの型は、[`keys(itr)`](@ref) および [`pairs(itr)`](@ref) が返す型と同じです。
+インデックスの型は、[`keys(itr)`](@ref)および[`pairs(itr)`](@ref)が返す型と同じです。
 
-`NaN` は、`missing` を除くすべての値より小さいものとして扱われます。
+`NaN`は、`missing`を除くすべての値より小さいものとして扱われます。
 
 関連項目: [`argmax`](@ref)、[`findmin`](@ref)。
 

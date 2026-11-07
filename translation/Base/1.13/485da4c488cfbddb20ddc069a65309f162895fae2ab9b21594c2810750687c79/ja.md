@@ -18,7 +18,7 @@ julia> typeof(sin∘cos)
 ComposedFunction{typeof(sin), typeof(cos)}
 ```
 
-合成された要素は `ComposedFunction` のフィールドに格納され、次のように取得できます。
+合成された要素は `ComposedFunction` のフィールドに格納されており、次のように取得できます。
 
 ```jldoctest
 julia> composition = sin ∘ cos

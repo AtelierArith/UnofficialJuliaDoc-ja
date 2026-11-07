@@ -2,7 +2,7 @@
 unique(A::AbstractArray; dims::Int)
 ```
 
-`A` の次元 `dims` に沿って、一意な領域を返します。
+`A`の一意な領域を、`dims`に沿って返します。
 
 # Examples
 

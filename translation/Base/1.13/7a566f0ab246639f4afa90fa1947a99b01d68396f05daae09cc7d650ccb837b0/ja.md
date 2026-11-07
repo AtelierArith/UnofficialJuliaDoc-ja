@@ -2,12 +2,12 @@
 OncePerTask{T}(init::Function)() -> T
 ```
 
-`OncePerTask` オブジェクトを呼び出すと、Task ごとに関数 `initializer` がちょうど 1 回実行され、`T` 型の値が返されます。同じ Task 内で以降に呼び出した場合は、常にまったく同じ値が返されます。
+`OncePerTask` オブジェクトを呼び出すと、Task ごとに関数 `initializer` がちょうど 1 回実行され、その戻り値として型 `T` の値が返されます。同じ Task 内で以降に呼び出した場合は、常にまったく同じ値が返されます。
 
 関連項目: [`task_local_storage`](@ref)。
 
 !!! compat "Julia 1.12"
-    この型を使用するには Julia 1.12 以降が必要です。
+    この型を使用するには、Julia 1.12 以降が必要です。
 
 
 ## Example

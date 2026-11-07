@@ -2,7 +2,7 @@
 bitrand([rng=default_rng()], [dims...])
 ```
 
-ランダムな真偽値からなる`BitArray`を生成します。
+ランダムな真偽値の`BitArray`を生成します。
 
 # Examples
 

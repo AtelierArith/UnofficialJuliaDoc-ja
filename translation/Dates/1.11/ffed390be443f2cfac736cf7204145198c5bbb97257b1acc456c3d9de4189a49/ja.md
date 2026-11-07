@@ -3,9 +3,9 @@ adjust(df, start[, step, limit])::TimeType
 adjust(df, start)::TimeType
 ```
 
-`start` の日付を、`df` を使って `f::Function` を通過したと判定されるまで調整し、`true` を返します。省略可能な `step` パラメーターは、各反復で `start` をどのように変更するかを指定します。`limit` 回の反復が発生すると、[`ArgumentError`](@ref) がスローされます。
+`f::Function` が `df` を使って `true` を返すまで、`start` の日付を調整します。省略可能な `step` パラメーターは、反復ごとに `start` をどれだけ変更するかを指定します。`limit` 回の反復が行われると、[`ArgumentError`](@ref) がスローされます。
 
-パラメーター `start` と `limit` のデフォルト値は、それぞれ 1 日と 10,000 です。
+パラメーター `start` と `limit` の既定値は、それぞれ 1 Day と 10,000 です。
 
 # Examples
 

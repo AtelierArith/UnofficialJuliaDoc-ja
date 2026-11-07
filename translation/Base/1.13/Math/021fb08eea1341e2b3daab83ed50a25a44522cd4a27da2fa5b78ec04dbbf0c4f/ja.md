@@ -6,4 +6,4 @@ tan(x::T) where {T <: Number} -> float(T)
 
 `isinf(x)` の場合は [`DomainError`](@ref) をスローし、`isnan(x)` の場合は `T(NaN)` を返します。
 
-[`tanh`](@ref) も参照してください。
+関連項目: [`tanh`](@ref)。

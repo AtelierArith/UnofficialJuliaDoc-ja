@@ -2,7 +2,7 @@
 January
 ```
 
-年の最初の月。
+1年の最初の月。
 
 # Examples
 

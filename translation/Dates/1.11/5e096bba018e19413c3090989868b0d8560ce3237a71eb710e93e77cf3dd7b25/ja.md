@@ -2,7 +2,7 @@
 dayofweekofmonth(dt::TimeType)::Int
 ```
 
-`dt`の曜日について、その曜日が`dt`の月の何回目に当たるかを返します。たとえば、`dt`の曜日が月曜日なら、`1 = First Monday of the month, 2 = Second Monday of the month, etc.`は1:5の範囲になります。
+`dt` の曜日が、`dt` の月の何回目に当たるかを返します。たとえば、`dt` の曜日が月曜日なら、`1 = First Monday of the month, 2 = Second Monday of the month, etc.` は 1:5 の範囲になります。
 
 # Examples
 

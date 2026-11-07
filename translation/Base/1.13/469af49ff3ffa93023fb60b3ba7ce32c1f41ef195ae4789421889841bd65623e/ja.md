@@ -2,4 +2,4 @@
 Cuchar
 ```
 
-ネイティブの `unsigned char` 型（[`UInt8`](@ref)）と同等です。
+ネイティブの`unsigned char`型（[`UInt8`](@ref)）と同等です。

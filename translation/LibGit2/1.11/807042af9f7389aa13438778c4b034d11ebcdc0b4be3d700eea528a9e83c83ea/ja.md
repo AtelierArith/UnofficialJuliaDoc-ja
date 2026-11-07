@@ -2,11 +2,11 @@
 LibGit2.CloneOptions
 ```
 
-[`git_clone_options`](https://libgit2.org/libgit2/#HEAD/type/git_clone_options) 構造体に対応します。
+[`git_clone_options`](https://libgit2.org/libgit2/#HEAD/type/git_clone_options) 構造体に一致します。
 
 各フィールドの意味は次のとおりです。
 
-  * `version`: 後で変更される場合に備えた、使用中の構造体のバージョン。現時点では、常に `1` です。
+  * `version`: 後で変更される場合に備えた、使用中の構造体のバージョン。現時点では常に `1` です。
   * `checkout_opts`: クローンの一環としてリモートをチェックアウトする際のオプション。
   * `fetch_opts`: クローンの一環として、チェックアウト前にリモートをフェッチする際のオプション。
   * `bare`: `0` の場合、リモートリポジトリ全体をクローンします。ゼロ以外の場合はベアクローンを実行します。ベアクローンでは、リポジトリ内にソースファイルのローカルコピーがなく、[`gitdir`](@ref) と [`workdir`](@ref) は同じになります。

@@ -22,4 +22,4 @@ julia> g(2,3)
 13
 ```
 
-詳しくは、マニュアルの [anonymous functions](@ref man-anonymous-functions) のセクションを参照してください。
+詳しくは、[anonymous functions](@ref man-anonymous-functions) のマニュアルの節を参照してください。

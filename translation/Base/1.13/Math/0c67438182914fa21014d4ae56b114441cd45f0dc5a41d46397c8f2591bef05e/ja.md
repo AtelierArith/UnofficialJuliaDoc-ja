@@ -2,9 +2,9 @@
 sin(x::T) where {T <: Number} -> float(T)
 ```
 
-`x`の正弦を計算します。`x`はラジアン単位です。
+`x` の正弦を計算します。`x` はラジアン単位です。
 
-`isinf(x)`の場合は[`DomainError`](@ref)をスローし、`isnan(x)`の場合は`T(NaN)`を返します。
+`isinf(x)` の場合は [`DomainError`](@ref) をスローし、`isnan(x)` の場合は `T(NaN)` を返します。
 
 関連項目: [`sind`](@ref)、[`sinpi`](@ref)、[`sincos`](@ref)、[`cis`](@ref)、[`asin`](@ref)。
 

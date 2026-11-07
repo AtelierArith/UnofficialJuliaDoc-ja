@@ -2,9 +2,9 @@
 digits([T<:Integer], n::Integer; base::T = 10, pad::Integer = 1)
 ```
 
-指定した基数での `n` の各桁を格納した、要素型が `T`（デフォルトは `Int`）の配列を返します。必要に応じて、指定したサイズになるようゼロでパディングできます。上位の桁ほどインデックスが大きくなり、`n == sum(digits[k]*base^(k-1) for k in 1:length(digits))` となります。
+指定した基数で表した `n` の各桁を、要素型 `T`（既定値は `Int`）の配列として返します。必要に応じて、指定したサイズになるようゼロでパディングできます。上位の桁ほどインデックスが大きくなり、`n == sum(digits[k]*base^(k-1) for k in 1:length(digits))` となります。
 
-[`ndigits`](@ref)、[`digits!`](@ref)、および基数 2 の場合は [`bitstring`](@ref) と [`count_ones`](@ref) も参照してください。
+関連項目: [`ndigits`](@ref)、[`digits!`](@ref)。また、基数 2 の場合は [`bitstring`](@ref)、[`count_ones`](@ref)。
 
 # Examples
 

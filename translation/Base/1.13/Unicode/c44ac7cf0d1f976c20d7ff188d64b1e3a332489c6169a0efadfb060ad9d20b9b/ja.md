@@ -2,7 +2,7 @@
 uppercase(s::AbstractString)
 ```
 
-すべての文字を大文字に変換した`s`を返します。
+すべての文字を大文字に変換した`s`を返してください。
 
 [`lowercase`](@ref)、[`titlecase`](@ref)、[`uppercasefirst`](@ref)も参照してください。
 

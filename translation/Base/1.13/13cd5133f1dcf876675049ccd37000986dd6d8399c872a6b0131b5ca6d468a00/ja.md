@@ -2,9 +2,9 @@
 maximum(A::AbstractArray; dims)
 ```
 
-指定した次元に沿って、配列の最大値を計算します。2つ以上の引数の最大値を求める関数[`max(a,b)`](@ref)も参照してください。この関数は、配列に対して`max.(a,b)`を使うことで要素ごとに適用できます。
+指定した次元に沿って、配列の最大値を計算します。2つ以上の引数の最大値を求める関数については、[`max(a,b)`](@ref)も参照してください。この関数は、配列に対して要素ごとに適用できます（`max.(a,b)`）。
 
-関連項目: [`maximum!`](@ref)、[`extrema`](@ref)、[`findmax`](@ref)、[`argmax`](@ref)。
+関連項目：[`maximum!`](@ref)、[`extrema`](@ref)、[`findmax`](@ref)、[`argmax`](@ref)。
 
 # Examples
 

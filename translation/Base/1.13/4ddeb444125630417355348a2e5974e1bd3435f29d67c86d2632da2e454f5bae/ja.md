@@ -2,7 +2,7 @@
 nonmissingtype(T::Type)
 ```
 
-`T` が `Missing` を含む型のユニオンである場合、`Missing` を除いた新しい型を返します。
+`T` が `Missing` を含む型のユニオンである場合、`Missing` を取り除いた新しい型を返します。
 
 # Examples
 

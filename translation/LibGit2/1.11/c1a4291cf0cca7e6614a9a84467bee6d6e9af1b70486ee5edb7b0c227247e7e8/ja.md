@@ -2,7 +2,7 @@
 LibGit2.isdirty(repo::GitRepo, pathspecs::AbstractString=""; cached::Bool=false)::Bool
 ```
 
-作業ツリー（`cached=false`の場合）またはインデックス（`cached=true`の場合）で、追跡対象ファイルに変更があったかどうかを確認します。`pathspecs`は、差分オプションの仕様です。
+作業ツリー（`cached=false`）またはインデックス（`cached=true`）に、追跡対象ファイルの変更があるかどうかを確認します。`pathspecs` は、差分のオプションの仕様です。
 
 # Examples
 
@@ -16,4 +16,4 @@ LibGit2.isdirty(repo) # now true
 LibGit2.isdirty(repo, new_file) # now true
 ```
 
-`git diff-index HEAD [-- <pathspecs>]`と同等です。
+`git diff-index HEAD [-- <pathspecs>]` と同等です。

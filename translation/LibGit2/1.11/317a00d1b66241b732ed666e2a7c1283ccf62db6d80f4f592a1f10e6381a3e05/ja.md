@@ -2,7 +2,7 @@
 getindex(tree::GitTree, target::AbstractString)::GitObject
 ```
 
-`target` のパスを `tree` で検索し、[`GitObject`](@ref) を返します（ファイルの場合は [`GitBlob`](@ref)、ディレクトリを検索する場合は別の [`GitTree`](@ref) を返します）。
+`target` path を `tree` 内で検索し、[`GitObject`](@ref) を返します（ファイルの場合は [`GitBlob`](@ref)、ディレクトリを検索する場合は別の [`GitTree`](@ref) を返します）。
 
 # Examples
 

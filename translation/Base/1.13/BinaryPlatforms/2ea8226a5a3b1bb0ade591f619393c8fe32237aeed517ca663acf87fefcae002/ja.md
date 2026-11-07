@@ -2,7 +2,7 @@
 arch(p::AbstractPlatform)
 ```
 
-指定した`Platform`オブジェクトのアーキテクチャを、`String`として取得します。
+指定した `Platform` オブジェクトのアーキテクチャを、`String` として取得します。
 
 # Examples
 

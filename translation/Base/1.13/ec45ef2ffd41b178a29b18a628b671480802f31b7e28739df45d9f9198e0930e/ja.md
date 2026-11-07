@@ -2,7 +2,7 @@
 fieldtype(T, name::Symbol | index::Int)
 ```
 
-複合型 DataType `T` のフィールド（名前またはインデックスで指定）の宣言型を取得します。
+複合 DataType `T` のフィールド（名前またはインデックスで指定）の宣言型を取得します。
 
 # Examples
 

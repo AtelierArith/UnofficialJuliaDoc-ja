@@ -2,7 +2,7 @@
 wait(c::Channel)
 ```
 
-`Channel` [`isready`](@ref)までのブロック。
+`Channel` [`isready`](@ref) までのブロック。
 
 ```jldoctest
 julia> c = Channel(1);
