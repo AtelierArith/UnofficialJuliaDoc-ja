@@ -1,8 +1,8 @@
 # Julia Syntax Highlighting
 
-`JuliaSyntaxHighlighting`ライブラリは、`JuliaSyntax`と`StyledStrings`を使ってJuliaコードの構文をハイライトするための、小規模で便利なパッケージです。
+`JuliaSyntaxHighlighting`ライブラリは、`JuliaSyntax`と`StyledStrings`を使ってJuliaコードの構文をハイライトするための、小規模な便利パッケージです。
 
-標準ライブラリ全体およびより広いエコシステムでの利用を想定しています。
+標準ライブラリ全体および、より広いエコシステムでの利用を想定しています。
 
 ## [Functions](@id stdlib-jsh-api)
 
@@ -13,10 +13,10 @@ JuliaSyntaxHighlighting.highlight!
 
 ## [Faces](@id stdlib-jsh-faces)
 
-`highlight`/`highlight!`メソッドは、Juliaコードにカスタムフェイスを適用します。標準ライブラリの一部であるため、これらのフェイスには、`julia_*`の形式の特権付きフェイス名が使われます。これらは他のパッケージでも再利用でき、`faces.toml`の設定でカスタマイズできます。
+`highlight`/`highlight!`メソッドは、Juliaコードにカスタムフェイスを適用します。標準ライブラリの一部であるため、これらのフェイスには`julia_*`の形式の特権付きフェイス名が使われます。これらは他のパッケージでも再利用でき、`faces.toml`の設定でカスタマイズできます。
 
 !!! warning "不安定なフェイス"
-    `JuliaSyntaxHighlighting`で使われる個々のフェイスは、ポイントリリースで予告なく変更される可能性があります。ただし、構文ハイライトのルールは時間とともに改良されるため、変更の頻度は次第に低くなる見込みです。
+    `JuliaSyntaxHighlighting`で使われる個々のフェイスは、ポイントリリースで予告なく変更される可能性があります。ただし、構文ハイライトのルールは時間とともに洗練されていくため、変更の頻度は次第に低くなるはずです。
 
 
 現在のフェイスとそのデフォルト値は次のとおりです。
@@ -26,7 +26,7 @@ JuliaSyntaxHighlighting.highlight!
   * `julia_singleton_identifier`: `julia_symbol`を継承
   * `julia_type`: 黄色
   * `julia_typedec`: 明るい青
-  * `julia_comment`: 灰色
+  * `julia_comment`: グレー
   * `julia_string`: 緑
   * `julia_regex`: `julia_string`を継承
   * `julia_backslash_literal`: マゼンタ。`julia_string`を継承
@@ -54,7 +54,7 @@ JuliaSyntaxHighlighting.highlight!
   * `julia_rainbow_paren_5`: `julia_rainbow_paren_2`を継承
   * `julia_rainbow_paren_6`: `julia_rainbow_paren_3`を継承
   * `julia_rainbow_bracket_1`: 青。`julia_parentheses`を継承
-  * `julia_rainbow_bracket_2`: 明るいマゼンタ。`julia*parentheses`を継承
+  * `julia_rainbow_bracket_2`: 明るいマゼンタ。\`julia*parentheses\`を継承
   * `julia_rainbow_bracket_3`: `julia_rainbow_bracket_1`を継承
   * `julia_rainbow_bracket_4`: `julia_rainbow_bracket_2`を継承
   * `julia_rainbow_bracket_5`: `julia_rainbow_bracket_1`を継承
