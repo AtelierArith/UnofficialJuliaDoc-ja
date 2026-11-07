@@ -1,0 +1,21 @@
+```julia
+memoryindex(ref::GenericMemoryRef)::Int
+```
+
+Get the 1-based index of `ref` in its `GenericMemory`.
+
+# Examples
+
+```jldoctest
+julia> mem = Memory{String}(undef, 10);
+
+julia> ref = Base.memoryindex(memoryref(mem, 3))
+3
+
+julia> Base.memoryindex(memoryref(Memory{Nothing}(undef, 10), 8))
+8
+```
+
+!!! compat "Julia 1.13"
+    This function requires at least Julia 1.13.
+

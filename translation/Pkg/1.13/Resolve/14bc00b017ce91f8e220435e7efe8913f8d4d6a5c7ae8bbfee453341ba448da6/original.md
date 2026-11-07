@@ -1,0 +1,1 @@
+Show the resolution log for some package, and all the other packages that affected it during resolution. The `view` option can be either `:plain` or `:tree` (works the same as for `showlog(io, rlog)`); the default is `:tree`.

@@ -1,0 +1,1 @@
+Push the given solution to a local optimum if needed: keeps increasing the states of the given solution as long as no constraints are violated. It might also install additional packages, if needed to bump the ones already installed. It also removes unnecessary parts of the solution which are unconnected to the required packages.

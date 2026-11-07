@@ -1,0 +1,1 @@
+Unexported convenience function used in body of `replace_in_print_matrix` methods. By default returns a string of the same width as original with a centered cdot, used in printing of structural zeros of structured matrices. Accept keyword args `c` for alternate single character marker.

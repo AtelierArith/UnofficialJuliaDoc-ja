@@ -1,0 +1,5 @@
+```julia
+LibGit2.BlameHunk
+```
+
+[`git_blame_hunk`](https://libgit2.org/libgit2/#HEAD/type/git_blame_hunk) 構造体に対応します。各フィールドの意味は次のとおりです。     * `lines_in_hunk`: この blame ハンクの行数。     * `final_commit_id`: このセクションが最後に変更されたコミットの [`GitHash`](@ref)。     * `final_start_line_number`: ファイルの *最終* バージョンで、ハンクが始まる行番号（*1 始まり*）。     * `final_signature`: `final_commit_id` の作者の署名。このフィールドにアクセスするには、これを `Signature` に渡す必要があります。     * `final_committer`: `final_commit_id` のコミッターの署名。このフィールドにアクセスするには、これを `Signature` に渡す必要があります。     * `orig_commit_id`: このハンクが最初に見つかったコミットの [`GitHash`](@ref)。     * `orig_path`: ハンクの元となったファイルのパス。ファイルが移動された場合など、現在のパス（最終パス）とは異なることがあります。     * `orig_start_line_number`: `orig_path` 時点のファイルの *元の* バージョンで、ハンクが始まる行番号（*1 始まり*）。     * `orig_signature`: このハンクを導入した作者の署名。このフィールドにアクセスするには、これを `Signature` に渡す必要があります。     * `orig_committer`: このハンクを導入したコミッターの署名。このフィールドにアクセスするには、これを `Signature` に渡す必要があります。     * `summary`: 文字列形式の概要。     * `boundary`: 元のコミットが「境界」コミットの場合（たとえば、`options` で設定された最古のコミットと同じ場合）は `'1'`。

@@ -1,0 +1,1 @@
+Set for various delimited constructs when they contains a trailing comma. For example, to distinguish `(a,b,)` vs `(a,b)`, and `f(a)` vs `f(a,)`. Kinds where this applies are: `tuple call dotcall macrocall vect curly braces <: >:`.
