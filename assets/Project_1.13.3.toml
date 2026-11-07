@@ -1,0 +1,13 @@
+[deps]
+DocstringTranslation = "d404e13b-1f8e-41a5-a26a-0b758a0c6c97"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+DotEnv = "4dc1fcf4-5e3b-5448-94ab-0c38ec0385c1"
+
+[compat]
+DocstringTranslation = "0.1"
+Documenter = "1.19"
+DotEnv = "1"
+julia = "1.13.3"
+
+[sources]
+DocstringTranslation = {path = "/Users/atelierarith/work/atelierarith/DocstringTranslation.jl"}
