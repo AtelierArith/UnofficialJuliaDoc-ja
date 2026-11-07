@@ -16,19 +16,28 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+      # The cached build contains binaries tuned for the CPU that built them;
+      # restoring them on a runner with a different CPU crashes with
+      # "Illegal instruction", so the CPU model is part of the cache key.
+      - name: Identify runner CPU
+        id: cpu
+        run: |
+          model=$(grep -m1 'model name' /proc/cpuinfo | cut -d: -f2)
+          echo "CPU:$model"
+          echo "model=$(echo "$model" | sha256sum | cut -c1-16)" >> "$GITHUB_OUTPUT"
       - name: Set up Julia
         id: cache-julia
         uses: actions/cache@v4
         with:
           path: ./julia
-          key: ${{ runner.os }}-julia-${{ hashFiles('./julia/VERSION') }}
-          restore-keys: |
-            ${{ runner.os }}-julia-
-            ${{ runner.os }}-julia-${{ hashFiles('./julia/VERSION') }}
+          key: ${{ runner.os }}-${{ steps.cpu.outputs.model }}-julia-${{ hashFiles('./julia/VERSION') }}
 
       - name: Build Julia doc
         run: bash run.sh
+      # Pull requests only build the docs; publishing unmerged work would
+      # replace the live site with the PR's version.
       - name: Build and Deploy
+        if: github.event_name == 'push'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
