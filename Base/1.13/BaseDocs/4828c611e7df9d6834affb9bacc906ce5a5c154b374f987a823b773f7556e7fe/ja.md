@@ -1,0 +1,15 @@
+```julia
+Core.finalizer(f, o)
+```
+
+これは [`Base.finalizer`](@ref) の実装詳細です。エンドユーザーは代わりに後者を使用してください。
+
+# Differences from `Base.finalizer`
+
+`Core.finalizer` のインターフェースは、基本的に `Base.finalizer` と同じですが、いくつか細かな違いがあります。ここでは完全性のためにそれらを記載しますが、`Base.finalizer` とは異なり、安定性は保証されません。
+
+現在の違いは次のとおりです。
+
+  * `Core.finalizer` は、`o` が変更可能かどうかを確認しません。不変オブジェクトにファイナライザーを登録しようとした場合の動作は未定義です。
+  * 値 `f` は Julia オブジェクトでなければなりません。`Core.finalizer` は、生の C 関数ポインターをサポートしません。
+  * `Core.finalizer` は、`o` ではなく `nothing` を返します。

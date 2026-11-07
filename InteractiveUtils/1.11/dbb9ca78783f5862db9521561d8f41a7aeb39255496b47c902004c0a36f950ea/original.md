@@ -1,0 +1,1 @@
+The `InteractiveUtils` module provides utilities for interactive use of Julia, such as code introspection and clipboard access. It is intended for interactive work and is loaded automatically in interactive mode.

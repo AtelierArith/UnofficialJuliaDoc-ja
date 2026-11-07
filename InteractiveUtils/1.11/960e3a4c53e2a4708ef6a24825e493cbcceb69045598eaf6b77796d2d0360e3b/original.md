@@ -1,0 +1,1 @@
+Same behaviour as `gen_call_with_extracted_types` except that keyword arguments of the form "foo=bar" are passed on to the called function as well. The keyword arguments must be given before the mandatory argument.

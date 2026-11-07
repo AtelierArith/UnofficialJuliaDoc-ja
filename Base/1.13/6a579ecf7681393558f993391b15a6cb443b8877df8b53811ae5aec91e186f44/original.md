@@ -1,0 +1,1 @@
+Gives a reinterpreted view (of element type T) of the underlying array (of element type S). If the size of `T` differs from the size of `S`, the array will be compressed/expanded in the first dimension. The variant `reinterpret(reshape, T, a)` instead adds or consumes the first dimension depending on the ratio of element sizes.

@@ -1,0 +1,1 @@
+`GenericString`は、`AbstractString`インターフェースに準拠する汎用文字列APIをテストし、関数が標準の`String`型以外の文字列型でも動作することを確認するために使用できます。

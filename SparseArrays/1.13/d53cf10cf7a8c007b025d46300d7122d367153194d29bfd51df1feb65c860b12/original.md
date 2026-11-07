@@ -1,0 +1,1 @@
+Helper method for `halfperm!`. With `transpose(A[:,q])`'s column pointers shifted one position forward in `getcolptr(X)`, computes `map(f, transpose(A[:,q]))` by appropriately distributing `rowvals(A)` and `f`-transformed `nonzeros(A)` into `rowvals(X)` and `nonzeros(X)` respectively. Simultaneously fixes the one-position-forward shift in `getcolptr(X)`.

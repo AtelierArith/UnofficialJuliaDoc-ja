@@ -1,0 +1,1 @@
+Sort the basic blocks in `ir` into domtree order (i.e. if `bb1` is higher in the domtree than `bb2`, it will come first in the linear order). The resulting `ir` has the property that a linear traversal of basic blocks will also be a RPO traversal and in particular, any use of an SSA value must come after (by linear order) its definition.

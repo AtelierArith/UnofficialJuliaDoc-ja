@@ -1,0 +1,1 @@
+`EFFECT_FREE_GLOBALLY` means that the statement is `:effect-free` and does not have a caller-visible effect, but may not be removed from the function itself. This may e.g. be used for effects that last only for the scope of the current function.

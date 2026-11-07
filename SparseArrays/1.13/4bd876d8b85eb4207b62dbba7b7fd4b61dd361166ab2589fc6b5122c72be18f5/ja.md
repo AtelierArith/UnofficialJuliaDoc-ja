@@ -1,0 +1,1 @@
+`unchecked_noalias_permute!` と `unchecked_aliasing_permute!` 用のヘルパーメソッドです。`PAQ` の列ポインタを計算し、1つ先にずらした位置に `getcolptr(X)` へ格納します。このずれは `_distributevals_halfperm!` によって補正されます。`uncheckednoalias_permute!` のドキュメントに記載されているとおり、`_computecolptrs_halfperm!` と比べて一部の処理を省けます。

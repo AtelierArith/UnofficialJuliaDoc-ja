@@ -1,0 +1,45 @@
+```julia
+Hermitian(A::AbstractMatrix, uplo::Symbol=:U)
+```
+
+行列 `A` の上三角部分（`uplo = :U` の場合）または下三角部分（`uplo = :L` の場合）のビューを `Hermitian` として構築します。
+
+`A` のエルミート部分を計算するには、[`hermitianpart`](@ref) を使用します。
+
+エルミートビューと共有される `A` の三角部分に対応する `uplo` シンボルは、関数 [`LinearAlgebra.uplo`](@ref) を使って取得できます。元の行列 `A` は、`parent` を使ってエルミートビューから取得できます。
+
+# Examples
+
+```jldoctest
+julia> A = [1 2+2im 3-3im; 4 5 6-6im; 7 8+8im 9]
+3×3 Matrix{Complex{Int64}}:
+ 1+0im  2+2im  3-3im
+ 4+0im  5+0im  6-6im
+ 7+0im  8+8im  9+0im
+
+julia> Hupper = Hermitian(A)
+3×3 Hermitian{Complex{Int64}, Matrix{Complex{Int64}}}:
+ 1+0im  2+2im  3-3im
+ 2-2im  5+0im  6-6im
+ 3+3im  6+6im  9+0im
+
+julia> Hlower = Hermitian(A, :L)
+3×3 Hermitian{Complex{Int64}, Matrix{Complex{Int64}}}:
+ 1+0im  4+0im  7+0im
+ 4+0im  5+0im  8-8im
+ 7+0im  8+8im  9+0im
+
+julia> hermitianpart(A)
+3×3 Hermitian{ComplexF64, Matrix{ComplexF64}}:
+ 1.0+0.0im  3.0+1.0im  5.0-1.5im
+ 3.0-1.0im  5.0+0.0im  7.0-7.0im
+ 5.0+1.5im  7.0+7.0im  9.0+0.0im
+```
+
+`A` 自体がエルミート行列でない限り（たとえば `A == adjoint(A)` の場合）、`Hupper` と `Hlower` は等しくないことに注意してください。
+
+対角成分の虚部はすべて無視されます。
+
+```julia
+Hermitian(fill(complex(1,1), 1, 1)) == fill(1, 1, 1)
+```

@@ -1,0 +1,1 @@
+ソルバーの出力（パッケージの状態を表すVector{Int}）を、インストール済みパッケージの各UUIDにVersionNumberを対応付けるDictに変換します。

@@ -1,0 +1,1 @@
+Keeps the per-BB state of the Semi NCA algorithm. In the original formulation, there are three separate length `n` arrays, `label`, `semi` and `ancestor`. Instead, for efficiency, we use one array in an array-of-structs style setup.

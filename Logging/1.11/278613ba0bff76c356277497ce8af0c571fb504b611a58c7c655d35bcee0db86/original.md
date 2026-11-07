@@ -1,0 +1,1 @@
+Utilities for capturing, filtering and presenting streams of log events. Normally you don't need to import `Logging` to create log events; for this the standard logging macros such as `@info` are already exported by `Base` and available by default.

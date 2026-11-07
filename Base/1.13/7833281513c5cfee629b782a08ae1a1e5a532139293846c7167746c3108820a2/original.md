@@ -1,0 +1,1 @@
+`print_matrix_row(io, X, A, i, cols, sep)` produces the aligned output for a single matrix row X[i, cols] where the desired list of columns is given. The corresponding alignment A is used, and the separation between elements is specified as string sep. `print_matrix_row` will also respect compact output for elements.
