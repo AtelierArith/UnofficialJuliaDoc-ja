@@ -244,14 +244,14 @@ Here, Julia cannot decide which `f` you are referring to, so you have to make a 
 1. Simply proceed with qualified names like `A.f` and `B.f`. This makes the context clear to the reader of your code, especially if `f` just happens to coincide but has different meaning in various packages. For example, `degree` has various uses in mathematics, the natural sciences, and in everyday life, and these meanings should be kept separate.
 2. Use the `as` keyword above to rename one or both identifiers, eg
 
-    ```jldoctest module_manual
-    julia> using .A: f as f
+   ```jldoctest module_manual
+   julia> using .A: f as f
 
-    julia> using .B: f as g
+   julia> using .B: f as g
 
-    ```
+   ```
 
-    would make `B.f` available as `g`. Here, we are assuming that you did not use `using A` before, which would have brought `f` into the namespace.
+   would make `B.f` available as `g`. Here, we are assuming that you did not use `using A` before, which would have brought `f` into the namespace.
 3. When the names in question *do* share a meaning, it is common for one module to import it from another, or have a lightweight “base” package with the sole function of defining an interface like this, which can be used by other packages. It is conventional to have such package names end in `...Base` (which has nothing to do with Julia's `Base` module).
 
 ### Precedence order of definitions
@@ -482,31 +482,31 @@ Other known potential failure scenarios include:
 
 1. Global counters (for example, for attempting to uniquely identify objects). Consider the following code snippet:
 
-    ```julia
-    mutable struct UniquedById
-        myid::Int
-        let counter = 0
-            UniquedById() = new(counter += 1)
-        end
-    end
-    ```
+   ```julia
+   mutable struct UniquedById
+       myid::Int
+       let counter = 0
+           UniquedById() = new(counter += 1)
+       end
+   end
+   ```
 
-    while the intent of this code was to give every instance a unique id, the counter value is recorded at the end of compilation. All subsequent usages of this incrementally compiled module will start from that same counter value.
+   while the intent of this code was to give every instance a unique id, the counter value is recorded at the end of compilation. All subsequent usages of this incrementally compiled module will start from that same counter value.
 
-    Note that `objectid` (which works by hashing the memory pointer) has similar issues (see notes on `Dict` usage below).
+   Note that `objectid` (which works by hashing the memory pointer) has similar issues (see notes on `Dict` usage below).
 
-    One alternative is to use a macro to capture [`@__MODULE__`](@ref) and store it alone with the current `counter` value, however, it may be better to redesign the code to not depend on this global state.
+   One alternative is to use a macro to capture [`@__MODULE__`](@ref) and store it alone with the current `counter` value, however, it may be better to redesign the code to not depend on this global state.
 2. Associative collections (such as `Dict` and `Set`) need to be re-hashed in `__init__`. (In the future, a mechanism may be provided to register an initializer function.)
 3. Depending on compile-time side-effects persisting through load-time. Example include: modifying arrays or other variables in other Julia modules; maintaining handles to open files or devices; storing pointers to other system resources (including memory);
 4. Creating accidental "copies" of global state from another module, by referencing it directly instead of via its lookup path. For example, (in global scope):
 
-    ```julia
-    #mystdout = Base.stdout #= will not work correctly, since this will copy Base.stdout into this module =#
-    # instead use accessor functions:
-    getstdout() = Base.stdout #= best option =#
-    # or move the assignment into the runtime:
-    __init__() = global mystdout = Base.stdout #= also works =#
-    ```
+   ```julia
+   #mystdout = Base.stdout #= will not work correctly, since this will copy Base.stdout into this module =#
+   # instead use accessor functions:
+   getstdout() = Base.stdout #= best option =#
+   # or move the assignment into the runtime:
+   __init__() = global mystdout = Base.stdout #= also works =#
+   ```
 
 Several additional restrictions are placed on the operations that can be done while precompiling code to help the user avoid other wrong-behavior situations:
 

@@ -54,17 +54,17 @@ The steps required to add a new docstring are listed below:
 3. find a suitable `@docs` code block in one of the `doc/src/stdlib/` files where you would like the docstring to appear;
 4. add the name of the definition to the `@docs` code block. For example, with a docstring added to a function `bar`
 
-    `julia  "..."  function bar(args...)      # ...  end`
+   `julia  "..."  function bar(args...)      # ...  end`
 
-    you would add the name `bar` to a `@docs` block in `doc/src/stdlib/`
+   you would add the name `bar` to a `@docs` block in `doc/src/stdlib/`
 
+   ```
+    ```@docs
+    foo
+    bar # <-- Added this one.
+    baz
     ```
-     ```@docs
-     foo
-     bar # <-- Added this one.
-     baz
-     ```
-    ```
+   ```
 5. run `make docs` from the root directory;
 6. check the output in `doc/_build/html` to make sure the changes are correct;
 7. commit your changes and open a pull request.

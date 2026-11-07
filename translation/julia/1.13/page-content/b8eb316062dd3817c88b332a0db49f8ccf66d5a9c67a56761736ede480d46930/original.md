@@ -169,28 +169,28 @@ No, you are not allowed to have a `using` or `import` statement inside a functio
 
 1. Use `import`:
 
-    ```julia
-    import Foo
-    function bar(...)
-        # ... refer to Foo bindings via Foo.baz ...
-    end
-    ```
+   ```julia
+   import Foo
+   function bar(...)
+       # ... refer to Foo bindings via Foo.baz ...
+   end
+   ```
 
-    This loads the module `Foo` and defines a variable `Foo` that refers to the module, but does not import any of the other bindings from the module into the current namespace. You refer to the `Foo` bindings by their qualified names `Foo.bar` etc.
+   This loads the module `Foo` and defines a variable `Foo` that refers to the module, but does not import any of the other bindings from the module into the current namespace. You refer to the `Foo` bindings by their qualified names `Foo.bar` etc.
 2. Wrap your function in a module:
 
-    ```julia
-    module Bar
-    export bar
-    using Foo
-    function bar(...)
-        # ... refer to Foo.baz as simply baz ....
-    end
-    end
-    using Bar
-    ```
+   ```julia
+   module Bar
+   export bar
+   using Foo
+   function bar(...)
+       # ... refer to Foo.baz as simply baz ....
+   end
+   end
+   using Bar
+   ```
 
-    This imports all the bindings from `Foo`, but only inside the module `Bar`.
+   This imports all the bindings from `Foo`, but only inside the module `Bar`.
 
 ### What does the `...` operator do?
 

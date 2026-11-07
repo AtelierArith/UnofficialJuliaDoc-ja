@@ -54,39 +54,39 @@ Whether you're at the REPL or in IJulia, you can typically improve your developm
 
 1. Put your code in a module somewhere on your load path. There are several options for achieving this, of which two recommended choices are:
 
-      * For long-term projects, use [PkgTemplates](https://github.com/invenia/PkgTemplates.jl):
+     * For long-term projects, use [PkgTemplates](https://github.com/invenia/PkgTemplates.jl):
 
-        ```julia
-        using PkgTemplates
-        t = Template()
-        t("MyPkg")
-        ```
+       ```julia
+       using PkgTemplates
+       t = Template()
+       t("MyPkg")
+       ```
 
-        This will create a blank package, `"MyPkg"`, in your `.julia/dev` directory. Note that PkgTemplates allows you to control many different options through its `Template` constructor.
+       This will create a blank package, `"MyPkg"`, in your `.julia/dev` directory. Note that PkgTemplates allows you to control many different options through its `Template` constructor.
 
-        In step 2 below, edit `MyPkg/src/MyPkg.jl` to change the source code, and `MyPkg/test/runtests.jl` for the tests.
-      * For "throw-away" projects, you can avoid any need for cleanup by doing your work in your temporary directory (e.g., `/tmp`).
+       In step 2 below, edit `MyPkg/src/MyPkg.jl` to change the source code, and `MyPkg/test/runtests.jl` for the tests.
+     * For "throw-away" projects, you can avoid any need for cleanup by doing your work in your temporary directory (e.g., `/tmp`).
 
-        Navigate to your temporary directory and launch Julia, then do the following:
+       Navigate to your temporary directory and launch Julia, then do the following:
 
-        ```julia-repl
-        pkg> generate MyPkg            # type ] to enter pkg mode
-        julia> push!(LOAD_PATH, pwd())   # hit backspace to exit pkg mode
-        ```
+       ```julia-repl
+       pkg> generate MyPkg            # type ] to enter pkg mode
+       julia> push!(LOAD_PATH, pwd())   # hit backspace to exit pkg mode
+       ```
 
-        If you restart your Julia session you'll have to re-issue that command modifying `LOAD_PATH`.
+       If you restart your Julia session you'll have to re-issue that command modifying `LOAD_PATH`.
 
-        In step 2 below, edit `MyPkg/src/MyPkg.jl` to change the source code, and create any test file of your choosing.
+       In step 2 below, edit `MyPkg/src/MyPkg.jl` to change the source code, and create any test file of your choosing.
 2. Develop your package
 
-    *Before* loading any code, make sure you're running Revise: say `using Revise` or follow its documentation on configuring it to run automatically.
+   *Before* loading any code, make sure you're running Revise: say `using Revise` or follow its documentation on configuring it to run automatically.
 
-    Then navigate to the directory containing your test file (here assumed to be `"runtests.jl"`) and do the following:
+   Then navigate to the directory containing your test file (here assumed to be `"runtests.jl"`) and do the following:
 
-    ```julia-repl
-    julia> using MyPkg
+   ```julia-repl
+   julia> using MyPkg
 
-    julia> include("runtests.jl")
-    ```
+   julia> include("runtests.jl")
+   ```
 
-    You can iteratively modify the code in MyPkg in your editor and re-run the tests with `include("runtests.jl")`. You generally should not need to restart your Julia session to see the changes take effect (subject to a few [limitations](https://timholy.github.io/Revise.jl/stable/limitations/)).
+   You can iteratively modify the code in MyPkg in your editor and re-run the tests with `include("runtests.jl")`. You generally should not need to restart your Julia session to see the changes take effect (subject to a few [limitations](https://timholy.github.io/Revise.jl/stable/limitations/)).

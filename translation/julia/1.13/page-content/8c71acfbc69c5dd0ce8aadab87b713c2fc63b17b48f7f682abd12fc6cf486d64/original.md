@@ -77,26 +77,26 @@ Assuming that you had made no changes to the source tree that will conflict with
 
 1. Over time, the base library may accumulate enough changes such that the bootstrapping process in building the system image will fail. If this happens, the build may fail with an error like
 
-    ```sh
-     *** This error is usually fixed by running 'make clean'. If the error persists, try 'make cleanall' ***
-    ```
+   ```sh
+    *** This error is usually fixed by running 'make clean'. If the error persists, try 'make cleanall' ***
+   ```
 
-    As described, running `make clean && make` is usually sufficient. Occasionally, the stronger cleanup done by `make cleanall` is needed.
+   As described, running `make clean && make` is usually sufficient. Occasionally, the stronger cleanup done by `make cleanall` is needed.
 2. New versions of external dependencies may be introduced which may occasionally cause conflicts with existing builds of older versions.
 
-    a. Special `make` targets exist to help wipe the existing build of a    dependency. For example, `make -C deps clean-llvm` will clean out the    existing build of `llvm` so that `llvm` will be rebuilt from the    downloaded source distribution the next time `make` is called.    `make -C deps distclean-llvm` is a stronger wipe which will also delete    the downloaded source distribution, ensuring that a fresh copy of the    source distribution will be downloaded and that any new patches will be    applied the next time `make` is called.
+   a. Special `make` targets exist to help wipe the existing build of a    dependency. For example, `make -C deps clean-llvm` will clean out the    existing build of `llvm` so that `llvm` will be rebuilt from the    downloaded source distribution the next time `make` is called.    `make -C deps distclean-llvm` is a stronger wipe which will also delete    the downloaded source distribution, ensuring that a fresh copy of the    source distribution will be downloaded and that any new patches will be    applied the next time `make` is called.
 
-    b. To delete existing binaries of `julia` and all its dependencies,    delete the `./usr` directory *in the source tree*.
+   b. To delete existing binaries of `julia` and all its dependencies,    delete the `./usr` directory *in the source tree*.
 3. If you've updated macOS recently, be sure to run `xcode-select --install` to update the command line tools. Otherwise, you could run into errors for missing headers and libraries, such as `ld: library not found for -lcrt1.10.6.o`.
 4. If you've moved the source directory, you might get errors such as  `CMake Error: The current CMakeCache.txt directory ... is different than the directory ... where     CMakeCache.txt was created.`, in which case you may delete the offending dependency under `deps`
 5. In extreme cases, you may wish to reset the source tree to a pristine state. The following git commands may be helpful:
 
-    ```sh
-     git reset --hard #Forcibly remove any changes to any files under version control
-     git clean -x -f -d #Forcibly remove any file or directory not under version control
-    ```
+   ```sh
+    git reset --hard #Forcibly remove any changes to any files under version control
+    git clean -x -f -d #Forcibly remove any file or directory not under version control
+   ```
 
-    *To avoid losing work, make sure you know what these commands do before you run them. `git` will not be able to undo these changes!*
+   *To avoid losing work, make sure you know what these commands do before you run them. `git` will not be able to undo these changes!*
 
 ## Platform-Specific Notes
 
@@ -324,16 +324,16 @@ Note:
 
 1. Update Version numbers in `deps/openlibm.version`
 
-      * `OPENLIBM_VER := 0.X.Y`
-      * `OPENLIBM_BRANCH = v0.X.Y`
-      * `OPENLIBM_SHA1 = new-sha1-hash`
+     * `OPENLIBM_VER := 0.X.Y`
+     * `OPENLIBM_BRANCH = v0.X.Y`
+     * `OPENLIBM_SHA1 = new-sha1-hash`
 2. Update Version number in `stdlib/OpenLibm_jll/Project.toml`
 
-      * `version = "0.X.Y+0"`
+     * `version = "0.X.Y+0"`
 3. Update checksums in `deps/checksums/openlibm`
 
-      * `make -f contrib/refresh_checksums.mk openlibm`
+     * `make -f contrib/refresh_checksums.mk openlibm`
 4. Check if the patch files `deps/patches/openlibm-*.patch` exist
 
-      * if patches don't exist, skip.
-      * if patches exist, check if they have been merged into the new version and need to be removed.   When deleting a patch, remember to modify the corresponding Makefile file (`deps/openlibm.mk`).
+     * if patches don't exist, skip.
+     * if patches exist, check if they have been merged into the new version and need to be removed.   When deleting a patch, remember to modify the corresponding Makefile file (`deps/openlibm.mk`).

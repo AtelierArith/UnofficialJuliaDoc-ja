@@ -116,26 +116,26 @@ After printing the diagnostic, the process aborts (or waits for a debugger if `J
 1. **Reproduce with GC_VERIFY enabled.** Build with `WITH_GC_DEBUG_ENV=1` and run the failing workload. The verifier will catch the violation and print which object and slot were written without a write barrier.
 2. **Disable ASLR for reproducible addresses.** If you need to set hardware watchpoints on specific memory locations:
 
-    ```sh
-    echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
-    ```
+   ```sh
+   echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
+   ```
 
-    Addresses will then be stable across runs (with the same binary and environment).
+   Addresses will then be stable across runs (with the same binary and environment).
 3. **Use hardware watchpoints in GDB.** Once you know the address of the slot that was written incorrectly, attach GDB and set a watchpoint:
 
-    ```
-    watch *slot_addr if *slot_addr == expected_val
-    ```
+   ```
+   watch *slot_addr if *slot_addr == expected_val
+   ```
 
-    This stops execution at the exact moment the write occurs.
+   This stops execution at the exact moment the write occurs.
 4. **Use `rr` for deterministic replay.** [`rr`](https://rr-project.org/) records a process execution and replays it perfectly — the same instructions, the same addresses — allowing you to run the program backwards in GDB. This is especially useful for GC bugs where the failure manifests far from the root cause:
 
-    ```sh
-    rr record ./julia myscript.jl
-    rr replay
-    ```
+   ```sh
+   rr record ./julia myscript.jl
+   rr replay
+   ```
 
-    Inside the replay session, use reverse-execution commands such as `reverse-continue` (`rc`) and `reverse-next` (`rn`) to step backwards from the crash to the moment the bad write occurred. Because `rr` replays with ASLR disabled and a fixed random seed, addresses are stable across record/replay cycles, which makes watchpoints reliable without having to manually disable ASLR.
+   Inside the replay session, use reverse-execution commands such as `reverse-continue` (`rc`) and `reverse-next` (`rn`) to step backwards from the crash to the moment the bad write occurred. Because `rr` replays with ASLR disabled and a fixed random seed, addresses are stable across record/replay cycles, which makes watchpoints reliable without having to manually disable ASLR.
 
 ## Related Tools
 
